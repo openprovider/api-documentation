@@ -607,39 +607,6 @@
         }
       }
     },
-    "/v1beta/licenses/virtuozzo/key/{key_id}": {
-      "get": {
-        "tags": [
-          "LicenseService"
-        ],
-        "summary": "Get virtuozzo key",
-        "operationId": "GetVirtuozzoKey",
-        "parameters": [
-          {
-            "type": "integer",
-            "format": "int32",
-            "description": "License key ID",
-            "name": "key_id",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/licenseGetLicenseKeyResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      }
-    },
     "/v1beta/licenses/virtuozzo/{key_id}": {
       "get": {
         "tags": [
@@ -732,6 +699,39 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/licenseDeleteLicenseResponse"
+            }
+          },
+          "default": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/errorError"
+            }
+          }
+        }
+      }
+    },
+    "/v1beta/licenses/virtuozzo/{key_id}/key": {
+      "get": {
+        "tags": [
+          "LicenseService"
+        ],
+        "summary": "Get virtuozzo key",
+        "operationId": "GetVirtuozzoKey",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "License key ID",
+            "name": "key_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/licenseGetLicenseKeyResponse"
             }
           },
           "default": {
