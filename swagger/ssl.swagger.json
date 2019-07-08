@@ -1,0 +1,3460 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "title": "SSL",
+    "version": "1.0.0-beta"
+  },
+  "paths": {
+    "/v1beta/ssl/approver-emails": {
+      "get": {
+        "tags": [
+          "ApproverEmail"
+        ],
+        "summary": "List approver emails",
+        "operationId": "ListApproverEmails",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "ID of product order will be created for.",
+            "name": "product_id",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "Domain name.",
+            "name": "domain",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/approveremailListApproverEmailsResponse"
+            }
+          },
+          "default": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/errorError"
+            }
+          }
+        }
+      }
+    },
+    "/v1beta/ssl/csr": {
+      "post": {
+        "tags": [
+          "Csr"
+        ],
+        "summary": "Create csr",
+        "externalDocs": {
+          "description": "For more detailed information on this method check our guide",
+          "url": "https://support.openprovider.eu/hc/en-us/articles/360024155173"
+        },
+        "operationId": "CreateCsr",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/csrCreateCsrRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/csrCreateCsrResponse"
+            }
+          },
+          "default": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/errorError"
+            }
+          }
+        }
+      }
+    },
+    "/v1beta/ssl/csr/decode": {
+      "post": {
+        "tags": [
+          "Csr"
+        ],
+        "summary": "Decode csr",
+        "externalDocs": {
+          "description": "For more detailed information on this method check our guide",
+          "url": "https://support.openprovider.eu/hc/en-us/articles/360024176673"
+        },
+        "operationId": "DecodeCsr",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/csrDecodeCsrRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/csrDecodeCsrResponse"
+            }
+          },
+          "default": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/errorError"
+            }
+          }
+        }
+      }
+    },
+    "/v1beta/ssl/orders": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "List orders",
+        "externalDocs": {
+          "description": "For more detailed information on this method check our guide",
+          "url": "https://support.openprovider.eu/hc/en-us/articles/360024399333"
+        },
+        "operationId": "ListOrders",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "Search query limit.",
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "Search query offset.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "The common name.",
+            "name": "order_by.common_name",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "The order date.",
+            "name": "order_by.order_date",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "The active date.",
+            "name": "order_by.active_date",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "The expiration date.",
+            "name": "order_by.expiration_date",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "The status.",
+            "name": "order_by.status",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "The product name.",
+            "name": "order_by.product_name",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "Certificate common name pattern. Wildcard (*) can be used.",
+            "name": "common_name_pattern",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "Order status.",
+            "name": "status",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "Contact handle.",
+            "name": "contact_handle",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/orderListOrdersResponse"
+            }
+          },
+          "default": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/errorError"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "Create order",
+        "externalDocs": {
+          "description": "For more detailed information on this method check our guide",
+          "url": "https://support.openprovider.eu/hc/en-us/articles/360024389393"
+        },
+        "operationId": "CreateOrder",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/orderCreateOrderRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/orderCreateOrderResponse"
+            }
+          },
+          "default": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/errorError"
+            }
+          }
+        }
+      }
+    },
+    "/v1beta/ssl/orders/{id}": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "Get order",
+        "externalDocs": {
+          "description": "For more detailed information on this method check our guide",
+          "url": "https://support.openprovider.eu/hc/en-us/articles/360024389393"
+        },
+        "operationId": "GetOrder",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "Object id",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/orderGetOrderResponse"
+            }
+          },
+          "default": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/errorError"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "Update order",
+        "externalDocs": {
+          "description": "For more detailed information on this method check our guide",
+          "url": "https://support.openprovider.eu/hc/en-us/articles/360024299194"
+        },
+        "operationId": "UpdateOrder",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "Object id",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/orderUpdateOrderRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/orderUpdateOrderResponse"
+            }
+          },
+          "default": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/errorError"
+            }
+          }
+        }
+      }
+    },
+    "/v1beta/ssl/orders/{id}/approver-email": {
+      "put": {
+        "tags": [
+          "OrderApproverEmail"
+        ],
+        "summary": "Update approver email address",
+        "operationId": "UpdateApproverEmailAddress",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "Object id",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/approveremailUpdateApproverEmailAddressRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/approveremailUpdateApproverEmailAddressResponse"
+            }
+          },
+          "default": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/errorError"
+            }
+          }
+        }
+      }
+    },
+    "/v1beta/ssl/orders/{id}/approver-email/resend": {
+      "post": {
+        "tags": [
+          "OrderApproverEmail"
+        ],
+        "summary": "Resend approver email",
+        "operationId": "ResendApproverEmail",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "Object id",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/approveremailResendApproverEmailRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/approveremailResendApproverEmailResponse"
+            }
+          },
+          "default": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/errorError"
+            }
+          }
+        }
+      }
+    },
+    "/v1beta/ssl/orders/{id}/cancel": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "Cancel order",
+        "externalDocs": {
+          "description": "For more detailed information on this method check our guide",
+          "url": "https://support.openprovider.eu/hc/en-us/articles/360024469053"
+        },
+        "operationId": "CancelOrder",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "Object id",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/orderCancelOrderRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/orderCancelOrderResponse"
+            }
+          },
+          "default": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/errorError"
+            }
+          }
+        }
+      }
+    },
+    "/v1beta/ssl/orders/{id}/otp-tokens": {
+      "post": {
+        "tags": [
+          "OtpToken"
+        ],
+        "summary": "Create otp token",
+        "operationId": "CreateOtpToken",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "Object id",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/otptokenCreateOtpTokenRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/otptokenCreateOtpTokenResponse"
+            }
+          },
+          "default": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/errorError"
+            }
+          }
+        }
+      }
+    },
+    "/v1beta/ssl/orders/{id}/reissue": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "Reissue order",
+        "externalDocs": {
+          "description": "For more detailed information on this method check our guide",
+          "url": "https://support.openprovider.eu/hc/en-us/articles/360024304394"
+        },
+        "operationId": "ReissueOrder",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "Object id",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/orderReissueOrderRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/orderReissueOrderResponse"
+            }
+          },
+          "default": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/errorError"
+            }
+          }
+        }
+      }
+    },
+    "/v1beta/ssl/orders/{id}/reissue-approver-emails": {
+      "get": {
+        "tags": [
+          "OrderApproverEmail"
+        ],
+        "summary": "List reissue approver emails",
+        "operationId": "ListReissueApproverEmails",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "Object id",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/approveremailListReissueApproverEmailsResponse"
+            }
+          },
+          "default": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/errorError"
+            }
+          }
+        }
+      }
+    },
+    "/v1beta/ssl/orders/{id}/renew": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "summary": "Renew order",
+        "externalDocs": {
+          "description": "For more detailed information on this method check our guide",
+          "url": "https://support.openprovider.eu/hc/en-us/articles/360024468093"
+        },
+        "operationId": "RenewOrder",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "Object id",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/orderRenewOrderRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/orderRenewOrderResponse"
+            }
+          },
+          "default": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/errorError"
+            }
+          }
+        }
+      }
+    },
+    "/v1beta/ssl/products": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "List products",
+        "operationId": "ListProducts",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "Search query limit.",
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "Search query offset.",
+            "name": "offset",
+            "in": "query"
+          },
+          {
+            "type": "boolean",
+            "format": "boolean",
+            "description": "Returns product price in the response.",
+            "name": "with_price",
+            "in": "query"
+          },
+          {
+            "type": "boolean",
+            "format": "boolean",
+            "description": "Returns a list of supported software patforms.",
+            "name": "with_supported_software",
+            "in": "query"
+          },
+          {
+            "type": "boolean",
+            "format": "boolean",
+            "description": "Returns a description for each product, if exists.",
+            "name": "with_description",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "The name.",
+            "name": "order_by.name",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "The brand name.",
+            "name": "order_by.brand_name",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "The category.",
+            "name": "order_by.category",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "The sub category.",
+            "name": "order_by.sub_category",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "The brand seqno.",
+            "name": "order_by.brand_seqno",
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "description": "The product seqno.",
+            "name": "order_by.product_seqno",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productListProductsResponse"
+            }
+          },
+          "default": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/errorError"
+            }
+          }
+        }
+      }
+    },
+    "/v1beta/ssl/products/{id}": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Get product",
+        "operationId": "GetProduct",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "Object id",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productGetProductResponse"
+            }
+          },
+          "default": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/errorError"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "approveremailListApproverEmailsResponse": {
+      "type": "object",
+      "title": "ListApproverEmailsResponse",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Response code"
+        },
+        "data": {
+          "type": "array",
+          "title": "Response data",
+          "items": {
+            "type": "string"
+          }
+        },
+        "desc": {
+          "type": "string",
+          "title": "Response description"
+        },
+        "maintenance": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Indicates if Openprovider API is on maintenance"
+        },
+        "warnings": {
+          "type": "array",
+          "title": "Array of warning messages",
+          "items": {
+            "$ref": "#/definitions/errorWarning"
+          }
+        }
+      },
+      "example": {
+        "code": 0,
+        "data": [
+          "admin@example.com"
+        ],
+        "desc": ""
+      }
+    },
+    "approveremailListReissueApproverEmailsResponse": {
+      "type": "object",
+      "title": "ListReissueApproverEmailsResponse",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Response code"
+        },
+        "data": {
+          "type": "array",
+          "title": "Response data",
+          "items": {
+            "type": "string"
+          }
+        },
+        "desc": {
+          "type": "string",
+          "title": "Response description"
+        },
+        "maintenance": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Indicates if Openprovider API is on maintenance"
+        },
+        "warnings": {
+          "type": "array",
+          "title": "Array of warning messages",
+          "items": {
+            "$ref": "#/definitions/errorWarning"
+          }
+        }
+      },
+      "example": {
+        "code": 0,
+        "data": [
+          "admin@example.com"
+        ],
+        "desc": ""
+      }
+    },
+    "approveremailResendApproverEmailRequest": {
+      "type": "object",
+      "title": "ResendApproverEmailRequest",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Object id"
+        }
+      },
+      "example": {
+        "id": 1
+      }
+    },
+    "approveremailResendApproverEmailResponse": {
+      "type": "object",
+      "title": "ResendApproverEmailResponse",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Response code"
+        },
+        "data": {
+          "title": "Response data",
+          "$ref": "#/definitions/approveremailResendApproverEmailResponseData"
+        },
+        "desc": {
+          "type": "string",
+          "title": "Response description"
+        },
+        "maintenance": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Indicates if Openprovider API is on maintenance"
+        },
+        "warnings": {
+          "type": "array",
+          "title": "Array of warning messages",
+          "items": {
+            "$ref": "#/definitions/errorWarning"
+          }
+        }
+      },
+      "example": {
+        "code": 0,
+        "data": {
+          "id": 1
+        },
+        "desc": ""
+      }
+    },
+    "approveremailResendApproverEmailResponseData": {
+      "type": "object",
+      "title": "ResendApproverEmailResponseData",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Object id"
+        }
+      },
+      "example": {
+        "id": 1
+      }
+    },
+    "approveremailUpdateApproverEmailAddressRequest": {
+      "type": "object",
+      "title": "UpdateApproverEmailAddressRequest",
+      "properties": {
+        "approver_email": {
+          "description": "Email for domain ownership verification. Should start with well-known generic name like admin@, hostmater@, administrator@, etc.",
+          "type": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Object id"
+        }
+      },
+      "example": {
+        "approver_email": "admin@example.com",
+        "id": 1
+      }
+    },
+    "approveremailUpdateApproverEmailAddressResponse": {
+      "type": "object",
+      "title": "UpdateApproverEmailAddressResponse",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Response code"
+        },
+        "data": {
+          "title": "Response data",
+          "$ref": "#/definitions/approveremailUpdateApproverEmailAddressResponseData"
+        },
+        "desc": {
+          "type": "string",
+          "title": "Response description"
+        },
+        "maintenance": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Indicates if Openprovider API is on maintenance"
+        },
+        "warnings": {
+          "type": "array",
+          "title": "Array of warning messages",
+          "items": {
+            "$ref": "#/definitions/errorWarning"
+          }
+        }
+      },
+      "example": {
+        "code": 0,
+        "data": {
+          "id": 1
+        },
+        "desc": ""
+      }
+    },
+    "approveremailUpdateApproverEmailAddressResponseData": {
+      "type": "object",
+      "title": "UpdateApproverEmailAddressResponseData",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Object id"
+        }
+      },
+      "example": {
+        "id": 1
+      }
+    },
+    "csrCreateCsrRequest": {
+      "type": "object",
+      "title": "CreateCsrRequest",
+      "properties": {
+        "bits": {
+          "type": "integer",
+          "format": "int32",
+          "title": "CSR key size. Values up to 4096 supported"
+        },
+        "common_name": {
+          "type": "string",
+          "title": "Domain name to protect"
+        },
+        "country": {
+          "type": "string",
+          "title": "Enrolling company's country code"
+        },
+        "email": {
+          "type": "string",
+          "title": "Requester email address"
+        },
+        "locality": {
+          "type": "string",
+          "title": "Enrolling company's location, i.e. street name and number"
+        },
+        "organization": {
+          "type": "string",
+          "title": "Enrolling company name"
+        },
+        "signature_hash_algorithm": {
+          "description": "Redundant field, can be used as 'sha2'.",
+          "type": "string"
+        },
+        "state": {
+          "type": "string",
+          "title": "Enrolling company's state / province"
+        },
+        "subject_alternative_name": {
+          "type": "array",
+          "title": "Additional domains in a case of Multi-domain certificate",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unit": {
+          "type": "string",
+          "title": "Enrolling company's organization unit. If empty can be left black or set to IT"
+        },
+        "with_config": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Config file for OpenSSL command dumped out when subjectAlternativeName domains are included"
+        }
+      },
+      "example": {
+        "bits": 2048,
+        "common_name": "example.com",
+        "country": "NL",
+        "email": "admin@example.com",
+        "locality": "City",
+        "organization": "MyCompany B.V.",
+        "signature_hash_algorithm": "sha2",
+        "state": "Testprovince",
+        "subject_alternative_name": [
+          "www.example.com"
+        ],
+        "unit": "Dev",
+        "with_config": false
+      }
+    },
+    "csrCreateCsrResponse": {
+      "type": "object",
+      "title": "CreateCsrResponse",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Response code"
+        },
+        "data": {
+          "title": "Response data",
+          "$ref": "#/definitions/csrCreateCsrResponseData"
+        },
+        "desc": {
+          "type": "string",
+          "title": "Response description"
+        },
+        "maintenance": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Indicates if Openprovider API is on maintenance"
+        },
+        "warnings": {
+          "type": "array",
+          "title": "Array of warning messages",
+          "items": {
+            "$ref": "#/definitions/errorWarning"
+          }
+        }
+      },
+      "example": {
+        "code": 0,
+        "data": {
+          "command": "",
+          "config": "",
+          "config_path": "",
+          "csr": "-----BEGIN CERTIFICATE REQUEST-----\nMIIC0TCCAbkCAQAwgYsxCzAJBgNVBAYTAkFVMREwDwYDVQQIDAhleGFtcGxlczER\nMA8GA1UEBwwIZXhhbXBsZXMxETAPBgNVBAoMCGV4YW1wbGVzMQswCQYDVQQLDAJp\ndDEUMBIGA1UEAwwLZXhhbXBsZS5jb20xIDAeBgkqhkiG9w0BCQEWEWFkbWluQGV4\nYW1wbGUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6XbdNhvH\nRldtqE8iNm1Da0z+rkmAJlEtKUjqz5CDGcA9ByCLQ4qBIsSAkRgElBonMyR8lLDK\nh5Ac9jrkg40zrrXCl8TQ4sW5GFavwBPKCTHQu0EhovGWdV490+oOTVBckBW6niI5\nyaezhL4ZJzd4smrqoH3fPYPgLcb7+Lb4fsMfavRrallMrHP612bLm0mOpXKcwHos\nqBdC3OW2v64MnBdla3ZcPKFG8ThcdJoD9sym1EtKsm3MbyT9d8r3D+L2+xqZOjww\nacElCLmZ8Ep4aQVx0GRbJoDEA1Yy7A9YC4E+SObW7daquTX+zymeK0k1mACmOwvo\nJOrjLIhUbjJDtQIDAQABoAAwDQYJKoZIhvcNAQELBQADggEBANBGBu55iuzTYc4S\nZW3F8flSd0cO8ubKII6WcwHJrk8NIlAgfduAuNRuG9CAba0e72Ea0xKIhXSzxbDi\ncq9Yl0rkovY95ZyRayxl9AC4d7grJnncmKk2aUtarRq0pOaYfWuKwjaVPknGaGu6\nwCnGI/7nMCZA77ZH2s+rberHO+/6GCt+9pqSqY4u+2r83WMWMrVT/4jNBxKVErAk\n99iAC69+/N/afaryLoiAAtuaUPOAOD3fW4FXtjvvfht8xeU1AvYPOr0IfYdMH/Yq\n1EzRUsoxnhNG3Lb6YaQ0K59iFoBESSN5JHmLSLFEPb1i36Gx4kQMGJH8FM5tlPma\nySUlLeY=\n-----END CERTIFICATE REQUEST-----",
+          "key": "",
+          "key_path": ""
+        },
+        "desc": ""
+      }
+    },
+    "csrCreateCsrResponseData": {
+      "type": "object",
+      "title": "CreateCsrResponseData",
+      "properties": {
+        "command": {
+          "type": "string",
+          "title": "OpenSSL command used to generate CSR"
+        },
+        "config": {
+          "type": "string",
+          "title": "Config file for OpenSSL command"
+        },
+        "config_path": {
+          "type": "string",
+          "title": "Config file path"
+        },
+        "csr": {
+          "type": "string",
+          "title": "Generated CSR"
+        },
+        "key": {
+          "type": "string",
+          "title": "Private key for the CSR"
+        },
+        "key_path": {
+          "type": "string",
+          "title": "Key path"
+        }
+      },
+      "example": {
+        "command": "",
+        "config": "",
+        "config_path": "",
+        "csr": "-----BEGIN CERTIFICATE REQUEST-----\nMIIC0TCCAbkCAQAwgYsxCzAJBgNVBAYTAkFVMREwDwYDVQQIDAhleGFtcGxlczER\nMA8GA1UEBwwIZXhhbXBsZXMxETAPBgNVBAoMCGV4YW1wbGVzMQswCQYDVQQLDAJp\ndDEUMBIGA1UEAwwLZXhhbXBsZS5jb20xIDAeBgkqhkiG9w0BCQEWEWFkbWluQGV4\nYW1wbGUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6XbdNhvH\nRldtqE8iNm1Da0z+rkmAJlEtKUjqz5CDGcA9ByCLQ4qBIsSAkRgElBonMyR8lLDK\nh5Ac9jrkg40zrrXCl8TQ4sW5GFavwBPKCTHQu0EhovGWdV490+oOTVBckBW6niI5\nyaezhL4ZJzd4smrqoH3fPYPgLcb7+Lb4fsMfavRrallMrHP612bLm0mOpXKcwHos\nqBdC3OW2v64MnBdla3ZcPKFG8ThcdJoD9sym1EtKsm3MbyT9d8r3D+L2+xqZOjww\nacElCLmZ8Ep4aQVx0GRbJoDEA1Yy7A9YC4E+SObW7daquTX+zymeK0k1mACmOwvo\nJOrjLIhUbjJDtQIDAQABoAAwDQYJKoZIhvcNAQELBQADggEBANBGBu55iuzTYc4S\nZW3F8flSd0cO8ubKII6WcwHJrk8NIlAgfduAuNRuG9CAba0e72Ea0xKIhXSzxbDi\ncq9Yl0rkovY95ZyRayxl9AC4d7grJnncmKk2aUtarRq0pOaYfWuKwjaVPknGaGu6\nwCnGI/7nMCZA77ZH2s+rberHO+/6GCt+9pqSqY4u+2r83WMWMrVT/4jNBxKVErAk\n99iAC69+/N/afaryLoiAAtuaUPOAOD3fW4FXtjvvfht8xeU1AvYPOr0IfYdMH/Yq\n1EzRUsoxnhNG3Lb6YaQ0K59iFoBESSN5JHmLSLFEPb1i36Gx4kQMGJH8FM5tlPma\nySUlLeY=\n-----END CERTIFICATE REQUEST-----",
+        "key": "",
+        "key_path": ""
+      }
+    },
+    "csrCsrPublicKey": {
+      "type": "object",
+      "title": "CsrPublicKey",
+      "properties": {
+        "bits": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Key size in bits"
+        },
+        "key": {
+          "type": "string",
+          "title": "Individual private key for new CSR"
+        }
+      },
+      "example": {
+        "bits": 2048,
+        "key": ""
+      }
+    },
+    "csrCsrSubject": {
+      "type": "object",
+      "title": "CsrSubject",
+      "properties": {
+        "common_name": {
+          "type": "string",
+          "title": "Common name used in CSR"
+        },
+        "country": {
+          "type": "string",
+          "title": "Country used in CSR"
+        },
+        "email": {
+          "type": "string",
+          "title": "Email used in CSR"
+        },
+        "locality": {
+          "type": "string",
+          "title": "Locality used in CSR"
+        },
+        "organization": {
+          "type": "string",
+          "title": "Company name used in CSR"
+        },
+        "state": {
+          "type": "string",
+          "title": "State / province used in CSR"
+        },
+        "unit": {
+          "type": "string",
+          "title": "Organization unit used in CSR"
+        }
+      },
+      "example": {
+        "common_name": "example.com",
+        "country": "NL",
+        "email": "admin@example.com",
+        "locality": "City",
+        "organization": "MyCompany B.V.",
+        "state": "Testprovince",
+        "unit": "Dev"
+      }
+    },
+    "csrDecodeCsrRequest": {
+      "type": "object",
+      "title": "DecodeCsrRequest",
+      "properties": {
+        "csr": {
+          "type": "string",
+          "title": "Encoded CSR Value"
+        }
+      },
+      "example": {
+        "csr": "-----BEGIN CERTIFICATE REQUEST-----\nMIIC0TCCAbkCAQAwgYsxCzAJBgNVBAYTAkFVMREwDwYDVQQIDAhleGFtcGxlczER\nMA8GA1UEBwwIZXhhbXBsZXMxETAPBgNVBAoMCGV4YW1wbGVzMQswCQYDVQQLDAJp\ndDEUMBIGA1UEAwwLZXhhbXBsZS5jb20xIDAeBgkqhkiG9w0BCQEWEWFkbWluQGV4\nYW1wbGUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6XbdNhvH\nRldtqE8iNm1Da0z+rkmAJlEtKUjqz5CDGcA9ByCLQ4qBIsSAkRgElBonMyR8lLDK\nh5Ac9jrkg40zrrXCl8TQ4sW5GFavwBPKCTHQu0EhovGWdV490+oOTVBckBW6niI5\nyaezhL4ZJzd4smrqoH3fPYPgLcb7+Lb4fsMfavRrallMrHP612bLm0mOpXKcwHos\nqBdC3OW2v64MnBdla3ZcPKFG8ThcdJoD9sym1EtKsm3MbyT9d8r3D+L2+xqZOjww\nacElCLmZ8Ep4aQVx0GRbJoDEA1Yy7A9YC4E+SObW7daquTX+zymeK0k1mACmOwvo\nJOrjLIhUbjJDtQIDAQABoAAwDQYJKoZIhvcNAQELBQADggEBANBGBu55iuzTYc4S\nZW3F8flSd0cO8ubKII6WcwHJrk8NIlAgfduAuNRuG9CAba0e72Ea0xKIhXSzxbDi\ncq9Yl0rkovY95ZyRayxl9AC4d7grJnncmKk2aUtarRq0pOaYfWuKwjaVPknGaGu6\nwCnGI/7nMCZA77ZH2s+rberHO+/6GCt+9pqSqY4u+2r83WMWMrVT/4jNBxKVErAk\n99iAC69+/N/afaryLoiAAtuaUPOAOD3fW4FXtjvvfht8xeU1AvYPOr0IfYdMH/Yq\n1EzRUsoxnhNG3Lb6YaQ0K59iFoBESSN5JHmLSLFEPb1i36Gx4kQMGJH8FM5tlPma\nySUlLeY=\n-----END CERTIFICATE REQUEST-----"
+      }
+    },
+    "csrDecodeCsrResponse": {
+      "type": "object",
+      "title": "DecodeCsrResponse",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Response code"
+        },
+        "data": {
+          "title": "Response data",
+          "$ref": "#/definitions/csrDecodeCsrResponseData"
+        },
+        "desc": {
+          "type": "string",
+          "title": "Response description"
+        },
+        "maintenance": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Indicates if Openprovider API is on maintenance"
+        },
+        "warnings": {
+          "type": "array",
+          "title": "Array of warning messages",
+          "items": {
+            "$ref": "#/definitions/errorWarning"
+          }
+        }
+      },
+      "example": {
+        "code": 0,
+        "data": {
+          "domain_names_count": 2,
+          "public_key": {
+            "bits": 2048,
+            "key": ""
+          },
+          "signature_hash_algorithm": "sha2",
+          "subject": {
+            "common_name": "example.com",
+            "country": "NL",
+            "email": "admin@example.com",
+            "locality": "City",
+            "organization": "MyCompany B.V.",
+            "state": "Testprovince",
+            "unit": "Dev"
+          },
+          "subject_alternative_name": [
+            "www.example.com"
+          ]
+        },
+        "desc": ""
+      }
+    },
+    "csrDecodeCsrResponseData": {
+      "type": "object",
+      "title": "DecodeCsrResponseData",
+      "properties": {
+        "domain_names_count": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Count of additional domain names"
+        },
+        "public_key": {
+          "title": "Public key of the CSR",
+          "$ref": "#/definitions/csrCsrPublicKey"
+        },
+        "signature_hash_algorithm": {
+          "type": "string",
+          "title": "Signature algorithm"
+        },
+        "subject": {
+          "description": "Information about organization, country, etc.",
+          "$ref": "#/definitions/csrCsrSubject"
+        },
+        "subject_alternative_name": {
+          "type": "array",
+          "title": "Additional domain names",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "example": {
+        "domain_names_count": 2,
+        "public_key": {
+          "bits": 2048,
+          "key": ""
+        },
+        "signature_hash_algorithm": "sha2",
+        "subject": {
+          "common_name": "example.com",
+          "country": "NL",
+          "email": "admin@example.com",
+          "locality": "City",
+          "organization": "MyCompany B.V.",
+          "state": "Testprovince",
+          "unit": "Dev"
+        },
+        "subject_alternative_name": [
+          "www.example.com"
+        ]
+      }
+    },
+    "errorError": {
+      "type": "object",
+      "title": "Error",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Error code"
+        },
+        "data": {
+          "type": "string",
+          "title": "Additional error description"
+        },
+        "desc": {
+          "type": "string",
+          "title": "Error description"
+        }
+      },
+      "example": {
+        "code": 0,
+        "data": "",
+        "desc": ""
+      }
+    },
+    "errorWarning": {
+      "type": "object",
+      "title": "Warning",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Warning code"
+        },
+        "data": {
+          "type": "string",
+          "title": "Additional warning description"
+        },
+        "desc": {
+          "type": "string",
+          "title": "Warning description"
+        }
+      },
+      "example": {
+        "code": 0,
+        "data": "",
+        "desc": ""
+      }
+    },
+    "orderCancelOrderRequest": {
+      "type": "object",
+      "title": "CancelOrderRequest",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Object id"
+        }
+      },
+      "example": {
+        "id": 1
+      }
+    },
+    "orderCancelOrderResponse": {
+      "type": "object",
+      "title": "CancelOrderResponse",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Response code"
+        },
+        "data": {
+          "title": "Response data",
+          "$ref": "#/definitions/orderCancelOrderResponseData"
+        },
+        "desc": {
+          "type": "string",
+          "title": "Response description"
+        },
+        "maintenance": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Indicates if Openprovider API is on maintenance"
+        },
+        "warnings": {
+          "type": "array",
+          "title": "Array of warning messages",
+          "items": {
+            "$ref": "#/definitions/errorWarning"
+          }
+        }
+      },
+      "example": {
+        "code": 0,
+        "data": {
+          "id": 1
+        },
+        "desc": ""
+      }
+    },
+    "orderCancelOrderResponseData": {
+      "type": "object",
+      "title": "CancelOrderResponseData",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Object id"
+        }
+      },
+      "example": {
+        "id": 1
+      }
+    },
+    "orderCreateOrderRequest": {
+      "type": "object",
+      "title": "CreateOrderRequest",
+      "properties": {
+        "approver_email": {
+          "description": "Email for domain ownership verification. Should start with well-known generic name like admin@, hostmater@, administrator@, etc.",
+          "type": "string"
+        },
+        "autorenew": {
+          "type": "string",
+          "title": "Indicates, whether the certificate should be renewed automatically once its expiration date is reached"
+        },
+        "csr": {
+          "type": "string",
+          "title": "Certificate signing request"
+        },
+        "domain_amount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Number of domains to include in certificate"
+        },
+        "domain_validation_methods": {
+          "type": "array",
+          "title": "Method of domain validation",
+          "items": {
+            "$ref": "#/definitions/orderSslOrderDomainValidationMethods"
+          }
+        },
+        "host_names": {
+          "type": "array",
+          "title": "List of domain names to protect",
+          "items": {
+            "type": "string"
+          }
+        },
+        "organization_handle": {
+          "type": "string",
+          "title": "Handle of the organization contact"
+        },
+        "period": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Certificate issuance period"
+        },
+        "product_id": {
+          "type": "integer",
+          "format": "int32",
+          "title": "ID of product order will be created for"
+        },
+        "signature_hash_algorithm": {
+          "type": "string",
+          "title": "Certificate has algorithm. Set to sha2 or leave blank"
+        },
+        "software_id": {
+          "type": "string",
+          "title": "Software used on host where certificate will be installed"
+        },
+        "start_provision": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Indicates, whether a validation request should be sent to CA. If 0, UpdateOrder method should be used later to change the setting and begin validation"
+        },
+        "technical_handle": {
+          "type": "string",
+          "title": "Handle of the technical contact"
+        }
+      },
+      "example": {
+        "approver_email": "admin@example.com",
+        "autorenew": "off",
+        "csr": "-----BEGIN CERTIFICATE REQUEST-----\nMIIC0TCCAbkCAQAwgYsxCzAJBgNVBAYTAkFVMREwDwYDVQQIDAhleGFtcGxlczER\nMA8GA1UEBwwIZXhhbXBsZXMxETAPBgNVBAoMCGV4YW1wbGVzMQswCQYDVQQLDAJp\ndDEUMBIGA1UEAwwLZXhhbXBsZS5jb20xIDAeBgkqhkiG9w0BCQEWEWFkbWluQGV4\nYW1wbGUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6XbdNhvH\nRldtqE8iNm1Da0z+rkmAJlEtKUjqz5CDGcA9ByCLQ4qBIsSAkRgElBonMyR8lLDK\nh5Ac9jrkg40zrrXCl8TQ4sW5GFavwBPKCTHQu0EhovGWdV490+oOTVBckBW6niI5\nyaezhL4ZJzd4smrqoH3fPYPgLcb7+Lb4fsMfavRrallMrHP612bLm0mOpXKcwHos\nqBdC3OW2v64MnBdla3ZcPKFG8ThcdJoD9sym1EtKsm3MbyT9d8r3D+L2+xqZOjww\nacElCLmZ8Ep4aQVx0GRbJoDEA1Yy7A9YC4E+SObW7daquTX+zymeK0k1mACmOwvo\nJOrjLIhUbjJDtQIDAQABoAAwDQYJKoZIhvcNAQELBQADggEBANBGBu55iuzTYc4S\nZW3F8flSd0cO8ubKII6WcwHJrk8NIlAgfduAuNRuG9CAba0e72Ea0xKIhXSzxbDi\ncq9Yl0rkovY95ZyRayxl9AC4d7grJnncmKk2aUtarRq0pOaYfWuKwjaVPknGaGu6\nwCnGI/7nMCZA77ZH2s+rberHO+/6GCt+9pqSqY4u+2r83WMWMrVT/4jNBxKVErAk\n99iAC69+/N/afaryLoiAAtuaUPOAOD3fW4FXtjvvfht8xeU1AvYPOr0IfYdMH/Yq\n1EzRUsoxnhNG3Lb6YaQ0K59iFoBESSN5JHmLSLFEPb1i36Gx4kQMGJH8FM5tlPma\nySUlLeY=\n-----END CERTIFICATE REQUEST-----",
+        "domain_amount": 1,
+        "domain_validation_methods": [
+          {
+            "host_name": "example.com",
+            "method": "https"
+          }
+        ],
+        "host_names": [
+          "www.example.com"
+        ],
+        "organization_handle": "TH000001-NL",
+        "period": 1,
+        "product_id": 5,
+        "signature_hash_algorithm": "sha2",
+        "software_id": "linux",
+        "start_provision": false,
+        "technical_handle": "TH000001-NL"
+      }
+    },
+    "orderCreateOrderResponse": {
+      "type": "object",
+      "title": "CreateOrderResponse",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Response code"
+        },
+        "data": {
+          "title": "Response data",
+          "$ref": "#/definitions/orderCreateOrderResponseData"
+        },
+        "desc": {
+          "type": "string",
+          "title": "Response description"
+        },
+        "maintenance": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Indicates if Openprovider API is on maintenance"
+        },
+        "warnings": {
+          "type": "array",
+          "title": "Array of warning messages",
+          "items": {
+            "$ref": "#/definitions/errorWarning"
+          }
+        }
+      },
+      "example": {
+        "code": 0,
+        "data": {
+          "id": 1
+        },
+        "desc": ""
+      }
+    },
+    "orderCreateOrderResponseData": {
+      "type": "object",
+      "title": "CreateOrderResponseData",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Object id"
+        }
+      },
+      "example": {
+        "id": 1
+      }
+    },
+    "orderGetOrderResponse": {
+      "type": "object",
+      "title": "GetOrderResponse",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Response code"
+        },
+        "data": {
+          "title": "Response data",
+          "$ref": "#/definitions/orderSslOrder"
+        },
+        "desc": {
+          "type": "string",
+          "title": "Response description"
+        },
+        "maintenance": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Indicates if Openprovider API is on maintenance"
+        },
+        "warnings": {
+          "type": "array",
+          "title": "Array of warning messages",
+          "items": {
+            "$ref": "#/definitions/errorWarning"
+          }
+        }
+      },
+      "example": {
+        "code": 0,
+        "data": {
+          "active_date": "2019-01-01 0:00:01",
+          "additional_data": [
+            {
+              "dns": "73d01a1232214f96ebf08d6f9d0af6f9",
+              "dns_record": "example.com",
+              "dns_value": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
+              "domain": "example.com",
+              "file_content": "73d01a1232214f96ebf08d6f9d0af6f9",
+              "file_contents": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
+              "file_location": "example.com/.well-known/pki-validation/fileauth.txt",
+              "file_name": "fileauth.txt",
+              "md5": "73d01a1232214f96ebf08d6f9d0af6f9",
+              "sha1": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
+              "sha256": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c"
+            }
+          ],
+          "administrative_handle": "XX123456-XX",
+          "autorenew": "off",
+          "billing_handle": "XX123456-XX",
+          "brand_name": "Comodo",
+          "certificate": "",
+          "common_name": "example.com",
+          "csr": "-----BEGIN CERTIFICATE REQUEST-----\nMIIC0TCCAbkCAQAwgYsxCzAJBgNVBAYTAkFVMREwDwYDVQQIDAhleGFtcGxlczER\nMA8GA1UEBwwIZXhhbXBsZXMxETAPBgNVBAoMCGV4YW1wbGVzMQswCQYDVQQLDAJp\ndDEUMBIGA1UEAwwLZXhhbXBsZS5jb20xIDAeBgkqhkiG9w0BCQEWEWFkbWluQGV4\nYW1wbGUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6XbdNhvH\nRldtqE8iNm1Da0z+rkmAJlEtKUjqz5CDGcA9ByCLQ4qBIsSAkRgElBonMyR8lLDK\nh5Ac9jrkg40zrrXCl8TQ4sW5GFavwBPKCTHQu0EhovGWdV490+oOTVBckBW6niI5\nyaezhL4ZJzd4smrqoH3fPYPgLcb7+Lb4fsMfavRrallMrHP612bLm0mOpXKcwHos\nqBdC3OW2v64MnBdla3ZcPKFG8ThcdJoD9sym1EtKsm3MbyT9d8r3D+L2+xqZOjww\nacElCLmZ8Ep4aQVx0GRbJoDEA1Yy7A9YC4E+SObW7daquTX+zymeK0k1mACmOwvo\nJOrjLIhUbjJDtQIDAQABoAAwDQYJKoZIhvcNAQELBQADggEBANBGBu55iuzTYc4S\nZW3F8flSd0cO8ubKII6WcwHJrk8NIlAgfduAuNRuG9CAba0e72Ea0xKIhXSzxbDi\ncq9Yl0rkovY95ZyRayxl9AC4d7grJnncmKk2aUtarRq0pOaYfWuKwjaVPknGaGu6\nwCnGI/7nMCZA77ZH2s+rberHO+/6GCt+9pqSqY4u+2r83WMWMrVT/4jNBxKVErAk\n99iAC69+/N/afaryLoiAAtuaUPOAOD3fW4FXtjvvfht8xeU1AvYPOr0IfYdMH/Yq\n1EzRUsoxnhNG3Lb6YaQ0K59iFoBESSN5JHmLSLFEPb1i36Gx4kQMGJH8FM5tlPma\nySUlLeY=\n-----END CERTIFICATE REQUEST-----",
+          "domain_validation_methods": [
+            {
+              "host_name": "example.com",
+              "method": "https"
+            }
+          ],
+          "domain_validation_statuses": {
+            "ca_operation": "request",
+            "ca_order_status": "in_progress",
+            "ca_status": "requested",
+            "status": "open"
+          },
+          "email_approver": "admin@example.com",
+          "email_reissue": "admin@example.com",
+          "expiration_date": "2021-01-01 0:00:01",
+          "features": "",
+          "host_names": [
+            "www.example.com"
+          ],
+          "id": 123456789,
+          "intermediate_certificate": "",
+          "options": {
+            "features": ""
+          },
+          "order_date": "2019-01-01 0:00:01",
+          "organization_handle": "TH000001-NL",
+          "period": 2,
+          "product_id": 5,
+          "product_name": "EssentialSSL",
+          "root_certificate": "",
+          "software": "linux",
+          "sslinhva_order_id": "11111111-1111-1111-1111-111111111111",
+          "status": "REQ",
+          "technical_handle": "TH000001-NL",
+          "validation_method": "domain",
+          "vendor_order_id": "123456789",
+          "vendor_reference_id": "123456789"
+        },
+        "desc": ""
+      }
+    },
+    "orderListOrdersRequestOrderBy": {
+      "type": "object",
+      "title": "ListOrdersRequestOrderBy",
+      "properties": {
+        "active_date": {
+          "type": "string",
+          "title": "The active date"
+        },
+        "common_name": {
+          "type": "string",
+          "title": "The common name"
+        },
+        "expiration_date": {
+          "type": "string",
+          "title": "The expiration date"
+        },
+        "order_date": {
+          "type": "string",
+          "title": "The order date"
+        },
+        "product_name": {
+          "type": "string",
+          "title": "The product name"
+        },
+        "status": {
+          "type": "string",
+          "title": "The status"
+        }
+      }
+    },
+    "orderListOrdersResponse": {
+      "type": "object",
+      "title": "ListOrdersResponse",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Response code"
+        },
+        "data": {
+          "title": "Response data",
+          "$ref": "#/definitions/orderListOrdersResponseData"
+        },
+        "desc": {
+          "type": "string",
+          "title": "Response description"
+        },
+        "maintenance": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Indicates if Openprovider API is on maintenance"
+        },
+        "warnings": {
+          "type": "array",
+          "title": "Array of warning messages",
+          "items": {
+            "$ref": "#/definitions/errorWarning"
+          }
+        }
+      },
+      "example": {
+        "code": 0,
+        "data": {
+          "results": [
+            {
+              "active_date": "2019-01-01 0:00:01",
+              "additional_data": [
+                {
+                  "dns": "73d01a1232214f96ebf08d6f9d0af6f9",
+                  "dns_record": "example.com",
+                  "dns_value": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
+                  "domain": "example.com",
+                  "file_content": "73d01a1232214f96ebf08d6f9d0af6f9",
+                  "file_contents": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
+                  "file_location": "example.com/.well-known/pki-validation/fileauth.txt",
+                  "file_name": "fileauth.txt",
+                  "md5": "73d01a1232214f96ebf08d6f9d0af6f9",
+                  "sha1": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
+                  "sha256": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c"
+                }
+              ],
+              "administrative_handle": "XX123456-XX",
+              "autorenew": "off",
+              "billing_handle": "XX123456-XX",
+              "brand_name": "Comodo",
+              "certificate": "",
+              "common_name": "example.com",
+              "csr": "-----BEGIN CERTIFICATE REQUEST-----\nMIIC0TCCAbkCAQAwgYsxCzAJBgNVBAYTAkFVMREwDwYDVQQIDAhleGFtcGxlczER\nMA8GA1UEBwwIZXhhbXBsZXMxETAPBgNVBAoMCGV4YW1wbGVzMQswCQYDVQQLDAJp\ndDEUMBIGA1UEAwwLZXhhbXBsZS5jb20xIDAeBgkqhkiG9w0BCQEWEWFkbWluQGV4\nYW1wbGUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6XbdNhvH\nRldtqE8iNm1Da0z+rkmAJlEtKUjqz5CDGcA9ByCLQ4qBIsSAkRgElBonMyR8lLDK\nh5Ac9jrkg40zrrXCl8TQ4sW5GFavwBPKCTHQu0EhovGWdV490+oOTVBckBW6niI5\nyaezhL4ZJzd4smrqoH3fPYPgLcb7+Lb4fsMfavRrallMrHP612bLm0mOpXKcwHos\nqBdC3OW2v64MnBdla3ZcPKFG8ThcdJoD9sym1EtKsm3MbyT9d8r3D+L2+xqZOjww\nacElCLmZ8Ep4aQVx0GRbJoDEA1Yy7A9YC4E+SObW7daquTX+zymeK0k1mACmOwvo\nJOrjLIhUbjJDtQIDAQABoAAwDQYJKoZIhvcNAQELBQADggEBANBGBu55iuzTYc4S\nZW3F8flSd0cO8ubKII6WcwHJrk8NIlAgfduAuNRuG9CAba0e72Ea0xKIhXSzxbDi\ncq9Yl0rkovY95ZyRayxl9AC4d7grJnncmKk2aUtarRq0pOaYfWuKwjaVPknGaGu6\nwCnGI/7nMCZA77ZH2s+rberHO+/6GCt+9pqSqY4u+2r83WMWMrVT/4jNBxKVErAk\n99iAC69+/N/afaryLoiAAtuaUPOAOD3fW4FXtjvvfht8xeU1AvYPOr0IfYdMH/Yq\n1EzRUsoxnhNG3Lb6YaQ0K59iFoBESSN5JHmLSLFEPb1i36Gx4kQMGJH8FM5tlPma\nySUlLeY=\n-----END CERTIFICATE REQUEST-----",
+              "domain_validation_methods": [
+                {
+                  "host_name": "example.com",
+                  "method": "https"
+                }
+              ],
+              "domain_validation_statuses": {
+                "ca_operation": "request",
+                "ca_order_status": "in_progress",
+                "ca_status": "requested",
+                "status": "open"
+              },
+              "email_approver": "admin@example.com",
+              "email_reissue": "admin@example.com",
+              "expiration_date": "2021-01-01 0:00:01",
+              "features": "",
+              "host_names": [
+                "www.example.com"
+              ],
+              "id": 123456789,
+              "intermediate_certificate": "",
+              "options": {
+                "features": ""
+              },
+              "order_date": "2019-01-01 0:00:01",
+              "organization_handle": "TH000001-NL",
+              "period": 2,
+              "product_id": 5,
+              "product_name": "EssentialSSL",
+              "root_certificate": "",
+              "software": "linux",
+              "sslinhva_order_id": "11111111-1111-1111-1111-111111111111",
+              "status": "REQ",
+              "technical_handle": "TH000001-NL",
+              "validation_method": "domain",
+              "vendor_order_id": "123456789",
+              "vendor_reference_id": "123456789"
+            }
+          ],
+          "total": 999
+        },
+        "desc": ""
+      }
+    },
+    "orderListOrdersResponseData": {
+      "type": "object",
+      "title": "ListOrdersResponseData",
+      "properties": {
+        "results": {
+          "type": "array",
+          "title": "Results list",
+          "items": {
+            "$ref": "#/definitions/orderSslOrder"
+          }
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Results count"
+        }
+      },
+      "example": {
+        "results": [
+          {
+            "active_date": "2019-01-01 0:00:01",
+            "additional_data": [
+              {
+                "dns": "73d01a1232214f96ebf08d6f9d0af6f9",
+                "dns_record": "example.com",
+                "dns_value": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
+                "domain": "example.com",
+                "file_content": "73d01a1232214f96ebf08d6f9d0af6f9",
+                "file_contents": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
+                "file_location": "example.com/.well-known/pki-validation/fileauth.txt",
+                "file_name": "fileauth.txt",
+                "md5": "73d01a1232214f96ebf08d6f9d0af6f9",
+                "sha1": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
+                "sha256": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c"
+              }
+            ],
+            "administrative_handle": "XX123456-XX",
+            "autorenew": "off",
+            "billing_handle": "XX123456-XX",
+            "brand_name": "Comodo",
+            "certificate": "",
+            "common_name": "example.com",
+            "csr": "-----BEGIN CERTIFICATE REQUEST-----\nMIIC0TCCAbkCAQAwgYsxCzAJBgNVBAYTAkFVMREwDwYDVQQIDAhleGFtcGxlczER\nMA8GA1UEBwwIZXhhbXBsZXMxETAPBgNVBAoMCGV4YW1wbGVzMQswCQYDVQQLDAJp\ndDEUMBIGA1UEAwwLZXhhbXBsZS5jb20xIDAeBgkqhkiG9w0BCQEWEWFkbWluQGV4\nYW1wbGUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6XbdNhvH\nRldtqE8iNm1Da0z+rkmAJlEtKUjqz5CDGcA9ByCLQ4qBIsSAkRgElBonMyR8lLDK\nh5Ac9jrkg40zrrXCl8TQ4sW5GFavwBPKCTHQu0EhovGWdV490+oOTVBckBW6niI5\nyaezhL4ZJzd4smrqoH3fPYPgLcb7+Lb4fsMfavRrallMrHP612bLm0mOpXKcwHos\nqBdC3OW2v64MnBdla3ZcPKFG8ThcdJoD9sym1EtKsm3MbyT9d8r3D+L2+xqZOjww\nacElCLmZ8Ep4aQVx0GRbJoDEA1Yy7A9YC4E+SObW7daquTX+zymeK0k1mACmOwvo\nJOrjLIhUbjJDtQIDAQABoAAwDQYJKoZIhvcNAQELBQADggEBANBGBu55iuzTYc4S\nZW3F8flSd0cO8ubKII6WcwHJrk8NIlAgfduAuNRuG9CAba0e72Ea0xKIhXSzxbDi\ncq9Yl0rkovY95ZyRayxl9AC4d7grJnncmKk2aUtarRq0pOaYfWuKwjaVPknGaGu6\nwCnGI/7nMCZA77ZH2s+rberHO+/6GCt+9pqSqY4u+2r83WMWMrVT/4jNBxKVErAk\n99iAC69+/N/afaryLoiAAtuaUPOAOD3fW4FXtjvvfht8xeU1AvYPOr0IfYdMH/Yq\n1EzRUsoxnhNG3Lb6YaQ0K59iFoBESSN5JHmLSLFEPb1i36Gx4kQMGJH8FM5tlPma\nySUlLeY=\n-----END CERTIFICATE REQUEST-----",
+            "domain_validation_methods": [
+              {
+                "host_name": "example.com",
+                "method": "https"
+              }
+            ],
+            "domain_validation_statuses": {
+              "ca_operation": "request",
+              "ca_order_status": "in_progress",
+              "ca_status": "requested",
+              "status": "open"
+            },
+            "email_approver": "admin@example.com",
+            "email_reissue": "admin@example.com",
+            "expiration_date": "2021-01-01 0:00:01",
+            "features": "",
+            "host_names": [
+              "www.example.com"
+            ],
+            "id": 123456789,
+            "intermediate_certificate": "",
+            "options": {
+              "features": ""
+            },
+            "order_date": "2019-01-01 0:00:01",
+            "organization_handle": "TH000001-NL",
+            "period": 2,
+            "product_id": 5,
+            "product_name": "EssentialSSL",
+            "root_certificate": "",
+            "software": "linux",
+            "sslinhva_order_id": "11111111-1111-1111-1111-111111111111",
+            "status": "REQ",
+            "technical_handle": "TH000001-NL",
+            "validation_method": "domain",
+            "vendor_order_id": "123456789",
+            "vendor_reference_id": "123456789"
+          }
+        ],
+        "total": 999
+      }
+    },
+    "orderReissueOrderRequest": {
+      "type": "object",
+      "title": "ReissueOrderRequest",
+      "properties": {
+        "approver_email": {
+          "description": "Email for domain ownership verification. Should start with well-known generic name like admin@, hostmater@, administrator@, etc.",
+          "type": "string"
+        },
+        "csr": {
+          "type": "string",
+          "title": "Certificate signing request"
+        },
+        "domain_validation_methods": {
+          "type": "array",
+          "title": "Method of domain validation",
+          "items": {
+            "$ref": "#/definitions/orderSslOrderDomainValidationMethods"
+          }
+        },
+        "host_names": {
+          "type": "array",
+          "title": "List of domain names to protect",
+          "items": {
+            "type": "string"
+          }
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Object id"
+        },
+        "organization_handle": {
+          "type": "string",
+          "title": "Handle of the organization contact"
+        },
+        "signature_hash_algorithm": {
+          "type": "string",
+          "title": "Certificate has algorithm. Set to sha2 or leave blank"
+        },
+        "software_id": {
+          "type": "string",
+          "title": "Software used on host where certificate will be installed"
+        }
+      },
+      "example": {
+        "approver_email": "admin@example.com",
+        "csr": "-----BEGIN CERTIFICATE REQUEST-----\nMIIC0TCCAbkCAQAwgYsxCzAJBgNVBAYTAkFVMREwDwYDVQQIDAhleGFtcGxlczER\nMA8GA1UEBwwIZXhhbXBsZXMxETAPBgNVBAoMCGV4YW1wbGVzMQswCQYDVQQLDAJp\ndDEUMBIGA1UEAwwLZXhhbXBsZS5jb20xIDAeBgkqhkiG9w0BCQEWEWFkbWluQGV4\nYW1wbGUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6XbdNhvH\nRldtqE8iNm1Da0z+rkmAJlEtKUjqz5CDGcA9ByCLQ4qBIsSAkRgElBonMyR8lLDK\nh5Ac9jrkg40zrrXCl8TQ4sW5GFavwBPKCTHQu0EhovGWdV490+oOTVBckBW6niI5\nyaezhL4ZJzd4smrqoH3fPYPgLcb7+Lb4fsMfavRrallMrHP612bLm0mOpXKcwHos\nqBdC3OW2v64MnBdla3ZcPKFG8ThcdJoD9sym1EtKsm3MbyT9d8r3D+L2+xqZOjww\nacElCLmZ8Ep4aQVx0GRbJoDEA1Yy7A9YC4E+SObW7daquTX+zymeK0k1mACmOwvo\nJOrjLIhUbjJDtQIDAQABoAAwDQYJKoZIhvcNAQELBQADggEBANBGBu55iuzTYc4S\nZW3F8flSd0cO8ubKII6WcwHJrk8NIlAgfduAuNRuG9CAba0e72Ea0xKIhXSzxbDi\ncq9Yl0rkovY95ZyRayxl9AC4d7grJnncmKk2aUtarRq0pOaYfWuKwjaVPknGaGu6\nwCnGI/7nMCZA77ZH2s+rberHO+/6GCt+9pqSqY4u+2r83WMWMrVT/4jNBxKVErAk\n99iAC69+/N/afaryLoiAAtuaUPOAOD3fW4FXtjvvfht8xeU1AvYPOr0IfYdMH/Yq\n1EzRUsoxnhNG3Lb6YaQ0K59iFoBESSN5JHmLSLFEPb1i36Gx4kQMGJH8FM5tlPma\nySUlLeY=\n-----END CERTIFICATE REQUEST-----",
+        "domain_validation_methods": [
+          {
+            "host_name": "example.com",
+            "method": "https"
+          }
+        ],
+        "host_names": [
+          "www.example.com"
+        ],
+        "id": 1,
+        "organization_handle": "TH000001-NL",
+        "signature_hash_algorithm": "sha2",
+        "software_id": "linux"
+      }
+    },
+    "orderReissueOrderResponse": {
+      "type": "object",
+      "title": "ReissueOrderResponse",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Response code"
+        },
+        "data": {
+          "title": "Response data",
+          "$ref": "#/definitions/orderReissueOrderResponseData"
+        },
+        "desc": {
+          "type": "string",
+          "title": "Response description"
+        },
+        "maintenance": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Indicates if Openprovider API is on maintenance"
+        },
+        "warnings": {
+          "type": "array",
+          "title": "Array of warning messages",
+          "items": {
+            "$ref": "#/definitions/errorWarning"
+          }
+        }
+      },
+      "example": {
+        "code": 0,
+        "data": {
+          "id": 1
+        },
+        "desc": ""
+      }
+    },
+    "orderReissueOrderResponseData": {
+      "type": "object",
+      "title": "ReissueOrderResponseData",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Object id"
+        }
+      },
+      "example": {
+        "id": 1
+      }
+    },
+    "orderRenewOrderRequest": {
+      "type": "object",
+      "title": "RenewOrderRequest",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Object id"
+        }
+      },
+      "example": {
+        "id": 1
+      }
+    },
+    "orderRenewOrderResponse": {
+      "type": "object",
+      "title": "RenewOrderResponse",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Response code"
+        },
+        "data": {
+          "title": "Response data",
+          "$ref": "#/definitions/orderRenewOrderResponseData"
+        },
+        "desc": {
+          "type": "string",
+          "title": "Response description"
+        },
+        "maintenance": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Indicates if Openprovider API is on maintenance"
+        },
+        "warnings": {
+          "type": "array",
+          "title": "Array of warning messages",
+          "items": {
+            "$ref": "#/definitions/errorWarning"
+          }
+        }
+      },
+      "example": {
+        "code": 0,
+        "data": {
+          "id": 1
+        },
+        "desc": ""
+      }
+    },
+    "orderRenewOrderResponseData": {
+      "type": "object",
+      "title": "RenewOrderResponseData",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Object id"
+        }
+      },
+      "example": {
+        "id": 1
+      }
+    },
+    "orderSslOrder": {
+      "type": "object",
+      "title": "SslOrder",
+      "properties": {
+        "active_date": {
+          "type": "string",
+          "title": "Date the certificate became active"
+        },
+        "additional_data": {
+          "type": "array",
+          "title": "Additional data for DNS and HTTP validation methods",
+          "items": {
+            "$ref": "#/definitions/orderSslOrderAdditionalData"
+          }
+        },
+        "administrative_handle": {
+          "type": "string",
+          "title": "Handle of the administrative contact"
+        },
+        "autorenew": {
+          "type": "string",
+          "title": "Certificate autorenew property"
+        },
+        "billing_handle": {
+          "type": "string",
+          "title": "Handle of the billing contact"
+        },
+        "brand_name": {
+          "type": "string",
+          "title": "Product brand"
+        },
+        "certificate": {
+          "type": "string",
+          "title": "Issued SSL certificate"
+        },
+        "common_name": {
+          "type": "string",
+          "title": "List of domain names"
+        },
+        "csr": {
+          "type": "string",
+          "title": "Certificate signing request"
+        },
+        "domain_validation_methods": {
+          "type": "array",
+          "title": "Domain validation method",
+          "items": {
+            "$ref": "#/definitions/orderSslOrderDomainValidationMethods"
+          }
+        },
+        "domain_validation_statuses": {
+          "title": "List of order validation statuses",
+          "$ref": "#/definitions/orderSslOrderDomainValidationStatuses"
+        },
+        "email_approver": {
+          "type": "string",
+          "title": "Email used for domain validation"
+        },
+        "email_reissue": {
+          "type": "string",
+          "title": "Email used for reissue requests"
+        },
+        "expiration_date": {
+          "type": "string",
+          "title": "Date the certificate expires"
+        },
+        "features": {
+          "type": "string",
+          "title": "List of SSL order features"
+        },
+        "host_names": {
+          "type": "array",
+          "title": "List of protected domain anmes",
+          "items": {
+            "type": "string"
+          }
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Object id"
+        },
+        "intermediate_certificate": {
+          "type": "string",
+          "title": "Intermediate certificate"
+        },
+        "options": {
+          "title": "List of SSL order options",
+          "$ref": "#/definitions/orderSslOrderOptions"
+        },
+        "order_date": {
+          "type": "string",
+          "title": "Order date"
+        },
+        "organization_handle": {
+          "type": "string",
+          "title": "Handle of the organization contact"
+        },
+        "period": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Certificate issuance period"
+        },
+        "product_id": {
+          "type": "integer",
+          "format": "int32",
+          "title": "ID of the product"
+        },
+        "product_name": {
+          "type": "string",
+          "title": "Name of the product"
+        },
+        "root_certificate": {
+          "type": "string",
+          "title": "Root certificate"
+        },
+        "software": {
+          "type": "string",
+          "title": "Software used on host where certificate will be installed"
+        },
+        "sslinhva_order_id": {
+          "type": "string",
+          "title": "Internal order ID"
+        },
+        "status": {
+          "type": "string",
+          "title": "Order status"
+        },
+        "technical_handle": {
+          "type": "string",
+          "title": "Handle of the technical contact"
+        },
+        "validation_method": {
+          "type": "string",
+          "title": "Certificate validation method"
+        },
+        "vendor_order_id": {
+          "type": "string",
+          "title": "Order id at the CA"
+        },
+        "vendor_reference_id": {
+          "type": "string",
+          "title": "Internal vendor reference ID"
+        }
+      },
+      "example": {
+        "active_date": "2019-01-01 0:00:01",
+        "additional_data": [
+          {
+            "dns": "73d01a1232214f96ebf08d6f9d0af6f9",
+            "dns_record": "example.com",
+            "dns_value": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
+            "domain": "example.com",
+            "file_content": "73d01a1232214f96ebf08d6f9d0af6f9",
+            "file_contents": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
+            "file_location": "example.com/.well-known/pki-validation/fileauth.txt",
+            "file_name": "fileauth.txt",
+            "md5": "73d01a1232214f96ebf08d6f9d0af6f9",
+            "sha1": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
+            "sha256": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c"
+          }
+        ],
+        "administrative_handle": "XX123456-XX",
+        "autorenew": "off",
+        "billing_handle": "XX123456-XX",
+        "brand_name": "Comodo",
+        "certificate": "",
+        "common_name": "example.com",
+        "csr": "-----BEGIN CERTIFICATE REQUEST-----\nMIIC0TCCAbkCAQAwgYsxCzAJBgNVBAYTAkFVMREwDwYDVQQIDAhleGFtcGxlczER\nMA8GA1UEBwwIZXhhbXBsZXMxETAPBgNVBAoMCGV4YW1wbGVzMQswCQYDVQQLDAJp\ndDEUMBIGA1UEAwwLZXhhbXBsZS5jb20xIDAeBgkqhkiG9w0BCQEWEWFkbWluQGV4\nYW1wbGUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6XbdNhvH\nRldtqE8iNm1Da0z+rkmAJlEtKUjqz5CDGcA9ByCLQ4qBIsSAkRgElBonMyR8lLDK\nh5Ac9jrkg40zrrXCl8TQ4sW5GFavwBPKCTHQu0EhovGWdV490+oOTVBckBW6niI5\nyaezhL4ZJzd4smrqoH3fPYPgLcb7+Lb4fsMfavRrallMrHP612bLm0mOpXKcwHos\nqBdC3OW2v64MnBdla3ZcPKFG8ThcdJoD9sym1EtKsm3MbyT9d8r3D+L2+xqZOjww\nacElCLmZ8Ep4aQVx0GRbJoDEA1Yy7A9YC4E+SObW7daquTX+zymeK0k1mACmOwvo\nJOrjLIhUbjJDtQIDAQABoAAwDQYJKoZIhvcNAQELBQADggEBANBGBu55iuzTYc4S\nZW3F8flSd0cO8ubKII6WcwHJrk8NIlAgfduAuNRuG9CAba0e72Ea0xKIhXSzxbDi\ncq9Yl0rkovY95ZyRayxl9AC4d7grJnncmKk2aUtarRq0pOaYfWuKwjaVPknGaGu6\nwCnGI/7nMCZA77ZH2s+rberHO+/6GCt+9pqSqY4u+2r83WMWMrVT/4jNBxKVErAk\n99iAC69+/N/afaryLoiAAtuaUPOAOD3fW4FXtjvvfht8xeU1AvYPOr0IfYdMH/Yq\n1EzRUsoxnhNG3Lb6YaQ0K59iFoBESSN5JHmLSLFEPb1i36Gx4kQMGJH8FM5tlPma\nySUlLeY=\n-----END CERTIFICATE REQUEST-----",
+        "domain_validation_methods": [
+          {
+            "host_name": "example.com",
+            "method": "https"
+          }
+        ],
+        "domain_validation_statuses": {
+          "ca_operation": "request",
+          "ca_order_status": "in_progress",
+          "ca_status": "requested",
+          "status": "open"
+        },
+        "email_approver": "admin@example.com",
+        "email_reissue": "admin@example.com",
+        "expiration_date": "2021-01-01 0:00:01",
+        "features": "",
+        "host_names": [
+          "www.example.com"
+        ],
+        "id": 123456789,
+        "intermediate_certificate": "",
+        "options": {
+          "features": ""
+        },
+        "order_date": "2019-01-01 0:00:01",
+        "organization_handle": "TH000001-NL",
+        "period": 2,
+        "product_id": 5,
+        "product_name": "EssentialSSL",
+        "root_certificate": "",
+        "software": "linux",
+        "sslinhva_order_id": "11111111-1111-1111-1111-111111111111",
+        "status": "REQ",
+        "technical_handle": "TH000001-NL",
+        "validation_method": "domain",
+        "vendor_order_id": "123456789",
+        "vendor_reference_id": "123456789"
+      }
+    },
+    "orderSslOrderAdditionalData": {
+      "type": "object",
+      "title": "SslOrderAdditionalData",
+      "properties": {
+        "dns": {
+          "type": "string",
+          "title": "DNS content for Symantec order"
+        },
+        "dns_record": {
+          "type": "string",
+          "title": "DNS record that should be added to host"
+        },
+        "dns_value": {
+          "type": "string",
+          "title": "DNS values that should be added to host to process validation"
+        },
+        "domain": {
+          "type": "string",
+          "title": "Domain host name with which certificate is associated"
+        },
+        "file_content": {
+          "type": "string",
+          "title": "File content for Symantec orders"
+        },
+        "file_contents": {
+          "type": "string",
+          "title": "Indicates what contents should be added to domain validation file"
+        },
+        "file_location": {
+          "type": "string",
+          "title": "Indicates where domain validation file should be placed"
+        },
+        "file_name": {
+          "type": "string",
+          "title": "File name for Symantec orders"
+        },
+        "md5": {
+          "type": "string",
+          "title": "Order MD5 checksum"
+        },
+        "sha1": {
+          "type": "string",
+          "title": "Order SHA1 checksum"
+        },
+        "sha256": {
+          "type": "string",
+          "title": "Order SHA256 checksum"
+        }
+      },
+      "example": {
+        "dns": "73d01a1232214f96ebf08d6f9d0af6f9",
+        "dns_record": "example.com",
+        "dns_value": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
+        "domain": "example.com",
+        "file_content": "73d01a1232214f96ebf08d6f9d0af6f9",
+        "file_contents": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
+        "file_location": "example.com/.well-known/pki-validation/fileauth.txt",
+        "file_name": "fileauth.txt",
+        "md5": "73d01a1232214f96ebf08d6f9d0af6f9",
+        "sha1": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
+        "sha256": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c"
+      }
+    },
+    "orderSslOrderDomainValidationMethods": {
+      "type": "object",
+      "title": "SslOrderDomainValidationMethods",
+      "properties": {
+        "host_name": {
+          "type": "string",
+          "title": "List of domain names to protect"
+        },
+        "method": {
+          "type": "string",
+          "title": "Indicates the validation method required for certificate issuance (domain, organization or extended)"
+        }
+      },
+      "example": {
+        "host_name": "example.com",
+        "method": "https"
+      }
+    },
+    "orderSslOrderDomainValidationStatuses": {
+      "type": "object",
+      "title": "SslOrderDomainValidationStatuses",
+      "properties": {
+        "ca_operation": {
+          "type": "string",
+          "title": "Operation performed at the CA"
+        },
+        "ca_order_status": {
+          "type": "string",
+          "title": "Order status at the CA"
+        },
+        "ca_status": {
+          "type": "string",
+          "title": "Certificate status at the CA"
+        },
+        "status": {
+          "type": "string",
+          "title": "Validation status"
+        }
+      },
+      "example": {
+        "ca_operation": "request",
+        "ca_order_status": "in_progress",
+        "ca_status": "requested",
+        "status": "open"
+      }
+    },
+    "orderSslOrderOptions": {
+      "type": "object",
+      "title": "SslOrderOptions",
+      "properties": {
+        "features": {
+          "type": "string",
+          "title": "Certificate features list (if present)"
+        }
+      },
+      "example": {
+        "features": ""
+      }
+    },
+    "orderUpdateOrderRequest": {
+      "type": "object",
+      "title": "UpdateOrderRequest",
+      "properties": {
+        "approver_email": {
+          "description": "Email for domain ownership verification. Should start with well-known generic name like admin@, hostmater@, administrator@, etc.",
+          "type": "string"
+        },
+        "autorenew": {
+          "type": "string",
+          "title": "Indicates, whether the certificate should be renewed automatically once its expiration date is reached"
+        },
+        "csr": {
+          "type": "string",
+          "title": "Certificate signing request"
+        },
+        "domain_validation_methods": {
+          "type": "array",
+          "title": "Method of domain validation",
+          "items": {
+            "$ref": "#/definitions/orderSslOrderDomainValidationMethods"
+          }
+        },
+        "host_names": {
+          "type": "array",
+          "title": "List of domain names to protect",
+          "items": {
+            "type": "string"
+          }
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Object id"
+        },
+        "organization_handle": {
+          "type": "string",
+          "title": "Handle of the organization contact"
+        },
+        "signature_hash_algorithm": {
+          "type": "string",
+          "title": "Certificate has algorithm. Set to sha2 or leave blank"
+        },
+        "software_id": {
+          "type": "string",
+          "title": "Software used on host where certificate will be installed"
+        },
+        "start_provision": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Indicates, whether a validation request should be sent to CA. If 0, UpdateOrder method should be used later to change the setting and begin validation"
+        },
+        "technical_handle": {
+          "type": "string",
+          "title": "Handle of the technical contact"
+        }
+      },
+      "example": {
+        "approver_email": "admin@example.com",
+        "autorenew": "off",
+        "csr": "-----BEGIN CERTIFICATE REQUEST-----\nMIIC0TCCAbkCAQAwgYsxCzAJBgNVBAYTAkFVMREwDwYDVQQIDAhleGFtcGxlczER\nMA8GA1UEBwwIZXhhbXBsZXMxETAPBgNVBAoMCGV4YW1wbGVzMQswCQYDVQQLDAJp\ndDEUMBIGA1UEAwwLZXhhbXBsZS5jb20xIDAeBgkqhkiG9w0BCQEWEWFkbWluQGV4\nYW1wbGUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6XbdNhvH\nRldtqE8iNm1Da0z+rkmAJlEtKUjqz5CDGcA9ByCLQ4qBIsSAkRgElBonMyR8lLDK\nh5Ac9jrkg40zrrXCl8TQ4sW5GFavwBPKCTHQu0EhovGWdV490+oOTVBckBW6niI5\nyaezhL4ZJzd4smrqoH3fPYPgLcb7+Lb4fsMfavRrallMrHP612bLm0mOpXKcwHos\nqBdC3OW2v64MnBdla3ZcPKFG8ThcdJoD9sym1EtKsm3MbyT9d8r3D+L2+xqZOjww\nacElCLmZ8Ep4aQVx0GRbJoDEA1Yy7A9YC4E+SObW7daquTX+zymeK0k1mACmOwvo\nJOrjLIhUbjJDtQIDAQABoAAwDQYJKoZIhvcNAQELBQADggEBANBGBu55iuzTYc4S\nZW3F8flSd0cO8ubKII6WcwHJrk8NIlAgfduAuNRuG9CAba0e72Ea0xKIhXSzxbDi\ncq9Yl0rkovY95ZyRayxl9AC4d7grJnncmKk2aUtarRq0pOaYfWuKwjaVPknGaGu6\nwCnGI/7nMCZA77ZH2s+rberHO+/6GCt+9pqSqY4u+2r83WMWMrVT/4jNBxKVErAk\n99iAC69+/N/afaryLoiAAtuaUPOAOD3fW4FXtjvvfht8xeU1AvYPOr0IfYdMH/Yq\n1EzRUsoxnhNG3Lb6YaQ0K59iFoBESSN5JHmLSLFEPb1i36Gx4kQMGJH8FM5tlPma\nySUlLeY=\n-----END CERTIFICATE REQUEST-----",
+        "domain_validation_methods": [
+          {
+            "host_name": "example.com",
+            "method": "https"
+          }
+        ],
+        "host_names": [
+          "www.example.com"
+        ],
+        "id": 1,
+        "organization_handle": "TH000001-NL",
+        "signature_hash_algorithm": "sha2",
+        "software_id": "linux",
+        "start_provision": false,
+        "technical_handle": "TH000001-NL"
+      }
+    },
+    "orderUpdateOrderResponse": {
+      "type": "object",
+      "title": "UpdateOrderResponse",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Response code"
+        },
+        "data": {
+          "title": "Response data",
+          "$ref": "#/definitions/orderUpdateOrderResponseData"
+        },
+        "desc": {
+          "type": "string",
+          "title": "Response description"
+        },
+        "maintenance": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Indicates if Openprovider API is on maintenance"
+        },
+        "warnings": {
+          "type": "array",
+          "title": "Array of warning messages",
+          "items": {
+            "$ref": "#/definitions/errorWarning"
+          }
+        }
+      },
+      "example": {
+        "code": 0,
+        "data": {
+          "id": 1
+        },
+        "desc": ""
+      }
+    },
+    "orderUpdateOrderResponseData": {
+      "type": "object",
+      "title": "UpdateOrderResponseData",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Object id"
+        }
+      },
+      "example": {
+        "id": 1
+      }
+    },
+    "otptokenCreateOtpTokenRequest": {
+      "type": "object",
+      "title": "CreateOtpTokenRequest",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Object id"
+        }
+      },
+      "example": {
+        "id": 1
+      }
+    },
+    "otptokenCreateOtpTokenResponse": {
+      "type": "object",
+      "title": "CreateOtpTokenResponse",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Response code"
+        },
+        "data": {
+          "title": "Response data",
+          "$ref": "#/definitions/otptokenCreateOtpTokenResponseData"
+        },
+        "desc": {
+          "type": "string",
+          "title": "Response description"
+        },
+        "maintenance": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Indicates if Openprovider API is on maintenance"
+        },
+        "warnings": {
+          "type": "array",
+          "title": "Array of warning messages",
+          "items": {
+            "$ref": "#/definitions/errorWarning"
+          }
+        }
+      },
+      "example": {
+        "code": 0,
+        "data": {
+          "expire_at": "2019-01-01 0:00:01",
+          "token": "token",
+          "uri": "https://sslpanel.io/auth-order-otp-token"
+        },
+        "desc": ""
+      }
+    },
+    "otptokenCreateOtpTokenResponseData": {
+      "type": "object",
+      "title": "CreateOtpTokenResponseData",
+      "properties": {
+        "expire_at": {
+          "type": "string",
+          "title": "Link expiration date"
+        },
+        "token": {
+          "type": "string",
+          "title": "Unique token"
+        },
+        "uri": {
+          "type": "string",
+          "title": "Unique link"
+        }
+      },
+      "example": {
+        "expire_at": "2019-01-01 0:00:01",
+        "token": "token",
+        "uri": "https://sslpanel.io/auth-order-otp-token"
+      }
+    },
+    "productGetProductResponse": {
+      "type": "object",
+      "title": "GetProductResponse",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Response code"
+        },
+        "data": {
+          "title": "Response data",
+          "$ref": "#/definitions/productSslProduct"
+        },
+        "desc": {
+          "type": "string",
+          "title": "Response description"
+        },
+        "maintenance": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Indicates if Openprovider API is on maintenance"
+        },
+        "warnings": {
+          "type": "array",
+          "title": "Array of warning messages",
+          "items": {
+            "$ref": "#/definitions/errorWarning"
+          }
+        }
+      },
+      "example": {
+        "code": 0,
+        "data": {
+          "brand_name": "Comodo",
+          "bypass_san": false,
+          "category": "domain_validation",
+          "delivery_time": "10m",
+          "description": "An EssentialSSL certificate from Comodo is an affordable solution for securing your lite website or intranet. No hassle with paperworks, as the issuance is based on realtime domain checks.",
+          "encryption": "40/256 bits",
+          "free_refund_period": "30d",
+          "free_reissue_period": "lifetime",
+          "id": 123456789,
+          "included_domains_count": 1,
+          "is_extended_validation_supported": false,
+          "is_idn_supported": false,
+          "is_mobile_supported": false,
+          "is_sgc_supported": false,
+          "is_wildcard_supported": false,
+          "level_prices": [
+            {
+              "level": 1,
+              "name": "EssentialSSL",
+              "prices": [
+                {
+                  "extra_domain_price": {
+                    "product": {
+                      "currency": "USD",
+                      "price": 0
+                    },
+                    "reseller": {
+                      "currency": "EUR",
+                      "price": 0
+                    }
+                  },
+                  "period": 1,
+                  "price": {
+                    "product": {
+                      "currency": "USD",
+                      "price": 0
+                    },
+                    "reseller": {
+                      "currency": "EUR",
+                      "price": 0
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "max_domains": 1,
+          "max_period": 2,
+          "name": "EssentialSSL",
+          "number_of_domains": 1,
+          "order_module": "comodo",
+          "prices": [
+            {
+              "extra_domain_price": {
+                "product": {
+                  "currency": "USD",
+                  "price": 0
+                },
+                "reseller": {
+                  "currency": "EUR",
+                  "price": 0
+                }
+              },
+              "period": 1,
+              "price": {
+                "product": {
+                  "currency": "USD",
+                  "price": 0
+                },
+                "reseller": {
+                  "currency": "EUR",
+                  "price": 0
+                }
+              }
+            }
+          ],
+          "root": "Chained root",
+          "sub_category": "",
+          "supported_software": [
+            {
+              "id": "linux",
+              "title": "Linux"
+            }
+          ],
+          "validation_method": "domain",
+          "warranty": {
+            "product": {
+              "currency": "USD",
+              "price": 0
+            },
+            "reseller": {
+              "currency": "EUR",
+              "price": 0
+            }
+          }
+        },
+        "desc": ""
+      }
+    },
+    "productListProductsRequestOrderBy": {
+      "type": "object",
+      "title": "ListProductsRequestOrderBy",
+      "properties": {
+        "brand_name": {
+          "type": "string",
+          "title": "The brand name"
+        },
+        "brand_seqno": {
+          "type": "string",
+          "title": "The brand seqno"
+        },
+        "category": {
+          "type": "string",
+          "title": "The category"
+        },
+        "name": {
+          "type": "string",
+          "title": "The name"
+        },
+        "product_seqno": {
+          "type": "string",
+          "title": "The product seqno"
+        },
+        "sub_category": {
+          "type": "string",
+          "title": "The sub category"
+        }
+      }
+    },
+    "productListProductsResponse": {
+      "type": "object",
+      "title": "ListProductsResponse",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Response code"
+        },
+        "data": {
+          "title": "Response data",
+          "$ref": "#/definitions/productListProductsResponseData"
+        },
+        "desc": {
+          "type": "string",
+          "title": "Response description"
+        },
+        "maintenance": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Indicates if Openprovider API is on maintenance"
+        },
+        "warnings": {
+          "type": "array",
+          "title": "Array of warning messages",
+          "items": {
+            "$ref": "#/definitions/errorWarning"
+          }
+        }
+      },
+      "example": {
+        "code": 0,
+        "data": {
+          "results": [
+            {
+              "brand_name": "Comodo",
+              "bypass_san": false,
+              "category": "domain_validation",
+              "delivery_time": "10m",
+              "description": "An EssentialSSL certificate from Comodo is an affordable solution for securing your lite website or intranet. No hassle with paperworks, as the issuance is based on realtime domain checks.",
+              "encryption": "40/256 bits",
+              "free_refund_period": "30d",
+              "free_reissue_period": "lifetime",
+              "id": 123456789,
+              "included_domains_count": 1,
+              "is_extended_validation_supported": false,
+              "is_idn_supported": false,
+              "is_mobile_supported": false,
+              "is_sgc_supported": false,
+              "is_wildcard_supported": false,
+              "level_prices": [
+                {
+                  "level": 1,
+                  "name": "EssentialSSL",
+                  "prices": [
+                    {
+                      "extra_domain_price": {
+                        "product": {
+                          "currency": "USD",
+                          "price": 0
+                        },
+                        "reseller": {
+                          "currency": "EUR",
+                          "price": 0
+                        }
+                      },
+                      "period": 1,
+                      "price": {
+                        "product": {
+                          "currency": "USD",
+                          "price": 0
+                        },
+                        "reseller": {
+                          "currency": "EUR",
+                          "price": 0
+                        }
+                      }
+                    }
+                  ]
+                }
+              ],
+              "max_domains": 1,
+              "max_period": 2,
+              "name": "EssentialSSL",
+              "number_of_domains": 1,
+              "order_module": "comodo",
+              "prices": [
+                {
+                  "extra_domain_price": {
+                    "product": {
+                      "currency": "USD",
+                      "price": 0
+                    },
+                    "reseller": {
+                      "currency": "EUR",
+                      "price": 0
+                    }
+                  },
+                  "period": 1,
+                  "price": {
+                    "product": {
+                      "currency": "USD",
+                      "price": 0
+                    },
+                    "reseller": {
+                      "currency": "EUR",
+                      "price": 0
+                    }
+                  }
+                }
+              ],
+              "root": "Chained root",
+              "sub_category": "",
+              "supported_software": [
+                {
+                  "id": "linux",
+                  "title": "Linux"
+                }
+              ],
+              "validation_method": "domain",
+              "warranty": {
+                "product": {
+                  "currency": "USD",
+                  "price": 0
+                },
+                "reseller": {
+                  "currency": "EUR",
+                  "price": 0
+                }
+              }
+            }
+          ],
+          "total": 999
+        },
+        "desc": ""
+      }
+    },
+    "productListProductsResponseData": {
+      "type": "object",
+      "title": "ListProductsResponseData",
+      "properties": {
+        "results": {
+          "type": "array",
+          "title": "Results list",
+          "items": {
+            "$ref": "#/definitions/productSslProduct"
+          }
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Results count"
+        }
+      },
+      "example": {
+        "results": [
+          {
+            "brand_name": "Comodo",
+            "bypass_san": false,
+            "category": "domain_validation",
+            "delivery_time": "10m",
+            "description": "An EssentialSSL certificate from Comodo is an affordable solution for securing your lite website or intranet. No hassle with paperworks, as the issuance is based on realtime domain checks.",
+            "encryption": "40/256 bits",
+            "free_refund_period": "30d",
+            "free_reissue_period": "lifetime",
+            "id": 123456789,
+            "included_domains_count": 1,
+            "is_extended_validation_supported": false,
+            "is_idn_supported": false,
+            "is_mobile_supported": false,
+            "is_sgc_supported": false,
+            "is_wildcard_supported": false,
+            "level_prices": [
+              {
+                "level": 1,
+                "name": "EssentialSSL",
+                "prices": [
+                  {
+                    "extra_domain_price": {
+                      "product": {
+                        "currency": "USD",
+                        "price": 0
+                      },
+                      "reseller": {
+                        "currency": "EUR",
+                        "price": 0
+                      }
+                    },
+                    "period": 1,
+                    "price": {
+                      "product": {
+                        "currency": "USD",
+                        "price": 0
+                      },
+                      "reseller": {
+                        "currency": "EUR",
+                        "price": 0
+                      }
+                    }
+                  }
+                ]
+              }
+            ],
+            "max_domains": 1,
+            "max_period": 2,
+            "name": "EssentialSSL",
+            "number_of_domains": 1,
+            "order_module": "comodo",
+            "prices": [
+              {
+                "extra_domain_price": {
+                  "product": {
+                    "currency": "USD",
+                    "price": 0
+                  },
+                  "reseller": {
+                    "currency": "EUR",
+                    "price": 0
+                  }
+                },
+                "period": 1,
+                "price": {
+                  "product": {
+                    "currency": "USD",
+                    "price": 0
+                  },
+                  "reseller": {
+                    "currency": "EUR",
+                    "price": 0
+                  }
+                }
+              }
+            ],
+            "root": "Chained root",
+            "sub_category": "",
+            "supported_software": [
+              {
+                "id": "linux",
+                "title": "Linux"
+              }
+            ],
+            "validation_method": "domain",
+            "warranty": {
+              "product": {
+                "currency": "USD",
+                "price": 0
+              },
+              "reseller": {
+                "currency": "EUR",
+                "price": 0
+              }
+            }
+          }
+        ],
+        "total": 999
+      }
+    },
+    "productSslProduct": {
+      "type": "object",
+      "title": "SslProduct",
+      "properties": {
+        "brand_name": {
+          "type": "string",
+          "title": "Product brand"
+        },
+        "bypass_san": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Bypass SAN (Subject Alternative Name) (deprecated)"
+        },
+        "category": {
+          "type": "string",
+          "title": "Product category: DV, OV, EV"
+        },
+        "delivery_time": {
+          "description": "Average period of time between order creation and completion.",
+          "type": "string"
+        },
+        "description": {
+          "type": "string",
+          "title": "Marketing description (if exists)"
+        },
+        "encryption": {
+          "type": "string",
+          "title": "Indicates the encryption level of the root certificate (40/256 bits or 128/256 bits)"
+        },
+        "free_refund_period": {
+          "type": "string",
+          "title": "The period during which cancellation of the product can be refunded"
+        },
+        "free_reissue_period": {
+          "type": "string",
+          "title": "The period during which cancellation of the product can be refunded"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Object id"
+        },
+        "included_domains_count": {
+          "type": "integer",
+          "format": "int32",
+          "title": "The included domains count. '-1' in a case of Wildcard product or 1,2,3 in a case of Single/Multidomain product"
+        },
+        "is_extended_validation_supported": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Indicates if product supports Extended Validation"
+        },
+        "is_idn_supported": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Indicates if IDN domain names are supported"
+        },
+        "is_mobile_supported": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Indicates, if mobile devices are supported (deprecated)"
+        },
+        "is_sgc_supported": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Indicates, if Server Gated Cryptography supported (deprecated)"
+        },
+        "is_wildcard_supported": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Indicates, if product supports wildcard certificates"
+        },
+        "level_prices": {
+          "type": "array",
+          "title": "List of level prices",
+          "items": {
+            "$ref": "#/definitions/productSslProductLevelPrices"
+          }
+        },
+        "max_domains": {
+          "description": "\"Applies only to multi-domain certificates.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "max_period": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Max period certificate can be issued for"
+        },
+        "name": {
+          "type": "string",
+          "title": "Product name"
+        },
+        "number_of_domains": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Indicates domain(s) quantity included in the regular price. Extends in a case of Multi-domain products but for an additional fee"
+        },
+        "order_module": {
+          "type": "string",
+          "title": "Indicates module that is related to the current product (Comodo, Symantec)"
+        },
+        "prices": {
+          "type": "array",
+          "title": "Array of price parameters and values",
+          "items": {
+            "$ref": "#/definitions/productSslProductPrices"
+          }
+        },
+        "root": {
+          "type": "string",
+          "title": "Default: chained root"
+        },
+        "sub_category": {
+          "type": "string",
+          "title": "A sub-category of the product (deprecated field)"
+        },
+        "supported_software": {
+          "type": "array",
+          "title": "Include a list of supported platforms",
+          "items": {
+            "$ref": "#/definitions/productSslProductSupportedSoftware"
+          }
+        },
+        "validation_method": {
+          "type": "string",
+          "title": "Certificate validation method"
+        },
+        "warranty": {
+          "title": "Returns an array of warranty in USD and reseller currency",
+          "$ref": "#/definitions/productSslProductWarranty"
+        }
+      },
+      "example": {
+        "brand_name": "Comodo",
+        "bypass_san": false,
+        "category": "domain_validation",
+        "delivery_time": "10m",
+        "description": "An EssentialSSL certificate from Comodo is an affordable solution for securing your lite website or intranet. No hassle with paperworks, as the issuance is based on realtime domain checks.",
+        "encryption": "40/256 bits",
+        "free_refund_period": "30d",
+        "free_reissue_period": "lifetime",
+        "id": 123456789,
+        "included_domains_count": 1,
+        "is_extended_validation_supported": false,
+        "is_idn_supported": false,
+        "is_mobile_supported": false,
+        "is_sgc_supported": false,
+        "is_wildcard_supported": false,
+        "level_prices": [
+          {
+            "level": 1,
+            "name": "EssentialSSL",
+            "prices": [
+              {
+                "extra_domain_price": {
+                  "product": {
+                    "currency": "USD",
+                    "price": 0
+                  },
+                  "reseller": {
+                    "currency": "EUR",
+                    "price": 0
+                  }
+                },
+                "period": 1,
+                "price": {
+                  "product": {
+                    "currency": "USD",
+                    "price": 0
+                  },
+                  "reseller": {
+                    "currency": "EUR",
+                    "price": 0
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "max_domains": 1,
+        "max_period": 2,
+        "name": "EssentialSSL",
+        "number_of_domains": 1,
+        "order_module": "comodo",
+        "prices": [
+          {
+            "extra_domain_price": {
+              "product": {
+                "currency": "USD",
+                "price": 0
+              },
+              "reseller": {
+                "currency": "EUR",
+                "price": 0
+              }
+            },
+            "period": 1,
+            "price": {
+              "product": {
+                "currency": "USD",
+                "price": 0
+              },
+              "reseller": {
+                "currency": "EUR",
+                "price": 0
+              }
+            }
+          }
+        ],
+        "root": "Chained root",
+        "sub_category": "",
+        "supported_software": [
+          {
+            "id": "linux",
+            "title": "Linux"
+          }
+        ],
+        "validation_method": "domain",
+        "warranty": {
+          "product": {
+            "currency": "USD",
+            "price": 0
+          },
+          "reseller": {
+            "currency": "EUR",
+            "price": 0
+          }
+        }
+      }
+    },
+    "productSslProductLevelPrices": {
+      "type": "object",
+      "title": "SslProductLevelPrices",
+      "properties": {
+        "level": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Price level"
+        },
+        "name": {
+          "type": "string",
+          "title": "Product name"
+        },
+        "prices": {
+          "type": "array",
+          "title": "Array of price parameters and values",
+          "items": {
+            "$ref": "#/definitions/productSslProductPrices"
+          }
+        }
+      },
+      "example": {
+        "level": 1,
+        "name": "EssentialSSL",
+        "prices": [
+          {
+            "extra_domain_price": {
+              "product": {
+                "currency": "USD",
+                "price": 0
+              },
+              "reseller": {
+                "currency": "EUR",
+                "price": 0
+              }
+            },
+            "period": 1,
+            "price": {
+              "product": {
+                "currency": "USD",
+                "price": 0
+              },
+              "reseller": {
+                "currency": "EUR",
+                "price": 0
+              }
+            }
+          }
+        ]
+      }
+    },
+    "productSslProductPrice": {
+      "type": "object",
+      "title": "SslProductPrice",
+      "properties": {
+        "currency": {
+          "type": "string",
+          "title": "Currency"
+        },
+        "price": {
+          "type": "number",
+          "format": "double",
+          "title": "Product price"
+        }
+      },
+      "example": {
+        "currency": "USD",
+        "price": 0
+      }
+    },
+    "productSslProductPriceGroup": {
+      "type": "object",
+      "title": "SslProductPriceGroup",
+      "properties": {
+        "product": {
+          "title": "Price in product currency",
+          "$ref": "#/definitions/productSslProductPrice"
+        },
+        "reseller": {
+          "title": "Price in reseller currency",
+          "$ref": "#/definitions/productSslProductReseller"
+        }
+      },
+      "example": {
+        "product": {
+          "currency": "USD",
+          "price": 0
+        },
+        "reseller": {
+          "currency": "EUR",
+          "price": 0
+        }
+      }
+    },
+    "productSslProductPrices": {
+      "type": "object",
+      "title": "SslProductPrices",
+      "properties": {
+        "extra_domain_price": {
+          "title": "Group of parameters indicating price for additional (extra) domains",
+          "$ref": "#/definitions/productSslProductPriceGroup"
+        },
+        "period": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Certificate issuance period"
+        },
+        "price": {
+          "title": "Product price",
+          "$ref": "#/definitions/productSslProductPriceGroup"
+        }
+      },
+      "example": {
+        "extra_domain_price": {
+          "product": {
+            "currency": "USD",
+            "price": 0
+          },
+          "reseller": {
+            "currency": "EUR",
+            "price": 0
+          }
+        },
+        "period": 1,
+        "price": {
+          "product": {
+            "currency": "USD",
+            "price": 0
+          },
+          "reseller": {
+            "currency": "EUR",
+            "price": 0
+          }
+        }
+      }
+    },
+    "productSslProductReseller": {
+      "type": "object",
+      "title": "SslProductReseller",
+      "properties": {
+        "currency": {
+          "type": "string",
+          "title": "Currency"
+        },
+        "price": {
+          "type": "number",
+          "format": "double",
+          "title": "Product price"
+        }
+      },
+      "example": {
+        "currency": "EUR",
+        "price": 0
+      }
+    },
+    "productSslProductSupportedSoftware": {
+      "type": "object",
+      "title": "SslProductSupportedSoftware",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Object id"
+        },
+        "title": {
+          "type": "string",
+          "title": "Platform title"
+        }
+      },
+      "example": {
+        "id": "linux",
+        "title": "Linux"
+      }
+    },
+    "productSslProductWarranty": {
+      "type": "object",
+      "title": "SslProductWarranty",
+      "properties": {
+        "product": {
+          "title": "Price in product currency",
+          "$ref": "#/definitions/productSslProductPrice"
+        },
+        "reseller": {
+          "title": "Price in reseller currency",
+          "$ref": "#/definitions/productSslProductReseller"
+        }
+      },
+      "example": {
+        "product": {
+          "currency": "USD",
+          "price": 0
+        },
+        "reseller": {
+          "currency": "EUR",
+          "price": 0
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "Bearer": []
+    }
+  ]
+}
