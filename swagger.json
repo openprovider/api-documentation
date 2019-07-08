@@ -102,37 +102,6 @@
                     }
                 }
             },
-            "put": {
-                "tags": [
-                    "ContactService"
-                ],
-                "summary": "Update contact",
-                "operationId": "UpdateContact",
-                "parameters": [
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/contactUpdateContactRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "$ref": "#/definitions/contactUpdateContactResponse"
-                        }
-                    },
-                    "default": {
-                        "description": "(empty)",
-                        "schema": {
-                            "$ref": "#/definitions/errorError"
-                        }
-                    }
-                }
-            },
             "post": {
                 "tags": [
                     "ContactService"
@@ -154,36 +123,6 @@
                         "description": "A successful response.",
                         "schema": {
                             "$ref": "#/definitions/contactCreateContactResponse"
-                        }
-                    },
-                    "default": {
-                        "description": "(empty)",
-                        "schema": {
-                            "$ref": "#/definitions/errorError"
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "ContactService"
-                ],
-                "summary": "Delete contact",
-                "operationId": "DeleteContact",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "format": "int32",
-                        "description": "Object ID.",
-                        "name": "id",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "$ref": "#/definitions/contactDeleteContactResponse"
                         }
                     },
                     "default": {
@@ -224,6 +163,76 @@
                         "description": "A successful response.",
                         "schema": {
                             "$ref": "#/definitions/contactGetContactResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "ContactService"
+                ],
+                "summary": "Update contact",
+                "operationId": "UpdateContact",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Object ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/contactUpdateContactRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/contactUpdateContactResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "ContactService"
+                ],
+                "summary": "Delete contact",
+                "operationId": "DeleteContact",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Object ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/contactDeleteContactResponse"
                         }
                     },
                     "default": {
@@ -339,41 +348,6 @@
                     }
                 }
             },
-            "put": {
-                "tags": [
-                    "Customer"
-                ],
-                "summary": "Update customer",
-                "externalDocs": {
-                    "description": "For more detailed information on this method check our guide",
-                    "url": "https://openprovider.zendesk.com/knowledge/articles/360024591034"
-                },
-                "operationId": "UpdateCustomer",
-                "parameters": [
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/customerUpdateCustomerRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "$ref": "#/definitions/customerUpdateCustomerResponse"
-                        }
-                    },
-                    "default": {
-                        "description": "(empty)",
-                        "schema": {
-                            "$ref": "#/definitions/errorError"
-                        }
-                    }
-                }
-            },
             "post": {
                 "tags": [
                     "Customer"
@@ -408,42 +382,9 @@
                         }
                     }
                 }
-            },
-            "delete": {
-                "tags": [
-                    "Customer"
-                ],
-                "summary": "Delete customer",
-                "externalDocs": {
-                    "description": "For more detailed information on this method check our guide",
-                    "url": "https://openprovider.zendesk.com/knowledge/articles/360024591294"
-                },
-                "operationId": "DeleteCustomer",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Customer unique identifier or handle, which can be created via CreateCustomer API method.",
-                        "name": "handle",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "$ref": "#/definitions/customerDeleteCustomerResponse"
-                        }
-                    },
-                    "default": {
-                        "description": "(empty)",
-                        "schema": {
-                            "$ref": "#/definitions/errorError"
-                        }
-                    }
-                }
             }
         },
-        "/v1beta/customers/verifications/emails": {
+        "/v1beta/customers/verifications/emails/domains": {
             "get": {
                 "tags": [
                     "EmailVerification"
@@ -636,6 +577,82 @@
                         "description": "A successful response.",
                         "schema": {
                             "$ref": "#/definitions/customerGetCustomerResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Customer"
+                ],
+                "summary": "Update customer",
+                "externalDocs": {
+                    "description": "For more detailed information on this method check our guide",
+                    "url": "https://openprovider.zendesk.com/knowledge/articles/360024591034"
+                },
+                "operationId": "UpdateCustomer",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Customer unique identifier or handle, which can be created via CreateCustomer API method",
+                        "name": "handle",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/customerUpdateCustomerRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/customerUpdateCustomerResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Customer"
+                ],
+                "summary": "Delete customer",
+                "externalDocs": {
+                    "description": "For more detailed information on this method check our guide",
+                    "url": "https://openprovider.zendesk.com/knowledge/articles/360024591294"
+                },
+                "operationId": "DeleteCustomer",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Customer unique identifier or handle, which can be created via CreateCustomer API method",
+                        "name": "handle",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/customerDeleteCustomerResponse"
                         }
                     },
                     "default": {
@@ -1583,490 +1600,6 @@
                 "tags": [
                     "DomainService"
                 ],
-                "summary": "Get domain",
-                "operationId": "GetDomain",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Domain name without extension.",
-                        "name": "domain.name",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Domain extension.",
-                        "name": "domain.extension",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Domain IDN extension.",
-                        "name": "domain.idn_extension",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "format": "int32",
-                        "description": "Domain id number.",
-                        "name": "id",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "format": "int32",
-                        "description": "Reseller id.",
-                        "name": "reseller_id",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "The queue status.",
-                        "name": "queue_status",
-                        "in": "query"
-                    },
-                    {
-                        "type": "boolean",
-                        "format": "boolean",
-                        "description": "Returns domain mutations history.",
-                        "name": "with_history",
-                        "in": "query"
-                    },
-                    {
-                        "type": "boolean",
-                        "format": "boolean",
-                        "description": "Returns domain API calls history.",
-                        "name": "with_api_history",
-                        "in": "query"
-                    },
-                    {
-                        "type": "boolean",
-                        "format": "boolean",
-                        "description": "Returns domain additional data.",
-                        "name": "with_additional_data",
-                        "in": "query"
-                    },
-                    {
-                        "type": "boolean",
-                        "format": "boolean",
-                        "description": "Retrurns registry details.",
-                        "name": "with_registry_details",
-                        "in": "query"
-                    },
-                    {
-                        "type": "boolean",
-                        "format": "boolean",
-                        "description": "Returns DNSSEC data.",
-                        "name": "with_dnssec_data",
-                        "in": "query"
-                    },
-                    {
-                        "type": "boolean",
-                        "format": "boolean",
-                        "description": "Returns domain abuse details.",
-                        "name": "with_abuse_details",
-                        "in": "query"
-                    },
-                    {
-                        "type": "boolean",
-                        "format": "boolean",
-                        "description": "Returns WPP data.",
-                        "name": "with_whois_privacy_data",
-                        "in": "query"
-                    },
-                    {
-                        "type": "boolean",
-                        "format": "boolean",
-                        "description": "Indicates, if registry EPP statuses should be retrieved.",
-                        "name": "with_registry_statuses",
-                        "in": "query"
-                    },
-                    {
-                        "type": "boolean",
-                        "format": "boolean",
-                        "description": "Indicates whether object is deleted.",
-                        "name": "is_deleted",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "$ref": "#/definitions/domainGetDomainResponse"
-                        }
-                    },
-                    "default": {
-                        "description": "(empty)",
-                        "schema": {
-                            "$ref": "#/definitions/errorError"
-                        }
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "DomainService"
-                ],
-                "summary": "Update domain",
-                "operationId": "UpdateDomain",
-                "parameters": [
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/domainUpdateDomainRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "$ref": "#/definitions/domainUpdateDomainResponse"
-                        }
-                    },
-                    "default": {
-                        "description": "(empty)",
-                        "schema": {
-                            "$ref": "#/definitions/errorError"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "DomainService"
-                ],
-                "summary": "Create domain",
-                "operationId": "CreateDomain",
-                "parameters": [
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/domainCreateDomainRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "$ref": "#/definitions/domainCreateDomainResponse"
-                        }
-                    },
-                    "default": {
-                        "description": "(empty)",
-                        "schema": {
-                            "$ref": "#/definitions/errorError"
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "DomainService"
-                ],
-                "summary": "Delete domain",
-                "operationId": "DeleteDomain",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "format": "int32",
-                        "description": "Domain id number.",
-                        "name": "id",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "format": "int32",
-                        "description": "Reseller id.",
-                        "name": "reseller_id",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Domain name without extension.",
-                        "name": "domain.name",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Domain extension.",
-                        "name": "domain.extension",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Domain IDN extension.",
-                        "name": "domain.idn_extension",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Type of deletion request.",
-                        "name": "type",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "format": "int32",
-                        "description": "Deletes domain, skipping the soft quarantine.",
-                        "name": "skip_soft_quarantine",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "$ref": "#/definitions/domainDeleteDomainResponse"
-                        }
-                    },
-                    "default": {
-                        "description": "(empty)",
-                        "schema": {
-                            "$ref": "#/definitions/errorError"
-                        }
-                    }
-                }
-            }
-        },
-        "/v1beta/domains/additional-data": {
-            "get": {
-                "tags": [
-                    "AdditionalData"
-                ],
-                "summary": "Get additional data",
-                "operationId": "GetAdditionalData",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Domain name without extension.",
-                        "name": "domain.name",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Domain extension.",
-                        "name": "domain.extension",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "The operation.",
-                        "name": "operation",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "$ref": "#/definitions/additional_dataGetAdditionalDataResponse"
-                        }
-                    },
-                    "default": {
-                        "description": "(empty)",
-                        "schema": {
-                            "$ref": "#/definitions/errorError"
-                        }
-                    }
-                }
-            }
-        },
-        "/v1beta/domains/additional-data/customers": {
-            "get": {
-                "tags": [
-                    "CustomerAdditionalData"
-                ],
-                "summary": "Get data",
-                "operationId": "GetData",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Domain name without extension.",
-                        "name": "domain.name",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Domain extension.",
-                        "name": "domain.extension",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "$ref": "#/definitions/customerGetDataResponse"
-                        }
-                    },
-                    "default": {
-                        "description": "(empty)",
-                        "schema": {
-                            "$ref": "#/definitions/errorError"
-                        }
-                    }
-                }
-            }
-        },
-        "/v1beta/domains/approve-transfer": {
-            "post": {
-                "tags": [
-                    "DomainService"
-                ],
-                "summary": "Approve transfer",
-                "operationId": "ApproveTransfer",
-                "parameters": [
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/domainApproveTransferRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "$ref": "#/definitions/domainApproveTransferResponse"
-                        }
-                    },
-                    "default": {
-                        "description": "(empty)",
-                        "schema": {
-                            "$ref": "#/definitions/errorError"
-                        }
-                    }
-                }
-            }
-        },
-        "/v1beta/domains/authcodes": {
-            "get": {
-                "tags": [
-                    "AuthCode"
-                ],
-                "summary": "Get auth code",
-                "operationId": "GetAuthCode",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Domain name without extension.",
-                        "name": "domain.name",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Domain extension.",
-                        "name": "domain.extension",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Type of transfer authorization code. external (default) or internal (for internal transfers between reseller accounts in Openprovider only).",
-                        "name": "auth_code_type",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Indicates how authcode should be provisioned to domain owner. For ru / xn--p1ai domains only. Possible values: sms, email letter.",
-                        "name": "sending_type",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "$ref": "#/definitions/authcodeGetAuthCodeResponse"
-                        }
-                    },
-                    "default": {
-                        "description": "(empty)",
-                        "schema": {
-                            "$ref": "#/definitions/errorError"
-                        }
-                    }
-                }
-            }
-        },
-        "/v1beta/domains/authcodes/reset": {
-            "post": {
-                "tags": [
-                    "AuthCode"
-                ],
-                "summary": "Reset auth code",
-                "operationId": "ResetAuthCode",
-                "parameters": [
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/authcodeResetAuthCodeRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "$ref": "#/definitions/authcodeResetAuthCodeResponse"
-                        }
-                    },
-                    "default": {
-                        "description": "(empty)",
-                        "schema": {
-                            "$ref": "#/definitions/errorError"
-                        }
-                    }
-                }
-            }
-        },
-        "/v1beta/domains/check": {
-            "post": {
-                "tags": [
-                    "DomainService"
-                ],
-                "summary": "Check domain",
-                "operationId": "CheckDomain",
-                "parameters": [
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/domainCheckDomainRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "$ref": "#/definitions/domainCheckDomainResponse"
-                        }
-                    },
-                    "default": {
-                        "description": "(empty)",
-                        "schema": {
-                            "$ref": "#/definitions/errorError"
-                        }
-                    }
-                }
-            }
-        },
-        "/v1beta/domains/list": {
-            "get": {
-                "tags": [
-                    "DomainService"
-                ],
                 "summary": "List domains",
                 "operationId": "ListDomains",
                 "parameters": [
@@ -2275,6 +1808,70 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "DomainService"
+                ],
+                "summary": "Create domain",
+                "operationId": "CreateDomain",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domainCreateDomainRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/domainCreateDomainResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/domains/check": {
+            "post": {
+                "tags": [
+                    "DomainService"
+                ],
+                "summary": "Check domain",
+                "operationId": "CheckDomain",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domainCheckDomainRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/domainCheckDomainResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
             }
         },
         "/v1beta/domains/prices": {
@@ -2326,105 +1923,6 @@
                         "description": "A successful response.",
                         "schema": {
                             "$ref": "#/definitions/priceGetPriceResponse"
-                        }
-                    },
-                    "default": {
-                        "description": "(empty)",
-                        "schema": {
-                            "$ref": "#/definitions/errorError"
-                        }
-                    }
-                }
-            }
-        },
-        "/v1beta/domains/renew": {
-            "post": {
-                "tags": [
-                    "DomainService"
-                ],
-                "summary": "Renew domain",
-                "operationId": "RenewDomain",
-                "parameters": [
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/domainRenewDomainRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "$ref": "#/definitions/domainRenewDomainResponse"
-                        }
-                    },
-                    "default": {
-                        "description": "(empty)",
-                        "schema": {
-                            "$ref": "#/definitions/errorError"
-                        }
-                    }
-                }
-            }
-        },
-        "/v1beta/domains/restore": {
-            "post": {
-                "tags": [
-                    "DomainService"
-                ],
-                "summary": "Restore domain",
-                "operationId": "RestoreDomain",
-                "parameters": [
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/domainRestoreDomainRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "$ref": "#/definitions/domainRestoreDomainResponse"
-                        }
-                    },
-                    "default": {
-                        "description": "(empty)",
-                        "schema": {
-                            "$ref": "#/definitions/errorError"
-                        }
-                    }
-                }
-            }
-        },
-        "/v1beta/domains/send-foa1": {
-            "post": {
-                "tags": [
-                    "DomainService"
-                ],
-                "summary": "Send foa1",
-                "operationId": "SendFoa1",
-                "parameters": [
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/domainSendFoa1Request"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "$ref": "#/definitions/domainSendFoa1Response"
                         }
                     },
                     "default": {
@@ -2502,7 +2000,436 @@
                 }
             }
         },
-        "/v1beta/domains/try-again-last-operation": {
+        "/v1beta/domains/{id}": {
+            "get": {
+                "tags": [
+                    "DomainService"
+                ],
+                "summary": "Get domain",
+                "operationId": "GetDomain",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Domain id number",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Domain name without extension.",
+                        "name": "domain.name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Domain extension.",
+                        "name": "domain.extension",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Domain IDN extension.",
+                        "name": "domain.idn_extension",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Reseller id.",
+                        "name": "reseller_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "The queue status.",
+                        "name": "queue_status",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Returns domain mutations history.",
+                        "name": "with_history",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Returns domain API calls history.",
+                        "name": "with_api_history",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Returns domain additional data.",
+                        "name": "with_additional_data",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Retrurns registry details.",
+                        "name": "with_registry_details",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Returns DNSSEC data.",
+                        "name": "with_dnssec_data",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Returns domain abuse details.",
+                        "name": "with_abuse_details",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Returns WPP data.",
+                        "name": "with_whois_privacy_data",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Indicates, if registry EPP statuses should be retrieved.",
+                        "name": "with_registry_statuses",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Indicates whether object is deleted.",
+                        "name": "is_deleted",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/domainGetDomainResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "DomainService"
+                ],
+                "summary": "Update domain",
+                "operationId": "UpdateDomain",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Domain id number",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domainUpdateDomainRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/domainUpdateDomainResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "DomainService"
+                ],
+                "summary": "Delete domain",
+                "operationId": "DeleteDomain",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Domain id number",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Reseller id.",
+                        "name": "reseller_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Domain name without extension.",
+                        "name": "domain.name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Domain extension.",
+                        "name": "domain.extension",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Domain IDN extension.",
+                        "name": "domain.idn_extension",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Type of deletion request.",
+                        "name": "type",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Deletes domain, skipping the soft quarantine.",
+                        "name": "skip_soft_quarantine",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/domainDeleteDomainResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/domains/{id}/additional-data": {
+            "get": {
+                "tags": [
+                    "AdditionalData"
+                ],
+                "summary": "Get additional data",
+                "operationId": "GetAdditionalData",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Domain id number",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Domain name without extension.",
+                        "name": "domain.name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Domain extension.",
+                        "name": "domain.extension",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "The operation.",
+                        "name": "operation",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/additional_dataGetAdditionalDataResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/domains/{id}/additional-data/customers": {
+            "get": {
+                "tags": [
+                    "CustomerAdditionalData"
+                ],
+                "summary": "Get data",
+                "operationId": "GetData",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Domain id number",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Domain name without extension.",
+                        "name": "domain.name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Domain extension.",
+                        "name": "domain.extension",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/customerGetDataResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/domains/{id}/authcode": {
+            "get": {
+                "tags": [
+                    "AuthCode"
+                ],
+                "summary": "Get auth code",
+                "operationId": "GetAuthCode",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Domain id number",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Domain name without extension.",
+                        "name": "domain.name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Domain extension.",
+                        "name": "domain.extension",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Type of transfer authorization code. external (default) or internal (for internal transfers between reseller accounts in Openprovider only).",
+                        "name": "auth_code_type",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Indicates how authcode should be provisioned to domain owner. For ru / xn--p1ai domains only. Possible values: sms, email letter.",
+                        "name": "sending_type",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/authcodeGetAuthCodeResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/domains/{id}/authcode/reset": {
+            "post": {
+                "tags": [
+                    "AuthCode"
+                ],
+                "summary": "Reset auth code",
+                "operationId": "ResetAuthCode",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Domain id number",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/authcodeResetAuthCodeRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/authcodeResetAuthCodeResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/domains/{id}/last-operation/restart": {
             "post": {
                 "tags": [
                     "DomainService"
@@ -2510,6 +2437,14 @@
                 "summary": "Try again last operation",
                 "operationId": "TryAgainLastOperation",
                 "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Domain id number",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
                     {
                         "name": "body",
                         "in": "body",
@@ -2524,6 +2459,170 @@
                         "description": "A successful response.",
                         "schema": {
                             "$ref": "#/definitions/domainTryAgainLastOperationResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/domains/{id}/renew": {
+            "post": {
+                "tags": [
+                    "DomainService"
+                ],
+                "summary": "Renew domain",
+                "operationId": "RenewDomain",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Domain id number",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domainRenewDomainRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/domainRenewDomainResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/domains/{id}/restore": {
+            "post": {
+                "tags": [
+                    "DomainService"
+                ],
+                "summary": "Restore domain",
+                "operationId": "RestoreDomain",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Domain id number",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domainRestoreDomainRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/domainRestoreDomainResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/domains/{id}/transfer/approve": {
+            "post": {
+                "tags": [
+                    "DomainService"
+                ],
+                "summary": "Approve transfer",
+                "operationId": "ApproveTransfer",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Domain id number",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domainApproveTransferRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/domainApproveTransferResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/domains/{id}/transfer/send-foa1": {
+            "post": {
+                "tags": [
+                    "DomainService"
+                ],
+                "summary": "Send foa1",
+                "operationId": "SendFoa1",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Domain id number",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domainSendFoa1Request"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/domainSendFoa1Response"
                         }
                     },
                     "default": {
@@ -3576,13 +3675,6 @@
                 "operationId": "GetReseller",
                 "parameters": [
                     {
-                        "type": "integer",
-                        "format": "int32",
-                        "description": "Object ID.",
-                        "name": "id",
-                        "in": "query"
-                    },
-                    {
                         "type": "boolean",
                         "format": "boolean",
                         "description": "Retrieves objects with (1) or without (0) additional data.",
@@ -3616,37 +3708,6 @@
                         "description": "A successful response.",
                         "schema": {
                             "$ref": "#/definitions/resellerGetResellerResponse"
-                        }
-                    },
-                    "default": {
-                        "description": "(empty)",
-                        "schema": {
-                            "$ref": "#/definitions/errorError"
-                        }
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "ResellerService"
-                ],
-                "summary": "Update reseller",
-                "operationId": "UpdateReseller",
-                "parameters": [
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/resellerUpdateResellerRequest"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "$ref": "#/definitions/resellerUpdateResellerResponse"
                         }
                     },
                     "default": {
@@ -3693,6 +3754,47 @@
                         "description": "A successful response.",
                         "schema": {
                             "$ref": "#/definitions/statisticsGetStatisticsResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/resellers/{id}": {
+            "put": {
+                "tags": [
+                    "ResellerService"
+                ],
+                "summary": "Update reseller",
+                "operationId": "UpdateReseller",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Object ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/resellerUpdateResellerRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/resellerUpdateResellerResponse"
                         }
                     },
                     "default": {
@@ -3844,37 +3946,37 @@
                     },
                     {
                         "type": "string",
-                        "description": "The common name.",
+                        "description": "desc/asc.",
                         "name": "order_by.common_name",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "The order date.",
+                        "description": "desc/asc.",
                         "name": "order_by.order_date",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "The active date.",
+                        "description": "desc/asc.",
                         "name": "order_by.active_date",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "The expiration date.",
+                        "description": "desc/asc.",
                         "name": "order_by.expiration_date",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "The status.",
+                        "description": "desc/asc.",
                         "name": "order_by.status",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "The product name.",
+                        "description": "desc/asc.",
                         "name": "order_by.product_name",
                         "in": "query"
                     },
@@ -4230,39 +4332,6 @@
                         "description": "A successful response.",
                         "schema": {
                             "$ref": "#/definitions/orderReissueOrderResponse"
-                        }
-                    },
-                    "default": {
-                        "description": "(empty)",
-                        "schema": {
-                            "$ref": "#/definitions/errorError"
-                        }
-                    }
-                }
-            }
-        },
-        "/v1beta/ssl/orders/{id}/reissue-approver-emails": {
-            "get": {
-                "tags": [
-                    "OrderApproverEmail"
-                ],
-                "summary": "List reissue approver emails",
-                "operationId": "ListReissueApproverEmails",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "format": "int32",
-                        "description": "Object id",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "$ref": "#/definitions/approveremailListReissueApproverEmailsResponse"
                         }
                     },
                     "default": {
@@ -5026,47 +5095,6 @@
                 "desc": ""
             }
         },
-        "approveremailListReissueApproverEmailsResponse": {
-            "type": "object",
-            "title": "ListReissueApproverEmailsResponse",
-            "properties": {
-                "code": {
-                    "type": "integer",
-                    "format": "int32",
-                    "title": "Response code"
-                },
-                "data": {
-                    "type": "array",
-                    "title": "Response data",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "desc": {
-                    "type": "string",
-                    "title": "Response description"
-                },
-                "maintenance": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "Indicates if Openprovider API is on maintenance"
-                },
-                "warnings": {
-                    "type": "array",
-                    "title": "Array of warning messages",
-                    "items": {
-                        "$ref": "#/definitions/errorWarning"
-                    }
-                }
-            },
-            "example": {
-                "code": 0,
-                "data": [
-                    "admin@example.com"
-                ],
-                "desc": ""
-            }
-        },
         "approveremailResendApproverEmailRequest": {
             "type": "object",
             "title": "ResendApproverEmailRequest",
@@ -5311,6 +5339,11 @@
                     "title": "Domain name and extension",
                     "$ref": "#/definitions/authcodeDomain"
                 },
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Domain id number"
+                },
                 "sending_type": {
                     "type": "string",
                     "title": "Indicates how authcode should be provisioned to domain owner. For ru / xn--p1ai domains only. Possible values: sms, email letter"
@@ -5322,6 +5355,7 @@
                     "extension": "com",
                     "name": "example"
                 },
+                "id": 0,
                 "sending_type": ""
             }
         },
@@ -5367,7 +5401,8 @@
                         ""
                     ],
                     "rgp_statuses": {
-                        "add_period": "2019-05-23 12:05:48"
+                        "add_period": "2019-05-23 12:05:48",
+                        "auto_renew_period": "2019-05-23 12:05:48"
                     },
                     "success": false,
                     "type": "internal"
@@ -5426,7 +5461,8 @@
                     ""
                 ],
                 "rgp_statuses": {
-                    "add_period": "2019-05-23 12:05:48"
+                    "add_period": "2019-05-23 12:05:48",
+                    "auto_renew_period": "2019-05-23 12:05:48"
                 },
                 "success": false,
                 "type": "internal"
@@ -5439,10 +5475,15 @@
                 "add_period": {
                     "type": "string",
                     "title": "The add period"
+                },
+                "auto_renew_period": {
+                    "type": "string",
+                    "title": "The auto renew period"
                 }
             },
             "example": {
-                "add_period": "2019-05-23 12:05:48"
+                "add_period": "2019-05-23 12:05:48",
+                "auto_renew_period": "2019-05-23 12:05:48"
             }
         },
         "contactAdditionalData": {
@@ -8708,6 +8749,11 @@
                     "title": "Domain name and extension",
                     "$ref": "#/definitions/domainDomain"
                 },
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Domain id number"
+                },
                 "registrar_tag": {
                     "type": "string",
                     "title": "Registrar tag for transfer of .uk domains"
@@ -8721,6 +8767,7 @@
                     "idn_extension": "es",
                     "name": "test4"
                 },
+                "id": 0,
                 "registrar_tag": "REGISTRAR-TAG"
             }
         },
@@ -10960,6 +11007,11 @@
                     "title": "Domain name and extension",
                     "$ref": "#/definitions/domainDomain"
                 },
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Domain id number"
+                },
                 "period": {
                     "type": "integer",
                     "format": "int32",
@@ -10972,6 +11024,7 @@
                     "idn_extension": "es",
                     "name": "test4"
                 },
+                "id": 0,
                 "period": 1
             }
         },
@@ -11038,6 +11091,11 @@
                     "title": "Domain name and extension",
                     "$ref": "#/definitions/domainDomain"
                 },
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Domain id number"
+                },
                 "reseller_id": {
                     "type": "integer",
                     "format": "int32",
@@ -11079,6 +11137,7 @@
                     "idn_extension": "es",
                     "name": "test4"
                 },
+                "id": 0,
                 "reseller_id": 0
             }
         },
@@ -11160,6 +11219,11 @@
                     "title": "Domain name and extension",
                     "$ref": "#/definitions/domainDomain"
                 },
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Domain id number"
+                },
                 "reseller_id": {
                     "type": "integer",
                     "format": "int32",
@@ -11172,6 +11236,7 @@
                     "idn_extension": "es",
                     "name": "test4"
                 },
+                "id": 0,
                 "reseller_id": 0
             }
         },
@@ -11791,6 +11856,11 @@
                     "title": "Domain name and extension",
                     "$ref": "#/definitions/domainDomain"
                 },
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Domain id number"
+                },
                 "reseller_id": {
                     "type": "integer",
                     "format": "int32",
@@ -11803,6 +11873,7 @@
                     "idn_extension": "es",
                     "name": "test4"
                 },
+                "id": 0,
                 "reseller_id": 0
             }
         },
@@ -11960,6 +12031,11 @@
                     "title": "Domain name and extension",
                     "$ref": "#/definitions/domainDomain"
                 },
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Domain id number"
+                },
                 "is_dnssec_enabled": {
                     "type": "boolean",
                     "format": "boolean",
@@ -12055,6 +12131,7 @@
                     "idn_extension": "es",
                     "name": "test4"
                 },
+                "id": 0,
                 "is_dnssec_enabled": false,
                 "is_locked": false,
                 "is_private_whois_enabled": false,
@@ -18310,7 +18387,7 @@
                 "start_provision": {
                     "type": "boolean",
                     "format": "boolean",
-                    "title": "Indicates, whether a validation request should be sent to CA. If 0, UpdateOrder method should be used later to change the setting and begin validation"
+                    "title": "Indicates, whether a validation request should be sent to CA. If false, UpdateOrder method should be used later to change the setting and begin validation"
                 },
                 "technical_handle": {
                     "type": "string",
@@ -18495,27 +18572,27 @@
             "properties": {
                 "active_date": {
                     "type": "string",
-                    "title": "The active date"
+                    "title": "desc/asc"
                 },
                 "common_name": {
                     "type": "string",
-                    "title": "The common name"
+                    "title": "desc/asc"
                 },
                 "expiration_date": {
                     "type": "string",
-                    "title": "The expiration date"
+                    "title": "desc/asc"
                 },
                 "order_date": {
                     "type": "string",
-                    "title": "The order date"
+                    "title": "desc/asc"
                 },
                 "product_name": {
                     "type": "string",
-                    "title": "The product name"
+                    "title": "desc/asc"
                 },
                 "status": {
                     "type": "string",
-                    "title": "The status"
+                    "title": "desc/asc"
                 }
             }
         },
@@ -19257,7 +19334,7 @@
                 },
                 "signature_hash_algorithm": {
                     "type": "string",
-                    "title": "Certificate has algorithm. Set to sha2 or leave blank"
+                    "title": "Certificate hash algorithm. Set to sha2 or leave blank"
                 },
                 "software_id": {
                     "type": "string",
@@ -19266,7 +19343,7 @@
                 "start_provision": {
                     "type": "boolean",
                     "format": "boolean",
-                    "title": "Indicates, whether a validation request should be sent to CA. If 0, UpdateOrder method should be used later to change the setting and begin validation"
+                    "title": "Indicates, whether a validation request should be sent to CA. If false, UpdateOrder method should be used later to change the setting and begin validation"
                 },
                 "technical_handle": {
                     "type": "string",
@@ -25791,10 +25868,10 @@
             "name": "Domain",
             "tags": [
                 "DomainService",
+                "PriceService",
                 "AdditionalData",
                 "CustomerAdditionalData",
                 "AuthCode",
-                "PriceService",
                 "TldService"
             ]
         },

@@ -154,37 +154,37 @@
           },
           {
             "type": "string",
-            "description": "The common name.",
+            "description": "desc/asc.",
             "name": "order_by.common_name",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "The order date.",
+            "description": "desc/asc.",
             "name": "order_by.order_date",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "The active date.",
+            "description": "desc/asc.",
             "name": "order_by.active_date",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "The expiration date.",
+            "description": "desc/asc.",
             "name": "order_by.expiration_date",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "The status.",
+            "description": "desc/asc.",
             "name": "order_by.status",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "The product name.",
+            "description": "desc/asc.",
             "name": "order_by.product_name",
             "in": "query"
           },
@@ -551,39 +551,6 @@
         }
       }
     },
-    "/v1beta/ssl/orders/{id}/reissue-approver-emails": {
-      "get": {
-        "tags": [
-          "OrderApproverEmail"
-        ],
-        "summary": "List reissue approver emails",
-        "operationId": "ListReissueApproverEmails",
-        "parameters": [
-          {
-            "type": "integer",
-            "format": "int32",
-            "description": "Object id",
-            "name": "id",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/approveremailListReissueApproverEmailsResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      }
-    },
     "/v1beta/ssl/orders/{id}/renew": {
       "post": {
         "tags": [
@@ -763,47 +730,6 @@
     "approveremailListApproverEmailsResponse": {
       "type": "object",
       "title": "ListApproverEmailsResponse",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Response code"
-        },
-        "data": {
-          "type": "array",
-          "title": "Response data",
-          "items": {
-            "type": "string"
-          }
-        },
-        "desc": {
-          "type": "string",
-          "title": "Response description"
-        },
-        "maintenance": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates if Openprovider API is on maintenance"
-        },
-        "warnings": {
-          "type": "array",
-          "title": "Array of warning messages",
-          "items": {
-            "$ref": "#/definitions/errorWarning"
-          }
-        }
-      },
-      "example": {
-        "code": 0,
-        "data": [
-          "admin@example.com"
-        ],
-        "desc": ""
-      }
-    },
-    "approveremailListReissueApproverEmailsResponse": {
-      "type": "object",
-      "title": "ListReissueApproverEmailsResponse",
       "properties": {
         "code": {
           "type": "integer",
@@ -1484,7 +1410,7 @@
         "start_provision": {
           "type": "boolean",
           "format": "boolean",
-          "title": "Indicates, whether a validation request should be sent to CA. If 0, UpdateOrder method should be used later to change the setting and begin validation"
+          "title": "Indicates, whether a validation request should be sent to CA. If false, UpdateOrder method should be used later to change the setting and begin validation"
         },
         "technical_handle": {
           "type": "string",
@@ -1669,27 +1595,27 @@
       "properties": {
         "active_date": {
           "type": "string",
-          "title": "The active date"
+          "title": "desc/asc"
         },
         "common_name": {
           "type": "string",
-          "title": "The common name"
+          "title": "desc/asc"
         },
         "expiration_date": {
           "type": "string",
-          "title": "The expiration date"
+          "title": "desc/asc"
         },
         "order_date": {
           "type": "string",
-          "title": "The order date"
+          "title": "desc/asc"
         },
         "product_name": {
           "type": "string",
-          "title": "The product name"
+          "title": "desc/asc"
         },
         "status": {
           "type": "string",
-          "title": "The status"
+          "title": "desc/asc"
         }
       }
     },
@@ -2431,7 +2357,7 @@
         },
         "signature_hash_algorithm": {
           "type": "string",
-          "title": "Certificate has algorithm. Set to sha2 or leave blank"
+          "title": "Certificate hash algorithm. Set to sha2 or leave blank"
         },
         "software_id": {
           "type": "string",
@@ -2440,7 +2366,7 @@
         "start_provision": {
           "type": "boolean",
           "format": "boolean",
-          "title": "Indicates, whether a validation request should be sent to CA. If 0, UpdateOrder method should be used later to change the setting and begin validation"
+          "title": "Indicates, whether a validation request should be sent to CA. If false, UpdateOrder method should be used later to change the setting and begin validation"
         },
         "technical_handle": {
           "type": "string",

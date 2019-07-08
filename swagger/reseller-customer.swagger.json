@@ -101,37 +101,6 @@
           }
         }
       },
-      "put": {
-        "tags": [
-          "ContactService"
-        ],
-        "summary": "Update contact",
-        "operationId": "UpdateContact",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/contactUpdateContactRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/contactUpdateContactResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "ContactService"
@@ -153,36 +122,6 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/contactCreateContactResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "ContactService"
-        ],
-        "summary": "Delete contact",
-        "operationId": "DeleteContact",
-        "parameters": [
-          {
-            "type": "integer",
-            "format": "int32",
-            "description": "Object ID.",
-            "name": "id",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/contactDeleteContactResponse"
             }
           },
           "default": {
@@ -223,6 +162,76 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/contactGetContactResponse"
+            }
+          },
+          "default": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/errorError"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ContactService"
+        ],
+        "summary": "Update contact",
+        "operationId": "UpdateContact",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "Object ID",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/contactUpdateContactRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/contactUpdateContactResponse"
+            }
+          },
+          "default": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/errorError"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ContactService"
+        ],
+        "summary": "Delete contact",
+        "operationId": "DeleteContact",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "Object ID",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/contactDeleteContactResponse"
             }
           },
           "default": {
@@ -338,41 +347,6 @@
           }
         }
       },
-      "put": {
-        "tags": [
-          "Customer"
-        ],
-        "summary": "Update customer",
-        "externalDocs": {
-          "description": "For more detailed information on this method check our guide",
-          "url": "https://openprovider.zendesk.com/knowledge/articles/360024591034"
-        },
-        "operationId": "UpdateCustomer",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/customerUpdateCustomerRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/customerUpdateCustomerResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "Customer"
@@ -407,42 +381,9 @@
             }
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "Customer"
-        ],
-        "summary": "Delete customer",
-        "externalDocs": {
-          "description": "For more detailed information on this method check our guide",
-          "url": "https://openprovider.zendesk.com/knowledge/articles/360024591294"
-        },
-        "operationId": "DeleteCustomer",
-        "parameters": [
-          {
-            "type": "string",
-            "description": "Customer unique identifier or handle, which can be created via CreateCustomer API method.",
-            "name": "handle",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/customerDeleteCustomerResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
       }
     },
-    "/v1beta/customers/verifications/emails": {
+    "/v1beta/customers/verifications/emails/domains": {
       "get": {
         "tags": [
           "EmailVerification"
@@ -644,6 +585,82 @@
             }
           }
         }
+      },
+      "put": {
+        "tags": [
+          "Customer"
+        ],
+        "summary": "Update customer",
+        "externalDocs": {
+          "description": "For more detailed information on this method check our guide",
+          "url": "https://openprovider.zendesk.com/knowledge/articles/360024591034"
+        },
+        "operationId": "UpdateCustomer",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Customer unique identifier or handle, which can be created via CreateCustomer API method",
+            "name": "handle",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/customerUpdateCustomerRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/customerUpdateCustomerResponse"
+            }
+          },
+          "default": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/errorError"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Customer"
+        ],
+        "summary": "Delete customer",
+        "externalDocs": {
+          "description": "For more detailed information on this method check our guide",
+          "url": "https://openprovider.zendesk.com/knowledge/articles/360024591294"
+        },
+        "operationId": "DeleteCustomer",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Customer unique identifier or handle, which can be created via CreateCustomer API method",
+            "name": "handle",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/customerDeleteCustomerResponse"
+            }
+          },
+          "default": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/errorError"
+            }
+          }
+        }
       }
     },
     "/v1beta/resellers": {
@@ -658,13 +675,6 @@
         },
         "operationId": "GetReseller",
         "parameters": [
-          {
-            "type": "integer",
-            "format": "int32",
-            "description": "Object ID.",
-            "name": "id",
-            "in": "query"
-          },
           {
             "type": "boolean",
             "format": "boolean",
@@ -699,37 +709,6 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/resellerGetResellerResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "ResellerService"
-        ],
-        "summary": "Update reseller",
-        "operationId": "UpdateReseller",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/resellerUpdateResellerRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/resellerUpdateResellerResponse"
             }
           },
           "default": {
@@ -776,6 +755,47 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/statisticsGetStatisticsResponse"
+            }
+          },
+          "default": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/errorError"
+            }
+          }
+        }
+      }
+    },
+    "/v1beta/resellers/{id}": {
+      "put": {
+        "tags": [
+          "ResellerService"
+        ],
+        "summary": "Update reseller",
+        "operationId": "UpdateReseller",
+        "parameters": [
+          {
+            "type": "integer",
+            "format": "int32",
+            "description": "Object ID",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/resellerUpdateResellerRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/resellerUpdateResellerResponse"
             }
           },
           "default": {
