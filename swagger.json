@@ -15,6 +15,39 @@
     },
     "host": "api.openprovider.eu",
     "paths": {
+        "/v1beta/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login with username and password",
+                "operationId": "Login",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/authLoginRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/authLoginResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
         "/v1beta/contacts": {
             "get": {
                 "tags": [
@@ -5230,6 +5263,92 @@
             },
             "example": {
                 "id": 1
+            }
+        },
+        "authLoginRequest": {
+            "type": "object",
+            "title": "The login request message containing the username and password, additional fields",
+            "properties": {
+                "ip": {
+                    "type": "string",
+                    "title": "The IP address (0.0.0.0 is any IP address)"
+                },
+                "password": {
+                    "type": "string",
+                    "title": "The user's password"
+                },
+                "username": {
+                    "type": "string",
+                    "title": "The user's name"
+                }
+            },
+            "example": {
+                "ip": "127.0.0.1",
+                "password": "mypassword",
+                "username": "mylogin"
+            }
+        },
+        "authLoginResponse": {
+            "type": "object",
+            "title": "The login response message",
+            "properties": {
+                "code": {
+                    "description": "The code",
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "The code"
+                },
+                "data": {
+                    "description": "The data",
+                    "title": "The data",
+                    "$ref": "#/definitions/authLoginResponseData"
+                },
+                "desc": {
+                    "description": "The desc",
+                    "type": "string",
+                    "title": "The desc"
+                },
+                "maintenance": {
+                    "description": "The maintenance",
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "The maintenance"
+                },
+                "warnings": {
+                    "description": "The warnings",
+                    "type": "array",
+                    "title": "The warnings",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "reseller_id": 123915,
+                    "token": "f63d4c38f593582c3bde13de4b2cdcd5"
+                },
+                "desc": ""
+            }
+        },
+        "authLoginResponseData": {
+            "type": "object",
+            "title": "Login response data containing the token and the reseller's ID",
+            "properties": {
+                "reseller_id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "The reseller ID"
+                },
+                "token": {
+                    "type": "string",
+                    "title": "The token"
+                }
+            },
+            "example": {
+                "reseller_id": 123915,
+                "token": "f63d4c38f593582c3bde13de4b2cdcd5"
             }
         },
         "authcodeAuthInfo": {
@@ -13026,42 +13145,47 @@
         },
         "errorError": {
             "type": "object",
-            "title": "Error",
+            "title": "Error message",
             "properties": {
                 "code": {
+                    "description": "Error code.",
                     "type": "integer",
                     "format": "int32",
                     "title": "Error code"
                 },
                 "data": {
+                    "description": "Additional error description.",
                     "type": "string",
                     "title": "Additional error description"
                 },
                 "desc": {
+                    "description": "Error description.",
                     "type": "string",
                     "title": "Error description"
                 }
             },
             "example": {
                 "code": 0,
-                "data": "",
                 "desc": ""
             }
         },
         "errorWarning": {
             "type": "object",
-            "title": "Warning",
+            "title": "Warning message",
             "properties": {
                 "code": {
+                    "description": "Warning code.",
                     "type": "integer",
                     "format": "int32",
                     "title": "Warning code"
                 },
                 "data": {
+                    "description": "Additional warning description.",
                     "type": "string",
                     "title": "Additional warning description"
                 },
                 "desc": {
+                    "description": "Warning description.",
                     "type": "string",
                     "title": "Warning description"
                 }
@@ -25844,6 +25968,12 @@
                 "descEndpoints",
                 "descAuthentication",
                 "descReferenceGuides"
+            ]
+        },
+        {
+            "name": "Auth",
+            "tags": [
+                "Auth"
             ]
         },
         {
