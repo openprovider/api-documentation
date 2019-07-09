@@ -1874,6 +1874,100 @@
                 }
             }
         },
+        "/v1beta/domains/additional-data": {
+            "get": {
+                "tags": [
+                    "AdditionalData"
+                ],
+                "summary": "Get additional data",
+                "operationId": "GetAdditionalData",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Domain id number.",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Domain name without extension.",
+                        "name": "domain.name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Domain extension.",
+                        "name": "domain.extension",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "The operation.",
+                        "name": "operation",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/additional_dataGetAdditionalDataResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/domains/additional-data/customers": {
+            "get": {
+                "tags": [
+                    "CustomerAdditionalData"
+                ],
+                "summary": "Get data",
+                "operationId": "GetData",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Domain id number.",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Domain name without extension.",
+                        "name": "domain.name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Domain extension.",
+                        "name": "domain.extension",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/customerGetDataResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
         "/v1beta/domains/check": {
             "post": {
                 "tags": [
@@ -2257,102 +2351,6 @@
                         "description": "A successful response.",
                         "schema": {
                             "$ref": "#/definitions/domainDeleteDomainResponse"
-                        }
-                    },
-                    "default": {
-                        "description": "(empty)",
-                        "schema": {
-                            "$ref": "#/definitions/errorError"
-                        }
-                    }
-                }
-            }
-        },
-        "/v1beta/domains/{id}/additional-data": {
-            "get": {
-                "tags": [
-                    "AdditionalData"
-                ],
-                "summary": "Get additional data",
-                "operationId": "GetAdditionalData",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "format": "int32",
-                        "description": "Domain id number",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "Domain name without extension.",
-                        "name": "domain.name",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Domain extension.",
-                        "name": "domain.extension",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "The operation.",
-                        "name": "operation",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "$ref": "#/definitions/additional_dataGetAdditionalDataResponse"
-                        }
-                    },
-                    "default": {
-                        "description": "(empty)",
-                        "schema": {
-                            "$ref": "#/definitions/errorError"
-                        }
-                    }
-                }
-            }
-        },
-        "/v1beta/domains/{id}/additional-data/customers": {
-            "get": {
-                "tags": [
-                    "CustomerAdditionalData"
-                ],
-                "summary": "Get data",
-                "operationId": "GetData",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "format": "int32",
-                        "description": "Domain id number",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "Domain name without extension.",
-                        "name": "domain.name",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Domain extension.",
-                        "name": "domain.extension",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "schema": {
-                            "$ref": "#/definitions/customerGetDataResponse"
                         }
                     },
                     "default": {
@@ -25998,9 +25996,9 @@
             "name": "Domain",
             "tags": [
                 "DomainService",
-                "PriceService",
                 "AdditionalData",
                 "CustomerAdditionalData",
+                "PriceService",
                 "AuthCode",
                 "TldService"
             ]
