@@ -1883,13 +1883,6 @@
                 "operationId": "GetAdditionalData",
                 "parameters": [
                     {
-                        "type": "integer",
-                        "format": "int32",
-                        "description": "Domain id number.",
-                        "name": "id",
-                        "in": "query"
-                    },
-                    {
                         "type": "string",
                         "description": "Domain name without extension.",
                         "name": "domain.name",
@@ -1932,13 +1925,6 @@
                 "summary": "Get data",
                 "operationId": "GetData",
                 "parameters": [
-                    {
-                        "type": "integer",
-                        "format": "int32",
-                        "description": "Domain id number.",
-                        "name": "id",
-                        "in": "query"
-                    },
                     {
                         "type": "string",
                         "description": "Domain name without extension.",
@@ -11200,10 +11186,6 @@
             "type": "object",
             "title": "RestoreDomainRequest",
             "properties": {
-                "additional_data": {
-                    "title": "Additional domain data",
-                    "$ref": "#/definitions/domainAdditionalData"
-                },
                 "domain": {
                     "title": "Domain name and extension",
                     "$ref": "#/definitions/domainDomain"
@@ -11212,50 +11194,15 @@
                     "type": "integer",
                     "format": "int32",
                     "title": "Domain id number"
-                },
-                "reseller_id": {
-                    "type": "integer",
-                    "format": "int32",
-                    "title": "Reseller id"
                 }
             },
             "example": {
-                "additional_data": {
-                    "abogado_acceptance": "",
-                    "admin_sing_pass_id": "",
-                    "allocation_token": "",
-                    "bank_acceptance": "",
-                    "company_registration_number": "XX123456789X01",
-                    "domain_name_variants": "xn--\u0434\u043e\u043c\u0435\u043d.cat",
-                    "eligibility_type": "",
-                    "eligibility_type_relationship": "",
-                    "ftld_token": "",
-                    "id_number": "123456789X",
-                    "id_type": "",
-                    "idn_script": "SPA",
-                    "insurance_acceptance": "",
-                    "intended_use": "generic",
-                    "law_acceptance": "",
-                    "legal_type": "Individual",
-                    "maintainer": "",
-                    "membership_id": "A",
-                    "mobile_phone_number_verification": "",
-                    "ngo_ong_eligibility_acceptance": "",
-                    "ngo_ong_policy_acceptance": "",
-                    "passport_number": "X123456",
-                    "rurf_blocked_domains": "",
-                    "send_verification_email": "",
-                    "trademark_id": "",
-                    "travel_acceptance": "1",
-                    "vat": "11843009X"
-                },
                 "domain": {
                     "extension": "london",
                     "idn_extension": "es",
                     "name": "test4"
                 },
-                "id": 0,
-                "reseller_id": 0
+                "id": 0
             }
         },
         "domainRestoreDomainResponse": {
