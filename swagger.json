@@ -20812,9 +20812,7 @@
                 "data": {
                     "results": [
                         {
-                            "creation_date": "1505383749",
                             "ip": "127.0.0.1",
-                            "modification_date": "1505383749",
                             "name": "domain.com",
                             "prio": 1,
                             "ttl": 900,
@@ -20847,9 +20845,7 @@
             "example": {
                 "results": [
                     {
-                        "creation_date": "1505383749",
                         "ip": "127.0.0.1",
-                        "modification_date": "1505383749",
                         "name": "domain.com",
                         "prio": 1,
                         "ttl": 900,
@@ -20864,17 +20860,9 @@
             "type": "object",
             "title": "ZoneRecord",
             "properties": {
-                "creation_date": {
-                    "type": "string",
-                    "title": "DNS record creation date"
-                },
                 "ip": {
                     "type": "string",
                     "title": "DNS record IP address"
-                },
-                "modification_date": {
-                    "type": "string",
-                    "title": "Date the DNS record was last updated"
                 },
                 "name": {
                     "type": "string",
@@ -20900,9 +20888,7 @@
                 }
             },
             "example": {
-                "creation_date": "1505383749",
                 "ip": "127.0.0.1",
-                "modification_date": "1505383749",
                 "name": "domain.com",
                 "prio": 1,
                 "ttl": 900,
