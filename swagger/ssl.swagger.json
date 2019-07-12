@@ -1537,6 +1537,7 @@
               "file_location": "example.com/.well-known/pki-validation/fileauth.txt",
               "file_name": "fileauth.txt",
               "md5": "73d01a1232214f96ebf08d6f9d0af6f9",
+              "old_cert_format": "dywtgtjttvdk5v4ncd8231yl6v5ji8pv",
               "sha1": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
               "sha256": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c"
             }
@@ -1666,6 +1667,7 @@
                   "file_location": "example.com/.well-known/pki-validation/fileauth.txt",
                   "file_name": "fileauth.txt",
                   "md5": "73d01a1232214f96ebf08d6f9d0af6f9",
+                  "old_cert_format": "dywtgtjttvdk5v4ncd8231yl6v5ji8pv",
                   "sha1": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
                   "sha256": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c"
                 }
@@ -1753,6 +1755,7 @@
                 "file_location": "example.com/.well-known/pki-validation/fileauth.txt",
                 "file_name": "fileauth.txt",
                 "md5": "73d01a1232214f96ebf08d6f9d0af6f9",
+                "old_cert_format": "dywtgtjttvdk5v4ncd8231yl6v5ji8pv",
                 "sha1": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
                 "sha256": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c"
               }
@@ -2144,6 +2147,7 @@
             "file_location": "example.com/.well-known/pki-validation/fileauth.txt",
             "file_name": "fileauth.txt",
             "md5": "73d01a1232214f96ebf08d6f9d0af6f9",
+            "old_cert_format": "dywtgtjttvdk5v4ncd8231yl6v5ji8pv",
             "sha1": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
             "sha256": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c"
           }
@@ -2234,6 +2238,10 @@
           "type": "string",
           "title": "Order MD5 checksum"
         },
+        "old_cert_format": {
+          "type": "string",
+          "title": "This old format (before transition to digicert)"
+        },
         "sha1": {
           "type": "string",
           "title": "Order SHA1 checksum"
@@ -2253,6 +2261,7 @@
         "file_location": "example.com/.well-known/pki-validation/fileauth.txt",
         "file_name": "fileauth.txt",
         "md5": "73d01a1232214f96ebf08d6f9d0af6f9",
+        "old_cert_format": "dywtgtjttvdk5v4ncd8231yl6v5ji8pv",
         "sha1": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
         "sha256": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c"
       }
