@@ -1764,8 +1764,8 @@
           "title": "Password change declined date"
         },
         "phone": {
-          "type": "string",
-          "title": "Phone number"
+          "title": "The phone",
+          "$ref": "#/definitions/contactPhone"
         },
         "rcp_client_ip_list": {
           "title": "RCP access IP whitelist / blacklist",
@@ -1817,7 +1817,11 @@
           "prefix": "van"
         },
         "password_change_declined_at": "",
-        "phone": "",
+        "phone": {
+          "area_code": "111",
+          "country_code": "+03",
+          "subscriber_number": "123456"
+        },
         "rcp_client_ip_list": {
           "allow": [
             "127.0.0.1"
