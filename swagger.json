@@ -5525,10 +5525,6 @@
                     "title": "The auth info",
                     "$ref": "#/definitions/authcodeAuthInfo"
                 },
-                "contacts": {
-                    "title": "The contacts",
-                    "$ref": "#/definitions/domainContacts"
-                },
                 "domain_roid": {
                     "type": "string",
                     "title": "The domain roid"
@@ -8975,11 +8971,11 @@
                     "title": "Additional domain data",
                     "$ref": "#/definitions/domainCheckAdditionalData"
                 },
-                "domains": {
+                "item": {
                     "type": "array",
                     "title": "List of domains to check",
                     "items": {
-                        "$ref": "#/definitions/domainDomains"
+                        "$ref": "#/definitions/domainDomainItem"
                     }
                 },
                 "with_price": {
@@ -8997,9 +8993,9 @@
                 "additional_data": {
                     "idn_script": "cyrl"
                 },
-                "domains": [
+                "item": [
                     {
-                        "extension": "it",
+                        "extension": "biz",
                         "name": "example"
                     }
                 ],
@@ -9213,34 +9209,6 @@
             "example": {
                 "currency": "USD",
                 "price": 9.33
-            }
-        },
-        "domainContacts": {
-            "type": "object",
-            "title": "Contacts",
-            "properties": {
-                "admin_handle": {
-                    "type": "string",
-                    "title": "Administrative contact handle"
-                },
-                "billing_handle": {
-                    "type": "string",
-                    "title": "Billing contact handle"
-                },
-                "owner_handle": {
-                    "type": "string",
-                    "title": "Owner contact handle"
-                },
-                "tech_handle": {
-                    "type": "string",
-                    "title": "Tech contact handle"
-                }
-            },
-            "example": {
-                "admin_handle": "XX123456-XX",
-                "billing_handle": "XX123456-XX",
-                "owner_handle": "XX123456-XX",
-                "tech_handle": "XX123456-XX"
             }
         },
         "domainCreateDomainRequest": {
@@ -9713,9 +9681,9 @@
                 "name": "test4"
             }
         },
-        "domainDomains": {
+        "domainDomainItem": {
             "type": "object",
-            "title": "Domains",
+            "title": "DomainItem",
             "properties": {
                 "extension": {
                     "type": "string",
@@ -9723,11 +9691,11 @@
                 },
                 "name": {
                     "type": "string",
-                    "title": "Domain name excluding the extension"
+                    "title": "Domain name without extension"
                 }
             },
             "example": {
-                "extension": "it",
+                "extension": "biz",
                 "name": "example"
             }
         },
@@ -12156,6 +12124,10 @@
                     "type": "string",
                     "title": "Resets domain authcode"
                 },
+                "scheduled_at": {
+                    "type": "string",
+                    "title": "The scheduled at"
+                },
                 "tech_handle": {
                     "type": "string",
                     "title": "Tech contact handle"
@@ -12223,6 +12195,7 @@
                 "owner_handle": "XX123456-XX",
                 "reseller_handle": "XX123456-XX",
                 "reset_auth_code": "",
+                "scheduled_at": "2019-03-30",
                 "tech_handle": "XX123456-XX",
                 "use_domicile": false
             }
