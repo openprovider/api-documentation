@@ -51,7 +51,7 @@
   "definitions": {
     "authLoginRequest": {
       "type": "object",
-      "title": "The login request message containing the username and password, additional fields",
+      "title": "LoginRequest",
       "properties": {
         "ip": {
           "type": "string",
@@ -67,41 +67,36 @@
         }
       },
       "example": {
-        "ip": "127.0.0.1",
-        "password": "mypassword",
-        "username": "mylogin"
+        "ip": "123.123.123.123",
+        "password": "eivr4ReKoz",
+        "username": "openprovider"
       }
     },
     "authLoginResponse": {
       "type": "object",
-      "title": "The login response message",
+      "title": "LoginResponse",
       "properties": {
         "code": {
-          "description": "The code",
           "type": "integer",
           "format": "int32",
-          "title": "The code"
+          "title": "Response code"
         },
         "data": {
-          "description": "The data",
-          "title": "The data",
+          "title": "Response data",
           "$ref": "#/definitions/authLoginResponseData"
         },
         "desc": {
-          "description": "The desc",
           "type": "string",
-          "title": "The desc"
+          "title": "Response description"
         },
         "maintenance": {
-          "description": "The maintenance",
           "type": "boolean",
           "format": "boolean",
-          "title": "The maintenance"
+          "title": "Indicates if Openprovider API is on maintenance"
         },
         "warnings": {
-          "description": "The warnings",
           "type": "array",
-          "title": "The warnings",
+          "title": "Array of warning messages",
           "items": {
             "$ref": "#/definitions/errorWarning"
           }
@@ -110,20 +105,20 @@
       "example": {
         "code": 0,
         "data": {
-          "reseller_id": 123915,
-          "token": "f63d4c38f593582c3bde13de4b2cdcd5"
+          "reseller_id": 123456,
+          "token": "20d65561c9636d262e59aec8582c20c7"
         },
         "desc": ""
       }
     },
     "authLoginResponseData": {
       "type": "object",
-      "title": "Login response data containing the token and the reseller's ID",
+      "title": "LoginResponseData",
       "properties": {
         "reseller_id": {
           "type": "integer",
           "format": "int32",
-          "title": "The reseller ID"
+          "title": "The reseller id"
         },
         "token": {
           "type": "string",
@@ -131,53 +126,48 @@
         }
       },
       "example": {
-        "reseller_id": 123915,
-        "token": "f63d4c38f593582c3bde13de4b2cdcd5"
+        "reseller_id": 123456,
+        "token": "20d65561c9636d262e59aec8582c20c7"
       }
     },
     "errorError": {
       "type": "object",
-      "title": "Error message",
+      "title": "Error",
       "properties": {
         "code": {
-          "description": "Error code.",
           "type": "integer",
           "format": "int32",
           "title": "Error code"
         },
         "data": {
-          "description": "Additional error description.",
           "type": "string",
           "title": "Additional error description"
         },
         "desc": {
-          "description": "Error description.",
           "type": "string",
           "title": "Error description"
         }
       },
       "example": {
         "code": 0,
+        "data": "",
         "desc": ""
       }
     },
     "errorWarning": {
       "type": "object",
-      "title": "Warning message",
+      "title": "Warning",
       "properties": {
         "code": {
-          "description": "Warning code.",
           "type": "integer",
           "format": "int32",
           "title": "Warning code"
         },
         "data": {
-          "description": "Additional warning description.",
           "type": "string",
           "title": "Additional warning description"
         },
         "desc": {
-          "description": "Warning description.",
           "type": "string",
           "title": "Warning description"
         }

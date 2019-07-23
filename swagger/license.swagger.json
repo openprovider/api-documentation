@@ -1565,82 +1565,6 @@
         "title": "Plesk for VPS Web Host Edition"
       }
     },
-    "licenseLicense": {
-      "type": "object",
-      "title": "License",
-      "properties": {
-        "activation_code": {
-          "type": "string",
-          "title": "License activation code"
-        },
-        "billing_type": {
-          "type": "string",
-          "title": "License billing type"
-        },
-        "comment": {
-          "type": "string",
-          "title": "Custom notes"
-        },
-        "contract": {
-          "type": "string",
-          "title": "Openprovider contract version"
-        },
-        "expiration_date": {
-          "type": "string",
-          "title": "License expiration date"
-        },
-        "ip_address_binding": {
-          "type": "string",
-          "title": "IP addess to bind license to"
-        },
-        "items": {
-          "type": "array",
-          "title": "List of license items",
-          "items": {
-            "type": "string"
-          }
-        },
-        "key_id": {
-          "type": "integer",
-          "format": "int32",
-          "title": "License key ID"
-        },
-        "key_number": {
-          "type": "string",
-          "title": "License key number"
-        },
-        "order_date": {
-          "type": "string",
-          "title": "License order date"
-        },
-        "parent_key_id": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Key ID of the partent license"
-        },
-        "period": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Period for which license is active"
-        },
-        "product": {
-          "type": "string",
-          "title": "Product type (Plesk or Virtuozzo)"
-        },
-        "sku_values": {
-          "title": "List of license SKU values",
-          "$ref": "#/definitions/licenseSkuValues"
-        },
-        "status": {
-          "type": "string",
-          "title": "License status"
-        },
-        "title": {
-          "type": "string",
-          "title": "Custom license title"
-        }
-      }
-    },
     "licenseLicenseItem": {
       "type": "object",
       "title": "LicenseItem",
@@ -2923,7 +2847,7 @@
           "type": "array",
           "title": "Array of results",
           "items": {
-            "$ref": "#/definitions/licenseLicense"
+            "$ref": "#/definitions/licenselicenseLicense"
           }
         },
         "total": {
@@ -5157,6 +5081,82 @@
           "type": "boolean",
           "format": "boolean",
           "title": "Indicates, if license is suspended"
+        },
+        "title": {
+          "type": "string",
+          "title": "Custom license title"
+        }
+      }
+    },
+    "licenselicenseLicense": {
+      "type": "object",
+      "title": "License",
+      "properties": {
+        "activation_code": {
+          "type": "string",
+          "title": "License activation code"
+        },
+        "billing_type": {
+          "type": "string",
+          "title": "License billing type"
+        },
+        "comment": {
+          "type": "string",
+          "title": "Custom notes"
+        },
+        "contract": {
+          "type": "string",
+          "title": "Openprovider contract version"
+        },
+        "expiration_date": {
+          "type": "string",
+          "title": "License expiration date"
+        },
+        "ip_address_binding": {
+          "type": "string",
+          "title": "IP addess to bind license to"
+        },
+        "items": {
+          "type": "array",
+          "title": "List of license items",
+          "items": {
+            "type": "string"
+          }
+        },
+        "key_id": {
+          "type": "integer",
+          "format": "int32",
+          "title": "License key ID"
+        },
+        "key_number": {
+          "type": "string",
+          "title": "License key number"
+        },
+        "order_date": {
+          "type": "string",
+          "title": "License order date"
+        },
+        "parent_key_id": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Key ID of the partent license"
+        },
+        "period": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Period for which license is active"
+        },
+        "product": {
+          "type": "string",
+          "title": "Product type (Plesk or Virtuozzo)"
+        },
+        "sku_values": {
+          "title": "List of license SKU values",
+          "$ref": "#/definitions/licenseSkuValues"
+        },
+        "status": {
+          "type": "string",
+          "title": "License status"
         },
         "title": {
           "type": "string",

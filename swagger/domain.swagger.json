@@ -168,13 +168,6 @@
           {
             "type": "boolean",
             "format": "boolean",
-            "description": "With document list.",
-            "name": "with_document_list",
-            "in": "query"
-          },
-          {
-            "type": "boolean",
-            "format": "boolean",
             "description": "With additional data.",
             "name": "with_additional_data",
             "in": "query"
@@ -188,7 +181,7 @@
           {
             "type": "boolean",
             "format": "boolean",
-            "description": "With verification email.",
+            "description": "Returns information about domain owner email verification status.",
             "name": "with_verification_email",
             "in": "query"
           },
@@ -528,25 +521,6 @@
             "in": "query"
           },
           {
-            "type": "string",
-            "description": "Domain IDN extension.",
-            "name": "domain.idn_extension",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int32",
-            "description": "Reseller id.",
-            "name": "reseller_id",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "The queue status.",
-            "name": "queue_status",
-            "in": "query"
-          },
-          {
             "type": "boolean",
             "format": "boolean",
             "description": "Returns domain mutations history.",
@@ -570,8 +544,8 @@
           {
             "type": "boolean",
             "format": "boolean",
-            "description": "Retrurns registry details.",
-            "name": "with_registry_details",
+            "description": "Returns information about domain owner email verification status.",
+            "name": "with_verification_email",
             "in": "query"
           },
           {
@@ -680,13 +654,6 @@
             "required": true
           },
           {
-            "type": "integer",
-            "format": "int32",
-            "description": "Reseller id.",
-            "name": "reseller_id",
-            "in": "query"
-          },
-          {
             "type": "string",
             "description": "Domain name without extension.",
             "name": "domain.name",
@@ -696,12 +663,6 @@
             "type": "string",
             "description": "Domain extension.",
             "name": "domain.extension",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Domain IDN extension.",
-            "name": "domain.idn_extension",
             "in": "query"
           },
           {
@@ -1272,24 +1233,6 @@
     }
   },
   "definitions": {
-    "additional_dataDomain": {
-      "type": "object",
-      "title": "Domain",
-      "properties": {
-        "extension": {
-          "type": "string",
-          "title": "Domain extension"
-        },
-        "name": {
-          "type": "string",
-          "title": "Domain name without extension"
-        }
-      },
-      "example": {
-        "extension": "monster",
-        "name": "somedomain"
-      }
-    },
     "additional_dataGetAdditionalDataResponse": {
       "type": "object",
       "title": "GetAdditionalDataResponse",
@@ -1415,24 +1358,6 @@
         "pw": "cyF2A7jPp+T#?5j*-G82"
       }
     },
-    "authcodeDomain": {
-      "type": "object",
-      "title": "Domain",
-      "properties": {
-        "extension": {
-          "type": "string",
-          "title": "Domain extension"
-        },
-        "name": {
-          "type": "string",
-          "title": "Domain name without extension"
-        }
-      },
-      "example": {
-        "extension": "com",
-        "name": "example"
-      }
-    },
     "authcodeGetAuthCodeResponse": {
       "type": "object",
       "title": "GetAuthCodeResponse",
@@ -1507,7 +1432,7 @@
         },
         "domain": {
           "title": "Domain name and extension",
-          "$ref": "#/definitions/authcodeDomain"
+          "$ref": "#/definitions/domainDomain"
         },
         "id": {
           "type": "integer",
@@ -1522,8 +1447,8 @@
       "example": {
         "auth_code_type": "internal",
         "domain": {
-          "extension": "com",
-          "name": "example"
+          "extension": "london",
+          "name": "test4"
         },
         "id": 0,
         "sending_type": ""
@@ -1687,6 +1612,20 @@
       },
       "example": {
         "code": 0,
+        "data": [
+          {
+            "description": "IDN script states what language or character set the domain name is in",
+            "name": "idnScript",
+            "options": [
+              {
+                "description": "Norwegian",
+                "value": "no"
+              }
+            ],
+            "required": false,
+            "type": "select"
+          }
+        ],
         "desc": ""
       }
     },
@@ -1924,7 +1863,6 @@
         "auth_code": "",
         "domain": {
           "extension": "london",
-          "idn_extension": "es",
           "name": "test4"
         },
         "id": 0,
@@ -2028,11 +1966,11 @@
           "title": "Additional domain data",
           "$ref": "#/definitions/domainCheckAdditionalData"
         },
-        "item": {
+        "domains": {
           "type": "array",
-          "title": "List of domains to check",
+          "title": "Domain name to check",
           "items": {
-            "$ref": "#/definitions/domainDomainItem"
+            "$ref": "#/definitions/domainDomain"
           }
         },
         "with_price": {
@@ -2050,10 +1988,10 @@
         "additional_data": {
           "idn_script": "cyrl"
         },
-        "item": [
+        "domains": [
           {
-            "extension": "biz",
-            "name": "example"
+            "extension": "london",
+            "name": "test4"
           }
         ],
         "with_price": false,
@@ -2381,11 +2319,6 @@
           "type": "string",
           "title": "Reseller handle"
         },
-        "reseller_id": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Reseller id"
-        },
         "tech_handle": {
           "type": "string",
           "title": "Tech contact handle"
@@ -2451,7 +2384,6 @@
         ],
         "domain": {
           "extension": "london",
-          "idn_extension": "es",
           "name": "test4"
         },
         "is_dnssec_enabled": false,
@@ -2477,7 +2409,6 @@
         "period": 1,
         "promo_code": "PROMOCODE",
         "reseller_handle": "XX123456-XX",
-        "reseller_id": 0,
         "tech_handle": "XX123456-XX",
         "unit": "y",
         "use_domicile": false
@@ -2723,10 +2654,6 @@
           "type": "string",
           "title": "Domain extension"
         },
-        "idn_extension": {
-          "type": "string",
-          "title": "Domain IDN extension"
-        },
         "name": {
           "type": "string",
           "title": "Domain name without extension"
@@ -2734,26 +2661,7 @@
       },
       "example": {
         "extension": "london",
-        "idn_extension": "es",
         "name": "test4"
-      }
-    },
-    "domainDomainItem": {
-      "type": "object",
-      "title": "DomainItem",
-      "properties": {
-        "extension": {
-          "type": "string",
-          "title": "Domain extension"
-        },
-        "name": {
-          "type": "string",
-          "title": "Domain name without extension"
-        }
-      },
-      "example": {
-        "extension": "biz",
-        "name": "example"
       }
     },
     "domainGetDomainResponse": {
@@ -2861,7 +2769,6 @@
           ],
           "domain": {
             "extension": "london",
-            "idn_extension": "es",
             "name": "test4"
           },
           "expiration_date": "2014-07-04 17:14:44",
@@ -3376,7 +3283,6 @@
         ],
         "domain": {
           "extension": "london",
-          "idn_extension": "es",
           "name": "test4"
         },
         "expiration_date": "2014-07-04 17:14:44",
@@ -3665,7 +3571,6 @@
               ],
               "domain": {
                 "extension": "london",
-                "idn_extension": "es",
                 "name": "test4"
               },
               "expiration_date": "2014-07-04 17:14:44",
@@ -3854,7 +3759,6 @@
             ],
             "domain": {
               "extension": "london",
-              "idn_extension": "es",
               "name": "test4"
             },
             "expiration_date": "2014-07-04 17:14:44",
@@ -4153,7 +4057,6 @@
       "example": {
         "domain": {
           "extension": "london",
-          "idn_extension": "es",
           "name": "test4"
         },
         "id": 0,
@@ -4228,7 +4131,6 @@
       "example": {
         "domain": {
           "extension": "london",
-          "idn_extension": "es",
           "name": "test4"
         },
         "id": 0
@@ -4316,21 +4218,14 @@
           "type": "integer",
           "format": "int32",
           "title": "Domain id number"
-        },
-        "reseller_id": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Reseller id"
         }
       },
       "example": {
         "domain": {
           "extension": "london",
-          "idn_extension": "es",
           "name": "test4"
         },
-        "id": 0,
-        "reseller_id": 0
+        "id": 0
       }
     },
     "domainSendFoa1Response": {
@@ -4501,7 +4396,6 @@
         ],
         "domain": {
           "extension": "london",
-          "idn_extension": "es",
           "name": "test4"
         },
         "name_servers": [
@@ -4754,11 +4648,6 @@
           "type": "string",
           "title": "Reseller handle"
         },
-        "reseller_id": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Reseller id"
-        },
         "tech_handle": {
           "type": "string",
           "title": "Tech contact handle"
@@ -4809,7 +4698,6 @@
         ],
         "domain": {
           "extension": "london",
-          "idn_extension": "es",
           "name": "test4"
         },
         "is_dnssec_enabled": false,
@@ -4834,7 +4722,6 @@
         "period": 0,
         "promo_code": "PROMOCODE",
         "reseller_handle": "XX123456-XX",
-        "reseller_id": 0,
         "tech_handle": "XX123456-XX",
         "type": "",
         "unit": "y",
@@ -4953,21 +4840,14 @@
           "type": "integer",
           "format": "int32",
           "title": "Domain id number"
-        },
-        "reseller_id": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Reseller id"
         }
       },
       "example": {
         "domain": {
           "extension": "london",
-          "idn_extension": "es",
           "name": "test4"
         },
-        "id": 0,
-        "reseller_id": 0
+        "id": 0
       }
     },
     "domainTryAgainLastOperationResponse": {
@@ -5225,7 +5105,6 @@
         ],
         "domain": {
           "extension": "london",
-          "idn_extension": "es",
           "name": "test4"
         },
         "id": 0,
@@ -5315,6 +5194,25 @@
         "status": "ACT"
       }
     },
+    "domainpricePrice": {
+      "type": "object",
+      "title": "Price",
+      "properties": {
+        "currency": {
+          "type": "string",
+          "title": "Product or reseller currency"
+        },
+        "price": {
+          "type": "number",
+          "format": "double",
+          "title": "Amount in product or reseller currency"
+        }
+      },
+      "example": {
+        "currency": "USD",
+        "price": 8.06
+      }
+    },
     "errorError": {
       "type": "object",
       "title": "Error",
@@ -5361,24 +5259,6 @@
         "code": 0,
         "data": "",
         "desc": ""
-      }
-    },
-    "priceDomain": {
-      "type": "object",
-      "title": "Domain",
-      "properties": {
-        "extension": {
-          "type": "string",
-          "title": "Domain extension"
-        },
-        "name": {
-          "type": "string",
-          "title": "Domain name without extension"
-        }
-      },
-      "example": {
-        "extension": "com",
-        "name": "example"
       }
     },
     "priceGetPriceResponse": {
@@ -5457,36 +5337,17 @@
         }
       }
     },
-    "pricePrice": {
-      "type": "object",
-      "title": "Price",
-      "properties": {
-        "currency": {
-          "type": "string",
-          "title": "Product or reseller currency"
-        },
-        "price": {
-          "type": "number",
-          "format": "double",
-          "title": "Amount in product or reseller currency"
-        }
-      },
-      "example": {
-        "currency": "USD",
-        "price": 8.06
-      }
-    },
     "pricePrices": {
       "type": "object",
       "title": "Prices",
       "properties": {
         "product": {
           "title": "Amount in product currency",
-          "$ref": "#/definitions/pricePrice"
+          "$ref": "#/definitions/domainpricePrice"
         },
         "reseller": {
           "title": "Amount in reseller currency",
-          "$ref": "#/definitions/pricePrice"
+          "$ref": "#/definitions/domainpricePrice"
         }
       },
       "example": {
