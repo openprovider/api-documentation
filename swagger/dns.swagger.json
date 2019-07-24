@@ -2168,6 +2168,16 @@
         },
         "is_spamexperts_enabled": "on",
         "master_ip": "127.0.0.1",
+        "records": [
+          {
+            "ip": "127.0.0.1",
+            "name": "domain.com",
+            "prio": 1,
+            "ttl": 900,
+            "type": "CNAME",
+            "value": "abcd.domain.com"
+          }
+        ],
         "secured": false,
         "template_name": "default",
         "type": "master"
@@ -2227,6 +2237,14 @@
           "active": 1,
           "creation_date": "2012-02-05 7:37:28",
           "dnskey": "",
+          "history": [
+            {
+              "date": "1560966009",
+              "is": true,
+              "source": "",
+              "was": "Zone is deleted."
+            }
+          ],
           "id": 12345,
           "ip": "127.0.0.1",
           "is_deleted": false,
@@ -2234,6 +2252,16 @@
           "is_spamexperts_enabled": false,
           "modification_date": "2018-11-28 6:57:05",
           "name": "domain.com",
+          "records": [
+            {
+              "ip": "127.0.0.1",
+              "name": "domain.com",
+              "prio": 1,
+              "ttl": 900,
+              "type": "CNAME",
+              "value": "abcd.domain.com"
+            }
+          ],
           "reseller_id": 123456,
           "type": "master"
         },
@@ -2296,6 +2324,14 @@
               "active": 1,
               "creation_date": "2012-02-05 7:37:28",
               "dnskey": "",
+              "history": [
+                {
+                  "date": "1560966009",
+                  "is": true,
+                  "source": "",
+                  "was": "Zone is deleted."
+                }
+              ],
               "id": 12345,
               "ip": "127.0.0.1",
               "is_deleted": false,
@@ -2303,6 +2339,16 @@
               "is_spamexperts_enabled": false,
               "modification_date": "2018-11-28 6:57:05",
               "name": "domain.com",
+              "records": [
+                {
+                  "ip": "127.0.0.1",
+                  "name": "domain.com",
+                  "prio": 1,
+                  "ttl": 900,
+                  "type": "CNAME",
+                  "value": "abcd.domain.com"
+                }
+              ],
               "reseller_id": 123456,
               "type": "master"
             }
@@ -2335,6 +2381,14 @@
             "active": 1,
             "creation_date": "2012-02-05 7:37:28",
             "dnskey": "",
+            "history": [
+              {
+                "date": "1560966009",
+                "is": true,
+                "source": "",
+                "was": "Zone is deleted."
+              }
+            ],
             "id": 12345,
             "ip": "127.0.0.1",
             "is_deleted": false,
@@ -2342,6 +2396,16 @@
             "is_spamexperts_enabled": false,
             "modification_date": "2018-11-28 6:57:05",
             "name": "domain.com",
+            "records": [
+              {
+                "ip": "127.0.0.1",
+                "name": "domain.com",
+                "prio": 1,
+                "ttl": 900,
+                "type": "CNAME",
+                "value": "abcd.domain.com"
+              }
+            ],
             "reseller_id": 123456,
             "type": "master"
           }
@@ -2401,6 +2465,16 @@
         "is_spamexperts_enabled": true,
         "master_ip": "127.0.0.1",
         "name": "domain.com",
+        "records": [
+          {
+            "ip": "127.0.0.1",
+            "name": "domain.com",
+            "prio": 1,
+            "ttl": 900,
+            "type": "CNAME",
+            "value": "abcd.domain.com"
+          }
+        ],
         "type": "slave"
       }
     },
@@ -2481,6 +2555,14 @@
         "active": 1,
         "creation_date": "2012-02-05 7:37:28",
         "dnskey": "",
+        "history": [
+          {
+            "date": "1560966009",
+            "is": true,
+            "source": "",
+            "was": "Zone is deleted."
+          }
+        ],
         "id": 12345,
         "ip": "127.0.0.1",
         "is_deleted": false,
@@ -2488,6 +2570,16 @@
         "is_spamexperts_enabled": false,
         "modification_date": "2018-11-28 6:57:05",
         "name": "domain.com",
+        "records": [
+          {
+            "ip": "127.0.0.1",
+            "name": "domain.com",
+            "prio": 1,
+            "ttl": 900,
+            "type": "CNAME",
+            "value": "abcd.domain.com"
+          }
+        ],
         "reseller_id": 123456,
         "type": "master"
       }

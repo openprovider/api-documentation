@@ -359,10 +359,32 @@
                         "in": "query"
                     },
                     {
+                        "type": "string",
+                        "description": "ull or partial first name or last name or company name or handle. Wildcard (*) can be used.",
+                        "name": "pattern",
+                        "in": "query"
+                    },
+                    {
                         "type": "boolean",
                         "format": "boolean",
                         "description": "Retrieves objects with (1) or without (0) additional data.",
                         "name": "with_additional_data",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Customer type: 'company' or 'individual'. If customer has not empty 'companyName' than type is 'company', otherwise 'individual'.",
+                        "name": "type",
+                        "in": "query"
+                    },
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "description": "\u0421olumns to retrieve. Possible values: 'firstName', 'prefix', 'initials', 'lastName', 'companyName', 'email', 'handle', 'id', 'fullName'.",
+                        "name": "columns",
                         "in": "query"
                     }
                 ],
@@ -1782,13 +1804,6 @@
                     {
                         "type": "boolean",
                         "format": "boolean",
-                        "description": "With document list.",
-                        "name": "with_document_list",
-                        "in": "query"
-                    },
-                    {
-                        "type": "boolean",
-                        "format": "boolean",
                         "description": "With additional data.",
                         "name": "with_additional_data",
                         "in": "query"
@@ -1802,7 +1817,7 @@
                     {
                         "type": "boolean",
                         "format": "boolean",
-                        "description": "With verification email.",
+                        "description": "Returns information about domain owner email verification status.",
                         "name": "with_verification_email",
                         "in": "query"
                     },
@@ -2142,25 +2157,6 @@
                         "in": "query"
                     },
                     {
-                        "type": "string",
-                        "description": "Domain IDN extension.",
-                        "name": "domain.idn_extension",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "format": "int32",
-                        "description": "Reseller id.",
-                        "name": "reseller_id",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "The queue status.",
-                        "name": "queue_status",
-                        "in": "query"
-                    },
-                    {
                         "type": "boolean",
                         "format": "boolean",
                         "description": "Returns domain mutations history.",
@@ -2184,8 +2180,8 @@
                     {
                         "type": "boolean",
                         "format": "boolean",
-                        "description": "Retrurns registry details.",
-                        "name": "with_registry_details",
+                        "description": "Returns information about domain owner email verification status.",
+                        "name": "with_verification_email",
                         "in": "query"
                     },
                     {
@@ -2294,13 +2290,6 @@
                         "required": true
                     },
                     {
-                        "type": "integer",
-                        "format": "int32",
-                        "description": "Reseller id.",
-                        "name": "reseller_id",
-                        "in": "query"
-                    },
-                    {
                         "type": "string",
                         "description": "Domain name without extension.",
                         "name": "domain.name",
@@ -2310,12 +2299,6 @@
                         "type": "string",
                         "description": "Domain extension.",
                         "name": "domain.extension",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Domain IDN extension.",
-                        "name": "domain.idn_extension",
                         "in": "query"
                     },
                     {
@@ -2690,6 +2673,13 @@
                         "format": "int32",
                         "description": "Output offset.",
                         "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Is system.",
+                        "name": "is_system",
                         "in": "query"
                     }
                 ],
@@ -4582,7 +4572,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/tagTag"
+                            "$ref": "#/definitions/helperstagTag"
                         }
                     }
                 ],
@@ -4941,24 +4931,6 @@
         }
     },
     "definitions": {
-        "additional_dataDomain": {
-            "type": "object",
-            "title": "Domain",
-            "properties": {
-                "extension": {
-                    "type": "string",
-                    "title": "Domain extension"
-                },
-                "name": {
-                    "type": "string",
-                    "title": "Domain name without extension"
-                }
-            },
-            "example": {
-                "extension": "monster",
-                "name": "somedomain"
-            }
-        },
         "additional_dataGetAdditionalDataResponse": {
             "type": "object",
             "title": "GetAdditionalDataResponse",
@@ -5251,7 +5223,7 @@
         },
         "authLoginRequest": {
             "type": "object",
-            "title": "The login request message containing the username and password, additional fields",
+            "title": "LoginRequest",
             "properties": {
                 "ip": {
                     "type": "string",
@@ -5267,41 +5239,36 @@
                 }
             },
             "example": {
-                "ip": "127.0.0.1",
-                "password": "mypassword",
-                "username": "mylogin"
+                "ip": "123.123.123.123",
+                "password": "eivr4ReKoz",
+                "username": "openprovider"
             }
         },
         "authLoginResponse": {
             "type": "object",
-            "title": "The login response message",
+            "title": "LoginResponse",
             "properties": {
                 "code": {
-                    "description": "The code",
                     "type": "integer",
                     "format": "int32",
-                    "title": "The code"
+                    "title": "Response code"
                 },
                 "data": {
-                    "description": "The data",
-                    "title": "The data",
+                    "title": "Response data",
                     "$ref": "#/definitions/authLoginResponseData"
                 },
                 "desc": {
-                    "description": "The desc",
                     "type": "string",
-                    "title": "The desc"
+                    "title": "Response description"
                 },
                 "maintenance": {
-                    "description": "The maintenance",
                     "type": "boolean",
                     "format": "boolean",
-                    "title": "The maintenance"
+                    "title": "Indicates if Openprovider API is on maintenance"
                 },
                 "warnings": {
-                    "description": "The warnings",
                     "type": "array",
-                    "title": "The warnings",
+                    "title": "Array of warning messages",
                     "items": {
                         "$ref": "#/definitions/errorWarning"
                     }
@@ -5310,20 +5277,20 @@
             "example": {
                 "code": 0,
                 "data": {
-                    "reseller_id": 123915,
-                    "token": "f63d4c38f593582c3bde13de4b2cdcd5"
+                    "reseller_id": 123456,
+                    "token": "20d65561c9636d262e59aec8582c20c7"
                 },
                 "desc": ""
             }
         },
         "authLoginResponseData": {
             "type": "object",
-            "title": "Login response data containing the token and the reseller's ID",
+            "title": "LoginResponseData",
             "properties": {
                 "reseller_id": {
                     "type": "integer",
                     "format": "int32",
-                    "title": "The reseller ID"
+                    "title": "The reseller id"
                 },
                 "token": {
                     "type": "string",
@@ -5331,8 +5298,8 @@
                 }
             },
             "example": {
-                "reseller_id": 123915,
-                "token": "f63d4c38f593582c3bde13de4b2cdcd5"
+                "reseller_id": 123456,
+                "token": "20d65561c9636d262e59aec8582c20c7"
             }
         },
         "authcodeAuthInfo": {
@@ -5346,24 +5313,6 @@
             },
             "example": {
                 "pw": "cyF2A7jPp+T#?5j*-G82"
-            }
-        },
-        "authcodeDomain": {
-            "type": "object",
-            "title": "Domain",
-            "properties": {
-                "extension": {
-                    "type": "string",
-                    "title": "Domain extension"
-                },
-                "name": {
-                    "type": "string",
-                    "title": "Domain name without extension"
-                }
-            },
-            "example": {
-                "extension": "com",
-                "name": "example"
             }
         },
         "authcodeGetAuthCodeResponse": {
@@ -5440,7 +5389,7 @@
                 },
                 "domain": {
                     "title": "Domain name and extension",
-                    "$ref": "#/definitions/authcodeDomain"
+                    "$ref": "#/definitions/domainDomain"
                 },
                 "id": {
                     "type": "integer",
@@ -5455,8 +5404,8 @@
             "example": {
                 "auth_code_type": "internal",
                 "domain": {
-                    "extension": "com",
-                    "name": "example"
+                    "extension": "london",
+                    "name": "test4"
                 },
                 "id": 0,
                 "sending_type": ""
@@ -5679,162 +5628,6 @@
                 ]
             }
         },
-        "contactContact": {
-            "type": "object",
-            "title": "Contact",
-            "properties": {
-                "additional_data": {
-                    "title": "Collection of data fields that contain additional customer information",
-                    "$ref": "#/definitions/contactAdditionalData"
-                },
-                "address": {
-                    "title": "Address",
-                    "$ref": "#/definitions/contactAddress"
-                },
-                "api_access_enabled": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "Indicates if API access is enabled for the contact"
-                },
-                "auth_type": {
-                    "type": "string",
-                    "title": "Autherntication type"
-                },
-                "comments": {
-                    "type": "string",
-                    "title": "Custom notes to the specified handle"
-                },
-                "company_name": {
-                    "type": "string",
-                    "title": "Company name"
-                },
-                "email": {
-                    "type": "string",
-                    "title": "Email address"
-                },
-                "hash_changed_at": {
-                    "type": "string",
-                    "title": "Date of last hash update"
-                },
-                "id": {
-                    "type": "integer",
-                    "format": "int32",
-                    "title": "Object ID"
-                },
-                "is_active": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "Indicates if contact is active"
-                },
-                "last_api_call_at": {
-                    "type": "string",
-                    "title": "Last API call date"
-                },
-                "last_login_at": {
-                    "type": "string",
-                    "title": "Last login date"
-                },
-                "locale": {
-                    "type": "string",
-                    "title": "Customer's language"
-                },
-                "name": {
-                    "title": "Full name",
-                    "$ref": "#/definitions/contactName"
-                },
-                "password_change_declined_at": {
-                    "type": "string",
-                    "title": "Password change declined date"
-                },
-                "password_changed_at": {
-                    "type": "string",
-                    "title": "Last password change date"
-                },
-                "phone": {
-                    "title": "Phone number",
-                    "$ref": "#/definitions/contactPhone"
-                },
-                "rcp_client_ip_list": {
-                    "title": "RCP access IP whitelist / blacklist",
-                    "$ref": "#/definitions/contactClientIpList"
-                },
-                "reseller_id": {
-                    "type": "integer",
-                    "format": "int32",
-                    "title": "Reseller ID"
-                },
-                "role": {
-                    "type": "string",
-                    "title": "Contact's role"
-                },
-                "secret_key": {
-                    "type": "string",
-                    "title": "The secret key"
-                },
-                "username": {
-                    "type": "string",
-                    "title": "Username"
-                },
-                "vat": {
-                    "type": "string",
-                    "title": "VAT (value-added tax) number of the customer"
-                }
-            },
-            "example": {
-                "additional_data": {
-                    "birth_city": "Test city",
-                    "birth_date": "1969-12-31",
-                    "social_security_number": "12326178T"
-                },
-                "address": {
-                    "city": "Test city",
-                    "country": "NL",
-                    "number": "123",
-                    "state": "Testprovince",
-                    "street": "Test street",
-                    "suffix": "A",
-                    "zipcode": "1235 XX"
-                },
-                "api_access_enabled": true,
-                "auth_type": "simple",
-                "comments": "",
-                "company_name": "Example company",
-                "email": "test@mail.tld",
-                "hash_changed_at": "2019-03-25 10:17:02",
-                "id": 123456789,
-                "is_active": false,
-                "last_api_call_at": "2019-03-25 10:17:01",
-                "last_login_at": "2019-04-12 11:58:39",
-                "locale": "nl_NL",
-                "name": {
-                    "first_name": "Finance",
-                    "full_name": "Finance Team",
-                    "initials": "T P",
-                    "last_name": "Team",
-                    "prefix": "van"
-                },
-                "password_change_declined_at": "2019-03-23 12:32:15",
-                "password_changed_at": "2019-03-25 10:17:00",
-                "phone": {
-                    "area_code": "111",
-                    "country_code": "+03",
-                    "subscriber_number": "123456"
-                },
-                "rcp_client_ip_list": {
-                    "allow": [
-                        "127.0.0.1"
-                    ],
-                    "deny": [
-                        "127.0.0.1"
-                    ]
-                },
-                "reseller_id": 12345,
-                "role": "admin",
-                "secret_key": "SECRETKEYVALUE",
-                "username": "user_name",
-                "vat": "XX123456789X12"
-            }
-        },
         "contactCreateContactRequest": {
             "type": "object",
             "title": "CreateContactRequest",
@@ -5930,11 +5723,11 @@
                 "kpp": "",
                 "locale": "",
                 "name": {
-                    "first_name": "Finance",
-                    "full_name": "Finance Team",
+                    "first_name": "Test",
+                    "full_name": "Test Person",
                     "initials": "T P",
-                    "last_name": "Team",
-                    "prefix": "van"
+                    "last_name": "Person",
+                    "prefix": "Mr"
                 },
                 "password": "",
                 "phone": {
@@ -6068,7 +5861,7 @@
                 },
                 "data": {
                     "title": "Response data",
-                    "$ref": "#/definitions/contactContact"
+                    "$ref": "#/definitions/personcontactContact"
                 },
                 "desc": {
                     "type": "string",
@@ -6105,6 +5898,14 @@
                         "zipcode": "1235 XX"
                     },
                     "api_access_enabled": true,
+                    "api_client_ip_list": {
+                        "allow": [
+                            "127.0.0.1"
+                        ],
+                        "deny": [
+                            "127.0.0.1"
+                        ]
+                    },
                     "auth_type": "simple",
                     "comments": "",
                     "company_name": "Example company",
@@ -6116,11 +5917,11 @@
                     "last_login_at": "2019-04-12 11:58:39",
                     "locale": "nl_NL",
                     "name": {
-                        "first_name": "Finance",
-                        "full_name": "Finance Team",
+                        "first_name": "Test",
+                        "full_name": "Test Person",
                         "initials": "T P",
-                        "last_name": "Team",
-                        "prefix": "van"
+                        "last_name": "Person",
+                        "prefix": "Mr"
                     },
                     "password_change_declined_at": "2019-03-23 12:32:15",
                     "password_changed_at": "2019-03-25 10:17:00",
@@ -6196,6 +5997,14 @@
                                 "zipcode": "1235 XX"
                             },
                             "api_access_enabled": true,
+                            "api_client_ip_list": {
+                                "allow": [
+                                    "127.0.0.1"
+                                ],
+                                "deny": [
+                                    "127.0.0.1"
+                                ]
+                            },
                             "auth_type": "simple",
                             "comments": "",
                             "company_name": "Example company",
@@ -6207,11 +6016,11 @@
                             "last_login_at": "2019-04-12 11:58:39",
                             "locale": "nl_NL",
                             "name": {
-                                "first_name": "Finance",
-                                "full_name": "Finance Team",
+                                "first_name": "Test",
+                                "full_name": "Test Person",
                                 "initials": "T P",
-                                "last_name": "Team",
-                                "prefix": "van"
+                                "last_name": "Person",
+                                "prefix": "Mr"
                             },
                             "password_change_declined_at": "2019-03-23 12:32:15",
                             "password_changed_at": "2019-03-25 10:17:00",
@@ -6248,7 +6057,7 @@
                     "type": "array",
                     "title": "Array of results",
                     "items": {
-                        "$ref": "#/definitions/contactContact"
+                        "$ref": "#/definitions/personcontactContact"
                     }
                 },
                 "total": {
@@ -6275,6 +6084,14 @@
                             "zipcode": "1235 XX"
                         },
                         "api_access_enabled": true,
+                        "api_client_ip_list": {
+                            "allow": [
+                                "127.0.0.1"
+                            ],
+                            "deny": [
+                                "127.0.0.1"
+                            ]
+                        },
                         "auth_type": "simple",
                         "comments": "",
                         "company_name": "Example company",
@@ -6286,11 +6103,11 @@
                         "last_login_at": "2019-04-12 11:58:39",
                         "locale": "nl_NL",
                         "name": {
-                            "first_name": "Finance",
-                            "full_name": "Finance Team",
+                            "first_name": "Test",
+                            "full_name": "Test Person",
                             "initials": "T P",
-                            "last_name": "Team",
-                            "prefix": "van"
+                            "last_name": "Person",
+                            "prefix": "Mr"
                         },
                         "password_change_declined_at": "2019-03-23 12:32:15",
                         "password_changed_at": "2019-03-25 10:17:00",
@@ -6331,7 +6148,7 @@
                 },
                 "initials": {
                     "type": "string",
-                    "title": "First letters of first names, first letter of last name"
+                    "title": "Initials (first letters of first names, first letter of last name)"
                 },
                 "last_name": {
                     "type": "string",
@@ -6343,11 +6160,11 @@
                 }
             },
             "example": {
-                "first_name": "Finance",
-                "full_name": "Finance Team",
+                "first_name": "Test",
+                "full_name": "Test Person",
                 "initials": "T P",
-                "last_name": "Team",
-                "prefix": "van"
+                "last_name": "Person",
+                "prefix": "Mr"
             }
         },
         "contactPhone": {
@@ -6389,6 +6206,10 @@
                     "type": "boolean",
                     "format": "boolean",
                     "title": "Indicates if API access is enabled for the contact"
+                },
+                "api_client_ip_list": {
+                    "title": "API access IP whitelist / blacklist",
+                    "$ref": "#/definitions/contactClientIpList"
                 },
                 "auth_type": {
                     "type": "string",
@@ -6473,6 +6294,14 @@
                     "zipcode": "1235 XX"
                 },
                 "api_access_enabled": false,
+                "api_client_ip_list": {
+                    "allow": [
+                        "127.0.0.1"
+                    ],
+                    "deny": [
+                        "127.0.0.1"
+                    ]
+                },
                 "auth_type": "",
                 "comments": "",
                 "company_name": "",
@@ -6483,11 +6312,11 @@
                 "kpp": "",
                 "locale": "",
                 "name": {
-                    "first_name": "Finance",
-                    "full_name": "Finance Team",
+                    "first_name": "Test",
+                    "full_name": "Test Person",
                     "initials": "T P",
-                    "last_name": "Team",
-                    "prefix": "van"
+                    "last_name": "Person",
+                    "prefix": "Mr"
                 },
                 "password_change_declined_at": "",
                 "phone": {
@@ -6891,9 +6720,218 @@
                 ]
             }
         },
-        "customerAdditionalData": {
+        "customerCreateCustomerRequest": {
             "type": "object",
-            "title": "AdditionalData",
+            "title": "CreateCustomerRequest",
+            "properties": {
+                "additional_data": {
+                    "title": "Collection of data fields that contain additional customer information",
+                    "$ref": "#/definitions/customerCustomerAdditionalData"
+                },
+                "address": {
+                    "title": "Customer's address",
+                    "$ref": "#/definitions/contactAddress"
+                },
+                "comments": {
+                    "type": "string",
+                    "title": "Custom notes to the specified handle"
+                },
+                "company_name": {
+                    "type": "string",
+                    "title": "Company name"
+                },
+                "email": {
+                    "type": "string",
+                    "title": "Customer's email"
+                },
+                "extension_additional_data": {
+                    "type": "array",
+                    "title": "Collection of data fields that are required for certain TLDs",
+                    "items": {
+                        "$ref": "#/definitions/customerExtensionAdditionalData"
+                    }
+                },
+                "fax": {
+                    "title": "Customer's fax",
+                    "$ref": "#/definitions/customerFax"
+                },
+                "locale": {
+                    "type": "string",
+                    "title": "Customer's language"
+                },
+                "name": {
+                    "title": "Customer's full name",
+                    "$ref": "#/definitions/contactName"
+                },
+                "phone": {
+                    "title": "Customer's phone",
+                    "$ref": "#/definitions/contactPhone"
+                },
+                "tags": {
+                    "type": "array",
+                    "title": "Custom tags applied to entity",
+                    "items": {
+                        "$ref": "#/definitions/customerTags"
+                    }
+                },
+                "vat": {
+                    "type": "string",
+                    "title": "VAT (value-added tax) number of the customer"
+                }
+            },
+            "example": {
+                "additional_data": {
+                    "birth_address": "test street 45",
+                    "birth_city": "Test city",
+                    "birth_country": "NL",
+                    "birth_date": "1970-01-01",
+                    "birth_state": "Testprovince",
+                    "birth_zipcode": "123",
+                    "company_registration_city": "Testcity",
+                    "company_registration_number": "XX123456789X04",
+                    "company_registration_subscription_date": "2000-01-01",
+                    "headquarters_address": "Test street 5",
+                    "headquarters_city": "Testcity",
+                    "headquarters_country": "NL",
+                    "headquarters_state": "Testprovince",
+                    "headquarters_zipcode": "123",
+                    "passport_number": "123456",
+                    "social_security_number": "6543210"
+                },
+                "address": {
+                    "city": "Test city",
+                    "country": "NL",
+                    "number": "123",
+                    "state": "Testprovince",
+                    "street": "Test street",
+                    "suffix": "A",
+                    "zipcode": "1235 XX"
+                },
+                "comments": "",
+                "company_name": "Example company",
+                "email": "test@mail.tld",
+                "extension_additional_data": [
+                    {
+                        "data": {
+                            "admin_type": "1",
+                            "applicant_purpose": "P3",
+                            "birth_date": "1970-01-01",
+                            "company_name_cyrillic": "Example company",
+                            "company_name_latin": "Example company",
+                            "company_registration_number": "XX123456789X11",
+                            "contact_title": "CEO",
+                            "ens_auth_id": "",
+                            "ens_key": "",
+                            "first_name_cyrillic": "Test",
+                            "first_name_latin": "Test",
+                            "hr_member": "",
+                            "industry_class": "19",
+                            "is_private_enterpreneur": "",
+                            "last_name_cyrillic": "Person",
+                            "last_name_latin": "Person",
+                            "legal_address_cyrillic": "13245 Country, City, street, 2",
+                            "middle_name_cyrillic": "Nikolaevich",
+                            "middle_name_latin": "Nikolaevich",
+                            "mobile_phone_number": "+7 (123) 456-78-90",
+                            "nexus_category": "C31",
+                            "org_type": "1",
+                            "passport_issue_date": "2009-01-11",
+                            "passport_issuer": "Issuer name",
+                            "passport_number": "12345678",
+                            "passport_series": "1234",
+                            "postal_address_cyrillic": "12345 Country, City, street, 1",
+                            "social_security_number": "X123455123X",
+                            "tax_payer_number": "1345678",
+                            "uin": "12345-6",
+                            "user_type": "Individual",
+                            "vat": "XX123456789X12",
+                            "website": "http://example.com",
+                            "whois_email": "test@mail.tld"
+                        },
+                        "name": "ru"
+                    }
+                ],
+                "fax": {
+                    "area_code": "",
+                    "country_code": "",
+                    "subscriber_number": ""
+                },
+                "locale": "nl_NL",
+                "name": {
+                    "first_name": "Test",
+                    "full_name": "Test Person",
+                    "initials": "T P",
+                    "last_name": "Person",
+                    "prefix": "Mr"
+                },
+                "phone": {
+                    "area_code": "111",
+                    "country_code": "+03",
+                    "subscriber_number": "123456"
+                },
+                "tags": [
+                    {
+                        "key": "customer",
+                        "value": "VIP"
+                    }
+                ],
+                "vat": "NL123456789X11"
+            }
+        },
+        "customerCreateCustomerResponse": {
+            "type": "object",
+            "title": "CreateCustomerResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "Response data",
+                    "$ref": "#/definitions/customerCreateCustomerResponseData"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "Array of warning messages",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "handle": "XX123456-XX"
+                },
+                "desc": ""
+            }
+        },
+        "customerCreateCustomerResponseData": {
+            "type": "object",
+            "title": "CreateCustomerResponseData",
+            "properties": {
+                "handle": {
+                    "type": "string",
+                    "title": "Customer unique identifier or handle, which can be created via CreateCustomer API method"
+                }
+            },
+            "example": {
+                "handle": "XX123456-XX"
+            }
+        },
+        "customerCustomerAdditionalData": {
+            "type": "object",
+            "title": "CustomerAdditionalData",
             "properties": {
                 "birth_address": {
                     "type": "string",
@@ -6977,258 +7015,6 @@
                 "headquarters_zipcode": "123",
                 "passport_number": "123456",
                 "social_security_number": "6543210"
-            }
-        },
-        "customerAddress": {
-            "type": "object",
-            "title": "Address",
-            "properties": {
-                "city": {
-                    "type": "string",
-                    "title": "City"
-                },
-                "country": {
-                    "type": "string",
-                    "title": "Country code"
-                },
-                "number": {
-                    "type": "string",
-                    "title": "Street number"
-                },
-                "state": {
-                    "type": "string",
-                    "title": "State / province"
-                },
-                "street": {
-                    "type": "string",
-                    "title": "Street"
-                },
-                "suffix": {
-                    "type": "string",
-                    "title": "Address suffix"
-                },
-                "zipcode": {
-                    "type": "string",
-                    "title": "Postal code"
-                }
-            },
-            "example": {
-                "city": "Test city",
-                "country": "NL",
-                "number": "1",
-                "state": "Testprovince",
-                "street": "Test street",
-                "suffix": "A",
-                "zipcode": "1236 XX"
-            }
-        },
-        "customerCreateCustomerRequest": {
-            "type": "object",
-            "title": "CreateCustomerRequest",
-            "properties": {
-                "additional_data": {
-                    "title": "Collection of data fields that contain additional customer information",
-                    "$ref": "#/definitions/customerAdditionalData"
-                },
-                "address": {
-                    "title": "Customer's address",
-                    "$ref": "#/definitions/customerAddress"
-                },
-                "comments": {
-                    "type": "string",
-                    "title": "Custom notes to the specified handle"
-                },
-                "company_name": {
-                    "type": "string",
-                    "title": "Company name"
-                },
-                "email": {
-                    "type": "string",
-                    "title": "Customer's email"
-                },
-                "extension_additional_data": {
-                    "type": "array",
-                    "title": "Collection of data fields that are required for certain TLDs",
-                    "items": {
-                        "$ref": "#/definitions/customerExtensionAdditionalData"
-                    }
-                },
-                "fax": {
-                    "title": "Customer's fax",
-                    "$ref": "#/definitions/customerFax"
-                },
-                "locale": {
-                    "type": "string",
-                    "title": "Customer's language"
-                },
-                "name": {
-                    "title": "Customer's full name",
-                    "$ref": "#/definitions/customerName"
-                },
-                "phone": {
-                    "title": "Customer's phone",
-                    "$ref": "#/definitions/customerPhone"
-                },
-                "tags": {
-                    "type": "array",
-                    "title": "Custom tags applied to entity",
-                    "items": {
-                        "$ref": "#/definitions/customerTags"
-                    }
-                },
-                "vat": {
-                    "type": "string",
-                    "title": "VAT (value-added tax) number of the customer"
-                }
-            },
-            "example": {
-                "additional_data": {
-                    "birth_address": "test street 45",
-                    "birth_city": "Test city",
-                    "birth_country": "NL",
-                    "birth_date": "1970-01-01",
-                    "birth_state": "Testprovince",
-                    "birth_zipcode": "123",
-                    "company_registration_city": "Testcity",
-                    "company_registration_number": "XX123456789X04",
-                    "company_registration_subscription_date": "2000-01-01",
-                    "headquarters_address": "Test street 5",
-                    "headquarters_city": "Testcity",
-                    "headquarters_country": "NL",
-                    "headquarters_state": "Testprovince",
-                    "headquarters_zipcode": "123",
-                    "passport_number": "123456",
-                    "social_security_number": "6543210"
-                },
-                "address": {
-                    "city": "Test city",
-                    "country": "NL",
-                    "number": "1",
-                    "state": "Testprovince",
-                    "street": "Test street",
-                    "suffix": "A",
-                    "zipcode": "1236 XX"
-                },
-                "comments": "",
-                "company_name": "Example company",
-                "email": "test@mail.tld",
-                "extension_additional_data": [
-                    {
-                        "data": {
-                            "admin_type": "1",
-                            "applicant_purpose": "P3",
-                            "birth_date": "1970-01-01",
-                            "company_name_cyrillic": "Example company",
-                            "company_name_latin": "Example company",
-                            "company_registration_number": "XX123456789X11",
-                            "contact_title": "CEO",
-                            "ens_auth_id": "",
-                            "ens_key": "",
-                            "first_name_cyrillic": "Test",
-                            "first_name_latin": "Test",
-                            "hr_member": "",
-                            "industry_class": "19",
-                            "is_private_enterpreneur": "",
-                            "last_name_cyrillic": "Person",
-                            "last_name_latin": "Person",
-                            "legal_address_cyrillic": "13245 Country, City, street, 2",
-                            "middle_name_cyrillic": "Nikolaevich",
-                            "middle_name_latin": "Nikolaevich",
-                            "mobile_phone_number": "+7 (123) 456-78-90",
-                            "nexus_category": "C31",
-                            "org_type": "1",
-                            "passport_issue_date": "2009-01-11",
-                            "passport_issuer": "Issuer name",
-                            "passport_number": "12345678",
-                            "passport_series": "1234",
-                            "postal_address_cyrillic": "12345 Country, City, street, 1",
-                            "social_security_number": "X123455123X",
-                            "tax_payer_number": "1345678",
-                            "uin": "12345-6",
-                            "user_type": "Individual",
-                            "vat": "XX123456789X12",
-                            "website": "http://example.com",
-                            "whois_email": "test@mail.tld"
-                        },
-                        "name": "ru"
-                    }
-                ],
-                "fax": {
-                    "area_code": "111",
-                    "country_code": "+05",
-                    "subscriber_number": "123456"
-                },
-                "locale": "nl_NL",
-                "name": {
-                    "first_name": "Test",
-                    "full_name": "Test Person",
-                    "initials": "T P",
-                    "last_name": "Person",
-                    "prefix": "van der"
-                },
-                "phone": {
-                    "area_code": "111",
-                    "country_code": "+04",
-                    "subscriber_number": "123456"
-                },
-                "tags": [
-                    {
-                        "key": "customer",
-                        "value": "VIP"
-                    }
-                ],
-                "vat": "NL123456789X11"
-            }
-        },
-        "customerCreateCustomerResponse": {
-            "type": "object",
-            "title": "CreateCustomerResponse",
-            "properties": {
-                "code": {
-                    "type": "integer",
-                    "format": "int32",
-                    "title": "Response code"
-                },
-                "data": {
-                    "title": "Response data",
-                    "$ref": "#/definitions/customerCreateCustomerResponseData"
-                },
-                "desc": {
-                    "type": "string",
-                    "title": "Response description"
-                },
-                "maintenance": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "Indicates if Openprovider API is on maintenance"
-                },
-                "warnings": {
-                    "type": "array",
-                    "title": "Array of warning messages",
-                    "items": {
-                        "$ref": "#/definitions/errorWarning"
-                    }
-                }
-            },
-            "example": {
-                "code": 0,
-                "data": {
-                    "handle": "XX123456-XX"
-                },
-                "desc": ""
-            }
-        },
-        "customerCreateCustomerResponseData": {
-            "type": "object",
-            "title": "CreateCustomerResponseData",
-            "properties": {
-                "handle": {
-                    "type": "string",
-                    "title": "Customer unique identifier or handle, which can be created via CreateCustomer API method"
-                }
-            },
-            "example": {
-                "handle": "XX123456-XX"
             }
         },
         "customerDeleteCustomerResponse": {
@@ -7532,9 +7318,9 @@
                 }
             },
             "example": {
-                "area_code": "111",
-                "country_code": "+05",
-                "subscriber_number": "123456"
+                "area_code": "",
+                "country_code": "",
+                "subscriber_number": ""
             }
         },
         "customerGetCustomerResponse": {
@@ -7591,11 +7377,11 @@
                     "address": {
                         "city": "Test city",
                         "country": "NL",
-                        "number": "1",
+                        "number": "123",
                         "state": "Testprovince",
                         "street": "Test street",
                         "suffix": "A",
-                        "zipcode": "1236 XX"
+                        "zipcode": "1235 XX"
                     },
                     "comments": "Some comment here",
                     "comments_last_changed_at": "2014-05-08 19:04:11",
@@ -7645,9 +7431,9 @@
                         }
                     ],
                     "fax": {
-                        "area_code": "111",
-                        "country_code": "+05",
-                        "subscriber_number": "123456"
+                        "area_code": "",
+                        "country_code": "",
+                        "subscriber_number": ""
                     },
                     "handle": "XX123456-XX",
                     "id": 123456789,
@@ -7659,11 +7445,11 @@
                         "full_name": "Test Person",
                         "initials": "T P",
                         "last_name": "Person",
-                        "prefix": "van der"
+                        "prefix": "Mr"
                     },
                     "phone": {
                         "area_code": "111",
-                        "country_code": "+04",
+                        "country_code": "+03",
                         "subscriber_number": "123456"
                     },
                     "reseller_id": 5349,
@@ -7684,11 +7470,11 @@
             "properties": {
                 "additional_data": {
                     "title": "Collection of data fields that contain additional customer information",
-                    "$ref": "#/definitions/customerAdditionalData"
+                    "$ref": "#/definitions/customerCustomerAdditionalData"
                 },
                 "address": {
                     "title": "Address",
-                    "$ref": "#/definitions/customerAddress"
+                    "$ref": "#/definitions/contactAddress"
                 },
                 "comments": {
                     "type": "string",
@@ -7749,11 +7535,11 @@
                 },
                 "name": {
                     "title": "Customer's full name",
-                    "$ref": "#/definitions/customerName"
+                    "$ref": "#/definitions/contactName"
                 },
                 "phone": {
                     "title": "Phone number",
-                    "$ref": "#/definitions/customerPhone"
+                    "$ref": "#/definitions/contactPhone"
                 },
                 "reseller_id": {
                     "type": "integer",
@@ -7794,11 +7580,11 @@
                 "address": {
                     "city": "Test city",
                     "country": "NL",
-                    "number": "1",
+                    "number": "123",
                     "state": "Testprovince",
                     "street": "Test street",
                     "suffix": "A",
-                    "zipcode": "1236 XX"
+                    "zipcode": "1235 XX"
                 },
                 "comments": "Some comment here",
                 "comments_last_changed_at": "2014-05-08 19:04:11",
@@ -7848,9 +7634,9 @@
                     }
                 ],
                 "fax": {
-                    "area_code": "111",
-                    "country_code": "+05",
-                    "subscriber_number": "123456"
+                    "area_code": "",
+                    "country_code": "",
+                    "subscriber_number": ""
                 },
                 "handle": "XX123456-XX",
                 "id": 123456789,
@@ -7862,11 +7648,11 @@
                     "full_name": "Test Person",
                     "initials": "T P",
                     "last_name": "Person",
-                    "prefix": "van der"
+                    "prefix": "Mr"
                 },
                 "phone": {
                     "area_code": "111",
-                    "country_code": "+04",
+                    "country_code": "+03",
                     "subscriber_number": "123456"
                 },
                 "reseller_id": 5349,
@@ -7914,6 +7700,20 @@
             },
             "example": {
                 "code": 0,
+                "data": [
+                    {
+                        "description": "IDN script states what language or character set the domain name is in",
+                        "name": "idnScript",
+                        "options": [
+                            {
+                                "description": "Norwegian",
+                                "value": "no"
+                            }
+                        ],
+                        "required": false,
+                        "type": "select"
+                    }
+                ],
                 "desc": ""
             }
         },
@@ -7973,11 +7773,11 @@
                             "address": {
                                 "city": "Test city",
                                 "country": "NL",
-                                "number": "1",
+                                "number": "123",
                                 "state": "Testprovince",
                                 "street": "Test street",
                                 "suffix": "A",
-                                "zipcode": "1236 XX"
+                                "zipcode": "1235 XX"
                             },
                             "comments": "",
                             "comments_last_changed_at": "",
@@ -8035,11 +7835,11 @@
                                 "full_name": "Test Person",
                                 "initials": "T P",
                                 "last_name": "Person",
-                                "prefix": "van der"
+                                "prefix": "Mr"
                             },
                             "phone": {
                                 "area_code": "111",
-                                "country_code": "+04",
+                                "country_code": "+03",
                                 "subscriber_number": "123456"
                             },
                             "reseller_id": 5349,
@@ -8097,11 +7897,11 @@
                         "address": {
                             "city": "Test city",
                             "country": "NL",
-                            "number": "1",
+                            "number": "123",
                             "state": "Testprovince",
                             "street": "Test street",
                             "suffix": "A",
-                            "zipcode": "1236 XX"
+                            "zipcode": "1235 XX"
                         },
                         "comments": "",
                         "comments_last_changed_at": "",
@@ -8159,11 +7959,11 @@
                             "full_name": "Test Person",
                             "initials": "T P",
                             "last_name": "Person",
-                            "prefix": "van der"
+                            "prefix": "Mr"
                         },
                         "phone": {
                             "area_code": "111",
-                            "country_code": "+04",
+                            "country_code": "+03",
                             "subscriber_number": "123456"
                         },
                         "reseller_id": 5349,
@@ -8184,11 +7984,11 @@
             "properties": {
                 "additional_data": {
                     "title": "Collection of data fields that contain additional customer information",
-                    "$ref": "#/definitions/customerAdditionalData"
+                    "$ref": "#/definitions/customerCustomerAdditionalData"
                 },
                 "address": {
                     "title": "Customer's address\nAddress",
-                    "$ref": "#/definitions/customerAddress"
+                    "$ref": "#/definitions/contactAddress"
                 },
                 "comments": {
                     "type": "string",
@@ -8241,11 +8041,11 @@
                 },
                 "name": {
                     "title": "Customer's full name",
-                    "$ref": "#/definitions/customerName"
+                    "$ref": "#/definitions/contactName"
                 },
                 "phone": {
                     "title": "Customer's phone\nPhone number",
-                    "$ref": "#/definitions/customerPhone"
+                    "$ref": "#/definitions/contactPhone"
                 },
                 "reseller_id": {
                     "type": "integer",
@@ -8282,11 +8082,11 @@
                 "address": {
                     "city": "Test city",
                     "country": "NL",
-                    "number": "1",
+                    "number": "123",
                     "state": "Testprovince",
                     "street": "Test street",
                     "suffix": "A",
-                    "zipcode": "1236 XX"
+                    "zipcode": "1235 XX"
                 },
                 "comments": "",
                 "comments_last_changed_at": "",
@@ -8344,11 +8144,11 @@
                     "full_name": "Test Person",
                     "initials": "T P",
                     "last_name": "Person",
-                    "prefix": "van der"
+                    "prefix": "Mr"
                 },
                 "phone": {
                     "area_code": "111",
-                    "country_code": "+04",
+                    "country_code": "+03",
                     "subscriber_number": "123456"
                 },
                 "reseller_id": 5349,
@@ -8358,62 +8158,6 @@
                         "value": "VIP"
                     }
                 ]
-            }
-        },
-        "customerName": {
-            "type": "object",
-            "title": "Name",
-            "properties": {
-                "first_name": {
-                    "type": "string",
-                    "title": "Customer's first name\nFirst name"
-                },
-                "full_name": {
-                    "type": "string",
-                    "title": "Customer's full name\nFull name"
-                },
-                "initials": {
-                    "type": "string",
-                    "title": "Initials (first letters of first names, first letter of last name)"
-                },
-                "last_name": {
-                    "type": "string",
-                    "title": "Customer's last name\nLast name"
-                },
-                "prefix": {
-                    "type": "string",
-                    "title": "Prefix (often occuring in Dutch names; for example van de)"
-                }
-            },
-            "example": {
-                "first_name": "Test",
-                "full_name": "Test Person",
-                "initials": "T P",
-                "last_name": "Person",
-                "prefix": "van der"
-            }
-        },
-        "customerPhone": {
-            "type": "object",
-            "title": "Phone",
-            "properties": {
-                "area_code": {
-                    "type": "string",
-                    "title": "Area code part of the phone number (excluding leading zero)"
-                },
-                "country_code": {
-                    "type": "string",
-                    "title": "Country code part of the phone number (including +)"
-                },
-                "subscriber_number": {
-                    "type": "string",
-                    "title": "Subscriber number part of the phone number"
-                }
-            },
-            "example": {
-                "area_code": "111",
-                "country_code": "+04",
-                "subscriber_number": "123456"
             }
         },
         "customerTags": {
@@ -8440,11 +8184,11 @@
             "properties": {
                 "additional_data": {
                     "title": "Collection of data fields that contain additional customer information",
-                    "$ref": "#/definitions/customerAdditionalData"
+                    "$ref": "#/definitions/customerCustomerAdditionalData"
                 },
                 "address": {
                     "title": "Customer's address",
-                    "$ref": "#/definitions/customerAddress"
+                    "$ref": "#/definitions/contactAddress"
                 },
                 "comments": {
                     "type": "string",
@@ -8475,7 +8219,7 @@
                 },
                 "phone": {
                     "title": "Customer's phone",
-                    "$ref": "#/definitions/customerPhone"
+                    "$ref": "#/definitions/contactPhone"
                 },
                 "tags": {
                     "type": "array",
@@ -8511,11 +8255,11 @@
                 "address": {
                     "city": "Test city",
                     "country": "NL",
-                    "number": "1",
+                    "number": "123",
                     "state": "Testprovince",
                     "street": "Test street",
                     "suffix": "A",
-                    "zipcode": "1236 XX"
+                    "zipcode": "1235 XX"
                 },
                 "comments": "Some comment here",
                 "email": "test@mail.tld",
@@ -8561,15 +8305,15 @@
                     }
                 ],
                 "fax": {
-                    "area_code": "111",
-                    "country_code": "+05",
-                    "subscriber_number": "123456"
+                    "area_code": "",
+                    "country_code": "",
+                    "subscriber_number": ""
                 },
                 "handle": "XX123456-XX",
                 "locale": "nl_NL",
                 "phone": {
                     "area_code": "111",
-                    "country_code": "+04",
+                    "country_code": "+03",
                     "subscriber_number": "123456"
                 },
                 "tags": [
@@ -8867,7 +8611,6 @@
                 "auth_code": "",
                 "domain": {
                     "extension": "london",
-                    "idn_extension": "es",
                     "name": "test4"
                 },
                 "id": 0,
@@ -8971,11 +8714,11 @@
                     "title": "Additional domain data",
                     "$ref": "#/definitions/domainCheckAdditionalData"
                 },
-                "item": {
+                "domains": {
                     "type": "array",
-                    "title": "List of domains to check",
+                    "title": "Domain name to check",
                     "items": {
-                        "$ref": "#/definitions/domainDomainItem"
+                        "$ref": "#/definitions/domainDomain"
                     }
                 },
                 "with_price": {
@@ -8993,10 +8736,10 @@
                 "additional_data": {
                     "idn_script": "cyrl"
                 },
-                "item": [
+                "domains": [
                     {
-                        "extension": "biz",
-                        "name": "example"
+                        "extension": "london",
+                        "name": "test4"
                     }
                 ],
                 "with_price": false,
@@ -9324,11 +9067,6 @@
                     "type": "string",
                     "title": "Reseller handle"
                 },
-                "reseller_id": {
-                    "type": "integer",
-                    "format": "int32",
-                    "title": "Reseller id"
-                },
                 "tech_handle": {
                     "type": "string",
                     "title": "Tech contact handle"
@@ -9394,7 +9132,6 @@
                 ],
                 "domain": {
                     "extension": "london",
-                    "idn_extension": "es",
                     "name": "test4"
                 },
                 "is_dnssec_enabled": false,
@@ -9420,7 +9157,6 @@
                 "period": 1,
                 "promo_code": "PROMOCODE",
                 "reseller_handle": "XX123456-XX",
-                "reseller_id": 0,
                 "tech_handle": "XX123456-XX",
                 "unit": "y",
                 "use_domicile": false
@@ -9666,10 +9402,6 @@
                     "type": "string",
                     "title": "Domain extension"
                 },
-                "idn_extension": {
-                    "type": "string",
-                    "title": "Domain IDN extension"
-                },
                 "name": {
                     "type": "string",
                     "title": "Domain name without extension"
@@ -9677,26 +9409,7 @@
             },
             "example": {
                 "extension": "london",
-                "idn_extension": "es",
                 "name": "test4"
-            }
-        },
-        "domainDomainItem": {
-            "type": "object",
-            "title": "DomainItem",
-            "properties": {
-                "extension": {
-                    "type": "string",
-                    "title": "Domain extension"
-                },
-                "name": {
-                    "type": "string",
-                    "title": "Domain name without extension"
-                }
-            },
-            "example": {
-                "extension": "biz",
-                "name": "example"
             }
         },
         "domainGetDomainResponse": {
@@ -9804,7 +9517,6 @@
                     ],
                     "domain": {
                         "extension": "london",
-                        "idn_extension": "es",
                         "name": "test4"
                     },
                     "expiration_date": "2014-07-04 17:14:44",
@@ -10319,7 +10031,6 @@
                 ],
                 "domain": {
                     "extension": "london",
-                    "idn_extension": "es",
                     "name": "test4"
                 },
                 "expiration_date": "2014-07-04 17:14:44",
@@ -10608,7 +10319,6 @@
                             ],
                             "domain": {
                                 "extension": "london",
-                                "idn_extension": "es",
                                 "name": "test4"
                             },
                             "expiration_date": "2014-07-04 17:14:44",
@@ -10797,7 +10507,6 @@
                         ],
                         "domain": {
                             "extension": "london",
-                            "idn_extension": "es",
                             "name": "test4"
                         },
                         "expiration_date": "2014-07-04 17:14:44",
@@ -11096,7 +10805,6 @@
             "example": {
                 "domain": {
                     "extension": "london",
-                    "idn_extension": "es",
                     "name": "test4"
                 },
                 "id": 0,
@@ -11171,7 +10879,6 @@
             "example": {
                 "domain": {
                     "extension": "london",
-                    "idn_extension": "es",
                     "name": "test4"
                 },
                 "id": 0
@@ -11259,21 +10966,14 @@
                     "type": "integer",
                     "format": "int32",
                     "title": "Domain id number"
-                },
-                "reseller_id": {
-                    "type": "integer",
-                    "format": "int32",
-                    "title": "Reseller id"
                 }
             },
             "example": {
                 "domain": {
                     "extension": "london",
-                    "idn_extension": "es",
                     "name": "test4"
                 },
-                "id": 0,
-                "reseller_id": 0
+                "id": 0
             }
         },
         "domainSendFoa1Response": {
@@ -11444,7 +11144,6 @@
                 ],
                 "domain": {
                     "extension": "london",
-                    "idn_extension": "es",
                     "name": "test4"
                 },
                 "name_servers": [
@@ -11697,11 +11396,6 @@
                     "type": "string",
                     "title": "Reseller handle"
                 },
-                "reseller_id": {
-                    "type": "integer",
-                    "format": "int32",
-                    "title": "Reseller id"
-                },
                 "tech_handle": {
                     "type": "string",
                     "title": "Tech contact handle"
@@ -11752,7 +11446,6 @@
                 ],
                 "domain": {
                     "extension": "london",
-                    "idn_extension": "es",
                     "name": "test4"
                 },
                 "is_dnssec_enabled": false,
@@ -11777,7 +11470,6 @@
                 "period": 0,
                 "promo_code": "PROMOCODE",
                 "reseller_handle": "XX123456-XX",
-                "reseller_id": 0,
                 "tech_handle": "XX123456-XX",
                 "type": "",
                 "unit": "y",
@@ -11896,21 +11588,14 @@
                     "type": "integer",
                     "format": "int32",
                     "title": "Domain id number"
-                },
-                "reseller_id": {
-                    "type": "integer",
-                    "format": "int32",
-                    "title": "Reseller id"
                 }
             },
             "example": {
                 "domain": {
                     "extension": "london",
-                    "idn_extension": "es",
                     "name": "test4"
                 },
-                "id": 0,
-                "reseller_id": 0
+                "id": 0
             }
         },
         "domainTryAgainLastOperationResponse": {
@@ -12168,7 +11853,6 @@
                 ],
                 "domain": {
                     "extension": "london",
-                    "idn_extension": "es",
                     "name": "test4"
                 },
                 "id": 0,
@@ -12256,6 +11940,25 @@
             "example": {
                 "id": 123456789,
                 "status": "ACT"
+            }
+        },
+        "domainpricePrice": {
+            "type": "object",
+            "title": "Price",
+            "properties": {
+                "currency": {
+                    "type": "string",
+                    "title": "Product or reseller currency"
+                },
+                "price": {
+                    "type": "number",
+                    "format": "double",
+                    "title": "Amount in product or reseller currency"
+                }
+            },
+            "example": {
+                "currency": "USD",
+                "price": 8.06
             }
         },
         "emailCreateEmailRequest": {
@@ -13067,47 +12770,42 @@
         },
         "errorError": {
             "type": "object",
-            "title": "Error message",
+            "title": "Error",
             "properties": {
                 "code": {
-                    "description": "Error code.",
                     "type": "integer",
                     "format": "int32",
                     "title": "Error code"
                 },
                 "data": {
-                    "description": "Additional error description.",
                     "type": "string",
                     "title": "Additional error description"
                 },
                 "desc": {
-                    "description": "Error description.",
                     "type": "string",
                     "title": "Error description"
                 }
             },
             "example": {
                 "code": 0,
+                "data": "",
                 "desc": ""
             }
         },
         "errorWarning": {
             "type": "object",
-            "title": "Warning message",
+            "title": "Warning",
             "properties": {
                 "code": {
-                    "description": "Warning code.",
                     "type": "integer",
                     "format": "int32",
                     "title": "Warning code"
                 },
                 "data": {
-                    "description": "Additional warning description.",
                     "type": "string",
                     "title": "Additional warning description"
                 },
                 "desc": {
-                    "description": "Warning description.",
                     "type": "string",
                     "title": "Warning description"
                 }
@@ -13116,6 +12814,24 @@
                 "code": 0,
                 "data": "",
                 "desc": ""
+            }
+        },
+        "helperstagTag": {
+            "type": "object",
+            "title": "Tag",
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "title": "The key of the tag. Allowed values: 'customer'"
+                },
+                "value": {
+                    "type": "string",
+                    "title": "The value of the tag. I.e.: VIP customer"
+                }
+            },
+            "example": {
+                "key": "customer",
+                "value": "example"
             }
         },
         "historyZoneHistory": {
@@ -14105,82 +13821,6 @@
                     "vz_unl_8_m": false
                 },
                 "title": "Plesk for VPS Web Host Edition"
-            }
-        },
-        "licenseLicense": {
-            "type": "object",
-            "title": "License",
-            "properties": {
-                "activation_code": {
-                    "type": "string",
-                    "title": "License activation code"
-                },
-                "billing_type": {
-                    "type": "string",
-                    "title": "License billing type"
-                },
-                "comment": {
-                    "type": "string",
-                    "title": "Custom notes"
-                },
-                "contract": {
-                    "type": "string",
-                    "title": "Openprovider contract version"
-                },
-                "expiration_date": {
-                    "type": "string",
-                    "title": "License expiration date"
-                },
-                "ip_address_binding": {
-                    "type": "string",
-                    "title": "IP addess to bind license to"
-                },
-                "items": {
-                    "type": "array",
-                    "title": "List of license items",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "key_id": {
-                    "type": "integer",
-                    "format": "int32",
-                    "title": "License key ID"
-                },
-                "key_number": {
-                    "type": "string",
-                    "title": "License key number"
-                },
-                "order_date": {
-                    "type": "string",
-                    "title": "License order date"
-                },
-                "parent_key_id": {
-                    "type": "integer",
-                    "format": "int32",
-                    "title": "Key ID of the partent license"
-                },
-                "period": {
-                    "type": "integer",
-                    "format": "int32",
-                    "title": "Period for which license is active"
-                },
-                "product": {
-                    "type": "string",
-                    "title": "Product type (Plesk or Virtuozzo)"
-                },
-                "sku_values": {
-                    "title": "List of license SKU values",
-                    "$ref": "#/definitions/licenseSkuValues"
-                },
-                "status": {
-                    "type": "string",
-                    "title": "License status"
-                },
-                "title": {
-                    "type": "string",
-                    "title": "Custom license title"
-                }
             }
         },
         "licenseLicenseItem": {
@@ -15465,7 +15105,7 @@
                     "type": "array",
                     "title": "Array of results",
                     "items": {
-                        "$ref": "#/definitions/licenseLicense"
+                        "$ref": "#/definitions/licenselicenseLicense"
                     }
                 },
                 "total": {
@@ -17706,6 +17346,82 @@
                 }
             }
         },
+        "licenselicenseLicense": {
+            "type": "object",
+            "title": "License",
+            "properties": {
+                "activation_code": {
+                    "type": "string",
+                    "title": "License activation code"
+                },
+                "billing_type": {
+                    "type": "string",
+                    "title": "License billing type"
+                },
+                "comment": {
+                    "type": "string",
+                    "title": "Custom notes"
+                },
+                "contract": {
+                    "type": "string",
+                    "title": "Openprovider contract version"
+                },
+                "expiration_date": {
+                    "type": "string",
+                    "title": "License expiration date"
+                },
+                "ip_address_binding": {
+                    "type": "string",
+                    "title": "IP addess to bind license to"
+                },
+                "items": {
+                    "type": "array",
+                    "title": "List of license items",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "key_id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "License key ID"
+                },
+                "key_number": {
+                    "type": "string",
+                    "title": "License key number"
+                },
+                "order_date": {
+                    "type": "string",
+                    "title": "License order date"
+                },
+                "parent_key_id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Key ID of the partent license"
+                },
+                "period": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Period for which license is active"
+                },
+                "product": {
+                    "type": "string",
+                    "title": "Product type (Plesk or Virtuozzo)"
+                },
+                "sku_values": {
+                    "title": "List of license SKU values",
+                    "$ref": "#/definitions/licenseSkuValues"
+                },
+                "status": {
+                    "type": "string",
+                    "title": "License status"
+                },
+                "title": {
+                    "type": "string",
+                    "title": "Custom license title"
+                }
+            }
+        },
         "nameserverCreateNameserverResponse": {
             "type": "object",
             "title": "CreateNameserverResponse",
@@ -19765,22 +19481,172 @@
                 }
             }
         },
-        "priceDomain": {
+        "personcontactContact": {
             "type": "object",
-            "title": "Domain",
+            "title": "Contact",
             "properties": {
-                "extension": {
+                "additional_data": {
+                    "title": "Collection of data fields that contain additional customer information",
+                    "$ref": "#/definitions/contactAdditionalData"
+                },
+                "address": {
+                    "title": "Address",
+                    "$ref": "#/definitions/contactAddress"
+                },
+                "api_access_enabled": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if API access is enabled for the contact"
+                },
+                "api_client_ip_list": {
+                    "title": "API access IP whitelist / blacklist",
+                    "$ref": "#/definitions/contactClientIpList"
+                },
+                "auth_type": {
                     "type": "string",
-                    "title": "Domain extension"
+                    "title": "Autherntication type"
+                },
+                "comments": {
+                    "type": "string",
+                    "title": "Custom notes to the specified handle"
+                },
+                "company_name": {
+                    "type": "string",
+                    "title": "Company name"
+                },
+                "email": {
+                    "type": "string",
+                    "title": "Email address"
+                },
+                "hash_changed_at": {
+                    "type": "string",
+                    "title": "Date of last hash update"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Object ID"
+                },
+                "is_active": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if contact is active"
+                },
+                "last_api_call_at": {
+                    "type": "string",
+                    "title": "Last API call date"
+                },
+                "last_login_at": {
+                    "type": "string",
+                    "title": "Last login date"
+                },
+                "locale": {
+                    "type": "string",
+                    "title": "Customer's language"
                 },
                 "name": {
+                    "title": "Full name",
+                    "$ref": "#/definitions/contactName"
+                },
+                "password_change_declined_at": {
                     "type": "string",
-                    "title": "Domain name without extension"
+                    "title": "Password change declined date"
+                },
+                "password_changed_at": {
+                    "type": "string",
+                    "title": "Last password change date"
+                },
+                "phone": {
+                    "title": "Phone number",
+                    "$ref": "#/definitions/contactPhone"
+                },
+                "rcp_client_ip_list": {
+                    "title": "RCP access IP whitelist / blacklist",
+                    "$ref": "#/definitions/contactClientIpList"
+                },
+                "reseller_id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Reseller ID"
+                },
+                "role": {
+                    "type": "string",
+                    "title": "Contact's role"
+                },
+                "secret_key": {
+                    "type": "string",
+                    "title": "The secret key"
+                },
+                "username": {
+                    "type": "string",
+                    "title": "Username"
+                },
+                "vat": {
+                    "type": "string",
+                    "title": "VAT (value-added tax) number of the customer"
                 }
             },
             "example": {
-                "extension": "com",
-                "name": "example"
+                "additional_data": {
+                    "birth_city": "Test city",
+                    "birth_date": "1969-12-31",
+                    "social_security_number": "12326178T"
+                },
+                "address": {
+                    "city": "Test city",
+                    "country": "NL",
+                    "number": "123",
+                    "state": "Testprovince",
+                    "street": "Test street",
+                    "suffix": "A",
+                    "zipcode": "1235 XX"
+                },
+                "api_access_enabled": true,
+                "api_client_ip_list": {
+                    "allow": [
+                        "127.0.0.1"
+                    ],
+                    "deny": [
+                        "127.0.0.1"
+                    ]
+                },
+                "auth_type": "simple",
+                "comments": "",
+                "company_name": "Example company",
+                "email": "test@mail.tld",
+                "hash_changed_at": "2019-03-25 10:17:02",
+                "id": 123456789,
+                "is_active": false,
+                "last_api_call_at": "2019-03-25 10:17:01",
+                "last_login_at": "2019-04-12 11:58:39",
+                "locale": "nl_NL",
+                "name": {
+                    "first_name": "Test",
+                    "full_name": "Test Person",
+                    "initials": "T P",
+                    "last_name": "Person",
+                    "prefix": "Mr"
+                },
+                "password_change_declined_at": "2019-03-23 12:32:15",
+                "password_changed_at": "2019-03-25 10:17:00",
+                "phone": {
+                    "area_code": "111",
+                    "country_code": "+03",
+                    "subscriber_number": "123456"
+                },
+                "rcp_client_ip_list": {
+                    "allow": [
+                        "127.0.0.1"
+                    ],
+                    "deny": [
+                        "127.0.0.1"
+                    ]
+                },
+                "reseller_id": 12345,
+                "role": "admin",
+                "secret_key": "SECRETKEYVALUE",
+                "username": "user_name",
+                "vat": "XX123456789X12"
             }
         },
         "priceGetPriceResponse": {
@@ -19859,36 +19725,17 @@
                 }
             }
         },
-        "pricePrice": {
-            "type": "object",
-            "title": "Price",
-            "properties": {
-                "currency": {
-                    "type": "string",
-                    "title": "Product or reseller currency"
-                },
-                "price": {
-                    "type": "number",
-                    "format": "double",
-                    "title": "Amount in product or reseller currency"
-                }
-            },
-            "example": {
-                "currency": "USD",
-                "price": 8.06
-            }
-        },
         "pricePrices": {
             "type": "object",
             "title": "Prices",
             "properties": {
                 "product": {
                     "title": "Amount in product currency",
-                    "$ref": "#/definitions/pricePrice"
+                    "$ref": "#/definitions/domainpricePrice"
                 },
                 "reseller": {
                     "title": "Amount in reseller currency",
-                    "$ref": "#/definitions/pricePrice"
+                    "$ref": "#/definitions/domainpricePrice"
                 }
             },
             "example": {
@@ -20882,76 +20729,6 @@
                 "value": "abcd.domain.com"
             }
         },
-        "resellerAdditionalData": {
-            "type": "object",
-            "title": "AdditionalData"
-        },
-        "resellerAddress": {
-            "type": "object",
-            "title": "Address",
-            "properties": {
-                "city": {
-                    "type": "string",
-                    "title": "City"
-                },
-                "country": {
-                    "type": "string",
-                    "title": "Country code"
-                },
-                "number": {
-                    "type": "string",
-                    "title": "Street number"
-                },
-                "state": {
-                    "type": "string",
-                    "title": "State / province"
-                },
-                "street": {
-                    "type": "string",
-                    "title": "Street"
-                },
-                "suffix": {
-                    "type": "string",
-                    "title": "Address suffix"
-                },
-                "zipcode": {
-                    "type": "string",
-                    "title": "Postal code"
-                }
-            },
-            "example": {
-                "city": "Test city",
-                "country": "NL",
-                "number": "123",
-                "state": "Testprovince",
-                "street": "Test street",
-                "suffix": "\u0443\u043b.",
-                "zipcode": "1237 XX"
-            }
-        },
-        "resellerFax": {
-            "type": "object",
-            "title": "Fax",
-            "properties": {
-                "area_code": {
-                    "type": "string",
-                    "title": "Area code part of the phone number (excluding leading zero)"
-                },
-                "country_code": {
-                    "type": "string",
-                    "title": "Country code part of the phone number (including +)"
-                },
-                "subscriber_number": {
-                    "type": "string",
-                    "title": "Subscriber number part of the phone number"
-                }
-            },
-            "example": {
-                "area_code": "111",
-                "country_code": "+07",
-                "subscriber_number": "123456"
-            }
-        },
         "resellerGetResellerResponse": {
             "type": "object",
             "title": "GetResellerResponse",
@@ -20985,24 +20762,92 @@
             "example": {
                 "code": 0,
                 "data": {
-                    "additional_data": [],
+                    "additional_data": {
+                        "cif_nif_number": "12345678",
+                        "gstin": "123456789aaa",
+                        "internal_reference": ""
+                    },
                     "address": {
                         "city": "Test city",
                         "country": "NL",
                         "number": "123",
                         "state": "Testprovince",
                         "street": "Test street",
-                        "suffix": "\u0443\u043b.",
-                        "zipcode": "1237 XX"
+                        "suffix": "A",
+                        "zipcode": "1235 XX"
                     },
                     "balance": 99999,
                     "comments": "Some comment here",
                     "company_name": "Example company",
+                    "contacts": [
+                        {
+                            "additional_data": {
+                                "birth_city": "Test city",
+                                "birth_date": "1969-12-31",
+                                "social_security_number": "12326178T"
+                            },
+                            "address": {
+                                "city": "Test city",
+                                "country": "NL",
+                                "number": "123",
+                                "state": "Testprovince",
+                                "street": "Test street",
+                                "suffix": "A",
+                                "zipcode": "1235 XX"
+                            },
+                            "api_access_enabled": true,
+                            "api_client_ip_list": {
+                                "allow": [
+                                    "127.0.0.1"
+                                ],
+                                "deny": [
+                                    "127.0.0.1"
+                                ]
+                            },
+                            "auth_type": "simple",
+                            "comments": "",
+                            "company_name": "Example company",
+                            "email": "test@mail.tld",
+                            "hash_changed_at": "2019-03-25 10:17:02",
+                            "id": 123456789,
+                            "is_active": false,
+                            "last_api_call_at": "2019-03-25 10:17:01",
+                            "last_login_at": "2019-04-12 11:58:39",
+                            "locale": "nl_NL",
+                            "name": {
+                                "first_name": "Test",
+                                "full_name": "Test Person",
+                                "initials": "T P",
+                                "last_name": "Person",
+                                "prefix": "Mr"
+                            },
+                            "password_change_declined_at": "2019-03-23 12:32:15",
+                            "password_changed_at": "2019-03-25 10:17:00",
+                            "phone": {
+                                "area_code": "111",
+                                "country_code": "+03",
+                                "subscriber_number": "123456"
+                            },
+                            "rcp_client_ip_list": {
+                                "allow": [
+                                    "127.0.0.1"
+                                ],
+                                "deny": [
+                                    "127.0.0.1"
+                                ]
+                            },
+                            "reseller_id": 12345,
+                            "role": "admin",
+                            "secret_key": "SECRETKEYVALUE",
+                            "username": "user_name",
+                            "vat": "XX123456789X12"
+                        }
+                    ],
                     "email": "",
                     "fax": {
-                        "area_code": "111",
-                        "country_code": "+07",
-                        "subscriber_number": "123456"
+                        "area_code": "",
+                        "country_code": "",
+                        "subscriber_number": ""
                     },
                     "id": 123456789,
                     "locale": "nl_NL",
@@ -21015,7 +20860,7 @@
                     },
                     "phone": {
                         "area_code": "111",
-                        "country_code": "+06",
+                        "country_code": "+03",
                         "subscriber_number": "123456"
                     },
                     "reserved_balance": 1111.11,
@@ -21053,18 +20898,167 @@
                         "pay_methods": [
                             "ideal"
                         ],
+                        "payment_methods": [
+                            {
+                                "name": "ideal",
+                                "settings": {
+                                    "limit": {
+                                        "maximum": {
+                                            "aud": 0,
+                                            "bgn": 0,
+                                            "brl": 0,
+                                            "cad": 0,
+                                            "chf": 0,
+                                            "cny": 0,
+                                            "czk": 0,
+                                            "dkk": 0,
+                                            "eek": 0,
+                                            "eur": 0,
+                                            "gbp": 0,
+                                            "ghs": 0,
+                                            "hkd": 0,
+                                            "hrk": 0,
+                                            "huf": 0,
+                                            "idr": 0,
+                                            "ils": 0,
+                                            "inr": 0,
+                                            "jpy": 0,
+                                            "krw": 0,
+                                            "lkr": 0,
+                                            "ltl": 0,
+                                            "lvl": 0,
+                                            "mxn": 0,
+                                            "myr": 0,
+                                            "nok": 0,
+                                            "nzd": 0,
+                                            "php": 0,
+                                            "pln": 0,
+                                            "ron": 0,
+                                            "rub": 0,
+                                            "sek": 0,
+                                            "sgd": 0,
+                                            "thb": 0,
+                                            "try": 0,
+                                            "usd": 0,
+                                            "zar": 0
+                                        },
+                                        "minimum": {
+                                            "aud": 0,
+                                            "bgn": 0,
+                                            "brl": 0,
+                                            "cad": 0,
+                                            "chf": 0,
+                                            "cny": 0,
+                                            "czk": 0,
+                                            "dkk": 0,
+                                            "eek": 0,
+                                            "eur": 0,
+                                            "gbp": 0,
+                                            "ghs": 0,
+                                            "hkd": 0,
+                                            "hrk": 0,
+                                            "huf": 0,
+                                            "idr": 0,
+                                            "ils": 0,
+                                            "inr": 0,
+                                            "jpy": 0,
+                                            "krw": 0,
+                                            "lkr": 0,
+                                            "ltl": 0,
+                                            "lvl": 0,
+                                            "mxn": 0,
+                                            "myr": 0,
+                                            "nok": 0,
+                                            "nzd": 0,
+                                            "php": 0,
+                                            "pln": 0,
+                                            "ron": 0,
+                                            "rub": 0,
+                                            "sek": 0,
+                                            "sgd": 0,
+                                            "thb": 0,
+                                            "try": 0,
+                                            "usd": 0,
+                                            "zar": 0
+                                        }
+                                    },
+                                    "transaction_fee": 0
+                                }
+                            }
+                        ],
                         "preregistered_domain_priorities": "[]",
                         "renew_notification_days": [
                             1
                         ],
                         "renew_notification_every_week": false,
+                        "tac_contract": {
+                            "is_signed": false,
+                            "name": "opensign_terms_and_conditions",
+                            "signed_at": "2014-07-16 15:22:48",
+                            "type": "opensign"
+                        },
                         "tags": [
                             "VIPCUSTOMER"
                         ],
+                        "transaction_fee": {
+                            "bank": 0,
+                            "credit_card": 3,
+                            "ideal": 0,
+                            "paypal": 5,
+                            "western_union": 0,
+                            "yandex": 5
+                        },
                         "type": "normal"
                     },
                     "statistics": {
-                        "level": 3
+                        "currency": {
+                            "modified": "2010-08-01 9:30:54"
+                        },
+                        "customer": {
+                            "modified": "2019-05-03 13:23:01",
+                            "total": 999
+                        },
+                        "dns": {
+                            "total": 999
+                        },
+                        "domain": {
+                            "by_status": {
+                                "act": 7,
+                                "fai": 419,
+                                "nsr": 0,
+                                "pen": 0,
+                                "rej": 5,
+                                "req": 15
+                            },
+                            "total": 999
+                        },
+                        "level": 3,
+                        "license": {
+                            "total": 999
+                        },
+                        "spam_experts": {
+                            "activated_at": "2012-10-29 10:48:30",
+                            "created_at": "2012-10-29 10:48:30",
+                            "exists": false,
+                            "expired_at": "2016-04-05 8:50:34",
+                            "incoming_count": 0,
+                            "incoming_limit": 10,
+                            "outgoing_count": 0,
+                            "outgoing_limit": 1,
+                            "status": "deleted",
+                            "with_outgoing_filter": false
+                        },
+                        "ssl": {
+                            "by_status": {
+                                "act": 7,
+                                "fai": 419,
+                                "nsr": 0,
+                                "pen": 0,
+                                "rej": 5,
+                                "req": 15
+                            },
+                            "total": 999
+                        }
                     },
                     "status": "regular",
                     "vat": "",
@@ -21073,73 +21067,17 @@
                 "desc": ""
             }
         },
-        "resellerName": {
-            "type": "object",
-            "title": "Name",
-            "properties": {
-                "first_name": {
-                    "type": "string",
-                    "title": "First name"
-                },
-                "full_name": {
-                    "type": "string",
-                    "title": "Full name"
-                },
-                "initials": {
-                    "type": "string",
-                    "title": "Initials (first letters of first names, first letter of last name)"
-                },
-                "last_name": {
-                    "type": "string",
-                    "title": "Last name"
-                },
-                "prefix": {
-                    "type": "string",
-                    "title": "Prefix (often occuring in Dutch names; for example van de)"
-                }
-            },
-            "example": {
-                "first_name": "Test",
-                "full_name": "Test Person",
-                "initials": "T P",
-                "last_name": "Person",
-                "prefix": "Mr"
-            }
-        },
-        "resellerPhone": {
-            "type": "object",
-            "title": "Phone",
-            "properties": {
-                "area_code": {
-                    "type": "string",
-                    "title": "Area code part of the phone number (excluding leading zero)"
-                },
-                "country_code": {
-                    "type": "string",
-                    "title": "Country code part of the phone number (including +)"
-                },
-                "subscriber_number": {
-                    "type": "string",
-                    "title": "Subscriber number part of the phone number"
-                }
-            },
-            "example": {
-                "area_code": "111",
-                "country_code": "+06",
-                "subscriber_number": "123456"
-            }
-        },
         "resellerReseller": {
             "type": "object",
             "title": "Reseller",
             "properties": {
                 "additional_data": {
                     "title": "Collection of data fields that contain additional customer information",
-                    "$ref": "#/definitions/resellerAdditionalData"
+                    "$ref": "#/definitions/resellerResellerAdditionalData"
                 },
                 "address": {
                     "title": "Address",
-                    "$ref": "#/definitions/resellerAddress"
+                    "$ref": "#/definitions/contactAddress"
                 },
                 "balance": {
                     "type": "number",
@@ -21156,9 +21094,9 @@
                 },
                 "contacts": {
                     "type": "array",
-                    "title": "REseller contacts list",
+                    "title": "Reseller contacts list",
                     "items": {
-                        "$ref": "#/definitions/contactContact"
+                        "$ref": "#/definitions/personcontactContact"
                     }
                 },
                 "email": {
@@ -21167,7 +21105,7 @@
                 },
                 "fax": {
                     "title": "Fax number",
-                    "$ref": "#/definitions/resellerFax"
+                    "$ref": "#/definitions/customerFax"
                 },
                 "id": {
                     "type": "integer",
@@ -21180,11 +21118,11 @@
                 },
                 "name": {
                     "title": "The name",
-                    "$ref": "#/definitions/resellerName"
+                    "$ref": "#/definitions/contactName"
                 },
                 "phone": {
                     "title": "Phone number",
-                    "$ref": "#/definitions/resellerPhone"
+                    "$ref": "#/definitions/contactPhone"
                 },
                 "reserved_balance": {
                     "type": "number",
@@ -21214,24 +21152,92 @@
                 }
             },
             "example": {
-                "additional_data": [],
+                "additional_data": {
+                    "cif_nif_number": "12345678",
+                    "gstin": "123456789aaa",
+                    "internal_reference": ""
+                },
                 "address": {
                     "city": "Test city",
                     "country": "NL",
                     "number": "123",
                     "state": "Testprovince",
                     "street": "Test street",
-                    "suffix": "\u0443\u043b.",
-                    "zipcode": "1237 XX"
+                    "suffix": "A",
+                    "zipcode": "1235 XX"
                 },
                 "balance": 99999,
                 "comments": "Some comment here",
                 "company_name": "Example company",
+                "contacts": [
+                    {
+                        "additional_data": {
+                            "birth_city": "Test city",
+                            "birth_date": "1969-12-31",
+                            "social_security_number": "12326178T"
+                        },
+                        "address": {
+                            "city": "Test city",
+                            "country": "NL",
+                            "number": "123",
+                            "state": "Testprovince",
+                            "street": "Test street",
+                            "suffix": "A",
+                            "zipcode": "1235 XX"
+                        },
+                        "api_access_enabled": true,
+                        "api_client_ip_list": {
+                            "allow": [
+                                "127.0.0.1"
+                            ],
+                            "deny": [
+                                "127.0.0.1"
+                            ]
+                        },
+                        "auth_type": "simple",
+                        "comments": "",
+                        "company_name": "Example company",
+                        "email": "test@mail.tld",
+                        "hash_changed_at": "2019-03-25 10:17:02",
+                        "id": 123456789,
+                        "is_active": false,
+                        "last_api_call_at": "2019-03-25 10:17:01",
+                        "last_login_at": "2019-04-12 11:58:39",
+                        "locale": "nl_NL",
+                        "name": {
+                            "first_name": "Test",
+                            "full_name": "Test Person",
+                            "initials": "T P",
+                            "last_name": "Person",
+                            "prefix": "Mr"
+                        },
+                        "password_change_declined_at": "2019-03-23 12:32:15",
+                        "password_changed_at": "2019-03-25 10:17:00",
+                        "phone": {
+                            "area_code": "111",
+                            "country_code": "+03",
+                            "subscriber_number": "123456"
+                        },
+                        "rcp_client_ip_list": {
+                            "allow": [
+                                "127.0.0.1"
+                            ],
+                            "deny": [
+                                "127.0.0.1"
+                            ]
+                        },
+                        "reseller_id": 12345,
+                        "role": "admin",
+                        "secret_key": "SECRETKEYVALUE",
+                        "username": "user_name",
+                        "vat": "XX123456789X12"
+                    }
+                ],
                 "email": "",
                 "fax": {
-                    "area_code": "111",
-                    "country_code": "+07",
-                    "subscriber_number": "123456"
+                    "area_code": "",
+                    "country_code": "",
+                    "subscriber_number": ""
                 },
                 "id": 123456789,
                 "locale": "nl_NL",
@@ -21244,7 +21250,7 @@
                 },
                 "phone": {
                     "area_code": "111",
-                    "country_code": "+06",
+                    "country_code": "+03",
                     "subscriber_number": "123456"
                 },
                 "reserved_balance": 1111.11,
@@ -21282,22 +21288,194 @@
                     "pay_methods": [
                         "ideal"
                     ],
+                    "payment_methods": [
+                        {
+                            "name": "ideal",
+                            "settings": {
+                                "limit": {
+                                    "maximum": {
+                                        "aud": 0,
+                                        "bgn": 0,
+                                        "brl": 0,
+                                        "cad": 0,
+                                        "chf": 0,
+                                        "cny": 0,
+                                        "czk": 0,
+                                        "dkk": 0,
+                                        "eek": 0,
+                                        "eur": 0,
+                                        "gbp": 0,
+                                        "ghs": 0,
+                                        "hkd": 0,
+                                        "hrk": 0,
+                                        "huf": 0,
+                                        "idr": 0,
+                                        "ils": 0,
+                                        "inr": 0,
+                                        "jpy": 0,
+                                        "krw": 0,
+                                        "lkr": 0,
+                                        "ltl": 0,
+                                        "lvl": 0,
+                                        "mxn": 0,
+                                        "myr": 0,
+                                        "nok": 0,
+                                        "nzd": 0,
+                                        "php": 0,
+                                        "pln": 0,
+                                        "ron": 0,
+                                        "rub": 0,
+                                        "sek": 0,
+                                        "sgd": 0,
+                                        "thb": 0,
+                                        "try": 0,
+                                        "usd": 0,
+                                        "zar": 0
+                                    },
+                                    "minimum": {
+                                        "aud": 0,
+                                        "bgn": 0,
+                                        "brl": 0,
+                                        "cad": 0,
+                                        "chf": 0,
+                                        "cny": 0,
+                                        "czk": 0,
+                                        "dkk": 0,
+                                        "eek": 0,
+                                        "eur": 0,
+                                        "gbp": 0,
+                                        "ghs": 0,
+                                        "hkd": 0,
+                                        "hrk": 0,
+                                        "huf": 0,
+                                        "idr": 0,
+                                        "ils": 0,
+                                        "inr": 0,
+                                        "jpy": 0,
+                                        "krw": 0,
+                                        "lkr": 0,
+                                        "ltl": 0,
+                                        "lvl": 0,
+                                        "mxn": 0,
+                                        "myr": 0,
+                                        "nok": 0,
+                                        "nzd": 0,
+                                        "php": 0,
+                                        "pln": 0,
+                                        "ron": 0,
+                                        "rub": 0,
+                                        "sek": 0,
+                                        "sgd": 0,
+                                        "thb": 0,
+                                        "try": 0,
+                                        "usd": 0,
+                                        "zar": 0
+                                    }
+                                },
+                                "transaction_fee": 0
+                            }
+                        }
+                    ],
                     "preregistered_domain_priorities": "[]",
                     "renew_notification_days": [
                         1
                     ],
                     "renew_notification_every_week": false,
+                    "tac_contract": {
+                        "is_signed": false,
+                        "name": "opensign_terms_and_conditions",
+                        "signed_at": "2014-07-16 15:22:48",
+                        "type": "opensign"
+                    },
                     "tags": [
                         "VIPCUSTOMER"
                     ],
+                    "transaction_fee": {
+                        "bank": 0,
+                        "credit_card": 3,
+                        "ideal": 0,
+                        "paypal": 5,
+                        "western_union": 0,
+                        "yandex": 5
+                    },
                     "type": "normal"
                 },
                 "statistics": {
-                    "level": 3
+                    "currency": {
+                        "modified": "2010-08-01 9:30:54"
+                    },
+                    "customer": {
+                        "modified": "2019-05-03 13:23:01",
+                        "total": 999
+                    },
+                    "dns": {
+                        "total": 999
+                    },
+                    "domain": {
+                        "by_status": {
+                            "act": 7,
+                            "fai": 419,
+                            "nsr": 0,
+                            "pen": 0,
+                            "rej": 5,
+                            "req": 15
+                        },
+                        "total": 999
+                    },
+                    "level": 3,
+                    "license": {
+                        "total": 999
+                    },
+                    "spam_experts": {
+                        "activated_at": "2012-10-29 10:48:30",
+                        "created_at": "2012-10-29 10:48:30",
+                        "exists": false,
+                        "expired_at": "2016-04-05 8:50:34",
+                        "incoming_count": 0,
+                        "incoming_limit": 10,
+                        "outgoing_count": 0,
+                        "outgoing_limit": 1,
+                        "status": "deleted",
+                        "with_outgoing_filter": false
+                    },
+                    "ssl": {
+                        "by_status": {
+                            "act": 7,
+                            "fai": 419,
+                            "nsr": 0,
+                            "pen": 0,
+                            "rej": 5,
+                            "req": 15
+                        },
+                        "total": 999
+                    }
                 },
                 "status": "regular",
                 "vat": "",
                 "vatperc": 21
+            }
+        },
+        "resellerResellerAdditionalData": {
+            "type": "object",
+            "title": "ResellerAdditionalData",
+            "properties": {
+                "GSTIN": {
+                    "type": "string",
+                    "title": "The gstin"
+                },
+                "cif_nif_number": {
+                    "type": "string",
+                    "title": "Custom invoice information"
+                },
+                "internal_reference": {
+                    "type": "string",
+                    "title": "Custom invoice information"
+                }
+            },
+            "example": {
+                "cif_nif_number": "12345678",
+                "gstin": "123456789aaa",
+                "internal_reference": ""
             }
         },
         "resellerSettings": {
@@ -21517,14 +21695,116 @@
                 "pay_methods": [
                     "ideal"
                 ],
+                "payment_methods": [
+                    {
+                        "name": "ideal",
+                        "settings": {
+                            "limit": {
+                                "maximum": {
+                                    "aud": 0,
+                                    "bgn": 0,
+                                    "brl": 0,
+                                    "cad": 0,
+                                    "chf": 0,
+                                    "cny": 0,
+                                    "czk": 0,
+                                    "dkk": 0,
+                                    "eek": 0,
+                                    "eur": 0,
+                                    "gbp": 0,
+                                    "ghs": 0,
+                                    "hkd": 0,
+                                    "hrk": 0,
+                                    "huf": 0,
+                                    "idr": 0,
+                                    "ils": 0,
+                                    "inr": 0,
+                                    "jpy": 0,
+                                    "krw": 0,
+                                    "lkr": 0,
+                                    "ltl": 0,
+                                    "lvl": 0,
+                                    "mxn": 0,
+                                    "myr": 0,
+                                    "nok": 0,
+                                    "nzd": 0,
+                                    "php": 0,
+                                    "pln": 0,
+                                    "ron": 0,
+                                    "rub": 0,
+                                    "sek": 0,
+                                    "sgd": 0,
+                                    "thb": 0,
+                                    "try": 0,
+                                    "usd": 0,
+                                    "zar": 0
+                                },
+                                "minimum": {
+                                    "aud": 0,
+                                    "bgn": 0,
+                                    "brl": 0,
+                                    "cad": 0,
+                                    "chf": 0,
+                                    "cny": 0,
+                                    "czk": 0,
+                                    "dkk": 0,
+                                    "eek": 0,
+                                    "eur": 0,
+                                    "gbp": 0,
+                                    "ghs": 0,
+                                    "hkd": 0,
+                                    "hrk": 0,
+                                    "huf": 0,
+                                    "idr": 0,
+                                    "ils": 0,
+                                    "inr": 0,
+                                    "jpy": 0,
+                                    "krw": 0,
+                                    "lkr": 0,
+                                    "ltl": 0,
+                                    "lvl": 0,
+                                    "mxn": 0,
+                                    "myr": 0,
+                                    "nok": 0,
+                                    "nzd": 0,
+                                    "php": 0,
+                                    "pln": 0,
+                                    "ron": 0,
+                                    "rub": 0,
+                                    "sek": 0,
+                                    "sgd": 0,
+                                    "thb": 0,
+                                    "try": 0,
+                                    "usd": 0,
+                                    "zar": 0
+                                }
+                            },
+                            "transaction_fee": 0
+                        }
+                    }
+                ],
                 "preregistered_domain_priorities": "[]",
                 "renew_notification_days": [
                     1
                 ],
                 "renew_notification_every_week": false,
+                "tac_contract": {
+                    "is_signed": false,
+                    "name": "opensign_terms_and_conditions",
+                    "signed_at": "2014-07-16 15:22:48",
+                    "type": "opensign"
+                },
                 "tags": [
                     "VIPCUSTOMER"
                 ],
+                "transaction_fee": {
+                    "bank": 0,
+                    "credit_card": 3,
+                    "ideal": 0,
+                    "paypal": 5,
+                    "western_union": 0,
+                    "yandex": 5
+                },
                 "type": "normal"
             }
         },
@@ -21532,6 +21812,10 @@
             "type": "object",
             "title": "Statistics",
             "properties": {
+                "currency": {
+                    "title": "The currency",
+                    "$ref": "#/definitions/statisticsCurrencyStatistics"
+                },
                 "customer": {
                     "title": "The customer",
                     "$ref": "#/definitions/statisticsCustomerStatistics"
@@ -21563,7 +21847,54 @@
                 }
             },
             "example": {
-                "level": 3
+                "currency": {
+                    "modified": "2010-08-01 9:30:54"
+                },
+                "customer": {
+                    "modified": "2019-05-03 13:23:01",
+                    "total": 999
+                },
+                "dns": {
+                    "total": 999
+                },
+                "domain": {
+                    "by_status": {
+                        "act": 7,
+                        "fai": 419,
+                        "nsr": 0,
+                        "pen": 0,
+                        "rej": 5,
+                        "req": 15
+                    },
+                    "total": 999
+                },
+                "level": 3,
+                "license": {
+                    "total": 999
+                },
+                "spam_experts": {
+                    "activated_at": "2012-10-29 10:48:30",
+                    "created_at": "2012-10-29 10:48:30",
+                    "exists": false,
+                    "expired_at": "2016-04-05 8:50:34",
+                    "incoming_count": 0,
+                    "incoming_limit": 10,
+                    "outgoing_count": 0,
+                    "outgoing_limit": 1,
+                    "status": "deleted",
+                    "with_outgoing_filter": false
+                },
+                "ssl": {
+                    "by_status": {
+                        "act": 7,
+                        "fai": 419,
+                        "nsr": 0,
+                        "pen": 0,
+                        "rej": 5,
+                        "req": 15
+                    },
+                    "total": 999
+                }
             }
         },
         "resellerUpdateResellerRequest": {
@@ -21572,11 +21903,11 @@
             "properties": {
                 "additional_data": {
                     "title": "Collection of data fields that contain additional customer information",
-                    "$ref": "#/definitions/resellerAdditionalData"
+                    "$ref": "#/definitions/resellerResellerAdditionalData"
                 },
                 "address": {
                     "title": "Address",
-                    "$ref": "#/definitions/resellerAddress"
+                    "$ref": "#/definitions/contactAddress"
                 },
                 "comments": {
                     "type": "string",
@@ -21588,7 +21919,7 @@
                 },
                 "fax": {
                     "title": "Fax number",
-                    "$ref": "#/definitions/resellerFax"
+                    "$ref": "#/definitions/customerFax"
                 },
                 "id": {
                     "type": "integer",
@@ -21609,7 +21940,7 @@
                 },
                 "phone": {
                     "title": "Phone number",
-                    "$ref": "#/definitions/resellerPhone"
+                    "$ref": "#/definitions/contactPhone"
                 },
                 "vat": {
                     "type": "string",
@@ -21617,22 +21948,26 @@
                 }
             },
             "example": {
-                "additional_data": [],
+                "additional_data": {
+                    "cif_nif_number": "12345678",
+                    "gstin": "123456789aaa",
+                    "internal_reference": ""
+                },
                 "address": {
                     "city": "Test city",
                     "country": "NL",
                     "number": "123",
                     "state": "Testprovince",
                     "street": "Test street",
-                    "suffix": "\u0443\u043b.",
-                    "zipcode": "1237 XX"
+                    "suffix": "A",
+                    "zipcode": "1235 XX"
                 },
                 "comments": "",
                 "company_name": "Example company",
                 "fax": {
-                    "area_code": "111",
-                    "country_code": "+07",
-                    "subscriber_number": "123456"
+                    "area_code": "",
+                    "country_code": "",
+                    "subscriber_number": ""
                 },
                 "id": 123456789,
                 "inn": "",
@@ -21640,7 +21975,7 @@
                 "locale": "",
                 "phone": {
                     "area_code": "111",
-                    "country_code": "+06",
+                    "country_code": "+03",
                     "subscriber_number": "123456"
                 },
                 "vat": "XX123456789X13"
@@ -22886,10 +23221,27 @@
                 "yandex": 5
             }
         },
+        "statisticsCurrencyStatistics": {
+            "type": "object",
+            "title": "CurrencyStatistics",
+            "properties": {
+                "modified": {
+                    "type": "string",
+                    "title": "The modified"
+                }
+            },
+            "example": {
+                "modified": "2010-08-01 9:30:54"
+            }
+        },
         "statisticsCustomerStatistics": {
             "type": "object",
             "title": "CustomerStatistics",
             "properties": {
+                "modified": {
+                    "type": "string",
+                    "title": "The modified"
+                },
                 "total": {
                     "type": "integer",
                     "format": "int32",
@@ -22897,6 +23249,7 @@
                 }
             },
             "example": {
+                "modified": "2019-05-03 13:23:01",
                 "total": 999
             }
         },
@@ -22932,6 +23285,7 @@
                 "by_status": {
                     "act": 7,
                     "fai": 419,
+                    "nsr": 0,
                     "pen": 0,
                     "rej": 5,
                     "req": 15
@@ -22953,6 +23307,11 @@
                     "format": "int32",
                     "title": "Fax number"
                 },
+                "NSR": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "The nsr"
+                },
                 "PEN": {
                     "type": "integer",
                     "format": "int32",
@@ -22972,6 +23331,7 @@
             "example": {
                 "act": 7,
                 "fai": 419,
+                "nsr": 0,
                 "pen": 0,
                 "rej": 5,
                 "req": 15
@@ -23010,7 +23370,11 @@
             "example": {
                 "code": 0,
                 "data": {
+                    "currency": {
+                        "modified": "2010-08-01 9:30:54"
+                    },
                     "customer": {
+                        "modified": "2019-05-03 13:23:01",
                         "total": 999
                     },
                     "dns": {
@@ -23020,6 +23384,7 @@
                         "by_status": {
                             "act": 7,
                             "fai": 419,
+                            "nsr": 0,
                             "pen": 0,
                             "rej": 5,
                             "req": 15
@@ -23045,6 +23410,7 @@
                         "by_status": {
                             "act": 7,
                             "fai": 419,
+                            "nsr": 0,
                             "pen": 0,
                             "rej": 5,
                             "req": 15
@@ -23059,6 +23425,10 @@
             "type": "object",
             "title": "GetStatisticsResponseData",
             "properties": {
+                "currency": {
+                    "title": "The currency",
+                    "$ref": "#/definitions/statisticsCurrencyStatistics"
+                },
                 "customer": {
                     "title": "The customer",
                     "$ref": "#/definitions/statisticsCustomerStatistics"
@@ -23085,7 +23455,11 @@
                 }
             },
             "example": {
+                "currency": {
+                    "modified": "2010-08-01 9:30:54"
+                },
                 "customer": {
+                    "modified": "2019-05-03 13:23:01",
                     "total": 999
                 },
                 "dns": {
@@ -23095,6 +23469,7 @@
                     "by_status": {
                         "act": 7,
                         "fai": 419,
+                        "nsr": 0,
                         "pen": 0,
                         "rej": 5,
                         "req": 15
@@ -23120,6 +23495,7 @@
                     "by_status": {
                         "act": 7,
                         "fai": 419,
+                        "nsr": 0,
                         "pen": 0,
                         "rej": 5,
                         "req": 15
@@ -23224,6 +23600,7 @@
                 "by_status": {
                     "act": 7,
                     "fai": 419,
+                    "nsr": 0,
                     "pen": 0,
                     "rej": 5,
                     "req": 15
@@ -23245,6 +23622,11 @@
                     "format": "int32",
                     "title": "Fax number"
                 },
+                "NSR": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "The nsr"
+                },
                 "PEN": {
                     "type": "integer",
                     "format": "int32",
@@ -23264,6 +23646,7 @@
             "example": {
                 "act": 7,
                 "fai": 419,
+                "nsr": 0,
                 "pen": 0,
                 "rej": 5,
                 "req": 15
@@ -23425,7 +23808,7 @@
                     "type": "array",
                     "title": "Array of results",
                     "items": {
-                        "$ref": "#/definitions/tagTag"
+                        "$ref": "#/definitions/helperstagTag"
                     }
                 },
                 "total": {
@@ -23442,24 +23825,6 @@
                     }
                 ],
                 "total": 999
-            }
-        },
-        "tagTag": {
-            "type": "object",
-            "title": "Tag",
-            "properties": {
-                "key": {
-                    "type": "string",
-                    "title": "The key of the tag. Allowed values: 'customer'"
-                },
-                "value": {
-                    "type": "string",
-                    "title": "The value of the tag. I.e.: VIP customer"
-                }
-            },
-            "example": {
-                "key": "customer",
-                "value": "example"
             }
         },
         "templateCreateTemplateRequest": {
@@ -25402,6 +25767,16 @@
                 },
                 "is_spamexperts_enabled": "on",
                 "master_ip": "127.0.0.1",
+                "records": [
+                    {
+                        "ip": "127.0.0.1",
+                        "name": "domain.com",
+                        "prio": 1,
+                        "ttl": 900,
+                        "type": "CNAME",
+                        "value": "abcd.domain.com"
+                    }
+                ],
                 "secured": false,
                 "template_name": "default",
                 "type": "master"
@@ -25461,6 +25836,14 @@
                     "active": 1,
                     "creation_date": "2012-02-05 7:37:28",
                     "dnskey": "",
+                    "history": [
+                        {
+                            "date": "1560966009",
+                            "is": true,
+                            "source": "",
+                            "was": "Zone is deleted."
+                        }
+                    ],
                     "id": 12345,
                     "ip": "127.0.0.1",
                     "is_deleted": false,
@@ -25468,6 +25851,16 @@
                     "is_spamexperts_enabled": false,
                     "modification_date": "2018-11-28 6:57:05",
                     "name": "domain.com",
+                    "records": [
+                        {
+                            "ip": "127.0.0.1",
+                            "name": "domain.com",
+                            "prio": 1,
+                            "ttl": 900,
+                            "type": "CNAME",
+                            "value": "abcd.domain.com"
+                        }
+                    ],
                     "reseller_id": 123456,
                     "type": "master"
                 },
@@ -25530,6 +25923,14 @@
                             "active": 1,
                             "creation_date": "2012-02-05 7:37:28",
                             "dnskey": "",
+                            "history": [
+                                {
+                                    "date": "1560966009",
+                                    "is": true,
+                                    "source": "",
+                                    "was": "Zone is deleted."
+                                }
+                            ],
                             "id": 12345,
                             "ip": "127.0.0.1",
                             "is_deleted": false,
@@ -25537,6 +25938,16 @@
                             "is_spamexperts_enabled": false,
                             "modification_date": "2018-11-28 6:57:05",
                             "name": "domain.com",
+                            "records": [
+                                {
+                                    "ip": "127.0.0.1",
+                                    "name": "domain.com",
+                                    "prio": 1,
+                                    "ttl": 900,
+                                    "type": "CNAME",
+                                    "value": "abcd.domain.com"
+                                }
+                            ],
                             "reseller_id": 123456,
                             "type": "master"
                         }
@@ -25569,6 +25980,14 @@
                         "active": 1,
                         "creation_date": "2012-02-05 7:37:28",
                         "dnskey": "",
+                        "history": [
+                            {
+                                "date": "1560966009",
+                                "is": true,
+                                "source": "",
+                                "was": "Zone is deleted."
+                            }
+                        ],
                         "id": 12345,
                         "ip": "127.0.0.1",
                         "is_deleted": false,
@@ -25576,6 +25995,16 @@
                         "is_spamexperts_enabled": false,
                         "modification_date": "2018-11-28 6:57:05",
                         "name": "domain.com",
+                        "records": [
+                            {
+                                "ip": "127.0.0.1",
+                                "name": "domain.com",
+                                "prio": 1,
+                                "ttl": 900,
+                                "type": "CNAME",
+                                "value": "abcd.domain.com"
+                            }
+                        ],
                         "reseller_id": 123456,
                         "type": "master"
                     }
@@ -25635,6 +26064,16 @@
                 "is_spamexperts_enabled": true,
                 "master_ip": "127.0.0.1",
                 "name": "domain.com",
+                "records": [
+                    {
+                        "ip": "127.0.0.1",
+                        "name": "domain.com",
+                        "prio": 1,
+                        "ttl": 900,
+                        "type": "CNAME",
+                        "value": "abcd.domain.com"
+                    }
+                ],
                 "type": "slave"
             }
         },
@@ -25715,6 +26154,14 @@
                 "active": 1,
                 "creation_date": "2012-02-05 7:37:28",
                 "dnskey": "",
+                "history": [
+                    {
+                        "date": "1560966009",
+                        "is": true,
+                        "source": "",
+                        "was": "Zone is deleted."
+                    }
+                ],
                 "id": 12345,
                 "ip": "127.0.0.1",
                 "is_deleted": false,
@@ -25722,6 +26169,16 @@
                 "is_spamexperts_enabled": false,
                 "modification_date": "2018-11-28 6:57:05",
                 "name": "domain.com",
+                "records": [
+                    {
+                        "ip": "127.0.0.1",
+                        "name": "domain.com",
+                        "prio": 1,
+                        "ttl": 900,
+                        "type": "CNAME",
+                        "value": "abcd.domain.com"
+                    }
+                ],
                 "reseller_id": 123456,
                 "type": "master"
             }

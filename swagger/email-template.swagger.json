@@ -54,6 +54,13 @@
             "description": "Output offset.",
             "name": "offset",
             "in": "query"
+          },
+          {
+            "type": "boolean",
+            "format": "boolean",
+            "description": "Is system.",
+            "name": "is_system",
+            "in": "query"
           }
         ],
         "responses": {
