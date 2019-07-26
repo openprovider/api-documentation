@@ -1,2652 +1,2652 @@
 {
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
-  ],
-  "schemes": [
-    "https"
-  ],
-  "swagger": "2.0",
-  "info": {
-    "title": "DNS",
-    "version": "1.0.0-beta"
-  },
-  "paths": {
-    "/v1beta/dns/nameservers": {
-      "get": {
-        "tags": [
-          "NameserverService"
-        ],
-        "summary": "List nameservers",
-        "operationId": "ListNameservers",
-        "parameters": [
-          {
-            "type": "string",
-            "description": "Nameserver name.",
-            "name": "name",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Nameserver IP.",
-            "name": "ip",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Nameserver IPv6.",
-            "name": "ip6",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Nameserver name search pattern. Wildcatd (*) can be used.",
-            "name": "pattern",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/nameserverListNameserversResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "NameserverService"
-        ],
-        "summary": "Create nameserver",
-        "operationId": "CreateNameserver",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/nameserverNameserver"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/nameserverCreateNameserverResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      }
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "schemes": [
+        "https"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "title": "DNS",
+        "version": "1.0.0-beta"
     },
-    "/v1beta/dns/nameservers/groups": {
-      "get": {
-        "tags": [
-          "NsGroupService"
-        ],
-        "summary": "List groups",
-        "operationId": "ListGroups",
-        "parameters": [
-          {
-            "type": "integer",
-            "format": "int32",
-            "description": "Limits the number of objects in the output.",
-            "name": "limit",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int32",
-            "description": "Used to retrieve all objects from a certain offset up to the limit. (default value: 0).",
-            "name": "offset",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "The order by.",
-            "name": "order_by",
-            "in": "query"
-          },
-          {
-            "type": "boolean",
-            "format": "boolean",
-            "description": "Indicates if number of domains associated with the NS group should be returned.",
-            "name": "with_domain_count",
-            "in": "query"
-          },
-          {
-            "type": "boolean",
-            "format": "boolean",
-            "description": "Indicates if number of nameservers associated with the NS group should be returned.",
-            "name": "with_ns_count",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "NS group name pattern. Wildcard (*) can be used.",
-            "name": "ns_group_pattern",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Nameserver name pattern. Wildcard (*) can be used.",
-            "name": "ns_name_pattern",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Nameserver IP address pattern. Wildcard (*) can be used.",
-            "name": "ns_ip_pattern",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/ns_groupListGroupsResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "NsGroupService"
-        ],
-        "summary": "Create group",
-        "operationId": "CreateGroup",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ns_groupCreateGroupRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/ns_groupCreateGroupResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      }
-    },
-    "/v1beta/dns/nameservers/groups/{ns_group}": {
-      "get": {
-        "tags": [
-          "NsGroupService"
-        ],
-        "summary": "Get group",
-        "operationId": "GetGroup",
-        "parameters": [
-          {
-            "type": "string",
-            "description": "Plain text name of the nameserver group, which can consist of several nameservers with attached IPs. Once created in Openprovider reseller account, nameserver group can be reused for operations with domains.",
-            "name": "ns_group",
-            "in": "path",
-            "required": true
-          },
-          {
-            "type": "integer",
-            "format": "int32",
-            "description": "Nameserver group ID.",
-            "name": "id",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/ns_groupGetGroupResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "NsGroupService"
-        ],
-        "summary": "Update group",
-        "operationId": "UpdateGroup",
-        "parameters": [
-          {
-            "type": "string",
-            "description": "Plain text name of the nameserver group, which can consist of several nameservers with attached IPs. Once created in Openprovider reseller account, nameserver group can be reused for operations with domains.",
-            "name": "ns_group",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ns_groupUpdateGroupRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/ns_groupGroupBoolResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "NsGroupService"
-        ],
-        "summary": "Delete group",
-        "operationId": "DeleteGroup",
-        "parameters": [
-          {
-            "type": "string",
-            "description": "Plain text name of the nameserver group, which can consist of several nameservers with attached IPs. Once created in Openprovider reseller account, nameserver group can be reused for operations with domains.",
-            "name": "ns_group",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/ns_groupGroupBoolResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      }
-    },
-    "/v1beta/dns/nameservers/{name}": {
-      "get": {
-        "tags": [
-          "NameserverService"
-        ],
-        "summary": "Get nameserver",
-        "operationId": "GetNameserver",
-        "parameters": [
-          {
-            "type": "string",
-            "description": "Nameserver name",
-            "name": "name",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/nameserverGetNameserverResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "NameserverService"
-        ],
-        "summary": "Update nameserver",
-        "operationId": "UpdateNameserver",
-        "parameters": [
-          {
-            "type": "string",
-            "description": "Nameserver name",
-            "name": "name",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/nameserverNameserver"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/nameserverNameserverBoolResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "NameserverService"
-        ],
-        "summary": "Delete nameserver",
-        "operationId": "DeleteNameserver",
-        "parameters": [
-          {
-            "type": "string",
-            "description": "Nameserver name",
-            "name": "name",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/nameserverNameserverBoolResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      }
-    },
-    "/v1beta/dns/templates": {
-      "get": {
-        "tags": [
-          "TemplateService"
-        ],
-        "summary": "List templates",
-        "operationId": "ListTemplates",
-        "parameters": [
-          {
-            "type": "integer",
-            "format": "int32",
-            "description": "Limits the number of objects in the output.",
-            "name": "limit",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Used to retrieve all objects from a certain offset up to the limit.",
-            "name": "offset",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Orders output ASC or DESC.",
-            "name": "order",
-            "in": "query"
-          },
-          {
-            "type": "boolean",
-            "format": "boolean",
-            "description": "Indicates if DNS records should be retrieved.",
-            "name": "with_records",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Template name pattern. Wildcard (*)can be used.",
-            "name": "name_pattern",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/templateListTemplatesResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "TemplateService"
-        ],
-        "summary": "Create template",
-        "operationId": "CreateTemplate",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/templateCreateTemplateRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/templateCreateTemplateResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      }
-    },
-    "/v1beta/dns/templates/{id}": {
-      "get": {
-        "tags": [
-          "TemplateService"
-        ],
-        "summary": "Get template",
-        "operationId": "GetTemplate",
-        "parameters": [
-          {
-            "type": "integer",
-            "format": "int32",
-            "description": "Template ID",
-            "name": "id",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/templateGetTemplateResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "TemplateService"
-        ],
-        "summary": "Delete template",
-        "operationId": "DeleteTemplate",
-        "parameters": [
-          {
-            "type": "integer",
-            "format": "int32",
-            "description": "Template ID",
-            "name": "id",
-            "in": "path",
-            "required": true
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/templateTemplateBoolResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      }
-    },
-    "/v1beta/dns/zones": {
-      "get": {
-        "tags": [
-          "ZoneService"
-        ],
-        "summary": "List zones",
-        "externalDocs": {
-          "description": "For more detailed information on this method check our guide",
-          "url": "https://support.openprovider.eu/hc/en-us/articles/360024168694"
-        },
-        "operationId": "ListZones",
-        "parameters": [
-          {
-            "type": "integer",
-            "format": "int32",
-            "description": "Limits the number of objects in the output. (default value: 100, maximum value: 500).",
-            "name": "limit",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int32",
-            "description": "Used to retrieve all objects from a certain offset up to the. (default value: 0).",
-            "name": "offset",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "DNS zone creation date.",
-            "name": "order_by.creation_date",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Date the DNS zone was last modified.",
-            "name": "order_by.modification_date",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Name of the domain to which DNS zone corresponds.",
-            "name": "order_by.name",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "DNS zone type (master or slave).",
-            "name": "type",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "DNS zone name pattern. Wildcard (*) can be used.",
-            "name": "name_pattern",
-            "in": "query"
-          },
-          {
-            "type": "boolean",
-            "format": "boolean",
-            "description": "Indicates, whether DNS records should be displayed in output.",
-            "name": "with_records",
-            "in": "query"
-          },
-          {
-            "type": "boolean",
-            "format": "boolean",
-            "description": "Indicates, whether DNS zone history should be displayed in output.",
-            "name": "with_history",
-            "in": "query"
-          },
-          {
-            "type": "boolean",
-            "format": "boolean",
-            "description": "Indicates, whether DNSSEC keys should be displayed in output.",
-            "name": "with_dnskey",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/zoneListZonesResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "ZoneService"
-        ],
-        "summary": "Create zone",
-        "externalDocs": {
-          "description": "For more detailed information on this method check our guide",
-          "url": "https://support.openprovider.eu/hc/en-us/articles/360023491794"
-        },
-        "operationId": "CreateZone",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/zoneCreateZoneRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/zoneZoneBoolResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      }
-    },
-    "/v1beta/dns/zones/{name}": {
-      "get": {
-        "tags": [
-          "ZoneService"
-        ],
-        "summary": "Get zone",
-        "externalDocs": {
-          "description": "For more detailed information on this method check our guide",
-          "url": "https://support.openprovider.eu/hc/en-us/articles/360024168694"
-        },
-        "operationId": "GetZone",
-        "parameters": [
-          {
-            "type": "string",
-            "description": "Name of the domain to which DNS zone corresponds",
-            "name": "name",
-            "in": "path",
-            "required": true
-          },
-          {
-            "type": "string",
-            "description": "DNS zone ID.",
-            "name": "id",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int32",
-            "description": "Indicates, whether DNS records should be displayed in output.",
-            "name": "with_records",
-            "in": "query"
-          },
-          {
-            "type": "boolean",
-            "format": "boolean",
-            "description": "Indicates, whether DNS zone history should be displayed in output.",
-            "name": "with_history",
-            "in": "query"
-          },
-          {
-            "type": "boolean",
-            "format": "boolean",
-            "description": "Indicates, whether DNSSEC keys should be displayed in output.",
-            "name": "with_dnskey",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/zoneGetZoneResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "ZoneService"
-        ],
-        "summary": "Update zone",
-        "externalDocs": {
-          "description": "For more detailed information on this method check our guide",
-          "url": "https://support.openprovider.eu/hc/en-us/articles/360024342733"
-        },
-        "operationId": "UpdateZone",
-        "parameters": [
-          {
-            "type": "string",
-            "description": "Name of the domain to which DNS zone corresponds",
-            "name": "name",
-            "in": "path",
-            "required": true
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/zoneUpdateZoneRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/zoneZoneBoolResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "ZoneService"
-        ],
-        "summary": "Delete zone",
-        "externalDocs": {
-          "description": "For more detailed information on this method check our guide",
-          "url": "https://support.openprovider.eu/hc/en-us/articles/360024231654"
-        },
-        "operationId": "DeleteZone",
-        "parameters": [
-          {
-            "type": "string",
-            "description": "Name of the domain to which DNS zone corresponds",
-            "name": "name",
-            "in": "path",
-            "required": true
-          },
-          {
-            "type": "integer",
-            "format": "int32",
-            "description": "DNS zone ID.",
-            "name": "id",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Domain name without extension.",
-            "name": "domain.name",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Domain extension.",
-            "name": "domain.extension",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/zoneZoneBoolResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      }
-    },
-    "/v1beta/dns/zones/{name}/records": {
-      "get": {
-        "tags": [
-          "ZoneRecordService"
-        ],
-        "summary": "List zone records",
-        "operationId": "ListZoneRecords",
-        "parameters": [
-          {
-            "type": "string",
-            "description": "DNS record name",
-            "name": "name",
-            "in": "path",
-            "required": true
-          },
-          {
-            "type": "integer",
-            "format": "int32",
-            "description": "DNS zone ID.",
-            "name": "zone_id",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int32",
-            "description": "How many records to retrieve (default: 100, max 500).",
-            "name": "limit",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int32",
-            "description": "From which record to retrieve (default: 0).",
-            "name": "offset",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Sorting type (ASC/DESC).",
-            "name": "order_by.type",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "Name of the field to sort results by.",
-            "name": "order_by.name",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "DNS record name pattern. Wildcard (*) can be used.",
-            "name": "record_name_pattern",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "DNS record value pattern. Wildcard (*) can be used.",
-            "name": "value_pattern",
-            "in": "query"
-          },
-          {
-            "type": "string",
-            "description": "DNS record type.",
-            "name": "type",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int32",
-            "description": "DNS record priority.",
-            "name": "prio",
-            "in": "query"
-          },
-          {
-            "type": "integer",
-            "format": "int32",
-            "description": "DNS record TTL.",
-            "name": "ttl",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/recordListZoneRecordsResponse"
-            }
-          },
-          "default": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/errorError"
-            }
-          }
-        }
-      }
-    }
-  },
-  "definitions": {
-    "errorError": {
-      "type": "object",
-      "title": "Error",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Error code"
-        },
-        "data": {
-          "type": "string",
-          "title": "Additional error description"
-        },
-        "desc": {
-          "type": "string",
-          "title": "Error description"
-        }
-      },
-      "example": {
-        "code": 0,
-        "data": "",
-        "desc": ""
-      }
-    },
-    "errorWarning": {
-      "type": "object",
-      "title": "Warning",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Warning code"
-        },
-        "data": {
-          "type": "string",
-          "title": "Additional warning description"
-        },
-        "desc": {
-          "type": "string",
-          "title": "Warning description"
-        }
-      },
-      "example": {
-        "code": 0,
-        "data": "",
-        "desc": ""
-      }
-    },
-    "historyZoneHistory": {
-      "type": "object",
-      "title": "ZoneHistory",
-      "properties": {
-        "date": {
-          "type": "string",
-          "title": "The date"
-        },
-        "is": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "The is"
-        },
-        "source": {
-          "type": "string",
-          "title": "The source"
-        },
-        "was": {
-          "type": "string",
-          "title": "The was"
-        }
-      },
-      "example": {
-        "date": "1560966009",
-        "is": true,
-        "source": "",
-        "was": "Zone is deleted."
-      }
-    },
-    "nameserverCreateNameserverResponse": {
-      "type": "object",
-      "title": "CreateNameserverResponse",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Response code"
-        },
-        "data": {
-          "title": "The data",
-          "$ref": "#/definitions/nameserverNameserver"
-        },
-        "desc": {
-          "type": "string",
-          "title": "Response description"
-        },
-        "maintenance": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates if Openprovider API is on maintenance"
-        },
-        "warnings": {
-          "type": "array",
-          "title": "The warnings",
-          "items": {
-            "$ref": "#/definitions/errorWarning"
-          }
-        }
-      },
-      "example": {
-        "code": 0,
-        "data": {
-          "ip": "127.0.0.1",
-          "ip6": "0001:0001:0001:0001:0001:0001:0001:0001",
-          "name": "ns1.domain.com"
-        },
-        "desc": ""
-      }
-    },
-    "nameserverGetNameserverResponse": {
-      "type": "object",
-      "title": "GetNameserverResponse",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Response code"
-        },
-        "data": {
-          "title": "The data",
-          "$ref": "#/definitions/nameserverNameserver"
-        },
-        "desc": {
-          "type": "string",
-          "title": "Response description"
-        },
-        "maintenance": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates if Openprovider API is on maintenance"
-        },
-        "warnings": {
-          "type": "array",
-          "title": "The warnings",
-          "items": {
-            "$ref": "#/definitions/errorWarning"
-          }
-        }
-      },
-      "example": {
-        "code": 0,
-        "data": {
-          "ip": "127.0.0.1",
-          "ip6": "0001:0001:0001:0001:0001:0001:0001:0001",
-          "name": "ns1.domain.com"
-        },
-        "desc": ""
-      }
-    },
-    "nameserverListNameserversResponse": {
-      "type": "object",
-      "title": "ListNameserversResponse",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Response code"
-        },
-        "data": {
-          "title": "The data",
-          "$ref": "#/definitions/nameserverListNameserversResponseData"
-        },
-        "desc": {
-          "type": "string",
-          "title": "Response description"
-        },
-        "maintenance": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates if Openprovider API is on maintenance"
-        },
-        "warnings": {
-          "type": "array",
-          "title": "The warnings",
-          "items": {
-            "$ref": "#/definitions/errorWarning"
-          }
-        }
-      },
-      "example": {
-        "code": 0,
-        "data": {
-          "results": [
-            {
-              "ip": "127.0.0.1",
-              "ip6": "0001:0001:0001:0001:0001:0001:0001:0001",
-              "name": "ns1.domain.com"
-            }
-          ],
-          "total": 9
-        },
-        "desc": ""
-      }
-    },
-    "nameserverListNameserversResponseData": {
-      "type": "object",
-      "title": "ListNameserversResponseData",
-      "properties": {
-        "results": {
-          "type": "array",
-          "title": "Array of results",
-          "items": {
-            "$ref": "#/definitions/nameserverNameserver"
-          }
-        },
-        "total": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Results count"
-        }
-      },
-      "example": {
-        "results": [
-          {
-            "ip": "127.0.0.1",
-            "ip6": "0001:0001:0001:0001:0001:0001:0001:0001",
-            "name": "ns1.domain.com"
-          }
-        ],
-        "total": 9
-      }
-    },
-    "nameserverNameserver": {
-      "type": "object",
-      "title": "Nameserver",
-      "properties": {
-        "ip": {
-          "type": "string",
-          "title": "Nameserver IP"
-        },
-        "ip6": {
-          "type": "string",
-          "title": "Nameserver IPv6"
-        },
-        "name": {
-          "type": "string",
-          "title": "Nameserver name"
-        }
-      },
-      "example": {
-        "ip": "127.0.0.1",
-        "ip6": "0001:0001:0001:0001:0001:0001:0001:0001",
-        "name": "ns1.domain.com"
-      }
-    },
-    "nameserverNameserverBoolResponse": {
-      "type": "object",
-      "title": "NameserverBoolResponse",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Response code"
-        },
-        "data": {
-          "title": "The data",
-          "$ref": "#/definitions/nameserverNameserverBoolResponseData"
-        },
-        "desc": {
-          "type": "string",
-          "title": "Response description"
-        },
-        "maintenance": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates if Openprovider API is on maintenance"
-        },
-        "warnings": {
-          "type": "array",
-          "title": "The warnings",
-          "items": {
-            "$ref": "#/definitions/errorWarning"
-          }
-        }
-      },
-      "example": {
-        "code": 0,
-        "data": {
-          "success": false
-        },
-        "desc": ""
-      }
-    },
-    "nameserverNameserverBoolResponseData": {
-      "type": "object",
-      "title": "NameserverBoolResponseData",
-      "properties": {
-        "success": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates if request was successful"
-        }
-      },
-      "example": {
-        "success": false
-      }
-    },
-    "ns_groupCreateGroupRequest": {
-      "type": "object",
-      "title": "CreateGroupRequest",
-      "properties": {
-        "name_servers": {
-          "type": "array",
-          "title": "Set of nameservers and their IP addresses",
-          "items": {
-            "$ref": "#/definitions/ns_groupNameServersSet"
-          }
-        },
-        "ns_group": {
-          "description": "Plain text name of the nameserver group, which can consist of several nameservers with attached IPs. Once created in Openprovider reseller account, nameserver group can be reused for operations with domains.",
-          "type": "string"
-        }
-      },
-      "example": {
-        "name_servers": [
-          {
-            "id": 0,
-            "ip": "127.0.0.1",
-            "ip6": "0001:0001:0001:0001:0001:0001:0001:0001",
-            "name": "ns1.domain.com",
-            "seq_nr": 0
-          }
-        ],
-        "ns_group": "MyGroup"
-      }
-    },
-    "ns_groupCreateGroupResponse": {
-      "type": "object",
-      "title": "CreateGroupResponse",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Response code"
-        },
-        "data": {
-          "title": "The data",
-          "$ref": "#/definitions/ns_groupGroupBoolResponseData"
-        },
-        "desc": {
-          "type": "string",
-          "title": "Response description"
-        },
-        "maintenance": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates if Openprovider API is on maintenance"
-        },
-        "warnings": {
-          "type": "array",
-          "title": "The warnings",
-          "items": {
-            "$ref": "#/definitions/errorWarning"
-          }
-        }
-      },
-      "example": {
-        "code": 0,
-        "data": {
-          "success": false
-        },
-        "desc": ""
-      }
-    },
-    "ns_groupGetGroupResponse": {
-      "type": "object",
-      "title": "GetGroupResponse",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Response code"
-        },
-        "data": {
-          "title": "The data",
-          "$ref": "#/definitions/ns_groupGroup"
-        },
-        "desc": {
-          "type": "string",
-          "title": "Response description"
-        },
-        "maintenance": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates if Openprovider API is on maintenance"
-        },
-        "warnings": {
-          "type": "array",
-          "title": "The warnings",
-          "items": {
-            "$ref": "#/definitions/errorWarning"
-          }
-        }
-      },
-      "example": {
-        "code": 0,
-        "data": {
-          "domain_count": 0,
-          "id": 0,
-          "name_servers": [
-            {
-              "id": 0,
-              "ip": "127.0.0.1",
-              "ip6": "0001:0001:0001:0001:0001:0001:0001:0001",
-              "name": "ns1.domain.com",
-              "seq_nr": 0
-            }
-          ],
-          "ns_count": 0,
-          "ns_group": "mygroup"
-        },
-        "desc": ""
-      }
-    },
-    "ns_groupGroup": {
-      "type": "object",
-      "title": "Group",
-      "properties": {
-        "domain_count": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Number of domains associated with the group"
-        },
-        "id": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Nameserver group ID"
-        },
-        "name_servers": {
-          "type": "array",
-          "title": "List of nameservers",
-          "items": {
-            "$ref": "#/definitions/ns_groupNameServersSet"
-          }
-        },
-        "ns_count": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Number of nameservers associated with the group"
-        },
-        "ns_group": {
-          "type": "string",
-          "title": "Nameserver group name"
-        }
-      },
-      "example": {
-        "domain_count": 0,
-        "id": 0,
-        "name_servers": [
-          {
-            "id": 0,
-            "ip": "127.0.0.1",
-            "ip6": "0001:0001:0001:0001:0001:0001:0001:0001",
-            "name": "ns1.domain.com",
-            "seq_nr": 0
-          }
-        ],
-        "ns_count": 0,
-        "ns_group": "mygroup"
-      }
-    },
-    "ns_groupGroupBoolResponse": {
-      "type": "object",
-      "title": "GroupBoolResponse",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Response code"
-        },
-        "data": {
-          "title": "The data",
-          "$ref": "#/definitions/ns_groupGroupBoolResponseData"
-        },
-        "desc": {
-          "type": "string",
-          "title": "Response description"
-        },
-        "maintenance": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates if Openprovider API is on maintenance"
-        },
-        "warnings": {
-          "type": "array",
-          "title": "The warnings",
-          "items": {
-            "$ref": "#/definitions/errorWarning"
-          }
-        }
-      },
-      "example": {
-        "code": 0,
-        "data": {
-          "success": false
-        },
-        "desc": ""
-      }
-    },
-    "ns_groupGroupBoolResponseData": {
-      "type": "object",
-      "title": "GroupBoolResponseData",
-      "properties": {
-        "success": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates if request has been succesful"
-        }
-      },
-      "example": {
-        "success": false
-      }
-    },
-    "ns_groupListGroupsResponse": {
-      "type": "object",
-      "title": "ListGroupsResponse",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Response code"
-        },
-        "data": {
-          "title": "The data",
-          "$ref": "#/definitions/ns_groupListGroupsResponseData"
-        },
-        "desc": {
-          "type": "string",
-          "title": "Response description"
-        },
-        "maintenance": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates if Openprovider API is on maintenance"
-        },
-        "warnings": {
-          "type": "array",
-          "title": "The warnings",
-          "items": {
-            "$ref": "#/definitions/errorWarning"
-          }
-        }
-      },
-      "example": {
-        "code": 0,
-        "data": {
-          "results": [
-            {
-              "domain_count": 0,
-              "id": 0,
-              "name_servers": [
-                {
-                  "id": 0,
-                  "ip": "127.0.0.1",
-                  "ip6": "0001:0001:0001:0001:0001:0001:0001:0001",
-                  "name": "ns1.domain.com",
-                  "seq_nr": 0
+    "paths": {
+        "/v1beta/dns/nameservers": {
+            "get": {
+                "tags": [
+                    "NameserverService"
+                ],
+                "summary": "List nameservers",
+                "operationId": "ListNameservers",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Nameserver name.",
+                        "name": "name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Nameserver IP.",
+                        "name": "ip",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Nameserver IPv6.",
+                        "name": "ip6",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Nameserver name search pattern. Wildcatd (*) can be used.",
+                        "name": "pattern",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/nameserverListNameserversResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
                 }
-              ],
-              "ns_count": 0,
-              "ns_group": "mygroup"
+            },
+            "post": {
+                "tags": [
+                    "NameserverService"
+                ],
+                "summary": "Create nameserver",
+                "operationId": "CreateNameserver",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/nameserverNameserver"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/nameserverCreateNameserverResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
             }
-          ],
-          "total": 17
         },
-        "desc": ""
-      }
-    },
-    "ns_groupListGroupsResponseData": {
-      "type": "object",
-      "title": "ListGroupsResponseData",
-      "properties": {
-        "results": {
-          "type": "array",
-          "title": "Array of request results",
-          "items": {
-            "$ref": "#/definitions/ns_groupGroup"
-          }
+        "/v1beta/dns/nameservers/groups": {
+            "get": {
+                "tags": [
+                    "NsGroupService"
+                ],
+                "summary": "List groups",
+                "operationId": "ListGroups",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Limits the number of objects in the output.",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Used to retrieve all objects from a certain offset up to the limit. (default value: 0).",
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "The order by.",
+                        "name": "order_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Indicates if number of domains associated with the NS group should be returned.",
+                        "name": "with_domain_count",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Indicates if number of nameservers associated with the NS group should be returned.",
+                        "name": "with_ns_count",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "NS group name pattern. Wildcard (*) can be used.",
+                        "name": "ns_group_pattern",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Nameserver name pattern. Wildcard (*) can be used.",
+                        "name": "ns_name_pattern",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Nameserver IP address pattern. Wildcard (*) can be used.",
+                        "name": "ns_ip_pattern",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/ns_groupListGroupsResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "NsGroupService"
+                ],
+                "summary": "Create group",
+                "operationId": "CreateGroup",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ns_groupCreateGroupRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/ns_groupCreateGroupResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
         },
-        "total": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Results count"
+        "/v1beta/dns/nameservers/groups/{ns_group}": {
+            "get": {
+                "tags": [
+                    "NsGroupService"
+                ],
+                "summary": "Get group",
+                "operationId": "GetGroup",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Plain text name of the nameserver group, which can consist of several nameservers with attached IPs. Once created in Openprovider reseller account, nameserver group can be reused for operations with domains.",
+                        "name": "ns_group",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Nameserver group ID.",
+                        "name": "id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/ns_groupGetGroupResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "NsGroupService"
+                ],
+                "summary": "Update group",
+                "operationId": "UpdateGroup",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Plain text name of the nameserver group, which can consist of several nameservers with attached IPs. Once created in Openprovider reseller account, nameserver group can be reused for operations with domains.",
+                        "name": "ns_group",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ns_groupUpdateGroupRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/ns_groupGroupBoolResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "NsGroupService"
+                ],
+                "summary": "Delete group",
+                "operationId": "DeleteGroup",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Plain text name of the nameserver group, which can consist of several nameservers with attached IPs. Once created in Openprovider reseller account, nameserver group can be reused for operations with domains.",
+                        "name": "ns_group",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/ns_groupGroupBoolResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/dns/nameservers/{name}": {
+            "get": {
+                "tags": [
+                    "NameserverService"
+                ],
+                "summary": "Get nameserver",
+                "operationId": "GetNameserver",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Nameserver name",
+                        "name": "name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/nameserverGetNameserverResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "NameserverService"
+                ],
+                "summary": "Update nameserver",
+                "operationId": "UpdateNameserver",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Nameserver name",
+                        "name": "name",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/nameserverNameserver"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/nameserverNameserverBoolResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "NameserverService"
+                ],
+                "summary": "Delete nameserver",
+                "operationId": "DeleteNameserver",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Nameserver name",
+                        "name": "name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/nameserverNameserverBoolResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/dns/templates": {
+            "get": {
+                "tags": [
+                    "TemplateService"
+                ],
+                "summary": "List templates",
+                "operationId": "ListTemplates",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Limits the number of objects in the output.",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Used to retrieve all objects from a certain offset up to the limit.",
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Orders output ASC or DESC.",
+                        "name": "order",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Indicates if DNS records should be retrieved.",
+                        "name": "with_records",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Template name pattern. Wildcard (*)can be used.",
+                        "name": "name_pattern",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/templateListTemplatesResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "TemplateService"
+                ],
+                "summary": "Create template",
+                "operationId": "CreateTemplate",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/templateCreateTemplateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/templateCreateTemplateResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/dns/templates/{id}": {
+            "get": {
+                "tags": [
+                    "TemplateService"
+                ],
+                "summary": "Get template",
+                "operationId": "GetTemplate",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Template ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/templateGetTemplateResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "TemplateService"
+                ],
+                "summary": "Delete template",
+                "operationId": "DeleteTemplate",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Template ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/templateTemplateBoolResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/dns/zones": {
+            "get": {
+                "tags": [
+                    "ZoneService"
+                ],
+                "summary": "List zones",
+                "externalDocs": {
+                    "description": "For more detailed information on this method check our guide",
+                    "url": "https://support.openprovider.eu/hc/en-us/articles/360024168694"
+                },
+                "operationId": "ListZones",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Limits the number of objects in the output. (default value: 100, maximum value: 500).",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Used to retrieve all objects from a certain offset up to the. (default value: 0).",
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "DNS zone creation date.",
+                        "name": "order_by.creation_date",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Date the DNS zone was last modified.",
+                        "name": "order_by.modification_date",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Name of the domain to which DNS zone corresponds.",
+                        "name": "order_by.name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "DNS zone type (master or slave).",
+                        "name": "type",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "DNS zone name pattern. Wildcard (*) can be used.",
+                        "name": "name_pattern",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Indicates, whether DNS records should be displayed in output.",
+                        "name": "with_records",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Indicates, whether DNS zone history should be displayed in output.",
+                        "name": "with_history",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Indicates, whether DNSSEC keys should be displayed in output.",
+                        "name": "with_dnskey",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/zoneListZonesResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "ZoneService"
+                ],
+                "summary": "Create zone",
+                "externalDocs": {
+                    "description": "For more detailed information on this method check our guide",
+                    "url": "https://support.openprovider.eu/hc/en-us/articles/360023491794"
+                },
+                "operationId": "CreateZone",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/zoneCreateZoneRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/zoneZoneBoolResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/dns/zones/{name}": {
+            "get": {
+                "tags": [
+                    "ZoneService"
+                ],
+                "summary": "Get zone",
+                "externalDocs": {
+                    "description": "For more detailed information on this method check our guide",
+                    "url": "https://support.openprovider.eu/hc/en-us/articles/360024168694"
+                },
+                "operationId": "GetZone",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Name of the domain to which DNS zone corresponds",
+                        "name": "name",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "DNS zone ID.",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Indicates, whether DNS records should be displayed in output.",
+                        "name": "with_records",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Indicates, whether DNS zone history should be displayed in output.",
+                        "name": "with_history",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Indicates, whether DNSSEC keys should be displayed in output.",
+                        "name": "with_dnskey",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/zoneGetZoneResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "ZoneService"
+                ],
+                "summary": "Update zone",
+                "externalDocs": {
+                    "description": "For more detailed information on this method check our guide",
+                    "url": "https://support.openprovider.eu/hc/en-us/articles/360024342733"
+                },
+                "operationId": "UpdateZone",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Name of the domain to which DNS zone corresponds",
+                        "name": "name",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/zoneUpdateZoneRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/zoneZoneBoolResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "ZoneService"
+                ],
+                "summary": "Delete zone",
+                "externalDocs": {
+                    "description": "For more detailed information on this method check our guide",
+                    "url": "https://support.openprovider.eu/hc/en-us/articles/360024231654"
+                },
+                "operationId": "DeleteZone",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Name of the domain to which DNS zone corresponds",
+                        "name": "name",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "DNS zone ID.",
+                        "name": "id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Domain name without extension.",
+                        "name": "domain.name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Domain extension.",
+                        "name": "domain.extension",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/zoneZoneBoolResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/dns/zones/{name}/records": {
+            "get": {
+                "tags": [
+                    "ZoneRecordService"
+                ],
+                "summary": "List zone records",
+                "operationId": "ListZoneRecords",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "DNS record name",
+                        "name": "name",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "DNS zone ID.",
+                        "name": "zone_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "How many records to retrieve (default: 100, max 500).",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "From which record to retrieve (default: 0).",
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sorting type (ASC/DESC).",
+                        "name": "order_by.type",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Name of the field to sort results by.",
+                        "name": "order_by.name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "DNS record name pattern. Wildcard (*) can be used.",
+                        "name": "record_name_pattern",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "DNS record value pattern. Wildcard (*) can be used.",
+                        "name": "value_pattern",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "DNS record type.",
+                        "name": "type",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "DNS record priority.",
+                        "name": "prio",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "DNS record TTL.",
+                        "name": "ttl",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/recordListZoneRecordsResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
         }
-      },
-      "example": {
-        "results": [
-          {
-            "domain_count": 0,
-            "id": 0,
-            "name_servers": [
-              {
+    },
+    "definitions": {
+        "errorError": {
+            "type": "object",
+            "title": "Error",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Error code"
+                },
+                "data": {
+                    "type": "string",
+                    "title": "Additional error description"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Error description"
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": "",
+                "desc": ""
+            }
+        },
+        "errorWarning": {
+            "type": "object",
+            "title": "Warning",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Warning code"
+                },
+                "data": {
+                    "type": "string",
+                    "title": "Additional warning description"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Warning description"
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": "",
+                "desc": ""
+            }
+        },
+        "historyZoneHistory": {
+            "type": "object",
+            "title": "ZoneHistory",
+            "properties": {
+                "date": {
+                    "type": "string",
+                    "title": "The date"
+                },
+                "is": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "The is"
+                },
+                "source": {
+                    "type": "string",
+                    "title": "The source"
+                },
+                "was": {
+                    "type": "string",
+                    "title": "The was"
+                }
+            },
+            "example": {
+                "date": "1560966009",
+                "is": true,
+                "source": "",
+                "was": "Zone is deleted."
+            }
+        },
+        "nameserverCreateNameserverResponse": {
+            "type": "object",
+            "title": "CreateNameserverResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "The data",
+                    "$ref": "#/definitions/nameserverNameserver"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "The warnings",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "ip": "127.0.0.1",
+                    "ip6": "0001:0001:0001:0001:0001:0001:0001:0001",
+                    "name": "ns1.domain.com"
+                },
+                "desc": ""
+            }
+        },
+        "nameserverGetNameserverResponse": {
+            "type": "object",
+            "title": "GetNameserverResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "The data",
+                    "$ref": "#/definitions/nameserverNameserver"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "The warnings",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "ip": "127.0.0.1",
+                    "ip6": "0001:0001:0001:0001:0001:0001:0001:0001",
+                    "name": "ns1.domain.com"
+                },
+                "desc": ""
+            }
+        },
+        "nameserverListNameserversResponse": {
+            "type": "object",
+            "title": "ListNameserversResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "The data",
+                    "$ref": "#/definitions/nameserverListNameserversResponseData"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "The warnings",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "results": [
+                        {
+                            "ip": "127.0.0.1",
+                            "ip6": "0001:0001:0001:0001:0001:0001:0001:0001",
+                            "name": "ns1.domain.com"
+                        }
+                    ],
+                    "total": 9
+                },
+                "desc": ""
+            }
+        },
+        "nameserverListNameserversResponseData": {
+            "type": "object",
+            "title": "ListNameserversResponseData",
+            "properties": {
+                "results": {
+                    "type": "array",
+                    "title": "Array of results",
+                    "items": {
+                        "$ref": "#/definitions/nameserverNameserver"
+                    }
+                },
+                "total": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Results count"
+                }
+            },
+            "example": {
+                "results": [
+                    {
+                        "ip": "127.0.0.1",
+                        "ip6": "0001:0001:0001:0001:0001:0001:0001:0001",
+                        "name": "ns1.domain.com"
+                    }
+                ],
+                "total": 9
+            }
+        },
+        "nameserverNameserver": {
+            "type": "object",
+            "title": "Nameserver",
+            "properties": {
+                "ip": {
+                    "type": "string",
+                    "title": "Nameserver IP"
+                },
+                "ip6": {
+                    "type": "string",
+                    "title": "Nameserver IPv6"
+                },
+                "name": {
+                    "type": "string",
+                    "title": "Nameserver name"
+                }
+            },
+            "example": {
+                "ip": "127.0.0.1",
+                "ip6": "0001:0001:0001:0001:0001:0001:0001:0001",
+                "name": "ns1.domain.com"
+            }
+        },
+        "nameserverNameserverBoolResponse": {
+            "type": "object",
+            "title": "NameserverBoolResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "The data",
+                    "$ref": "#/definitions/nameserverNameserverBoolResponseData"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "The warnings",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "success": false
+                },
+                "desc": ""
+            }
+        },
+        "nameserverNameserverBoolResponseData": {
+            "type": "object",
+            "title": "NameserverBoolResponseData",
+            "properties": {
+                "success": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if request was successful"
+                }
+            },
+            "example": {
+                "success": false
+            }
+        },
+        "ns_groupCreateGroupRequest": {
+            "type": "object",
+            "title": "CreateGroupRequest",
+            "properties": {
+                "name_servers": {
+                    "type": "array",
+                    "title": "Set of nameservers and their IP addresses",
+                    "items": {
+                        "$ref": "#/definitions/ns_groupNameServersSet"
+                    }
+                },
+                "ns_group": {
+                    "description": "Plain text name of the nameserver group, which can consist of several nameservers with attached IPs. Once created in Openprovider reseller account, nameserver group can be reused for operations with domains.",
+                    "type": "string"
+                }
+            },
+            "example": {
+                "name_servers": [
+                    {
+                        "id": 0,
+                        "ip": "127.0.0.1",
+                        "ip6": "0001:0001:0001:0001:0001:0001:0001:0001",
+                        "name": "ns1.domain.com",
+                        "seq_nr": 0
+                    }
+                ],
+                "ns_group": "MyGroup"
+            }
+        },
+        "ns_groupCreateGroupResponse": {
+            "type": "object",
+            "title": "CreateGroupResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "The data",
+                    "$ref": "#/definitions/ns_groupGroupBoolResponseData"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "The warnings",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "success": false
+                },
+                "desc": ""
+            }
+        },
+        "ns_groupGetGroupResponse": {
+            "type": "object",
+            "title": "GetGroupResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "The data",
+                    "$ref": "#/definitions/ns_groupGroup"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "The warnings",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "domain_count": 0,
+                    "id": 0,
+                    "name_servers": [
+                        {
+                            "id": 0,
+                            "ip": "127.0.0.1",
+                            "ip6": "0001:0001:0001:0001:0001:0001:0001:0001",
+                            "name": "ns1.domain.com",
+                            "seq_nr": 0
+                        }
+                    ],
+                    "ns_count": 0,
+                    "ns_group": "mygroup"
+                },
+                "desc": ""
+            }
+        },
+        "ns_groupGroup": {
+            "type": "object",
+            "title": "Group",
+            "properties": {
+                "domain_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Number of domains associated with the group"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Nameserver group ID"
+                },
+                "name_servers": {
+                    "type": "array",
+                    "title": "List of nameservers",
+                    "items": {
+                        "$ref": "#/definitions/ns_groupNameServersSet"
+                    }
+                },
+                "ns_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Number of nameservers associated with the group"
+                },
+                "ns_group": {
+                    "type": "string",
+                    "title": "Nameserver group name"
+                }
+            },
+            "example": {
+                "domain_count": 0,
+                "id": 0,
+                "name_servers": [
+                    {
+                        "id": 0,
+                        "ip": "127.0.0.1",
+                        "ip6": "0001:0001:0001:0001:0001:0001:0001:0001",
+                        "name": "ns1.domain.com",
+                        "seq_nr": 0
+                    }
+                ],
+                "ns_count": 0,
+                "ns_group": "mygroup"
+            }
+        },
+        "ns_groupGroupBoolResponse": {
+            "type": "object",
+            "title": "GroupBoolResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "The data",
+                    "$ref": "#/definitions/ns_groupGroupBoolResponseData"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "The warnings",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "success": false
+                },
+                "desc": ""
+            }
+        },
+        "ns_groupGroupBoolResponseData": {
+            "type": "object",
+            "title": "GroupBoolResponseData",
+            "properties": {
+                "success": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if request has been succesful"
+                }
+            },
+            "example": {
+                "success": false
+            }
+        },
+        "ns_groupListGroupsResponse": {
+            "type": "object",
+            "title": "ListGroupsResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "The data",
+                    "$ref": "#/definitions/ns_groupListGroupsResponseData"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "The warnings",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "results": [
+                        {
+                            "domain_count": 0,
+                            "id": 0,
+                            "name_servers": [
+                                {
+                                    "id": 0,
+                                    "ip": "127.0.0.1",
+                                    "ip6": "0001:0001:0001:0001:0001:0001:0001:0001",
+                                    "name": "ns1.domain.com",
+                                    "seq_nr": 0
+                                }
+                            ],
+                            "ns_count": 0,
+                            "ns_group": "mygroup"
+                        }
+                    ],
+                    "total": 17
+                },
+                "desc": ""
+            }
+        },
+        "ns_groupListGroupsResponseData": {
+            "type": "object",
+            "title": "ListGroupsResponseData",
+            "properties": {
+                "results": {
+                    "type": "array",
+                    "title": "Array of request results",
+                    "items": {
+                        "$ref": "#/definitions/ns_groupGroup"
+                    }
+                },
+                "total": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Results count"
+                }
+            },
+            "example": {
+                "results": [
+                    {
+                        "domain_count": 0,
+                        "id": 0,
+                        "name_servers": [
+                            {
+                                "id": 0,
+                                "ip": "127.0.0.1",
+                                "ip6": "0001:0001:0001:0001:0001:0001:0001:0001",
+                                "name": "ns1.domain.com",
+                                "seq_nr": 0
+                            }
+                        ],
+                        "ns_count": 0,
+                        "ns_group": "mygroup"
+                    }
+                ],
+                "total": 17
+            }
+        },
+        "ns_groupNameServersSet": {
+            "type": "object",
+            "title": "NameServersSet",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Nameserver ID"
+                },
+                "ip": {
+                    "type": "string",
+                    "title": "Nameserver IP"
+                },
+                "ip6": {
+                    "type": "string",
+                    "title": "Nameserver IPv6"
+                },
+                "name": {
+                    "type": "string",
+                    "title": "Nameserver name"
+                },
+                "seq_nr": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Nameserver position in the group"
+                }
+            },
+            "example": {
                 "id": 0,
                 "ip": "127.0.0.1",
                 "ip6": "0001:0001:0001:0001:0001:0001:0001:0001",
                 "name": "ns1.domain.com",
                 "seq_nr": 0
-              }
-            ],
-            "ns_count": 0,
-            "ns_group": "mygroup"
-          }
-        ],
-        "total": 17
-      }
-    },
-    "ns_groupNameServersSet": {
-      "type": "object",
-      "title": "NameServersSet",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Nameserver ID"
-        },
-        "ip": {
-          "type": "string",
-          "title": "Nameserver IP"
-        },
-        "ip6": {
-          "type": "string",
-          "title": "Nameserver IPv6"
-        },
-        "name": {
-          "type": "string",
-          "title": "Nameserver name"
-        },
-        "seq_nr": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Nameserver position in the group"
-        }
-      },
-      "example": {
-        "id": 0,
-        "ip": "127.0.0.1",
-        "ip6": "0001:0001:0001:0001:0001:0001:0001:0001",
-        "name": "ns1.domain.com",
-        "seq_nr": 0
-      }
-    },
-    "ns_groupUpdateGroupRequest": {
-      "type": "object",
-      "title": "UpdateGroupRequest",
-      "properties": {
-        "name_servers": {
-          "type": "array",
-          "title": "Set of nameservers and their IP addresses",
-          "items": {
-            "$ref": "#/definitions/ns_groupNameServersSet"
-          }
-        },
-        "ns_group": {
-          "description": "Plain text name of the nameserver group, which can consist of several nameservers with attached IPs. Once created in Openprovider reseller account, nameserver group can be reused for operations with domains.",
-          "type": "string"
-        }
-      },
-      "example": {
-        "name_servers": [
-          {
-            "id": 0,
-            "ip": "127.0.0.1",
-            "ip6": "0001:0001:0001:0001:0001:0001:0001:0001",
-            "name": "ns1.domain.com",
-            "seq_nr": 0
-          }
-        ],
-        "ns_group": "MyGroup"
-      }
-    },
-    "recordListZoneRecordsRequestOrderBy": {
-      "type": "object",
-      "title": "ListZoneRecordsRequestOrderBy",
-      "properties": {
-        "name": {
-          "type": "string",
-          "title": "Name of the field to sort results by"
-        },
-        "type": {
-          "type": "string",
-          "title": "Sorting type (ASC/DESC)"
-        }
-      }
-    },
-    "recordListZoneRecordsResponse": {
-      "type": "object",
-      "title": "ListZoneRecordsResponse",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Response code"
-        },
-        "data": {
-          "title": "The data",
-          "$ref": "#/definitions/recordListZoneRecordsResponseData"
-        },
-        "desc": {
-          "type": "string",
-          "title": "Response pattern"
-        },
-        "maintenance": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates if Openprovider API is on maintenance"
-        },
-        "warnings": {
-          "type": "array",
-          "title": "The warnings",
-          "items": {
-            "$ref": "#/definitions/errorWarning"
-          }
-        }
-      },
-      "example": {
-        "code": 0,
-        "data": {
-          "results": [
-            {
-              "ip": "127.0.0.1",
-              "name": "domain.com",
-              "prio": 1,
-              "ttl": 900,
-              "type": "CNAME",
-              "value": "abcd.domain.com"
             }
-          ],
-          "total": 6
         },
-        "desc": ""
-      }
-    },
-    "recordListZoneRecordsResponseData": {
-      "type": "object",
-      "title": "ListZoneRecordsResponseData",
-      "properties": {
-        "results": {
-          "type": "array",
-          "title": "Array of search results",
-          "items": {
-            "$ref": "#/definitions/recordZoneRecord"
-          }
-        },
-        "total": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Number of search results"
-        }
-      },
-      "example": {
-        "results": [
-          {
-            "ip": "127.0.0.1",
-            "name": "domain.com",
-            "prio": 1,
-            "ttl": 900,
-            "type": "CNAME",
-            "value": "abcd.domain.com"
-          }
-        ],
-        "total": 6
-      }
-    },
-    "recordZoneRecord": {
-      "type": "object",
-      "title": "ZoneRecord",
-      "properties": {
-        "ip": {
-          "type": "string",
-          "title": "DNS record IP address"
-        },
-        "name": {
-          "type": "string",
-          "title": "DNS record name"
-        },
-        "prio": {
-          "type": "integer",
-          "format": "int32",
-          "title": "DNS record priority"
-        },
-        "ttl": {
-          "type": "integer",
-          "format": "int32",
-          "title": "DNS record priority"
-        },
-        "type": {
-          "type": "string",
-          "title": "DNS record type"
-        },
-        "value": {
-          "type": "string",
-          "title": "DNS record value"
-        }
-      },
-      "example": {
-        "ip": "127.0.0.1",
-        "name": "domain.com",
-        "prio": 1,
-        "ttl": 900,
-        "type": "CNAME",
-        "value": "abcd.domain.com"
-      }
-    },
-    "templateCreateTemplateRequest": {
-      "type": "object",
-      "title": "CreateTemplateRequest",
-      "properties": {
-        "is_spamexperts_enabled": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Idicates if spamfiltering is enabled for the DNS zone"
-        },
-        "name": {
-          "type": "string",
-          "title": "The name"
-        },
-        "records": {
-          "type": "array",
-          "title": "The records",
-          "items": {
-            "$ref": "#/definitions/templateRecord"
-          }
-        }
-      },
-      "example": {
-        "is_spamexperts_enabled": false,
-        "name": "MyTemplate",
-        "records": [
-          {
-            "id": 67377,
-            "name": "ns1.domain.com",
-            "prio": 10,
-            "ttl": 86400,
-            "type": "MX",
-            "value": "abc.example.com"
-          }
-        ]
-      }
-    },
-    "templateCreateTemplateResponse": {
-      "type": "object",
-      "title": "CreateTemplateResponse",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Response code"
-        },
-        "data": {
-          "title": "The data",
-          "$ref": "#/definitions/templateCreateTemplateResponseData"
-        },
-        "desc": {
-          "type": "string",
-          "title": "Response description"
-        },
-        "maintenance": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates if Openprovider API is on maintenance"
-        },
-        "warnings": {
-          "type": "array",
-          "title": "The warnings",
-          "items": {
-            "$ref": "#/definitions/errorWarning"
-          }
-        }
-      },
-      "example": {
-        "code": 0,
-        "data": {
-          "id": 39238
-        },
-        "desc": ""
-      }
-    },
-    "templateCreateTemplateResponseData": {
-      "type": "object",
-      "title": "CreateTemplateResponseData",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Template ID"
-        }
-      },
-      "example": {
-        "id": 39238
-      }
-    },
-    "templateGetTemplateResponse": {
-      "type": "object",
-      "title": "GetTemplateResponse",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Response code"
-        },
-        "data": {
-          "title": "The data",
-          "$ref": "#/definitions/templateTemplate"
-        },
-        "desc": {
-          "type": "string",
-          "title": "Response description"
-        },
-        "maintenance": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates if Openprovider API is on maintenance"
-        },
-        "warnings": {
-          "type": "array",
-          "title": "The warnings",
-          "items": {
-            "$ref": "#/definitions/errorWarning"
-          }
-        }
-      },
-      "example": {
-        "code": 0,
-        "data": {
-          "id": 27261,
-          "is_spamexperts_enabled": false,
-          "name": "MyTemplate",
-          "records": [
-            {
-              "id": 67377,
-              "name": "ns1.domain.com",
-              "prio": 10,
-              "ttl": 86400,
-              "type": "MX",
-              "value": "abc.example.com"
-            }
-          ]
-        },
-        "desc": ""
-      }
-    },
-    "templateListTemplatesResponse": {
-      "type": "object",
-      "title": "ListTemplatesResponse",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Response code"
-        },
-        "data": {
-          "title": "The data",
-          "$ref": "#/definitions/templateListTemplatesResponseData"
-        },
-        "desc": {
-          "type": "string",
-          "title": "Response description"
-        },
-        "maintenance": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates if Openprovider API is on maintenance"
-        },
-        "warnings": {
-          "type": "array",
-          "title": "The warnings",
-          "items": {
-            "$ref": "#/definitions/errorWarning"
-          }
-        }
-      },
-      "example": {
-        "code": 0,
-        "data": {
-          "results": [
-            {
-              "id": 27261,
-              "is_spamexperts_enabled": false,
-              "name": "MyTemplate",
-              "records": [
-                {
-                  "id": 67377,
-                  "name": "ns1.domain.com",
-                  "prio": 10,
-                  "ttl": 86400,
-                  "type": "MX",
-                  "value": "abc.example.com"
+        "ns_groupUpdateGroupRequest": {
+            "type": "object",
+            "title": "UpdateGroupRequest",
+            "properties": {
+                "name_servers": {
+                    "type": "array",
+                    "title": "Set of nameservers and their IP addresses",
+                    "items": {
+                        "$ref": "#/definitions/ns_groupNameServersSet"
+                    }
+                },
+                "ns_group": {
+                    "description": "Plain text name of the nameserver group, which can consist of several nameservers with attached IPs. Once created in Openprovider reseller account, nameserver group can be reused for operations with domains.",
+                    "type": "string"
                 }
-              ]
+            },
+            "example": {
+                "name_servers": [
+                    {
+                        "id": 0,
+                        "ip": "127.0.0.1",
+                        "ip6": "0001:0001:0001:0001:0001:0001:0001:0001",
+                        "name": "ns1.domain.com",
+                        "seq_nr": 0
+                    }
+                ],
+                "ns_group": "MyGroup"
             }
-          ],
-          "total": 20
         },
-        "desc": ""
-      }
-    },
-    "templateListTemplatesResponseData": {
-      "type": "object",
-      "title": "ListTemplatesResponseData",
-      "properties": {
-        "results": {
-          "type": "array",
-          "title": "Array of results",
-          "items": {
-            "$ref": "#/definitions/templateTemplate"
-          }
-        },
-        "total": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Results count"
-        }
-      },
-      "example": {
-        "results": [
-          {
-            "id": 27261,
-            "is_spamexperts_enabled": false,
-            "name": "MyTemplate",
-            "records": [
-              {
-                "id": 67377,
-                "name": "ns1.domain.com",
-                "prio": 10,
-                "ttl": 86400,
-                "type": "MX",
-                "value": "abc.example.com"
-              }
-            ]
-          }
-        ],
-        "total": 20
-      }
-    },
-    "templateRecord": {
-      "type": "object",
-      "title": "Record",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int32",
-          "title": "DNS record ID"
-        },
-        "name": {
-          "type": "string",
-          "title": "DNS record name"
-        },
-        "prio": {
-          "type": "integer",
-          "format": "int32",
-          "title": "DNS record priority"
-        },
-        "ttl": {
-          "type": "integer",
-          "format": "int32",
-          "title": "DNS record TTL"
-        },
-        "type": {
-          "type": "string",
-          "title": "DNS record tyoe"
-        },
-        "value": {
-          "type": "string",
-          "title": "DNS record value"
-        }
-      },
-      "example": {
-        "id": 67377,
-        "name": "ns1.domain.com",
-        "prio": 10,
-        "ttl": 86400,
-        "type": "MX",
-        "value": "abc.example.com"
-      }
-    },
-    "templateTemplate": {
-      "type": "object",
-      "title": "Template",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Template ID"
-        },
-        "is_spamexperts_enabled": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates if spam filtering is enabled for the DNS zone"
-        },
-        "name": {
-          "type": "string",
-          "title": "Template name"
-        },
-        "records": {
-          "type": "array",
-          "title": "Array of DNS zone records",
-          "items": {
-            "$ref": "#/definitions/templateRecord"
-          }
-        }
-      },
-      "example": {
-        "id": 27261,
-        "is_spamexperts_enabled": false,
-        "name": "MyTemplate",
-        "records": [
-          {
-            "id": 67377,
-            "name": "ns1.domain.com",
-            "prio": 10,
-            "ttl": 86400,
-            "type": "MX",
-            "value": "abc.example.com"
-          }
-        ]
-      }
-    },
-    "templateTemplateBoolResponse": {
-      "type": "object",
-      "title": "TemplateBoolResponse",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Response code"
-        },
-        "data": {
-          "title": "The data",
-          "$ref": "#/definitions/templateTemplateBoolResponseData"
-        },
-        "desc": {
-          "type": "string",
-          "title": "Response description"
-        },
-        "maintenance": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates if Openprovider API is on maintenance"
-        },
-        "warnings": {
-          "type": "array",
-          "title": "The warnings",
-          "items": {
-            "$ref": "#/definitions/errorWarning"
-          }
-        }
-      },
-      "example": {
-        "code": 0,
-        "data": {
-          "success": false
-        },
-        "desc": ""
-      }
-    },
-    "templateTemplateBoolResponseData": {
-      "type": "object",
-      "title": "TemplateBoolResponseData",
-      "properties": {
-        "success": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates if request was successful"
-        }
-      },
-      "example": {
-        "success": false
-      }
-    },
-    "zoneCreateZoneRequest": {
-      "type": "object",
-      "title": "CreateZoneRequest",
-      "properties": {
-        "domain": {
-          "title": "Name of the domain to which DNS zone corresponds. Represented by array of domain name and extension",
-          "$ref": "#/definitions/zoneDomain"
-        },
-        "is_spamexperts_enabled": {
-          "type": "string",
-          "title": "Used to enable spam filtering for this DNS zone"
-        },
-        "master_ip": {
-          "type": "string",
-          "title": "IP of the master nameserver for this DNS zone. Required if DNS zone type = slave"
-        },
-        "records": {
-          "type": "array",
-          "title": "Array of DNS records",
-          "items": {
-            "$ref": "#/definitions/recordZoneRecord"
-          }
-        },
-        "secured": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Used to enable or disable DNSSEC for this DNS zone"
-        },
-        "template_name": {
-          "type": "string",
-          "title": "Name of the DNS template to use with this DNS zone"
-        },
-        "type": {
-          "type": "string",
-          "title": "DNS zone type (master or slave)"
-        }
-      },
-      "example": {
-        "domain": {
-          "extension": "com",
-          "name": "domain"
-        },
-        "is_spamexperts_enabled": "on",
-        "master_ip": "127.0.0.1",
-        "records": [
-          {
-            "ip": "127.0.0.1",
-            "name": "domain.com",
-            "prio": 1,
-            "ttl": 900,
-            "type": "CNAME",
-            "value": "abcd.domain.com"
-          }
-        ],
-        "secured": false,
-        "template_name": "default",
-        "type": "master"
-      }
-    },
-    "zoneDomain": {
-      "type": "object",
-      "title": "Domain",
-      "properties": {
-        "extension": {
-          "type": "string",
-          "title": "Domain extension"
-        },
-        "name": {
-          "type": "string",
-          "title": "Domain name without extension"
-        }
-      },
-      "example": {
-        "extension": "com",
-        "name": "domain"
-      }
-    },
-    "zoneGetZoneResponse": {
-      "type": "object",
-      "title": "GetZoneResponse",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Response code"
-        },
-        "data": {
-          "title": "The data",
-          "$ref": "#/definitions/zoneZone"
-        },
-        "desc": {
-          "type": "string",
-          "title": "Response description"
-        },
-        "maintenance": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates if Openprovider API is on maintenance"
-        },
-        "warnings": {
-          "type": "array",
-          "title": "The warnings",
-          "items": {
-            "$ref": "#/definitions/errorWarning"
-          }
-        }
-      },
-      "example": {
-        "code": 0,
-        "data": {
-          "active": 1,
-          "creation_date": "2012-02-05 7:37:28",
-          "dnskey": "",
-          "history": [
-            {
-              "date": "1560966009",
-              "is": true,
-              "source": "",
-              "was": "Zone is deleted."
-            }
-          ],
-          "id": 12345,
-          "ip": "127.0.0.1",
-          "is_deleted": false,
-          "is_shadow": false,
-          "is_spamexperts_enabled": false,
-          "modification_date": "2018-11-28 6:57:05",
-          "name": "domain.com",
-          "records": [
-            {
-              "ip": "127.0.0.1",
-              "name": "domain.com",
-              "prio": 1,
-              "ttl": 900,
-              "type": "CNAME",
-              "value": "abcd.domain.com"
-            }
-          ],
-          "reseller_id": 123456,
-          "type": "master"
-        },
-        "desc": ""
-      }
-    },
-    "zoneListZonesRequestOrderBy": {
-      "type": "object",
-      "title": "ListZonesRequestOrderBy",
-      "properties": {
-        "creation_date": {
-          "type": "string",
-          "title": "DNS zone creation date"
-        },
-        "modification_date": {
-          "type": "string",
-          "title": "Date the DNS zone was last modified"
-        },
-        "name": {
-          "type": "string",
-          "title": "Name of the domain to which DNS zone corresponds"
-        }
-      }
-    },
-    "zoneListZonesResponse": {
-      "type": "object",
-      "title": "ListZonesResponse",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Response code"
-        },
-        "data": {
-          "title": "The data",
-          "$ref": "#/definitions/zoneListZonesResponseData"
-        },
-        "desc": {
-          "type": "string",
-          "title": "Response description"
-        },
-        "maintenance": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates if Openprovider API is on maintenance"
-        },
-        "warnings": {
-          "type": "array",
-          "title": "The warnings",
-          "items": {
-            "$ref": "#/definitions/errorWarning"
-          }
-        }
-      },
-      "example": {
-        "code": 0,
-        "data": {
-          "results": [
-            {
-              "active": 1,
-              "creation_date": "2012-02-05 7:37:28",
-              "dnskey": "",
-              "history": [
-                {
-                  "date": "1560966009",
-                  "is": true,
-                  "source": "",
-                  "was": "Zone is deleted."
+        "recordListZoneRecordsRequestOrderBy": {
+            "type": "object",
+            "title": "ListZoneRecordsRequestOrderBy",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "title": "Name of the field to sort results by"
+                },
+                "type": {
+                    "type": "string",
+                    "title": "Sorting type (ASC/DESC)"
                 }
-              ],
-              "id": 12345,
-              "ip": "127.0.0.1",
-              "is_deleted": false,
-              "is_shadow": false,
-              "is_spamexperts_enabled": false,
-              "modification_date": "2018-11-28 6:57:05",
-              "name": "domain.com",
-              "records": [
-                {
-                  "ip": "127.0.0.1",
-                  "name": "domain.com",
-                  "prio": 1,
-                  "ttl": 900,
-                  "type": "CNAME",
-                  "value": "abcd.domain.com"
-                }
-              ],
-              "reseller_id": 123456,
-              "type": "master"
             }
-          ],
-          "total": 1888
         },
-        "desc": ""
-      }
-    },
-    "zoneListZonesResponseData": {
-      "type": "object",
-      "title": "ListZonesResponseData",
-      "properties": {
-        "results": {
-          "type": "array",
-          "title": "Array of search results",
-          "items": {
-            "$ref": "#/definitions/zoneZone"
-          }
+        "recordListZoneRecordsResponse": {
+            "type": "object",
+            "title": "ListZoneRecordsResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "The data",
+                    "$ref": "#/definitions/recordListZoneRecordsResponseData"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response pattern"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "The warnings",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "results": [
+                        {
+                            "ip": "127.0.0.1",
+                            "name": "domain.com",
+                            "prio": 1,
+                            "ttl": 900,
+                            "type": "CNAME",
+                            "value": "abcd.domain.com"
+                        }
+                    ],
+                    "total": 6
+                },
+                "desc": ""
+            }
         },
-        "total": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Number of search results"
-        }
-      },
-      "example": {
-        "results": [
-          {
-            "active": 1,
-            "creation_date": "2012-02-05 7:37:28",
-            "dnskey": "",
-            "history": [
-              {
-                "date": "1560966009",
-                "is": true,
-                "source": "",
-                "was": "Zone is deleted."
-              }
-            ],
-            "id": 12345,
-            "ip": "127.0.0.1",
-            "is_deleted": false,
-            "is_shadow": false,
-            "is_spamexperts_enabled": false,
-            "modification_date": "2018-11-28 6:57:05",
-            "name": "domain.com",
-            "records": [
-              {
+        "recordListZoneRecordsResponseData": {
+            "type": "object",
+            "title": "ListZoneRecordsResponseData",
+            "properties": {
+                "results": {
+                    "type": "array",
+                    "title": "Array of search results",
+                    "items": {
+                        "$ref": "#/definitions/recordZoneRecord"
+                    }
+                },
+                "total": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Number of search results"
+                }
+            },
+            "example": {
+                "results": [
+                    {
+                        "ip": "127.0.0.1",
+                        "name": "domain.com",
+                        "prio": 1,
+                        "ttl": 900,
+                        "type": "CNAME",
+                        "value": "abcd.domain.com"
+                    }
+                ],
+                "total": 6
+            }
+        },
+        "recordZoneRecord": {
+            "type": "object",
+            "title": "ZoneRecord",
+            "properties": {
+                "ip": {
+                    "type": "string",
+                    "title": "DNS record IP address"
+                },
+                "name": {
+                    "type": "string",
+                    "title": "DNS record name"
+                },
+                "prio": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "DNS record priority"
+                },
+                "ttl": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "DNS record priority"
+                },
+                "type": {
+                    "type": "string",
+                    "title": "DNS record type"
+                },
+                "value": {
+                    "type": "string",
+                    "title": "DNS record value"
+                }
+            },
+            "example": {
                 "ip": "127.0.0.1",
                 "name": "domain.com",
                 "prio": 1,
                 "ttl": 900,
                 "type": "CNAME",
                 "value": "abcd.domain.com"
-              }
-            ],
-            "reseller_id": 123456,
-            "type": "master"
-          }
-        ],
-        "total": 1888
-      }
-    },
-    "zoneUpdateZoneRequest": {
-      "type": "object",
-      "title": "UpdateZoneRequest",
-      "properties": {
-        "domain": {
-          "type": "array",
-          "title": "Name of the domain to which DNS zone corresponds. Represented by array of domain name and extension",
-          "items": {
-            "$ref": "#/definitions/zoneDomain"
-          }
+            }
         },
-        "id": {
-          "type": "integer",
-          "format": "int32",
-          "title": "DNS zone ID"
+        "templateCreateTemplateRequest": {
+            "type": "object",
+            "title": "CreateTemplateRequest",
+            "properties": {
+                "is_spamexperts_enabled": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Idicates if spamfiltering is enabled for the DNS zone"
+                },
+                "name": {
+                    "type": "string",
+                    "title": "The name"
+                },
+                "records": {
+                    "type": "array",
+                    "title": "The records",
+                    "items": {
+                        "$ref": "#/definitions/templateRecord"
+                    }
+                }
+            },
+            "example": {
+                "is_spamexperts_enabled": false,
+                "name": "MyTemplate",
+                "records": [
+                    {
+                        "id": 67377,
+                        "name": "ns1.domain.com",
+                        "prio": 10,
+                        "ttl": 86400,
+                        "type": "MX",
+                        "value": "abc.example.com"
+                    }
+                ]
+            }
         },
-        "is_spamexperts_enabled": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Used to enable spam filtering for this DNS zone"
+        "templateCreateTemplateResponse": {
+            "type": "object",
+            "title": "CreateTemplateResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "The data",
+                    "$ref": "#/definitions/templateCreateTemplateResponseData"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "The warnings",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "id": 39238
+                },
+                "desc": ""
+            }
         },
-        "master_ip": {
-          "type": "string",
-          "title": "IP of the master nameserver for this DNS zone. Required if DNS zone type = slave"
+        "templateCreateTemplateResponseData": {
+            "type": "object",
+            "title": "CreateTemplateResponseData",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Template ID"
+                }
+            },
+            "example": {
+                "id": 39238
+            }
         },
-        "name": {
-          "type": "string",
-          "title": "Name of the domain to which DNS zone corresponds"
+        "templateGetTemplateResponse": {
+            "type": "object",
+            "title": "GetTemplateResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "The data",
+                    "$ref": "#/definitions/templateTemplate"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "The warnings",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "id": 27261,
+                    "is_spamexperts_enabled": false,
+                    "name": "MyTemplate",
+                    "records": [
+                        {
+                            "id": 67377,
+                            "name": "ns1.domain.com",
+                            "prio": 10,
+                            "ttl": 86400,
+                            "type": "MX",
+                            "value": "abc.example.com"
+                        }
+                    ]
+                },
+                "desc": ""
+            }
         },
-        "records": {
-          "type": "array",
-          "title": "Array of DNS records",
-          "items": {
-            "$ref": "#/definitions/recordZoneRecord"
-          }
+        "templateListTemplatesResponse": {
+            "type": "object",
+            "title": "ListTemplatesResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "The data",
+                    "$ref": "#/definitions/templateListTemplatesResponseData"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "The warnings",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "results": [
+                        {
+                            "id": 27261,
+                            "is_spamexperts_enabled": false,
+                            "name": "MyTemplate",
+                            "records": [
+                                {
+                                    "id": 67377,
+                                    "name": "ns1.domain.com",
+                                    "prio": 10,
+                                    "ttl": 86400,
+                                    "type": "MX",
+                                    "value": "abc.example.com"
+                                }
+                            ]
+                        }
+                    ],
+                    "total": 20
+                },
+                "desc": ""
+            }
         },
-        "type": {
-          "type": "string",
-          "title": "Type of DNS zone (master or slave)"
+        "templateListTemplatesResponseData": {
+            "type": "object",
+            "title": "ListTemplatesResponseData",
+            "properties": {
+                "results": {
+                    "type": "array",
+                    "title": "Array of results",
+                    "items": {
+                        "$ref": "#/definitions/templateTemplate"
+                    }
+                },
+                "total": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Results count"
+                }
+            },
+            "example": {
+                "results": [
+                    {
+                        "id": 27261,
+                        "is_spamexperts_enabled": false,
+                        "name": "MyTemplate",
+                        "records": [
+                            {
+                                "id": 67377,
+                                "name": "ns1.domain.com",
+                                "prio": 10,
+                                "ttl": 86400,
+                                "type": "MX",
+                                "value": "abc.example.com"
+                            }
+                        ]
+                    }
+                ],
+                "total": 20
+            }
+        },
+        "templateRecord": {
+            "type": "object",
+            "title": "Record",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "DNS record ID"
+                },
+                "name": {
+                    "type": "string",
+                    "title": "DNS record name"
+                },
+                "prio": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "DNS record priority"
+                },
+                "ttl": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "DNS record TTL"
+                },
+                "type": {
+                    "type": "string",
+                    "title": "DNS record tyoe"
+                },
+                "value": {
+                    "type": "string",
+                    "title": "DNS record value"
+                }
+            },
+            "example": {
+                "id": 67377,
+                "name": "ns1.domain.com",
+                "prio": 10,
+                "ttl": 86400,
+                "type": "MX",
+                "value": "abc.example.com"
+            }
+        },
+        "templateTemplate": {
+            "type": "object",
+            "title": "Template",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Template ID"
+                },
+                "is_spamexperts_enabled": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if spam filtering is enabled for the DNS zone"
+                },
+                "name": {
+                    "type": "string",
+                    "title": "Template name"
+                },
+                "records": {
+                    "type": "array",
+                    "title": "Array of DNS zone records",
+                    "items": {
+                        "$ref": "#/definitions/templateRecord"
+                    }
+                }
+            },
+            "example": {
+                "id": 27261,
+                "is_spamexperts_enabled": false,
+                "name": "MyTemplate",
+                "records": [
+                    {
+                        "id": 67377,
+                        "name": "ns1.domain.com",
+                        "prio": 10,
+                        "ttl": 86400,
+                        "type": "MX",
+                        "value": "abc.example.com"
+                    }
+                ]
+            }
+        },
+        "templateTemplateBoolResponse": {
+            "type": "object",
+            "title": "TemplateBoolResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "The data",
+                    "$ref": "#/definitions/templateTemplateBoolResponseData"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "The warnings",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "success": false
+                },
+                "desc": ""
+            }
+        },
+        "templateTemplateBoolResponseData": {
+            "type": "object",
+            "title": "TemplateBoolResponseData",
+            "properties": {
+                "success": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if request was successful"
+                }
+            },
+            "example": {
+                "success": false
+            }
+        },
+        "zoneCreateZoneRequest": {
+            "type": "object",
+            "title": "CreateZoneRequest",
+            "properties": {
+                "domain": {
+                    "title": "Name of the domain to which DNS zone corresponds. Represented by array of domain name and extension",
+                    "$ref": "#/definitions/zoneDomain"
+                },
+                "is_spamexperts_enabled": {
+                    "type": "string",
+                    "title": "Used to enable spam filtering for this DNS zone"
+                },
+                "master_ip": {
+                    "type": "string",
+                    "title": "IP of the master nameserver for this DNS zone. Required if DNS zone type = slave"
+                },
+                "records": {
+                    "type": "array",
+                    "title": "Array of DNS records",
+                    "items": {
+                        "$ref": "#/definitions/recordZoneRecord"
+                    }
+                },
+                "secured": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Used to enable or disable DNSSEC for this DNS zone"
+                },
+                "template_name": {
+                    "type": "string",
+                    "title": "Name of the DNS template to use with this DNS zone"
+                },
+                "type": {
+                    "type": "string",
+                    "title": "DNS zone type (master or slave)"
+                }
+            },
+            "example": {
+                "domain": {
+                    "extension": "com",
+                    "name": "domain"
+                },
+                "is_spamexperts_enabled": "on",
+                "master_ip": "127.0.0.1",
+                "records": [
+                    {
+                        "ip": "127.0.0.1",
+                        "name": "domain.com",
+                        "prio": 1,
+                        "ttl": 900,
+                        "type": "CNAME",
+                        "value": "abcd.domain.com"
+                    }
+                ],
+                "secured": false,
+                "template_name": "default",
+                "type": "master"
+            }
+        },
+        "zoneDomain": {
+            "type": "object",
+            "title": "Domain",
+            "properties": {
+                "extension": {
+                    "type": "string",
+                    "title": "Domain extension"
+                },
+                "name": {
+                    "type": "string",
+                    "title": "Domain name without extension"
+                }
+            },
+            "example": {
+                "extension": "com",
+                "name": "domain"
+            }
+        },
+        "zoneGetZoneResponse": {
+            "type": "object",
+            "title": "GetZoneResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "The data",
+                    "$ref": "#/definitions/zoneZone"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "The warnings",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "active": 1,
+                    "creation_date": "2012-02-05 7:37:28",
+                    "dnskey": "",
+                    "history": [
+                        {
+                            "date": "1560966009",
+                            "is": true,
+                            "source": "",
+                            "was": "Zone is deleted."
+                        }
+                    ],
+                    "id": 12345,
+                    "ip": "127.0.0.1",
+                    "is_deleted": false,
+                    "is_shadow": false,
+                    "is_spamexperts_enabled": false,
+                    "modification_date": "2018-11-28 6:57:05",
+                    "name": "domain.com",
+                    "records": [
+                        {
+                            "ip": "127.0.0.1",
+                            "name": "domain.com",
+                            "prio": 1,
+                            "ttl": 900,
+                            "type": "CNAME",
+                            "value": "abcd.domain.com"
+                        }
+                    ],
+                    "reseller_id": 123456,
+                    "type": "master"
+                },
+                "desc": ""
+            }
+        },
+        "zoneListZonesRequestOrderBy": {
+            "type": "object",
+            "title": "ListZonesRequestOrderBy",
+            "properties": {
+                "creation_date": {
+                    "type": "string",
+                    "title": "DNS zone creation date"
+                },
+                "modification_date": {
+                    "type": "string",
+                    "title": "Date the DNS zone was last modified"
+                },
+                "name": {
+                    "type": "string",
+                    "title": "Name of the domain to which DNS zone corresponds"
+                }
+            }
+        },
+        "zoneListZonesResponse": {
+            "type": "object",
+            "title": "ListZonesResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "The data",
+                    "$ref": "#/definitions/zoneListZonesResponseData"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "The warnings",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "results": [
+                        {
+                            "active": 1,
+                            "creation_date": "2012-02-05 7:37:28",
+                            "dnskey": "",
+                            "history": [
+                                {
+                                    "date": "1560966009",
+                                    "is": true,
+                                    "source": "",
+                                    "was": "Zone is deleted."
+                                }
+                            ],
+                            "id": 12345,
+                            "ip": "127.0.0.1",
+                            "is_deleted": false,
+                            "is_shadow": false,
+                            "is_spamexperts_enabled": false,
+                            "modification_date": "2018-11-28 6:57:05",
+                            "name": "domain.com",
+                            "records": [
+                                {
+                                    "ip": "127.0.0.1",
+                                    "name": "domain.com",
+                                    "prio": 1,
+                                    "ttl": 900,
+                                    "type": "CNAME",
+                                    "value": "abcd.domain.com"
+                                }
+                            ],
+                            "reseller_id": 123456,
+                            "type": "master"
+                        }
+                    ],
+                    "total": 1888
+                },
+                "desc": ""
+            }
+        },
+        "zoneListZonesResponseData": {
+            "type": "object",
+            "title": "ListZonesResponseData",
+            "properties": {
+                "results": {
+                    "type": "array",
+                    "title": "Array of search results",
+                    "items": {
+                        "$ref": "#/definitions/zoneZone"
+                    }
+                },
+                "total": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Number of search results"
+                }
+            },
+            "example": {
+                "results": [
+                    {
+                        "active": 1,
+                        "creation_date": "2012-02-05 7:37:28",
+                        "dnskey": "",
+                        "history": [
+                            {
+                                "date": "1560966009",
+                                "is": true,
+                                "source": "",
+                                "was": "Zone is deleted."
+                            }
+                        ],
+                        "id": 12345,
+                        "ip": "127.0.0.1",
+                        "is_deleted": false,
+                        "is_shadow": false,
+                        "is_spamexperts_enabled": false,
+                        "modification_date": "2018-11-28 6:57:05",
+                        "name": "domain.com",
+                        "records": [
+                            {
+                                "ip": "127.0.0.1",
+                                "name": "domain.com",
+                                "prio": 1,
+                                "ttl": 900,
+                                "type": "CNAME",
+                                "value": "abcd.domain.com"
+                            }
+                        ],
+                        "reseller_id": 123456,
+                        "type": "master"
+                    }
+                ],
+                "total": 1888
+            }
+        },
+        "zoneUpdateZoneRequest": {
+            "type": "object",
+            "title": "UpdateZoneRequest",
+            "properties": {
+                "domain": {
+                    "type": "array",
+                    "title": "Name of the domain to which DNS zone corresponds. Represented by array of domain name and extension",
+                    "items": {
+                        "$ref": "#/definitions/zoneDomain"
+                    }
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "DNS zone ID"
+                },
+                "is_spamexperts_enabled": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Used to enable spam filtering for this DNS zone"
+                },
+                "master_ip": {
+                    "type": "string",
+                    "title": "IP of the master nameserver for this DNS zone. Required if DNS zone type = slave"
+                },
+                "name": {
+                    "type": "string",
+                    "title": "Name of the domain to which DNS zone corresponds"
+                },
+                "records": {
+                    "type": "array",
+                    "title": "Array of DNS records",
+                    "items": {
+                        "$ref": "#/definitions/recordZoneRecord"
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "title": "Type of DNS zone (master or slave)"
+                }
+            },
+            "example": {
+                "domain": [
+                    {
+                        "extension": "com",
+                        "name": "domain"
+                    }
+                ],
+                "id": 1234567,
+                "is_spamexperts_enabled": true,
+                "master_ip": "127.0.0.1",
+                "name": "domain.com",
+                "records": [
+                    {
+                        "ip": "127.0.0.1",
+                        "name": "domain.com",
+                        "prio": 1,
+                        "ttl": 900,
+                        "type": "CNAME",
+                        "value": "abcd.domain.com"
+                    }
+                ],
+                "type": "slave"
+            }
+        },
+        "zoneZone": {
+            "type": "object",
+            "title": "Zone",
+            "properties": {
+                "active": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Indicates whether DNS zone is active or inactive (shadow)"
+                },
+                "creation_date": {
+                    "type": "string",
+                    "title": "DNS zone creation date"
+                },
+                "dnskey": {
+                    "type": "string",
+                    "title": "DNS zone's DNSSEC signing key"
+                },
+                "history": {
+                    "type": "array",
+                    "title": "DNS zone updates history",
+                    "items": {
+                        "$ref": "#/definitions/historyZoneHistory"
+                    }
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "DNS zone ID"
+                },
+                "ip": {
+                    "type": "string",
+                    "title": "DNS record IP address"
+                },
+                "is_deleted": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates whether DNS zone is deleted"
+                },
+                "is_shadow": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates whether DNS zone is active or inactive (shadow)"
+                },
+                "is_spamexperts_enabled": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates whether spamfiltering is enabled for the DNS zone"
+                },
+                "modification_date": {
+                    "type": "string",
+                    "title": "Date the DNS zone was last modified"
+                },
+                "name": {
+                    "type": "string",
+                    "title": "Name of the domain to which DNS zone corresponds"
+                },
+                "records": {
+                    "type": "array",
+                    "title": "Array of DNS records",
+                    "items": {
+                        "$ref": "#/definitions/recordZoneRecord"
+                    }
+                },
+                "reseller_id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Your reseller ID"
+                },
+                "type": {
+                    "type": "string",
+                    "title": "The type"
+                }
+            },
+            "example": {
+                "active": 1,
+                "creation_date": "2012-02-05 7:37:28",
+                "dnskey": "",
+                "history": [
+                    {
+                        "date": "1560966009",
+                        "is": true,
+                        "source": "",
+                        "was": "Zone is deleted."
+                    }
+                ],
+                "id": 12345,
+                "ip": "127.0.0.1",
+                "is_deleted": false,
+                "is_shadow": false,
+                "is_spamexperts_enabled": false,
+                "modification_date": "2018-11-28 6:57:05",
+                "name": "domain.com",
+                "records": [
+                    {
+                        "ip": "127.0.0.1",
+                        "name": "domain.com",
+                        "prio": 1,
+                        "ttl": 900,
+                        "type": "CNAME",
+                        "value": "abcd.domain.com"
+                    }
+                ],
+                "reseller_id": 123456,
+                "type": "master"
+            }
+        },
+        "zoneZoneBoolResponse": {
+            "type": "object",
+            "title": "ZoneBoolResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "The data",
+                    "$ref": "#/definitions/zoneZoneBoolResponseData"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response example"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "The warnings",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "success": false
+                },
+                "desc": ""
+            }
+        },
+        "zoneZoneBoolResponseData": {
+            "type": "object",
+            "title": "ZoneBoolResponseData",
+            "properties": {
+                "success": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if request was successful"
+                }
+            },
+            "example": {
+                "success": false
+            }
         }
-      },
-      "example": {
-        "domain": [
-          {
-            "extension": "com",
-            "name": "domain"
-          }
-        ],
-        "id": 1234567,
-        "is_spamexperts_enabled": true,
-        "master_ip": "127.0.0.1",
-        "name": "domain.com",
-        "records": [
-          {
-            "ip": "127.0.0.1",
-            "name": "domain.com",
-            "prio": 1,
-            "ttl": 900,
-            "type": "CNAME",
-            "value": "abcd.domain.com"
-          }
-        ],
-        "type": "slave"
-      }
     },
-    "zoneZone": {
-      "type": "object",
-      "title": "Zone",
-      "properties": {
-        "active": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Indicates whether DNS zone is active or inactive (shadow)"
-        },
-        "creation_date": {
-          "type": "string",
-          "title": "DNS zone creation date"
-        },
-        "dnskey": {
-          "type": "string",
-          "title": "DNS zone's DNSSEC signing key"
-        },
-        "history": {
-          "type": "array",
-          "title": "DNS zone updates history",
-          "items": {
-            "$ref": "#/definitions/historyZoneHistory"
-          }
-        },
-        "id": {
-          "type": "integer",
-          "format": "int32",
-          "title": "DNS zone ID"
-        },
-        "ip": {
-          "type": "string",
-          "title": "DNS record IP address"
-        },
-        "is_deleted": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates whether DNS zone is deleted"
-        },
-        "is_shadow": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates whether DNS zone is active or inactive (shadow)"
-        },
-        "is_spamexperts_enabled": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates whether spamfiltering is enabled for the DNS zone"
-        },
-        "modification_date": {
-          "type": "string",
-          "title": "Date the DNS zone was last modified"
-        },
-        "name": {
-          "type": "string",
-          "title": "Name of the domain to which DNS zone corresponds"
-        },
-        "records": {
-          "type": "array",
-          "title": "Array of DNS records",
-          "items": {
-            "$ref": "#/definitions/recordZoneRecord"
-          }
-        },
-        "reseller_id": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Your reseller ID"
-        },
-        "type": {
-          "type": "string",
-          "title": "The type"
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
         }
-      },
-      "example": {
-        "active": 1,
-        "creation_date": "2012-02-05 7:37:28",
-        "dnskey": "",
-        "history": [
-          {
-            "date": "1560966009",
-            "is": true,
-            "source": "",
-            "was": "Zone is deleted."
-          }
-        ],
-        "id": 12345,
-        "ip": "127.0.0.1",
-        "is_deleted": false,
-        "is_shadow": false,
-        "is_spamexperts_enabled": false,
-        "modification_date": "2018-11-28 6:57:05",
-        "name": "domain.com",
-        "records": [
-          {
-            "ip": "127.0.0.1",
-            "name": "domain.com",
-            "prio": 1,
-            "ttl": 900,
-            "type": "CNAME",
-            "value": "abcd.domain.com"
-          }
-        ],
-        "reseller_id": 123456,
-        "type": "master"
-      }
     },
-    "zoneZoneBoolResponse": {
-      "type": "object",
-      "title": "ZoneBoolResponse",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32",
-          "title": "Response code"
-        },
-        "data": {
-          "title": "The data",
-          "$ref": "#/definitions/zoneZoneBoolResponseData"
-        },
-        "desc": {
-          "type": "string",
-          "title": "Response example"
-        },
-        "maintenance": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates if Openprovider API is on maintenance"
-        },
-        "warnings": {
-          "type": "array",
-          "title": "The warnings",
-          "items": {
-            "$ref": "#/definitions/errorWarning"
-          }
+    "security": [
+        {
+            "Bearer": []
         }
-      },
-      "example": {
-        "code": 0,
-        "data": {
-          "success": false
-        },
-        "desc": ""
-      }
-    },
-    "zoneZoneBoolResponseData": {
-      "type": "object",
-      "title": "ZoneBoolResponseData",
-      "properties": {
-        "success": {
-          "type": "boolean",
-          "format": "boolean",
-          "title": "Indicates if request was successful"
-        }
-      },
-      "example": {
-        "success": false
-      }
-    }
-  },
-  "securityDefinitions": {
-    "Bearer": {
-      "type": "apiKey",
-      "name": "Authorization",
-      "in": "header"
-    }
-  },
-  "security": [
-    {
-      "Bearer": []
-    }
-  ]
+    ]
 }

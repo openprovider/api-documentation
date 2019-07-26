@@ -3940,6 +3940,7 @@
                     {
                         "type": "integer",
                         "format": "int32",
+                        "default": 100,
                         "description": "Search query limit.",
                         "name": "limit",
                         "in": "query"
@@ -3959,6 +3960,7 @@
                     },
                     {
                         "type": "string",
+                        "default": "desc",
                         "description": "desc/asc.",
                         "name": "order_by.order_date",
                         "in": "query"
@@ -4427,6 +4429,7 @@
                     {
                         "type": "boolean",
                         "format": "boolean",
+                        "default": true,
                         "description": "Returns a list of supported software patforms.",
                         "name": "with_supported_software",
                         "in": "query"
@@ -6440,7 +6443,8 @@
                 "with_config": {
                     "type": "boolean",
                     "format": "boolean",
-                    "title": "Config file for OpenSSL command dumped out when subjectAlternativeName domains are included"
+                    "title": "Config file for OpenSSL command dumped out when subjectAlternativeName domains are included",
+                    "default": true
                 }
             },
             "example": {
@@ -6456,7 +6460,7 @@
                     "www.example.com"
                 ],
                 "unit": "Dev",
-                "with_config": false
+                "with_config": true
             }
         },
         "csrCreateCsrResponse": {
@@ -18099,7 +18103,8 @@
                 },
                 "autorenew": {
                     "type": "string",
-                    "title": "Indicates, whether the certificate should be renewed automatically once its expiration date is reached"
+                    "title": "Indicates, whether the certificate should be renewed automatically once its expiration date is reached",
+                    "default": "off"
                 },
                 "csr": {
                     "type": "string",
@@ -18149,7 +18154,8 @@
                 "start_provision": {
                     "type": "boolean",
                     "format": "boolean",
-                    "title": "Indicates, whether a validation request should be sent to CA. If false, UpdateOrder method should be used later to change the setting and begin validation"
+                    "title": "Indicates, whether a validation request should be sent to CA. If false, UpdateOrder method should be used later to change the setting and begin validation",
+                    "default": true
                 },
                 "technical_handle": {
                     "type": "string",
@@ -18175,7 +18181,7 @@
                 "product_id": 5,
                 "signature_hash_algorithm": "sha2",
                 "software_id": "linux",
-                "start_provision": false,
+                "start_provision": true,
                 "technical_handle": "TH000001-NL"
             }
         },
@@ -18347,7 +18353,8 @@
                 },
                 "order_date": {
                     "type": "string",
-                    "title": "desc/asc"
+                    "title": "desc/asc",
+                    "default": "desc"
                 },
                 "product_name": {
                     "type": "string",
