@@ -2458,7 +2458,7 @@
                     "200": {
                         "description": "A successful response.",
                         "schema": {
-                            "$ref": "#/definitions/domainTryAgainLastOperationResponse"
+                            "$ref": "#/definitions/domainBoolResponse"
                         }
                     },
                     "default": {
@@ -2581,7 +2581,7 @@
                     "200": {
                         "description": "A successful response.",
                         "schema": {
-                            "$ref": "#/definitions/domainApproveTransferResponse"
+                            "$ref": "#/definitions/domainBoolResponse"
                         }
                     },
                     "default": {
@@ -2622,7 +2622,7 @@
                     "200": {
                         "description": "A successful response.",
                         "schema": {
-                            "$ref": "#/definitions/domainSendFoa1Response"
+                            "$ref": "#/definitions/domainBoolResponse"
                         }
                     },
                     "default": {
@@ -8621,9 +8621,9 @@
                 "registrar_tag": "REGISTRAR-TAG"
             }
         },
-        "domainApproveTransferResponse": {
+        "domainBoolResponse": {
             "type": "object",
-            "title": "ApproveTransferResponse",
+            "title": "BoolResponse",
             "properties": {
                 "code": {
                     "type": "integer",
@@ -8632,7 +8632,7 @@
                 },
                 "data": {
                     "title": "Response data",
-                    "$ref": "#/definitions/domainApproveTransferResponseData"
+                    "$ref": "#/definitions/domainBoolResponseData"
                 },
                 "desc": {
                     "type": "string",
@@ -8659,14 +8659,14 @@
                 "desc": ""
             }
         },
-        "domainApproveTransferResponseData": {
+        "domainBoolResponseData": {
             "type": "object",
-            "title": "ApproveTransferResponseData",
+            "title": "BoolResponseData",
             "properties": {
                 "success": {
                     "type": "boolean",
                     "format": "boolean",
-                    "title": "Indicates success of query"
+                    "title": "Indicates if operation was successful"
                 }
             },
             "example": {
@@ -10980,46 +10980,6 @@
                 "id": 0
             }
         },
-        "domainSendFoa1Response": {
-            "type": "object",
-            "title": "SendFoa1Response",
-            "properties": {
-                "code": {
-                    "type": "integer",
-                    "format": "int32",
-                    "title": "Response code"
-                },
-                "data": {
-                    "title": "Response data",
-                    "$ref": "#/definitions/domainSendFoa1ResponseData"
-                },
-                "desc": {
-                    "type": "string",
-                    "title": "Response description"
-                }
-            },
-            "example": {
-                "code": 0,
-                "data": {
-                    "success": false
-                },
-                "desc": ""
-            }
-        },
-        "domainSendFoa1ResponseData": {
-            "type": "object",
-            "title": "SendFoa1ResponseData",
-            "properties": {
-                "success": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "Indicates success of query"
-                }
-            },
-            "example": {
-                "success": false
-            }
-        },
         "domainTradeDomainRequest": {
             "type": "object",
             "title": "TradeDomainRequest",
@@ -11600,58 +11560,6 @@
                     "name": "test4"
                 },
                 "id": 0
-            }
-        },
-        "domainTryAgainLastOperationResponse": {
-            "type": "object",
-            "title": "TryAgainLastOperationResponse",
-            "properties": {
-                "code": {
-                    "type": "integer",
-                    "format": "int32",
-                    "title": "Response code"
-                },
-                "data": {
-                    "title": "Response data",
-                    "$ref": "#/definitions/domainTryAgainLastOperationResponseData"
-                },
-                "desc": {
-                    "type": "string",
-                    "title": "Response description"
-                },
-                "maintenance": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "Indicates that the Openprovider system is temporarily unavailable because of maintenance"
-                },
-                "warnings": {
-                    "type": "array",
-                    "title": "Contains warning responses if any",
-                    "items": {
-                        "$ref": "#/definitions/errorWarning"
-                    }
-                }
-            },
-            "example": {
-                "code": 0,
-                "data": {
-                    "success": false
-                },
-                "desc": ""
-            }
-        },
-        "domainTryAgainLastOperationResponseData": {
-            "type": "object",
-            "title": "TryAgainLastOperationResponseData",
-            "properties": {
-                "success": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "Indicates success of query"
-                }
-            },
-            "example": {
-                "success": false
             }
         },
         "domainUpdateAdditionalData": {
