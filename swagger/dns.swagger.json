@@ -1674,7 +1674,9 @@
                 "data": {
                     "results": [
                         {
+                            "creation_date": "",
                             "ip": "127.0.0.1",
+                            "modification_date": "",
                             "name": "domain.com",
                             "prio": 1,
                             "ttl": 900,
@@ -1695,7 +1697,7 @@
                     "type": "array",
                     "title": "Array of search results",
                     "items": {
-                        "$ref": "#/definitions/recordZoneRecord"
+                        "$ref": "#/definitions/recordRecordInfo"
                     }
                 },
                 "total": {
@@ -1707,7 +1709,9 @@
             "example": {
                 "results": [
                     {
+                        "creation_date": "",
                         "ip": "127.0.0.1",
+                        "modification_date": "",
                         "name": "domain.com",
                         "prio": 1,
                         "ttl": 900,
@@ -1718,13 +1722,21 @@
                 "total": 6
             }
         },
-        "recordZoneRecord": {
+        "recordRecordInfo": {
             "type": "object",
-            "title": "ZoneRecord",
+            "title": "RecordInfo",
             "properties": {
+                "creation_date": {
+                    "type": "string",
+                    "title": "DNS record creation date"
+                },
                 "ip": {
                     "type": "string",
                     "title": "DNS record IP address"
+                },
+                "modification_date": {
+                    "type": "string",
+                    "title": "DNS record last modification date"
                 },
                 "name": {
                     "type": "string",
@@ -1750,7 +1762,9 @@
                 }
             },
             "example": {
+                "creation_date": "",
                 "ip": "127.0.0.1",
+                "modification_date": "",
                 "name": "domain.com",
                 "prio": 1,
                 "ttl": 900,
@@ -2144,7 +2158,7 @@
                     "type": "array",
                     "title": "Array of DNS records",
                     "items": {
-                        "$ref": "#/definitions/recordZoneRecord"
+                        "$ref": "#/definitions/zoneRecord"
                     }
                 },
                 "secured": {
@@ -2170,7 +2184,6 @@
                 "master_ip": "127.0.0.1",
                 "records": [
                     {
-                        "ip": "127.0.0.1",
                         "name": "domain.com",
                         "prio": 1,
                         "ttl": 900,
@@ -2254,7 +2267,9 @@
                     "name": "domain.com",
                     "records": [
                         {
+                            "creation_date": "",
                             "ip": "127.0.0.1",
+                            "modification_date": "",
                             "name": "domain.com",
                             "prio": 1,
                             "ttl": 900,
@@ -2341,7 +2356,9 @@
                             "name": "domain.com",
                             "records": [
                                 {
+                                    "creation_date": "",
                                     "ip": "127.0.0.1",
+                                    "modification_date": "",
                                     "name": "domain.com",
                                     "prio": 1,
                                     "ttl": 900,
@@ -2398,7 +2415,9 @@
                         "name": "domain.com",
                         "records": [
                             {
+                                "creation_date": "",
                                 "ip": "127.0.0.1",
+                                "modification_date": "",
                                 "name": "domain.com",
                                 "prio": 1,
                                 "ttl": 900,
@@ -2413,16 +2432,159 @@
                 "total": 1888
             }
         },
+        "zoneRecord": {
+            "type": "object",
+            "title": "Record",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "title": "DNS record name"
+                },
+                "prio": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "DNS record priority"
+                },
+                "ttl": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "DNS record priority"
+                },
+                "type": {
+                    "type": "string",
+                    "title": "DNS record type"
+                },
+                "value": {
+                    "type": "string",
+                    "title": "DNS record value"
+                }
+            },
+            "example": {
+                "name": "domain.com",
+                "prio": 1,
+                "ttl": 900,
+                "type": "CNAME",
+                "value": "abcd.domain.com"
+            }
+        },
+        "zoneRecordUpdates": {
+            "type": "object",
+            "title": "RecordUpdates",
+            "properties": {
+                "add": {
+                    "type": "array",
+                    "title": "Array of DNS records to add",
+                    "items": {
+                        "$ref": "#/definitions/zoneRecord"
+                    }
+                },
+                "remove": {
+                    "type": "array",
+                    "title": "Array of DNS records to remove",
+                    "items": {
+                        "$ref": "#/definitions/zoneRecord"
+                    }
+                },
+                "replace": {
+                    "type": "array",
+                    "title": "Array of DNS records to replace",
+                    "items": {
+                        "$ref": "#/definitions/zoneRecord"
+                    }
+                },
+                "update": {
+                    "type": "array",
+                    "title": "Array of DNS records to update",
+                    "items": {
+                        "$ref": "#/definitions/zoneRecordWithOriginal"
+                    }
+                }
+            },
+            "example": {
+                "add": [
+                    {
+                        "name": "domain.com",
+                        "prio": 1,
+                        "ttl": 900,
+                        "type": "CNAME",
+                        "value": "abcd.domain.com"
+                    }
+                ],
+                "remove": [
+                    {
+                        "name": "domain.com",
+                        "prio": 1,
+                        "ttl": 900,
+                        "type": "CNAME",
+                        "value": "abcd.domain.com"
+                    }
+                ],
+                "replace": [
+                    {
+                        "name": "domain.com",
+                        "prio": 1,
+                        "ttl": 900,
+                        "type": "CNAME",
+                        "value": "abcd.domain.com"
+                    }
+                ],
+                "update": [
+                    {
+                        "original_record": {
+                            "name": "domain.com",
+                            "prio": 1,
+                            "ttl": 900,
+                            "type": "CNAME",
+                            "value": "abcd.domain.com"
+                        },
+                        "record": {
+                            "name": "domain.com",
+                            "prio": 1,
+                            "ttl": 900,
+                            "type": "CNAME",
+                            "value": "abcd.domain.com"
+                        }
+                    }
+                ]
+            }
+        },
+        "zoneRecordWithOriginal": {
+            "type": "object",
+            "title": "RecordWithOriginal",
+            "properties": {
+                "original_record": {
+                    "title": "Array of DNS records to update",
+                    "$ref": "#/definitions/zoneRecord"
+                },
+                "record": {
+                    "title": "Array of DNS records to update",
+                    "$ref": "#/definitions/zoneRecord"
+                }
+            },
+            "example": {
+                "original_record": {
+                    "name": "domain.com",
+                    "prio": 1,
+                    "ttl": 900,
+                    "type": "CNAME",
+                    "value": "abcd.domain.com"
+                },
+                "record": {
+                    "name": "domain.com",
+                    "prio": 1,
+                    "ttl": 900,
+                    "type": "CNAME",
+                    "value": "abcd.domain.com"
+                }
+            }
+        },
         "zoneUpdateZoneRequest": {
             "type": "object",
             "title": "UpdateZoneRequest",
             "properties": {
                 "domain": {
-                    "type": "array",
                     "title": "Name of the domain to which DNS zone corresponds. Represented by array of domain name and extension",
-                    "items": {
-                        "$ref": "#/definitions/zoneDomain"
-                    }
+                    "$ref": "#/definitions/zoneDomain"
                 },
                 "id": {
                     "type": "integer",
@@ -2443,11 +2605,8 @@
                     "title": "Name of the domain to which DNS zone corresponds"
                 },
                 "records": {
-                    "type": "array",
-                    "title": "Array of DNS records",
-                    "items": {
-                        "$ref": "#/definitions/recordZoneRecord"
-                    }
+                    "title": "DNS zone records grouped by action",
+                    "$ref": "#/definitions/zoneRecordUpdates"
                 },
                 "type": {
                     "type": "string",
@@ -2455,26 +2614,61 @@
                 }
             },
             "example": {
-                "domain": [
-                    {
-                        "extension": "com",
-                        "name": "domain"
-                    }
-                ],
+                "domain": {
+                    "extension": "com",
+                    "name": "domain"
+                },
                 "id": 1234567,
                 "is_spamexperts_enabled": true,
                 "master_ip": "127.0.0.1",
                 "name": "domain.com",
-                "records": [
-                    {
-                        "ip": "127.0.0.1",
-                        "name": "domain.com",
-                        "prio": 1,
-                        "ttl": 900,
-                        "type": "CNAME",
-                        "value": "abcd.domain.com"
-                    }
-                ],
+                "records": {
+                    "add": [
+                        {
+                            "name": "domain.com",
+                            "prio": 1,
+                            "ttl": 900,
+                            "type": "CNAME",
+                            "value": "abcd.domain.com"
+                        }
+                    ],
+                    "remove": [
+                        {
+                            "name": "domain.com",
+                            "prio": 1,
+                            "ttl": 900,
+                            "type": "CNAME",
+                            "value": "abcd.domain.com"
+                        }
+                    ],
+                    "replace": [
+                        {
+                            "name": "domain.com",
+                            "prio": 1,
+                            "ttl": 900,
+                            "type": "CNAME",
+                            "value": "abcd.domain.com"
+                        }
+                    ],
+                    "update": [
+                        {
+                            "original_record": {
+                                "name": "domain.com",
+                                "prio": 1,
+                                "ttl": 900,
+                                "type": "CNAME",
+                                "value": "abcd.domain.com"
+                            },
+                            "record": {
+                                "name": "domain.com",
+                                "prio": 1,
+                                "ttl": 900,
+                                "type": "CNAME",
+                                "value": "abcd.domain.com"
+                            }
+                        }
+                    ]
+                },
                 "type": "slave"
             }
         },
@@ -2538,7 +2732,7 @@
                     "type": "array",
                     "title": "Array of DNS records",
                     "items": {
-                        "$ref": "#/definitions/recordZoneRecord"
+                        "$ref": "#/definitions/recordRecordInfo"
                     }
                 },
                 "reseller_id": {
@@ -2572,7 +2766,9 @@
                 "name": "domain.com",
                 "records": [
                     {
+                        "creation_date": "",
                         "ip": "127.0.0.1",
+                        "modification_date": "",
                         "name": "domain.com",
                         "prio": 1,
                         "ttl": 900,

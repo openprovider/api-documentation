@@ -630,7 +630,7 @@
                     {
                         "type": "boolean",
                         "format": "boolean",
-                        "default": true,
+                        "default": false,
                         "description": "Returns a list of supported software patforms.",
                         "name": "with_supported_software",
                         "in": "query"
@@ -960,7 +960,7 @@
                     "type": "boolean",
                     "format": "boolean",
                     "title": "Config file for OpenSSL command dumped out when subjectAlternativeName domains are included",
-                    "default": true
+                    "default": false
                 }
             },
             "example": {
@@ -1383,6 +1383,12 @@
                         "$ref": "#/definitions/orderSslOrderDomainValidationMethods"
                     }
                 },
+                "enable_dns_automation": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates whether the automatic DNS validation will be applied to the certificate",
+                    "default": false
+                },
                 "host_names": {
                     "type": "array",
                     "title": "List of domain names to protect",
@@ -1416,7 +1422,7 @@
                     "type": "boolean",
                     "format": "boolean",
                     "title": "Indicates, whether a validation request should be sent to CA. If false, UpdateOrder method should be used later to change the setting and begin validation",
-                    "default": true
+                    "default": false
                 },
                 "technical_handle": {
                     "type": "string",
@@ -1434,6 +1440,7 @@
                         "method": "https"
                     }
                 ],
+                "enable_dns_automation": false,
                 "host_names": [
                     "www.example.com"
                 ],
@@ -1835,6 +1842,12 @@
                         "$ref": "#/definitions/orderSslOrderDomainValidationMethods"
                     }
                 },
+                "enable_dns_automation": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates whether the automatic DNS validation will be applied to the certificate",
+                    "default": false
+                },
                 "host_names": {
                     "type": "array",
                     "title": "List of domain names to protect",
@@ -1869,6 +1882,7 @@
                         "method": "https"
                     }
                 ],
+                "enable_dns_automation": false,
                 "host_names": [
                     "www.example.com"
                 ],
@@ -1934,6 +1948,12 @@
             "type": "object",
             "title": "RenewOrderRequest",
             "properties": {
+                "enable_dns_automation": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates whether the automatic DNS validation will be applied to the certificate",
+                    "default": false
+                },
                 "id": {
                     "type": "integer",
                     "format": "int32",
@@ -1941,6 +1961,7 @@
                 }
             },
             "example": {
+                "enable_dns_automation": false,
                 "id": 1
             }
         },
@@ -2355,6 +2376,12 @@
                         "$ref": "#/definitions/orderSslOrderDomainValidationMethods"
                     }
                 },
+                "enable_dns_automation": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates whether the automatic DNS validation will be applied to the certificate",
+                    "default": false
+                },
                 "host_names": {
                     "type": "array",
                     "title": "List of domain names to protect",
@@ -2399,6 +2426,7 @@
                         "method": "https"
                     }
                 ],
+                "enable_dns_automation": false,
                 "host_names": [
                     "www.example.com"
                 ],

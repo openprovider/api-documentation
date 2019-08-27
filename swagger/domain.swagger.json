@@ -2391,15 +2391,10 @@
                 "is_spamexperts_enabled": false,
                 "name_servers": [
                     {
-                        "code": 226,
-                        "error": "Error 226: Invalid nameserver hostname",
                         "ip": "12.3.123.121",
                         "ip6": "1s23:123:123:f",
-                        "msg": "Error 226: Invalid nameserver hostname",
                         "name": "ns1.example.com",
-                        "result": "",
-                        "seq_nr": 1,
-                        "server_id": 23592
+                        "seq_nr": 1
                     }
                 ],
                 "ns_group": "example",
@@ -2742,20 +2737,20 @@
                             "out": ""
                         }
                     ],
-                    "application_id": 0,
+                    "application_id": "A743C511084404F31B15757DC979A1412-ABI",
                     "application_mode": "",
                     "application_mode_expiration_date": "",
                     "application_mode_title": "",
-                    "application_notice_id": 0,
+                    "application_notice_id": "983bdc1a0000100000188801724",
                     "application_smd": "",
                     "auth_code": "",
                     "autorenew": "default",
                     "billing_handle": "XX123456-XX",
-                    "can_renew": 0,
+                    "can_renew": false,
                     "comments": "",
                     "comments_last_changed_at": "2018-01-30 14:37:49",
                     "creation_date": "2013-07-04 17:14:44",
-                    "delete_status": "",
+                    "delete_status": "quarantine",
                     "deleted_at": "0000-00-00 00:00:00",
                     "dnssec": "unsigned",
                     "dnssec_keys": [
@@ -2774,7 +2769,7 @@
                     "expiration_date": "2014-07-04 17:14:44",
                     "expiration_date_openprovider": "2022-01-01 0:00:00",
                     "hard_quarantine_expiry_date": "",
-                    "has_history": 0,
+                    "has_history": false,
                     "history": [
                         {
                             "contents": "Domain: test-example.tldAction: registration succeededStatus: ACTOrder date: 2018-01-30Activation date: 2018-01-30Renewal date: 2019-01-27Expiration date: 2019-01-29Comments: registration of this domain has succeeded Nameserver addresses are automatically resolved by system; Nameserver IP addresses are only saved for glue records",
@@ -2799,18 +2794,13 @@
                     "is_private_whois_enabled": false,
                     "is_spamexperts_enabled": false,
                     "last_changed": "2014-04-18 7:13:05",
-                    "modify_owner_allowed": 1,
+                    "modify_owner_allowed": false,
                     "name_servers": [
                         {
-                            "code": 226,
-                            "error": "Error 226: Invalid nameserver hostname",
                             "ip": "12.3.123.121",
                             "ip6": "1s23:123:123:f",
-                            "msg": "Error 226: Invalid nameserver hostname",
                             "name": "ns1.example.com",
-                            "result": "",
-                            "seq_nr": 1,
-                            "server_id": 23592
+                            "seq_nr": 1
                         }
                     ],
                     "ns_group": "dns-openprovider",
@@ -2836,7 +2826,7 @@
                             "value": 0
                         }
                     },
-                    "renew": 0,
+                    "renew": 2,
                     "renewal_date": "2022-01-01 0:00:00",
                     "reseller_handle": "",
                     "reseller_id": 12345,
@@ -2846,10 +2836,10 @@
                     "soft_quarantine_expiry_date": "",
                     "status": "PRE",
                     "tech_handle": "XX123456-XX",
-                    "trade_allowed": 0,
+                    "trade_allowed": false,
                     "trade_auth_code_required": "no",
                     "transfer_auth_code_required": "yes",
-                    "transfer_cancel_supported": 1,
+                    "transfer_cancel_supported": false,
                     "type": "NEW",
                     "unit": "y",
                     "use_domicile": false,
@@ -2857,7 +2847,9 @@
                     "verification_email_name": "test@mail.tld",
                     "verification_email_status": "not verified",
                     "verification_email_status_description": "-",
-                    "whois_privacy_data": ""
+                    "whois_privacy_data": {
+                        "expiration_date": ""
+                    }
                 },
                 "desc": ""
             }
@@ -2890,8 +2882,7 @@
                     }
                 },
                 "application_id": {
-                    "type": "integer",
-                    "format": "int32",
+                    "type": "string",
                     "title": "The application id"
                 },
                 "application_mode": {
@@ -2907,8 +2898,7 @@
                     "title": "The application mode title"
                 },
                 "application_notice_id": {
-                    "type": "integer",
-                    "format": "int32",
+                    "type": "string",
                     "title": "The application notice id"
                 },
                 "application_smd": {
@@ -2928,8 +2918,8 @@
                     "title": "Billing contact handle"
                 },
                 "can_renew": {
-                    "type": "integer",
-                    "format": "int32",
+                    "type": "boolean",
+                    "format": "boolean",
                     "title": "Indicates if domain can be renewed"
                 },
                 "comments": {
@@ -2953,8 +2943,8 @@
                     "title": "Date the domain has been deleted"
                 },
                 "dnssec": {
-                    "type": "string",
-                    "title": "Indicates, if DNSSEC is enabled"
+                    "description": "Indicates, if DNSSEC is enabled. Possible values: signedDelegation, unsigned.",
+                    "type": "string"
                 },
                 "dnssec_keys": {
                     "type": "array",
@@ -2980,8 +2970,8 @@
                     "title": "Date of hard quarantine expiration"
                 },
                 "has_history": {
-                    "type": "integer",
-                    "format": "int32",
+                    "type": "boolean",
+                    "format": "boolean",
                     "title": "Indicates if domain has history data"
                 },
                 "history": {
@@ -3059,8 +3049,8 @@
                     "title": "Date of last domain update"
                 },
                 "modify_owner_allowed": {
-                    "type": "integer",
-                    "format": "int32",
+                    "type": "boolean",
+                    "format": "boolean",
                     "title": "Indicates, if owner modification allowed"
                 },
                 "name_servers": {
@@ -3159,8 +3149,8 @@
                     "title": "Tech contact handle"
                 },
                 "trade_allowed": {
-                    "type": "integer",
-                    "format": "int32",
+                    "type": "boolean",
+                    "format": "boolean",
                     "title": "Indicates if trade is allowed"
                 },
                 "trade_auth_code_required": {
@@ -3172,8 +3162,8 @@
                     "title": "Indicates if authcode required for transfer"
                 },
                 "transfer_cancel_supported": {
-                    "type": "integer",
-                    "format": "int32",
+                    "type": "boolean",
+                    "format": "boolean",
                     "title": "Indicates if trnsfer cancellation supported"
                 },
                 "type": {
@@ -3206,8 +3196,8 @@
                     "title": "The verification email status description"
                 },
                 "whois_privacy_data": {
-                    "type": "string",
-                    "title": "The whois privacy data"
+                    "title": "The whois privacy data",
+                    "$ref": "#/definitions/domainWhoisPrivacyData"
                 }
             },
             "example": {
@@ -3256,20 +3246,20 @@
                         "out": ""
                     }
                 ],
-                "application_id": 0,
+                "application_id": "A743C511084404F31B15757DC979A1412-ABI",
                 "application_mode": "",
                 "application_mode_expiration_date": "",
                 "application_mode_title": "",
-                "application_notice_id": 0,
+                "application_notice_id": "983bdc1a0000100000188801724",
                 "application_smd": "",
                 "auth_code": "",
                 "autorenew": "default",
                 "billing_handle": "XX123456-XX",
-                "can_renew": 0,
+                "can_renew": false,
                 "comments": "",
                 "comments_last_changed_at": "2018-01-30 14:37:49",
                 "creation_date": "2013-07-04 17:14:44",
-                "delete_status": "",
+                "delete_status": "quarantine",
                 "deleted_at": "0000-00-00 00:00:00",
                 "dnssec": "unsigned",
                 "dnssec_keys": [
@@ -3288,7 +3278,7 @@
                 "expiration_date": "2014-07-04 17:14:44",
                 "expiration_date_openprovider": "2022-01-01 0:00:00",
                 "hard_quarantine_expiry_date": "",
-                "has_history": 0,
+                "has_history": false,
                 "history": [
                     {
                         "contents": "Domain: test-example.tldAction: registration succeededStatus: ACTOrder date: 2018-01-30Activation date: 2018-01-30Renewal date: 2019-01-27Expiration date: 2019-01-29Comments: registration of this domain has succeeded Nameserver addresses are automatically resolved by system; Nameserver IP addresses are only saved for glue records",
@@ -3313,18 +3303,13 @@
                 "is_private_whois_enabled": false,
                 "is_spamexperts_enabled": false,
                 "last_changed": "2014-04-18 7:13:05",
-                "modify_owner_allowed": 1,
+                "modify_owner_allowed": false,
                 "name_servers": [
                     {
-                        "code": 226,
-                        "error": "Error 226: Invalid nameserver hostname",
                         "ip": "12.3.123.121",
                         "ip6": "1s23:123:123:f",
-                        "msg": "Error 226: Invalid nameserver hostname",
                         "name": "ns1.example.com",
-                        "result": "",
-                        "seq_nr": 1,
-                        "server_id": 23592
+                        "seq_nr": 1
                     }
                 ],
                 "ns_group": "dns-openprovider",
@@ -3350,7 +3335,7 @@
                         "value": 0
                     }
                 },
-                "renew": 0,
+                "renew": 2,
                 "renewal_date": "2022-01-01 0:00:00",
                 "reseller_handle": "",
                 "reseller_id": 12345,
@@ -3360,10 +3345,10 @@
                 "soft_quarantine_expiry_date": "",
                 "status": "PRE",
                 "tech_handle": "XX123456-XX",
-                "trade_allowed": 0,
+                "trade_allowed": false,
                 "trade_auth_code_required": "no",
                 "transfer_auth_code_required": "yes",
-                "transfer_cancel_supported": 1,
+                "transfer_cancel_supported": false,
                 "type": "NEW",
                 "unit": "y",
                 "use_domicile": false,
@@ -3371,7 +3356,9 @@
                 "verification_email_name": "test@mail.tld",
                 "verification_email_status": "not verified",
                 "verification_email_status_description": "-",
-                "whois_privacy_data": ""
+                "whois_privacy_data": {
+                    "expiration_date": ""
+                }
             }
         },
         "domainHistory": {
@@ -3544,20 +3531,20 @@
                                     "out": ""
                                 }
                             ],
-                            "application_id": 0,
+                            "application_id": "A743C511084404F31B15757DC979A1412-ABI",
                             "application_mode": "",
                             "application_mode_expiration_date": "",
                             "application_mode_title": "",
-                            "application_notice_id": 0,
+                            "application_notice_id": "983bdc1a0000100000188801724",
                             "application_smd": "",
                             "auth_code": "",
                             "autorenew": "default",
                             "billing_handle": "XX123456-XX",
-                            "can_renew": 0,
+                            "can_renew": false,
                             "comments": "",
                             "comments_last_changed_at": "2018-01-30 14:37:49",
                             "creation_date": "2013-07-04 17:14:44",
-                            "delete_status": "",
+                            "delete_status": "quarantine",
                             "deleted_at": "0000-00-00 00:00:00",
                             "dnssec": "unsigned",
                             "dnssec_keys": [
@@ -3576,7 +3563,7 @@
                             "expiration_date": "2014-07-04 17:14:44",
                             "expiration_date_openprovider": "2022-01-01 0:00:00",
                             "hard_quarantine_expiry_date": "",
-                            "has_history": 0,
+                            "has_history": false,
                             "history": [
                                 {
                                     "contents": "Domain: test-example.tldAction: registration succeededStatus: ACTOrder date: 2018-01-30Activation date: 2018-01-30Renewal date: 2019-01-27Expiration date: 2019-01-29Comments: registration of this domain has succeeded Nameserver addresses are automatically resolved by system; Nameserver IP addresses are only saved for glue records",
@@ -3601,18 +3588,13 @@
                             "is_private_whois_enabled": false,
                             "is_spamexperts_enabled": false,
                             "last_changed": "2014-04-18 7:13:05",
-                            "modify_owner_allowed": 1,
+                            "modify_owner_allowed": false,
                             "name_servers": [
                                 {
-                                    "code": 226,
-                                    "error": "Error 226: Invalid nameserver hostname",
                                     "ip": "12.3.123.121",
                                     "ip6": "1s23:123:123:f",
-                                    "msg": "Error 226: Invalid nameserver hostname",
                                     "name": "ns1.example.com",
-                                    "result": "",
-                                    "seq_nr": 1,
-                                    "server_id": 23592
+                                    "seq_nr": 1
                                 }
                             ],
                             "ns_group": "dns-openprovider",
@@ -3638,7 +3620,7 @@
                                     "value": 0
                                 }
                             },
-                            "renew": 0,
+                            "renew": 2,
                             "renewal_date": "2022-01-01 0:00:00",
                             "reseller_handle": "",
                             "reseller_id": 12345,
@@ -3648,10 +3630,10 @@
                             "soft_quarantine_expiry_date": "",
                             "status": "PRE",
                             "tech_handle": "XX123456-XX",
-                            "trade_allowed": 0,
+                            "trade_allowed": false,
                             "trade_auth_code_required": "no",
                             "transfer_auth_code_required": "yes",
-                            "transfer_cancel_supported": 1,
+                            "transfer_cancel_supported": false,
                             "type": "NEW",
                             "unit": "y",
                             "use_domicile": false,
@@ -3659,7 +3641,9 @@
                             "verification_email_name": "test@mail.tld",
                             "verification_email_status": "not verified",
                             "verification_email_status_description": "-",
-                            "whois_privacy_data": ""
+                            "whois_privacy_data": {
+                                "expiration_date": ""
+                            }
                         }
                     ],
                     "total": 999
@@ -3732,20 +3716,20 @@
                                 "out": ""
                             }
                         ],
-                        "application_id": 0,
+                        "application_id": "A743C511084404F31B15757DC979A1412-ABI",
                         "application_mode": "",
                         "application_mode_expiration_date": "",
                         "application_mode_title": "",
-                        "application_notice_id": 0,
+                        "application_notice_id": "983bdc1a0000100000188801724",
                         "application_smd": "",
                         "auth_code": "",
                         "autorenew": "default",
                         "billing_handle": "XX123456-XX",
-                        "can_renew": 0,
+                        "can_renew": false,
                         "comments": "",
                         "comments_last_changed_at": "2018-01-30 14:37:49",
                         "creation_date": "2013-07-04 17:14:44",
-                        "delete_status": "",
+                        "delete_status": "quarantine",
                         "deleted_at": "0000-00-00 00:00:00",
                         "dnssec": "unsigned",
                         "dnssec_keys": [
@@ -3764,7 +3748,7 @@
                         "expiration_date": "2014-07-04 17:14:44",
                         "expiration_date_openprovider": "2022-01-01 0:00:00",
                         "hard_quarantine_expiry_date": "",
-                        "has_history": 0,
+                        "has_history": false,
                         "history": [
                             {
                                 "contents": "Domain: test-example.tldAction: registration succeededStatus: ACTOrder date: 2018-01-30Activation date: 2018-01-30Renewal date: 2019-01-27Expiration date: 2019-01-29Comments: registration of this domain has succeeded Nameserver addresses are automatically resolved by system; Nameserver IP addresses are only saved for glue records",
@@ -3789,18 +3773,13 @@
                         "is_private_whois_enabled": false,
                         "is_spamexperts_enabled": false,
                         "last_changed": "2014-04-18 7:13:05",
-                        "modify_owner_allowed": 1,
+                        "modify_owner_allowed": false,
                         "name_servers": [
                             {
-                                "code": 226,
-                                "error": "Error 226: Invalid nameserver hostname",
                                 "ip": "12.3.123.121",
                                 "ip6": "1s23:123:123:f",
-                                "msg": "Error 226: Invalid nameserver hostname",
                                 "name": "ns1.example.com",
-                                "result": "",
-                                "seq_nr": 1,
-                                "server_id": 23592
+                                "seq_nr": 1
                             }
                         ],
                         "ns_group": "dns-openprovider",
@@ -3826,7 +3805,7 @@
                                 "value": 0
                             }
                         },
-                        "renew": 0,
+                        "renew": 2,
                         "renewal_date": "2022-01-01 0:00:00",
                         "reseller_handle": "",
                         "reseller_id": 12345,
@@ -3836,10 +3815,10 @@
                         "soft_quarantine_expiry_date": "",
                         "status": "PRE",
                         "tech_handle": "XX123456-XX",
-                        "trade_allowed": 0,
+                        "trade_allowed": false,
                         "trade_auth_code_required": "no",
                         "transfer_auth_code_required": "yes",
-                        "transfer_cancel_supported": 1,
+                        "transfer_cancel_supported": false,
                         "type": "NEW",
                         "unit": "y",
                         "use_domicile": false,
@@ -3847,7 +3826,9 @@
                         "verification_email_name": "test@mail.tld",
                         "verification_email_status": "not verified",
                         "verification_email_status_description": "-",
-                        "whois_privacy_data": ""
+                        "whois_privacy_data": {
+                            "expiration_date": ""
+                        }
                     }
                 ],
                 "total": 999
@@ -3857,15 +3838,6 @@
             "type": "object",
             "title": "Nameserver",
             "properties": {
-                "code": {
-                    "type": "integer",
-                    "format": "int32",
-                    "title": "Response code"
-                },
-                "error": {
-                    "type": "string",
-                    "title": "The error"
-                },
                 "ip": {
                     "type": "string",
                     "title": "The ip"
@@ -3874,39 +3846,21 @@
                     "type": "string",
                     "title": "The ip6"
                 },
-                "msg": {
-                    "type": "string",
-                    "title": "The msg"
-                },
                 "name": {
                     "type": "string",
                     "title": "Full name of the nameserver"
-                },
-                "result": {
-                    "type": "string",
-                    "title": "The result"
                 },
                 "seq_nr": {
                     "type": "integer",
                     "format": "int32",
                     "title": "The seq nr"
-                },
-                "server_id": {
-                    "type": "integer",
-                    "format": "int32",
-                    "title": "The server id"
                 }
             },
             "example": {
-                "code": 226,
-                "error": "Error 226: Invalid nameserver hostname",
                 "ip": "12.3.123.121",
                 "ip6": "1s23:123:123:f",
-                "msg": "Error 226: Invalid nameserver hostname",
                 "name": "ns1.example.com",
-                "result": "",
-                "seq_nr": 1,
-                "server_id": 23592
+                "seq_nr": 1
             }
         },
         "domainOwner": {
@@ -4360,15 +4314,10 @@
                 },
                 "name_servers": [
                     {
-                        "code": 226,
-                        "error": "Error 226: Invalid nameserver hostname",
                         "ip": "12.3.123.121",
                         "ip6": "1s23:123:123:f",
-                        "msg": "Error 226: Invalid nameserver hostname",
                         "name": "ns1.example.com",
-                        "result": "",
-                        "seq_nr": 1,
-                        "server_id": 23592
+                        "seq_nr": 1
                     }
                 ],
                 "ns_group": "dns-openprovider",
@@ -4664,15 +4613,10 @@
                 "is_private_whois_enabled": false,
                 "name_servers": [
                     {
-                        "code": 226,
-                        "error": "Error 226: Invalid nameserver hostname",
                         "ip": "12.3.123.121",
                         "ip6": "1s23:123:123:f",
-                        "msg": "Error 226: Invalid nameserver hostname",
                         "name": "ns1.example.com",
-                        "result": "",
-                        "seq_nr": 1,
-                        "server_id": 23592
+                        "seq_nr": 1
                     }
                 ],
                 "ns_group": "dns-openprovider",
@@ -4727,7 +4671,7 @@
                     "expiration_date": "2020-03-31 23:59:59",
                     "name": "intendedUse",
                     "renewal_date": "2020-03-29 23:59:59",
-                    "required": 1,
+                    "required": false,
                     "status": "ACT",
                     "type": "text"
                 },
@@ -4763,8 +4707,8 @@
                     "title": "Date on which domain will be renewed"
                 },
                 "required": {
-                    "type": "integer",
-                    "format": "int32",
+                    "type": "boolean",
+                    "format": "boolean",
                     "title": "Indicates, if parameter is required"
                 },
                 "status": {
@@ -4783,7 +4727,7 @@
                 "expiration_date": "2020-03-31 23:59:59",
                 "name": "intendedUse",
                 "renewal_date": "2020-03-29 23:59:59",
-                "required": 1,
+                "required": false,
                 "status": "ACT",
                 "type": "text"
             }
@@ -5022,15 +4966,10 @@
                 "is_spamexperts_enabled": false,
                 "name_servers": [
                     {
-                        "code": 226,
-                        "error": "Error 226: Invalid nameserver hostname",
                         "ip": "12.3.123.121",
                         "ip6": "1s23:123:123:f",
-                        "msg": "Error 226: Invalid nameserver hostname",
                         "name": "ns1.example.com",
-                        "result": "",
-                        "seq_nr": 1,
-                        "server_id": 23592
+                        "seq_nr": 1
                     }
                 ],
                 "ns_group": "example",
@@ -5100,6 +5039,19 @@
             "example": {
                 "id": 123456789,
                 "status": "ACT"
+            }
+        },
+        "domainWhoisPrivacyData": {
+            "type": "object",
+            "title": "WhoisPrivacyData",
+            "properties": {
+                "expiration_date": {
+                    "type": "string",
+                    "title": "The expiration date"
+                }
+            },
+            "example": {
+                "expiration_date": ""
             }
         },
         "domainpricePrice": {
