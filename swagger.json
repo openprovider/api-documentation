@@ -1591,14 +1591,32 @@
                     },
                     {
                         "type": "string",
-                        "description": "Sorting type (ASC/DESC).",
+                        "description": "Sorting type (asc/desc).",
                         "name": "order_by.type",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "Name of the field to sort results by.",
+                        "description": "Sorting type (asc/desc).",
                         "name": "order_by.name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sorting type (asc/desc).",
+                        "name": "order_by.value",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sorting type (asc/desc).",
+                        "name": "order_by.ttl",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sorting type (asc/desc).",
+                        "name": "order_by.prio",
                         "in": "query"
                     },
                     {
@@ -12704,12 +12722,11 @@
             "properties": {
                 "date": {
                     "type": "string",
-                    "title": "The date"
+                    "title": "Date of operation"
                 },
                 "is": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The is"
+                    "type": "string",
+                    "title": "New value"
                 },
                 "source": {
                     "type": "string",
@@ -12717,14 +12734,14 @@
                 },
                 "was": {
                     "type": "string",
-                    "title": "The was"
+                    "title": "Old value"
                 }
             },
             "example": {
-                "date": "1560966009",
-                "is": true,
+                "date": "2019-06-19 17:40:09",
+                "is": "+ A |  | 8.8.8.8",
                 "source": "",
-                "was": "Zone is deleted."
+                "was": ""
             }
         },
         "invoiceInvoice": {
@@ -20491,18 +20508,37 @@
                 }
             }
         },
-        "recordListZoneRecordsRequestOrderBy": {
+        "recordListZoneRecordsOrderBy": {
             "type": "object",
-            "title": "ListZoneRecordsRequestOrderBy",
+            "title": "ListZoneRecordsOrderBy",
             "properties": {
                 "name": {
                     "type": "string",
-                    "title": "Name of the field to sort results by"
+                    "title": "Sorting type (asc/desc)"
+                },
+                "prio": {
+                    "type": "string",
+                    "title": "Sorting type (asc/desc)"
+                },
+                "ttl": {
+                    "type": "string",
+                    "title": "Sorting type (asc/desc)"
                 },
                 "type": {
                     "type": "string",
-                    "title": "Sorting type (ASC/DESC)"
+                    "title": "Sorting type (asc/desc)"
+                },
+                "value": {
+                    "type": "string",
+                    "title": "Sorting type (asc/desc)"
                 }
+            },
+            "example": {
+                "name": "asc",
+                "prio": "",
+                "ttl": "",
+                "type": "asc",
+                "value": ""
             }
         },
         "recordListZoneRecordsResponse": {
@@ -20515,12 +20551,12 @@
                     "title": "Response code"
                 },
                 "data": {
-                    "title": "The data",
+                    "title": "Response data",
                     "$ref": "#/definitions/recordListZoneRecordsResponseData"
                 },
                 "desc": {
                     "type": "string",
-                    "title": "Response pattern"
+                    "title": "Response description"
                 },
                 "maintenance": {
                     "type": "boolean",
@@ -20529,7 +20565,7 @@
                 },
                 "warnings": {
                     "type": "array",
-                    "title": "The warnings",
+                    "title": "Array of warning messages",
                     "items": {
                         "$ref": "#/definitions/errorWarning"
                     }
@@ -25718,7 +25754,7 @@
                     "title": "Response code"
                 },
                 "data": {
-                    "title": "The data",
+                    "title": "Response data",
                     "$ref": "#/definitions/zoneZone"
                 },
                 "desc": {
@@ -25732,7 +25768,7 @@
                 },
                 "warnings": {
                     "type": "array",
-                    "title": "The warnings",
+                    "title": "Array of warning messages",
                     "items": {
                         "$ref": "#/definitions/errorWarning"
                     }
@@ -25741,15 +25777,15 @@
             "example": {
                 "code": 0,
                 "data": {
-                    "active": 1,
+                    "active": true,
                     "creation_date": "2012-02-05 7:37:28",
                     "dnskey": "",
                     "history": [
                         {
-                            "date": "1560966009",
+                            "date": "2019-06-19 17:40:09",
                             "is": true,
                             "source": "",
-                            "was": "Zone is deleted."
+                            "was": ""
                         }
                     ],
                     "id": 12345,
@@ -25777,9 +25813,9 @@
                 "desc": ""
             }
         },
-        "zoneListZonesRequestOrderBy": {
+        "zoneListZonesOrderBy": {
             "type": "object",
-            "title": "ListZonesRequestOrderBy",
+            "title": "ListZonesOrderBy",
             "properties": {
                 "creation_date": {
                     "type": "string",
@@ -25793,6 +25829,11 @@
                     "type": "string",
                     "title": "Name of the domain to which DNS zone corresponds"
                 }
+            },
+            "example": {
+                "creation_date": "asc",
+                "modification_date": "asc",
+                "name": "asc"
             }
         },
         "zoneListZonesResponse": {
@@ -25805,7 +25846,7 @@
                     "title": "Response code"
                 },
                 "data": {
-                    "title": "The data",
+                    "title": "Response data",
                     "$ref": "#/definitions/zoneListZonesResponseData"
                 },
                 "desc": {
@@ -25819,7 +25860,7 @@
                 },
                 "warnings": {
                     "type": "array",
-                    "title": "The warnings",
+                    "title": "Array of warning messages",
                     "items": {
                         "$ref": "#/definitions/errorWarning"
                     }
@@ -25830,15 +25871,15 @@
                 "data": {
                     "results": [
                         {
-                            "active": 1,
+                            "active": true,
                             "creation_date": "2012-02-05 7:37:28",
                             "dnskey": "",
                             "history": [
                                 {
-                                    "date": "1560966009",
+                                    "date": "2019-06-19 17:40:09",
                                     "is": true,
                                     "source": "",
-                                    "was": "Zone is deleted."
+                                    "was": ""
                                 }
                             ],
                             "id": 12345,
@@ -25889,15 +25930,15 @@
             "example": {
                 "results": [
                     {
-                        "active": 1,
+                        "active": true,
                         "creation_date": "2012-02-05 7:37:28",
                         "dnskey": "",
                         "history": [
                             {
-                                "date": "1560966009",
+                                "date": "2019-06-19 17:40:09",
                                 "is": true,
                                 "source": "",
-                                "was": "Zone is deleted."
+                                "was": ""
                             }
                         ],
                         "id": 12345,
@@ -26171,8 +26212,8 @@
             "title": "Zone",
             "properties": {
                 "active": {
-                    "type": "integer",
-                    "format": "int32",
+                    "type": "boolean",
+                    "format": "boolean",
                     "title": "Indicates whether DNS zone is active or inactive (shadow)"
                 },
                 "creation_date": {
@@ -26240,15 +26281,15 @@
                 }
             },
             "example": {
-                "active": 1,
+                "active": true,
                 "creation_date": "2012-02-05 7:37:28",
                 "dnskey": "",
                 "history": [
                     {
-                        "date": "1560966009",
+                        "date": "2019-06-19 17:40:09",
                         "is": true,
                         "source": "",
-                        "was": "Zone is deleted."
+                        "was": ""
                     }
                 ],
                 "id": 12345,
@@ -26284,7 +26325,7 @@
                     "title": "Response code"
                 },
                 "data": {
-                    "title": "The data",
+                    "title": "Response data",
                     "$ref": "#/definitions/zoneZoneBoolResponseData"
                 },
                 "desc": {
@@ -26298,7 +26339,7 @@
                 },
                 "warnings": {
                     "type": "array",
-                    "title": "The warnings",
+                    "title": "Array of warning messages",
                     "items": {
                         "$ref": "#/definitions/errorWarning"
                     }
