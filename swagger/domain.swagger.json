@@ -2211,12 +2211,13 @@
             "title": "CreateDomainRequest",
             "properties": {
                 "accept_eap_fee": {
-                    "type": "string",
+                    "type": "number",
+                    "format": "double",
                     "title": "Required for certain pre-pregistrations"
                 },
                 "accept_premium_fee": {
-                    "type": "integer",
-                    "format": "int32",
+                    "type": "number",
+                    "format": "double",
                     "title": "Premium price fee acceptance"
                 },
                 "additional_data": {
@@ -2232,8 +2233,7 @@
                     "type": "string"
                 },
                 "application_notice_id": {
-                    "type": "integer",
-                    "format": "int32",
+                    "type": "string",
                     "title": "The application notice id"
                 },
                 "application_smd": {
@@ -2334,7 +2334,7 @@
                 }
             },
             "example": {
-                "accept_eap_fee": "",
+                "accept_eap_fee": 0,
                 "accept_premium_fee": 0,
                 "additional_data": {
                     "abogado_acceptance": "",
@@ -2367,7 +2367,7 @@
                 },
                 "admin_handle": "XX123456-XX",
                 "application_mode": "preregistration",
-                "application_notice_id": 0,
+                "application_notice_id": "983bdc1a0000100000188801724",
                 "application_smd": "",
                 "auth_code": "",
                 "autorenew": "on",
@@ -4467,8 +4467,8 @@
             "title": "TransferDomainRequest",
             "properties": {
                 "accept_premium_fee": {
-                    "type": "integer",
-                    "format": "int32",
+                    "type": "number",
+                    "format": "double",
                     "title": "Required in case when domain is premium, value is the price returned in the response for TransferDomainRequest without acceptPremiumFee"
                 },
                 "additional_data": {
