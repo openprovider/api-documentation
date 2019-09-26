@@ -4816,7 +4816,7 @@
                 },
                 "payment_methods": {
                     "type": "array",
-                    "title": "List of payment methods available for the reseller",
+                    "title": "Reseller payment methods settings",
                     "items": {
                         "$ref": "#/definitions/settingsPaymentMethods"
                     }
@@ -5135,6 +5135,10 @@
                     "type": "string",
                     "title": "Customer's language"
                 },
+                "name": {
+                    "title": "The name",
+                    "$ref": "#/definitions/contactName"
+                },
                 "phone": {
                     "title": "Phone number",
                     "$ref": "#/definitions/contactPhone"
@@ -5170,6 +5174,13 @@
                 "inn": "",
                 "kpp": "",
                 "locale": "",
+                "name": {
+                    "first_name": "Test",
+                    "full_name": "Test Person",
+                    "initials": "T P",
+                    "last_name": "Person",
+                    "prefix": "Mr"
+                },
                 "phone": {
                     "area_code": "111",
                     "country_code": "+03",
@@ -5564,7 +5575,7 @@
                 },
                 "payment_methods": {
                     "type": "array",
-                    "title": "List of payment methods available for the reseller",
+                    "title": "Reseller payment methods settings",
                     "items": {
                         "$ref": "#/definitions/settingsPaymentMethods"
                     }

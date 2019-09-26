@@ -105,6 +105,7 @@
                     {
                         "type": "integer",
                         "format": "int32",
+                        "default": 100,
                         "description": "Limits the number of objects in the output.",
                         "name": "limit",
                         "in": "query"
@@ -118,8 +119,21 @@
                     },
                     {
                         "type": "string",
-                        "description": "The order by.",
-                        "name": "order_by",
+                        "default": "asc",
+                        "description": "Sorting type (asc/desc).",
+                        "name": "order_by.ns_group",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sorting type (asc/desc).",
+                        "name": "order_by.domain_count",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sorting type (asc/desc).",
+                        "name": "order_by.ns_count",
                         "in": "query"
                     },
                     {
@@ -420,6 +434,7 @@
                     {
                         "type": "integer",
                         "format": "int32",
+                        "default": 100,
                         "description": "Limits the number of objects in the output.",
                         "name": "limit",
                         "in": "query"
@@ -432,13 +447,22 @@
                     },
                     {
                         "type": "string",
-                        "description": "Orders output ASC or DESC.",
+                        "default": "asc",
+                        "description": "Sorting type (asc/desc).",
                         "name": "order",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "default": "name",
+                        "description": "Field for sorting output. Possible value: name.",
+                        "name": "order_by",
                         "in": "query"
                     },
                     {
                         "type": "boolean",
                         "format": "boolean",
+                        "default": false,
                         "description": "Indicates if DNS records should be retrieved.",
                         "name": "with_records",
                         "in": "query"
@@ -576,6 +600,7 @@
                     {
                         "type": "integer",
                         "format": "int32",
+                        "default": 100,
                         "description": "Limits the number of objects in the output. (default value: 100, maximum value: 500).",
                         "name": "limit",
                         "in": "query"
@@ -589,19 +614,20 @@
                     },
                     {
                         "type": "string",
-                        "description": "DNS zone creation date.",
+                        "default": "desc",
+                        "description": "Sorting type (asc/desc).",
                         "name": "order_by.creation_date",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "Date the DNS zone was last modified.",
+                        "description": "Sorting type (asc/desc).",
                         "name": "order_by.modification_date",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "Name of the domain to which DNS zone corresponds.",
+                        "description": "Sorting type (asc/desc).",
                         "name": "order_by.name",
                         "in": "query"
                     },
@@ -716,8 +742,9 @@
                         "in": "query"
                     },
                     {
-                        "type": "integer",
-                        "format": "int32",
+                        "type": "boolean",
+                        "format": "boolean",
+                        "default": false,
                         "description": "Indicates, whether DNS records should be displayed in output.",
                         "name": "with_records",
                         "in": "query"
@@ -725,6 +752,7 @@
                     {
                         "type": "boolean",
                         "format": "boolean",
+                        "default": false,
                         "description": "Indicates, whether DNS zone history should be displayed in output.",
                         "name": "with_history",
                         "in": "query"
@@ -873,6 +901,7 @@
                     {
                         "type": "integer",
                         "format": "int32",
+                        "default": 100,
                         "description": "How many records to retrieve (default: 100, max 500).",
                         "name": "limit",
                         "in": "query"
@@ -886,12 +915,14 @@
                     },
                     {
                         "type": "string",
+                        "default": "asc",
                         "description": "Sorting type (asc/desc).",
                         "name": "order_by.type",
                         "in": "query"
                     },
                     {
                         "type": "string",
+                        "default": "asc",
                         "description": "Sorting type (asc/desc).",
                         "name": "order_by.name",
                         "in": "query"
@@ -1485,6 +1516,30 @@
                 "success": false
             }
         },
+        "ns_groupListGroupsOrderBy": {
+            "type": "object",
+            "title": "ListGroupsOrderBy",
+            "properties": {
+                "domain_count": {
+                    "type": "string",
+                    "title": "Sorting type (asc/desc)"
+                },
+                "ns_count": {
+                    "type": "string",
+                    "title": "Sorting type (asc/desc)"
+                },
+                "ns_group": {
+                    "type": "string",
+                    "title": "Sorting type (asc/desc)",
+                    "default": "asc"
+                }
+            },
+            "example": {
+                "domain_count": "",
+                "ns_count": "",
+                "ns_group": "asc"
+            }
+        },
         "ns_groupListGroupsResponse": {
             "type": "object",
             "title": "ListGroupsResponse",
@@ -1648,7 +1703,8 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "title": "Sorting type (asc/desc)"
+                    "title": "Sorting type (asc/desc)",
+                    "default": "asc"
                 },
                 "prio": {
                     "type": "string",
@@ -1660,7 +1716,8 @@
                 },
                 "type": {
                     "type": "string",
-                    "title": "Sorting type (asc/desc)"
+                    "title": "Sorting type (asc/desc)",
+                    "default": "asc"
                 },
                 "value": {
                     "type": "string",
@@ -1929,7 +1986,7 @@
             "example": {
                 "code": 0,
                 "data": {
-                    "id": 27261,
+                    "id": 1,
                     "is_spamexperts_enabled": false,
                     "name": "MyTemplate",
                     "records": [
@@ -1981,7 +2038,7 @@
                 "data": {
                     "results": [
                         {
-                            "id": 27261,
+                            "id": 1,
                             "is_spamexperts_enabled": false,
                             "name": "MyTemplate",
                             "records": [
@@ -2021,7 +2078,7 @@
             "example": {
                 "results": [
                     {
-                        "id": 27261,
+                        "id": 1,
                         "is_spamexperts_enabled": false,
                         "name": "MyTemplate",
                         "records": [
@@ -2107,7 +2164,7 @@
                 }
             },
             "example": {
-                "id": 27261,
+                "id": 1,
                 "is_spamexperts_enabled": false,
                 "name": "MyTemplate",
                 "records": [
@@ -2325,21 +2382,22 @@
             "properties": {
                 "creation_date": {
                     "type": "string",
-                    "title": "DNS zone creation date"
+                    "title": "Sorting type (asc/desc)",
+                    "default": "desc"
                 },
                 "modification_date": {
                     "type": "string",
-                    "title": "Date the DNS zone was last modified"
+                    "title": "Sorting type (asc/desc)"
                 },
                 "name": {
                     "type": "string",
-                    "title": "Name of the domain to which DNS zone corresponds"
+                    "title": "Sorting type (asc/desc)"
                 }
             },
             "example": {
-                "creation_date": "asc",
-                "modification_date": "asc",
-                "name": "asc"
+                "creation_date": "desc",
+                "modification_date": "",
+                "name": ""
             }
         },
         "zoneListZonesResponse": {

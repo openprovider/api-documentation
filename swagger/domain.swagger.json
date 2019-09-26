@@ -111,6 +111,12 @@
                     },
                     {
                         "type": "string",
+                        "description": "Full name of the domain.",
+                        "name": "full_name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
                         "description": "The domain name pattern.",
                         "name": "domain_name_pattern",
                         "in": "query"
@@ -2767,7 +2773,6 @@
                         "name": "test4"
                     },
                     "expiration_date": "2014-07-04 17:14:44",
-                    "expiration_date_openprovider": "2022-01-01 0:00:00",
                     "hard_quarantine_expiry_date": "",
                     "has_history": false,
                     "history": [
@@ -2960,10 +2965,6 @@
                 "expiration_date": {
                     "type": "string",
                     "title": "Domain expiration date"
-                },
-                "expiration_date_openprovider": {
-                    "type": "string",
-                    "title": "Domain expiration date in Openprovider"
                 },
                 "hard_quarantine_expiry_date": {
                     "type": "string",
@@ -3276,7 +3277,6 @@
                     "name": "test4"
                 },
                 "expiration_date": "2014-07-04 17:14:44",
-                "expiration_date_openprovider": "2022-01-01 0:00:00",
                 "hard_quarantine_expiry_date": "",
                 "has_history": false,
                 "history": [
@@ -3561,7 +3561,6 @@
                                 "name": "test4"
                             },
                             "expiration_date": "2014-07-04 17:14:44",
-                            "expiration_date_openprovider": "2022-01-01 0:00:00",
                             "hard_quarantine_expiry_date": "",
                             "has_history": false,
                             "history": [
@@ -3746,7 +3745,6 @@
                             "name": "test4"
                         },
                         "expiration_date": "2014-07-04 17:14:44",
-                        "expiration_date_openprovider": "2022-01-01 0:00:00",
                         "hard_quarantine_expiry_date": "",
                         "has_history": false,
                         "history": [
@@ -5309,8 +5307,8 @@
                     "is_auth_code_changeable": false,
                     "is_auth_code_requested": false,
                     "is_private_whois_allowed": false,
-                    "is_trade_auth_code_required": "optional",
-                    "is_transfer_auth_code_required": "optional",
+                    "is_trade_auth_code_required": true,
+                    "is_transfer_auth_code_required": true,
                     "level_prices": [
                         {
                             "level": 1,
@@ -5561,8 +5559,8 @@
                             "is_auth_code_changeable": false,
                             "is_auth_code_requested": false,
                             "is_private_whois_allowed": false,
-                            "is_trade_auth_code_required": "optional",
-                            "is_transfer_auth_code_required": "optional",
+                            "is_trade_auth_code_required": true,
+                            "is_transfer_auth_code_required": true,
                             "level_prices": [
                                 {
                                     "level": 1,
@@ -5755,8 +5753,8 @@
                         "is_auth_code_changeable": false,
                         "is_auth_code_requested": false,
                         "is_private_whois_allowed": false,
-                        "is_trade_auth_code_required": "optional",
-                        "is_transfer_auth_code_required": "optional",
+                        "is_trade_auth_code_required": true,
+                        "is_transfer_auth_code_required": true,
                         "level_prices": [
                             {
                                 "level": 1,
@@ -6188,11 +6186,13 @@
                     "title": "Indicates, if whois privacy protection service is available for the extension"
                 },
                 "is_trade_auth_code_required": {
-                    "type": "string",
+                    "type": "boolean",
+                    "format": "boolean",
                     "title": "Indicates, if authcode is required for domain trade operation"
                 },
                 "is_transfer_auth_code_required": {
-                    "type": "string",
+                    "type": "boolean",
+                    "format": "boolean",
                     "title": "Indicates, if authcode is required for domain transfer operation"
                 },
                 "level_prices": {
@@ -6306,8 +6306,8 @@
                 "is_auth_code_changeable": false,
                 "is_auth_code_requested": false,
                 "is_private_whois_allowed": false,
-                "is_trade_auth_code_required": "optional",
-                "is_transfer_auth_code_required": "optional",
+                "is_trade_auth_code_required": true,
+                "is_transfer_auth_code_required": true,
                 "level_prices": [
                     {
                         "level": 1,

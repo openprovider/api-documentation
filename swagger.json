@@ -810,6 +810,7 @@
                     {
                         "type": "integer",
                         "format": "int32",
+                        "default": 100,
                         "description": "Limits the number of objects in the output.",
                         "name": "limit",
                         "in": "query"
@@ -823,8 +824,21 @@
                     },
                     {
                         "type": "string",
-                        "description": "The order by.",
-                        "name": "order_by",
+                        "default": "asc",
+                        "description": "Sorting type (asc/desc).",
+                        "name": "order_by.ns_group",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sorting type (asc/desc).",
+                        "name": "order_by.domain_count",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sorting type (asc/desc).",
+                        "name": "order_by.ns_count",
                         "in": "query"
                     },
                     {
@@ -1125,6 +1139,7 @@
                     {
                         "type": "integer",
                         "format": "int32",
+                        "default": 100,
                         "description": "Limits the number of objects in the output.",
                         "name": "limit",
                         "in": "query"
@@ -1137,13 +1152,22 @@
                     },
                     {
                         "type": "string",
-                        "description": "Orders output ASC or DESC.",
+                        "default": "asc",
+                        "description": "Sorting type (asc/desc).",
                         "name": "order",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "default": "name",
+                        "description": "Field for sorting output. Possible value: name.",
+                        "name": "order_by",
                         "in": "query"
                     },
                     {
                         "type": "boolean",
                         "format": "boolean",
+                        "default": false,
                         "description": "Indicates if DNS records should be retrieved.",
                         "name": "with_records",
                         "in": "query"
@@ -1281,6 +1305,7 @@
                     {
                         "type": "integer",
                         "format": "int32",
+                        "default": 100,
                         "description": "Limits the number of objects in the output. (default value: 100, maximum value: 500).",
                         "name": "limit",
                         "in": "query"
@@ -1294,19 +1319,20 @@
                     },
                     {
                         "type": "string",
-                        "description": "DNS zone creation date.",
+                        "default": "desc",
+                        "description": "Sorting type (asc/desc).",
                         "name": "order_by.creation_date",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "Date the DNS zone was last modified.",
+                        "description": "Sorting type (asc/desc).",
                         "name": "order_by.modification_date",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "Name of the domain to which DNS zone corresponds.",
+                        "description": "Sorting type (asc/desc).",
                         "name": "order_by.name",
                         "in": "query"
                     },
@@ -1421,8 +1447,9 @@
                         "in": "query"
                     },
                     {
-                        "type": "integer",
-                        "format": "int32",
+                        "type": "boolean",
+                        "format": "boolean",
+                        "default": false,
                         "description": "Indicates, whether DNS records should be displayed in output.",
                         "name": "with_records",
                         "in": "query"
@@ -1430,6 +1457,7 @@
                     {
                         "type": "boolean",
                         "format": "boolean",
+                        "default": false,
                         "description": "Indicates, whether DNS zone history should be displayed in output.",
                         "name": "with_history",
                         "in": "query"
@@ -1578,6 +1606,7 @@
                     {
                         "type": "integer",
                         "format": "int32",
+                        "default": 100,
                         "description": "How many records to retrieve (default: 100, max 500).",
                         "name": "limit",
                         "in": "query"
@@ -1591,12 +1620,14 @@
                     },
                     {
                         "type": "string",
+                        "default": "asc",
                         "description": "Sorting type (asc/desc).",
                         "name": "order_by.type",
                         "in": "query"
                     },
                     {
                         "type": "string",
+                        "default": "asc",
                         "description": "Sorting type (asc/desc).",
                         "name": "order_by.name",
                         "in": "query"
@@ -1761,6 +1792,12 @@
                         "type": "string",
                         "description": "Date on which domain will be renewed.",
                         "name": "renewal_date",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Full name of the domain.",
+                        "name": "full_name",
                         "in": "query"
                     },
                     {
@@ -9537,7 +9574,6 @@
                         "name": "test4"
                     },
                     "expiration_date": "2014-07-04 17:14:44",
-                    "expiration_date_openprovider": "2022-01-01 0:00:00",
                     "hard_quarantine_expiry_date": "",
                     "has_history": false,
                     "history": [
@@ -9730,10 +9766,6 @@
                 "expiration_date": {
                     "type": "string",
                     "title": "Domain expiration date"
-                },
-                "expiration_date_openprovider": {
-                    "type": "string",
-                    "title": "Domain expiration date in Openprovider"
                 },
                 "hard_quarantine_expiry_date": {
                     "type": "string",
@@ -10046,7 +10078,6 @@
                     "name": "test4"
                 },
                 "expiration_date": "2014-07-04 17:14:44",
-                "expiration_date_openprovider": "2022-01-01 0:00:00",
                 "hard_quarantine_expiry_date": "",
                 "has_history": false,
                 "history": [
@@ -10331,7 +10362,6 @@
                                 "name": "test4"
                             },
                             "expiration_date": "2014-07-04 17:14:44",
-                            "expiration_date_openprovider": "2022-01-01 0:00:00",
                             "hard_quarantine_expiry_date": "",
                             "has_history": false,
                             "history": [
@@ -10516,7 +10546,6 @@
                             "name": "test4"
                         },
                         "expiration_date": "2014-07-04 17:14:44",
-                        "expiration_date_openprovider": "2022-01-01 0:00:00",
                         "hard_quarantine_expiry_date": "",
                         "has_history": false,
                         "history": [
@@ -17747,6 +17776,30 @@
                 "success": false
             }
         },
+        "ns_groupListGroupsOrderBy": {
+            "type": "object",
+            "title": "ListGroupsOrderBy",
+            "properties": {
+                "domain_count": {
+                    "type": "string",
+                    "title": "Sorting type (asc/desc)"
+                },
+                "ns_count": {
+                    "type": "string",
+                    "title": "Sorting type (asc/desc)"
+                },
+                "ns_group": {
+                    "type": "string",
+                    "title": "Sorting type (asc/desc)",
+                    "default": "asc"
+                }
+            },
+            "example": {
+                "domain_count": "",
+                "ns_count": "",
+                "ns_group": "asc"
+            }
+        },
         "ns_groupListGroupsResponse": {
             "type": "object",
             "title": "ListGroupsResponse",
@@ -20514,7 +20567,8 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "title": "Sorting type (asc/desc)"
+                    "title": "Sorting type (asc/desc)",
+                    "default": "asc"
                 },
                 "prio": {
                     "type": "string",
@@ -20526,7 +20580,8 @@
                 },
                 "type": {
                     "type": "string",
-                    "title": "Sorting type (asc/desc)"
+                    "title": "Sorting type (asc/desc)",
+                    "default": "asc"
                 },
                 "value": {
                     "type": "string",
@@ -21564,7 +21619,7 @@
                 },
                 "payment_methods": {
                     "type": "array",
-                    "title": "List of payment methods available for the reseller",
+                    "title": "Reseller payment methods settings",
                     "items": {
                         "$ref": "#/definitions/settingsPaymentMethods"
                     }
@@ -21883,6 +21938,10 @@
                     "type": "string",
                     "title": "Customer's language"
                 },
+                "name": {
+                    "title": "The name",
+                    "$ref": "#/definitions/contactName"
+                },
                 "phone": {
                     "title": "Phone number",
                     "$ref": "#/definitions/contactPhone"
@@ -21918,6 +21977,13 @@
                 "inn": "",
                 "kpp": "",
                 "locale": "",
+                "name": {
+                    "first_name": "Test",
+                    "full_name": "Test Person",
+                    "initials": "T P",
+                    "last_name": "Person",
+                    "prefix": "Mr"
+                },
                 "phone": {
                     "area_code": "111",
                     "country_code": "+03",
@@ -22312,7 +22378,7 @@
                 },
                 "payment_methods": {
                     "type": "array",
-                    "title": "List of payment methods available for the reseller",
+                    "title": "Reseller payment methods settings",
                     "items": {
                         "$ref": "#/definitions/settingsPaymentMethods"
                     }
@@ -23893,7 +23959,7 @@
             "example": {
                 "code": 0,
                 "data": {
-                    "id": 27261,
+                    "id": 1,
                     "is_spamexperts_enabled": false,
                     "name": "MyTemplate",
                     "records": [
@@ -23945,7 +24011,7 @@
                 "data": {
                     "results": [
                         {
-                            "id": 27261,
+                            "id": 1,
                             "is_spamexperts_enabled": false,
                             "name": "MyTemplate",
                             "records": [
@@ -23985,7 +24051,7 @@
             "example": {
                 "results": [
                     {
-                        "id": 27261,
+                        "id": 1,
                         "is_spamexperts_enabled": false,
                         "name": "MyTemplate",
                         "records": [
@@ -24071,7 +24137,7 @@
                 }
             },
             "example": {
-                "id": 27261,
+                "id": 1,
                 "is_spamexperts_enabled": false,
                 "name": "MyTemplate",
                 "records": [
@@ -24226,8 +24292,8 @@
                     "is_auth_code_changeable": false,
                     "is_auth_code_requested": false,
                     "is_private_whois_allowed": false,
-                    "is_trade_auth_code_required": "optional",
-                    "is_transfer_auth_code_required": "optional",
+                    "is_trade_auth_code_required": true,
+                    "is_transfer_auth_code_required": true,
                     "level_prices": [
                         {
                             "level": 1,
@@ -24478,8 +24544,8 @@
                             "is_auth_code_changeable": false,
                             "is_auth_code_requested": false,
                             "is_private_whois_allowed": false,
-                            "is_trade_auth_code_required": "optional",
-                            "is_transfer_auth_code_required": "optional",
+                            "is_trade_auth_code_required": true,
+                            "is_transfer_auth_code_required": true,
                             "level_prices": [
                                 {
                                     "level": 1,
@@ -24672,8 +24738,8 @@
                         "is_auth_code_changeable": false,
                         "is_auth_code_requested": false,
                         "is_private_whois_allowed": false,
-                        "is_trade_auth_code_required": "optional",
-                        "is_transfer_auth_code_required": "optional",
+                        "is_trade_auth_code_required": true,
+                        "is_transfer_auth_code_required": true,
                         "level_prices": [
                             {
                                 "level": 1,
@@ -25105,11 +25171,13 @@
                     "title": "Indicates, if whois privacy protection service is available for the extension"
                 },
                 "is_trade_auth_code_required": {
-                    "type": "string",
+                    "type": "boolean",
+                    "format": "boolean",
                     "title": "Indicates, if authcode is required for domain trade operation"
                 },
                 "is_transfer_auth_code_required": {
-                    "type": "string",
+                    "type": "boolean",
+                    "format": "boolean",
                     "title": "Indicates, if authcode is required for domain transfer operation"
                 },
                 "level_prices": {
@@ -25223,8 +25291,8 @@
                 "is_auth_code_changeable": false,
                 "is_auth_code_requested": false,
                 "is_private_whois_allowed": false,
-                "is_trade_auth_code_required": "optional",
-                "is_transfer_auth_code_required": "optional",
+                "is_trade_auth_code_required": true,
+                "is_transfer_auth_code_required": true,
                 "level_prices": [
                     {
                         "level": 1,
@@ -25819,21 +25887,22 @@
             "properties": {
                 "creation_date": {
                     "type": "string",
-                    "title": "DNS zone creation date"
+                    "title": "Sorting type (asc/desc)",
+                    "default": "desc"
                 },
                 "modification_date": {
                     "type": "string",
-                    "title": "Date the DNS zone was last modified"
+                    "title": "Sorting type (asc/desc)"
                 },
                 "name": {
                     "type": "string",
-                    "title": "Name of the domain to which DNS zone corresponds"
+                    "title": "Sorting type (asc/desc)"
                 }
             },
             "example": {
-                "creation_date": "asc",
-                "modification_date": "asc",
-                "name": "asc"
+                "creation_date": "desc",
+                "modification_date": "",
+                "name": ""
             }
         },
         "zoneListZonesResponse": {
