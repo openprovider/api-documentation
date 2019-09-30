@@ -8473,6 +8473,10 @@
                     "type": "string",
                     "title": "If the admin contact is a natural person located in Singapore, the corresponding Singapore Personal Access ID has to be given. The format of the SingPassID is: X1234567X   - where X is an upper case letter at the beginning and end of a seven digit string In case of a foreign organization, it is possible to use the SGNICID: SGNICID-X12-345678   - the SGNICID will look like this example\nApplicable to: .com.sg, .sg"
                 },
+                "ae_acceptance": {
+                    "type": "string",
+                    "title": "The ae acceptance value should be set to 1\nApplicable to: .ae"
+                },
                 "allocation_token": {
                     "type": "string",
                     "title": "The allocation token value cannot be empty\nApplicable to: .vuelos"
@@ -8577,6 +8581,7 @@
             "example": {
                 "abogado_acceptance": "",
                 "admin_sing_pass_id": "",
+                "ae_acceptance": "1",
                 "allocation_token": "",
                 "bank_acceptance": "",
                 "company_registration_number": "XX123456789X01",
@@ -9146,6 +9151,7 @@
                 "additional_data": {
                     "abogado_acceptance": "",
                     "admin_sing_pass_id": "",
+                    "ae_acceptance": "1",
                     "allocation_token": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
@@ -9253,6 +9259,7 @@
                     "additional_data": {
                         "abogado_acceptance": "",
                         "admin_sing_pass_id": "",
+                        "ae_acceptance": "1",
                         "allocation_token": "",
                         "bank_acceptance": "",
                         "company_registration_number": "XX123456789X01",
@@ -9327,6 +9334,7 @@
                 "additional_data": {
                     "abogado_acceptance": "",
                     "admin_sing_pass_id": "",
+                    "ae_acceptance": "1",
                     "allocation_token": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
@@ -9508,6 +9516,7 @@
                     "additional_data": {
                         "abogado_acceptance": "",
                         "admin_sing_pass_id": "",
+                        "ae_acceptance": "1",
                         "allocation_token": "",
                         "bank_acceptance": "",
                         "company_registration_number": "XX123456789X01",
@@ -10012,6 +10021,7 @@
                 "additional_data": {
                     "abogado_acceptance": "",
                     "admin_sing_pass_id": "",
+                    "ae_acceptance": "1",
                     "allocation_token": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
@@ -10296,6 +10306,7 @@
                             "additional_data": {
                                 "abogado_acceptance": "",
                                 "admin_sing_pass_id": "",
+                                "ae_acceptance": "1",
                                 "allocation_token": "",
                                 "bank_acceptance": "",
                                 "company_registration_number": "XX123456789X01",
@@ -10480,6 +10491,7 @@
                         "additional_data": {
                             "abogado_acceptance": "",
                             "admin_sing_pass_id": "",
+                            "ae_acceptance": "1",
                             "allocation_token": "",
                             "bank_acceptance": "",
                             "company_registration_number": "XX123456789X01",
@@ -11067,6 +11079,7 @@
                 "additional_data": {
                     "abogado_acceptance": "",
                     "admin_sing_pass_id": "",
+                    "ae_acceptance": "1",
                     "allocation_token": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
@@ -21030,6 +21043,7 @@
                                 "rej": 5,
                                 "req": 15
                             },
+                            "projected_economy": 526.55,
                             "total": 999
                         },
                         "level": 3,
@@ -21420,6 +21434,7 @@
                             "rej": 5,
                             "req": 15
                         },
+                        "projected_economy": 526.55,
                         "total": 999
                     },
                     "level": 3,
@@ -21825,7 +21840,7 @@
                     "$ref": "#/definitions/statisticsDnsStatistics"
                 },
                 "domain": {
-                    "title": "Total count of domains",
+                    "title": "Statistics for domains",
                     "$ref": "#/definitions/statisticsDomainStatistics"
                 },
                 "level": {
@@ -21866,6 +21881,7 @@
                         "rej": 5,
                         "req": 15
                     },
+                    "projected_economy": 526.55,
                     "total": 999
                 },
                 "level": 3,
@@ -23286,6 +23302,11 @@
                     "title": "Sort output by status",
                     "$ref": "#/definitions/statisticsDomainStatisticsByStatus"
                 },
+                "projected_economy": {
+                    "type": "number",
+                    "format": "double",
+                    "title": "Predicted reseller savings through membership"
+                },
                 "total": {
                     "type": "integer",
                     "format": "int32",
@@ -23301,6 +23322,7 @@
                     "rej": 5,
                     "req": 15
                 },
+                "projected_economy": 526.55,
                 "total": 999
             }
         },
@@ -23400,6 +23422,7 @@
                             "rej": 5,
                             "req": 15
                         },
+                        "projected_economy": 526.55,
                         "total": 999
                     },
                     "license": {
@@ -23485,6 +23508,7 @@
                         "rej": 5,
                         "req": 15
                     },
+                    "projected_economy": 526.55,
                     "total": 999
                 },
                 "license": {

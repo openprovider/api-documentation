@@ -4227,6 +4227,7 @@
                                 "rej": 5,
                                 "req": 15
                             },
+                            "projected_economy": 526.55,
                             "total": 999
                         },
                         "level": 3,
@@ -4617,6 +4618,7 @@
                             "rej": 5,
                             "req": 15
                         },
+                        "projected_economy": 526.55,
                         "total": 999
                     },
                     "level": 3,
@@ -5022,7 +5024,7 @@
                     "$ref": "#/definitions/statisticsDnsStatistics"
                 },
                 "domain": {
-                    "title": "Total count of domains",
+                    "title": "Statistics for domains",
                     "$ref": "#/definitions/statisticsDomainStatistics"
                 },
                 "level": {
@@ -5063,6 +5065,7 @@
                         "rej": 5,
                         "req": 15
                     },
+                    "projected_economy": 526.55,
                     "total": 999
                 },
                 "level": 3,
@@ -6483,6 +6486,11 @@
                     "title": "Sort output by status",
                     "$ref": "#/definitions/statisticsDomainStatisticsByStatus"
                 },
+                "projected_economy": {
+                    "type": "number",
+                    "format": "double",
+                    "title": "Predicted reseller savings through membership"
+                },
                 "total": {
                     "type": "integer",
                     "format": "int32",
@@ -6498,6 +6506,7 @@
                     "rej": 5,
                     "req": 15
                 },
+                "projected_economy": 526.55,
                 "total": 999
             }
         },
@@ -6597,6 +6606,7 @@
                             "rej": 5,
                             "req": 15
                         },
+                        "projected_economy": 526.55,
                         "total": 999
                     },
                     "license": {
@@ -6682,6 +6692,7 @@
                         "rej": 5,
                         "req": 15
                     },
+                    "projected_economy": 526.55,
                     "total": 999
                 },
                 "license": {
