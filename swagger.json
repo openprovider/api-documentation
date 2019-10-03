@@ -8481,6 +8481,10 @@
                     "type": "string",
                     "title": "The allocation token value cannot be empty\nApplicable to: .vuelos"
                 },
+                "auth_code": {
+                    "type": "string",
+                    "title": "The auth code\nApplicable to: .nz"
+                },
                 "bank_acceptance": {
                     "type": "string",
                     "title": "The bank acceptance value should be set to 1\nApplicable to: .bank"
@@ -8539,7 +8543,7 @@
                 },
                 "membership_id": {
                     "type": "string",
-                    "title": "The membership id value cannot be empty\nApplicable to: .xxx"
+                    "title": "The membership id value cannot be empty\nApplicable to: .lotto, .xxx"
                 },
                 "mobile_phone_number_verification": {
                     "type": "string",
@@ -8561,9 +8565,17 @@
                     "type": "string",
                     "title": "The check domain name in blocked list of registry\nApplicable to: .ru, .xn--p1ai"
                 },
+                "self_service": {
+                    "type": "string",
+                    "title": "The self service\nApplicable to: .feedback"
+                },
                 "send_verification_email": {
                     "type": "string",
                     "title": "The send verification email value should be set to 1 if you want Openprovider to send a verification domain to registrant or to 0 if you want to do this yourself\nApplicable to: .ngo, .ong"
+                },
+                "trademark": {
+                    "type": "string",
+                    "title": "The trademark\nApplicable to: .ca"
                 },
                 "trademark_id": {
                     "type": "string",
@@ -8576,6 +8588,18 @@
                 "vat": {
                     "type": "string",
                     "title": "The vat number. Required in case if domain requester is a legal entity\nApplicable to: .co.hu, .hu"
+                },
+                "verification_code": {
+                    "type": "string",
+                    "title": "The verification code value cannot be empty\nApplicable to: .lotto"
+                },
+                "vote_acceptance": {
+                    "type": "string",
+                    "title": "The vote acceptance value should be set to 1\nApplicable to: .vote"
+                },
+                "voto_acceptance": {
+                    "type": "string",
+                    "title": "The voto acceptance value should be set to 1\nApplicable to: .voto"
                 }
             },
             "example": {
@@ -8583,6 +8607,7 @@
                 "admin_sing_pass_id": "",
                 "ae_acceptance": "1",
                 "allocation_token": "",
+                "auth_code": "",
                 "bank_acceptance": "",
                 "company_registration_number": "XX123456789X01",
                 "domain_name_variants": "xn--\u0434\u043e\u043c\u0435\u043d.cat",
@@ -8603,10 +8628,15 @@
                 "ngo_ong_policy_acceptance": "",
                 "passport_number": "X123456",
                 "rurf_blocked_domains": "",
+                "self_service": "1",
                 "send_verification_email": "",
+                "trademark": "1",
                 "trademark_id": "",
                 "travel_acceptance": "1",
-                "vat": "11843009X"
+                "vat": "11843009X",
+                "verification_code": "",
+                "vote_acceptance": "",
+                "voto_acceptance": ""
             }
         },
         "domainApiHistory": {
@@ -9153,6 +9183,7 @@
                     "admin_sing_pass_id": "",
                     "ae_acceptance": "1",
                     "allocation_token": "",
+                    "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
                     "domain_name_variants": "xn--\u0434\u043e\u043c\u0435\u043d.cat",
@@ -9173,10 +9204,15 @@
                     "ngo_ong_policy_acceptance": "",
                     "passport_number": "X123456",
                     "rurf_blocked_domains": "",
+                    "self_service": "1",
                     "send_verification_email": "",
+                    "trademark": "1",
                     "trademark_id": "",
                     "travel_acceptance": "1",
-                    "vat": "11843009X"
+                    "vat": "11843009X",
+                    "verification_code": "",
+                    "vote_acceptance": "",
+                    "voto_acceptance": ""
                 },
                 "admin_handle": "XX123456-XX",
                 "application_mode": "preregistration",
@@ -9261,6 +9297,7 @@
                         "admin_sing_pass_id": "",
                         "ae_acceptance": "1",
                         "allocation_token": "",
+                        "auth_code": "",
                         "bank_acceptance": "",
                         "company_registration_number": "XX123456789X01",
                         "domain_name_variants": "xn--\u0434\u043e\u043c\u0435\u043d.cat",
@@ -9281,10 +9318,15 @@
                         "ngo_ong_policy_acceptance": "",
                         "passport_number": "X123456",
                         "rurf_blocked_domains": "",
+                        "self_service": "1",
                         "send_verification_email": "",
+                        "trademark": "1",
                         "trademark_id": "",
                         "travel_acceptance": "1",
-                        "vat": "11843009X"
+                        "vat": "11843009X",
+                        "verification_code": "",
+                        "vote_acceptance": "",
+                        "voto_acceptance": ""
                     },
                     "auth_code": "12345678",
                     "expiration_date": "2020-04-29 17:15:19",
@@ -9336,6 +9378,7 @@
                     "admin_sing_pass_id": "",
                     "ae_acceptance": "1",
                     "allocation_token": "",
+                    "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
                     "domain_name_variants": "xn--\u0434\u043e\u043c\u0435\u043d.cat",
@@ -9356,10 +9399,15 @@
                     "ngo_ong_policy_acceptance": "",
                     "passport_number": "X123456",
                     "rurf_blocked_domains": "",
+                    "self_service": "1",
                     "send_verification_email": "",
+                    "trademark": "1",
                     "trademark_id": "",
                     "travel_acceptance": "1",
-                    "vat": "11843009X"
+                    "vat": "11843009X",
+                    "verification_code": "",
+                    "vote_acceptance": "",
+                    "voto_acceptance": ""
                 },
                 "auth_code": "12345678",
                 "expiration_date": "2020-04-29 17:15:19",
@@ -9518,6 +9566,7 @@
                         "admin_sing_pass_id": "",
                         "ae_acceptance": "1",
                         "allocation_token": "",
+                        "auth_code": "",
                         "bank_acceptance": "",
                         "company_registration_number": "XX123456789X01",
                         "domain_name_variants": "xn--\u0434\u043e\u043c\u0435\u043d.cat",
@@ -9538,10 +9587,15 @@
                         "ngo_ong_policy_acceptance": "",
                         "passport_number": "X123456",
                         "rurf_blocked_domains": "",
+                        "self_service": "1",
                         "send_verification_email": "",
+                        "trademark": "1",
                         "trademark_id": "",
                         "travel_acceptance": "1",
-                        "vat": "11843009X"
+                        "vat": "11843009X",
+                        "verification_code": "",
+                        "vote_acceptance": "",
+                        "voto_acceptance": ""
                     },
                     "admin_handle": "XX123456-XX",
                     "api_history": [
@@ -10023,6 +10077,7 @@
                     "admin_sing_pass_id": "",
                     "ae_acceptance": "1",
                     "allocation_token": "",
+                    "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
                     "domain_name_variants": "xn--\u0434\u043e\u043c\u0435\u043d.cat",
@@ -10043,10 +10098,15 @@
                     "ngo_ong_policy_acceptance": "",
                     "passport_number": "X123456",
                     "rurf_blocked_domains": "",
+                    "self_service": "1",
                     "send_verification_email": "",
+                    "trademark": "1",
                     "trademark_id": "",
                     "travel_acceptance": "1",
-                    "vat": "11843009X"
+                    "vat": "11843009X",
+                    "verification_code": "",
+                    "vote_acceptance": "",
+                    "voto_acceptance": ""
                 },
                 "admin_handle": "XX123456-XX",
                 "api_history": [
@@ -10308,6 +10368,7 @@
                                 "admin_sing_pass_id": "",
                                 "ae_acceptance": "1",
                                 "allocation_token": "",
+                                "auth_code": "",
                                 "bank_acceptance": "",
                                 "company_registration_number": "XX123456789X01",
                                 "domain_name_variants": "xn--\u0434\u043e\u043c\u0435\u043d.cat",
@@ -10328,10 +10389,15 @@
                                 "ngo_ong_policy_acceptance": "",
                                 "passport_number": "X123456",
                                 "rurf_blocked_domains": "",
+                                "self_service": "1",
                                 "send_verification_email": "",
+                                "trademark": "1",
                                 "trademark_id": "",
                                 "travel_acceptance": "1",
-                                "vat": "11843009X"
+                                "vat": "11843009X",
+                                "verification_code": "",
+                                "vote_acceptance": "",
+                                "voto_acceptance": ""
                             },
                             "admin_handle": "XX123456-XX",
                             "api_history": [
@@ -10493,6 +10559,7 @@
                             "admin_sing_pass_id": "",
                             "ae_acceptance": "1",
                             "allocation_token": "",
+                            "auth_code": "",
                             "bank_acceptance": "",
                             "company_registration_number": "XX123456789X01",
                             "domain_name_variants": "xn--\u0434\u043e\u043c\u0435\u043d.cat",
@@ -10513,10 +10580,15 @@
                             "ngo_ong_policy_acceptance": "",
                             "passport_number": "X123456",
                             "rurf_blocked_domains": "",
+                            "self_service": "1",
                             "send_verification_email": "",
+                            "trademark": "1",
                             "trademark_id": "",
                             "travel_acceptance": "1",
-                            "vat": "11843009X"
+                            "vat": "11843009X",
+                            "verification_code": "",
+                            "vote_acceptance": "",
+                            "voto_acceptance": ""
                         },
                         "admin_handle": "XX123456-XX",
                         "api_history": [
@@ -11081,6 +11153,7 @@
                     "admin_sing_pass_id": "",
                     "ae_acceptance": "1",
                     "allocation_token": "",
+                    "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
                     "domain_name_variants": "xn--\u0434\u043e\u043c\u0435\u043d.cat",
@@ -11101,10 +11174,15 @@
                     "ngo_ong_policy_acceptance": "",
                     "passport_number": "X123456",
                     "rurf_blocked_domains": "",
+                    "self_service": "1",
                     "send_verification_email": "",
+                    "trademark": "1",
                     "trademark_id": "",
                     "travel_acceptance": "1",
-                    "vat": "11843009X"
+                    "vat": "11843009X",
+                    "verification_code": "",
+                    "vote_acceptance": "",
+                    "voto_acceptance": ""
                 },
                 "admin_handle": "XX123456-XX",
                 "auth_code": "12345678",
@@ -11245,7 +11323,7 @@
                 },
                 "membership_id": {
                     "type": "string",
-                    "title": "The membership id value cannot be empty\nApplicable to: .xxx"
+                    "title": "The membership id value cannot be empty\nApplicable to: .lotto, .xxx"
                 },
                 "mobile_phone_number_verification": {
                     "type": "string",
@@ -11258,6 +11336,10 @@
                 "vat": {
                     "type": "string",
                     "title": "The vat number. Required in case if domain requester is a legal entity\nApplicable to: .co.hu, .hu"
+                },
+                "verification_code": {
+                    "type": "string",
+                    "title": "The verification code value cannot be empty\nApplicable to: .lotto"
                 }
             },
             "example": {
@@ -11271,7 +11353,8 @@
                 "membership_id": "A",
                 "mobile_phone_number_verification": "",
                 "passport_number": "X123458",
-                "vat": "11843009X"
+                "vat": "11843009X",
+                "verification_code": ""
             }
         },
         "domainTransferDomainRequest": {
@@ -11400,7 +11483,8 @@
                     "membership_id": "A",
                     "mobile_phone_number_verification": "",
                     "passport_number": "X123458",
-                    "vat": "11843009X"
+                    "vat": "11843009X",
+                    "verification_code": ""
                 },
                 "admin_handle": "XX123456-XX",
                 "at": "2019-04-30",
@@ -11600,7 +11684,7 @@
                 },
                 "membership_id": {
                     "type": "string",
-                    "title": "The membership id value cannot be empty\nApplicable to: .xxx"
+                    "title": "The membership id value cannot be empty\nApplicable to: .lotto, .xxx"
                 },
                 "mobile_phone_number_verification": {
                     "type": "string",
@@ -11613,6 +11697,10 @@
                 "vat": {
                     "type": "string",
                     "title": "The vat number. Required in case if domain requester is a legal entity\nApplicable to: .co.hu, .hu"
+                },
+                "verification_code": {
+                    "type": "string",
+                    "title": "The verification code value cannot be empty\nApplicable to: .lotto"
                 }
             },
             "example": {
@@ -11626,7 +11714,8 @@
                 "membership_id": "A",
                 "mobile_phone_number_verification": "",
                 "passport_number": "X123457",
-                "vat": "11843009X"
+                "vat": "11843009X",
+                "verification_code": ""
             }
         },
         "domainUpdateDomainRequest": {
@@ -11751,7 +11840,8 @@
                     "membership_id": "A",
                     "mobile_phone_number_verification": "",
                     "passport_number": "X123457",
-                    "vat": "11843009X"
+                    "vat": "11843009X",
+                    "verification_code": ""
                 },
                 "admin_handle": "XX123456-XX",
                 "auth_code": "12345678",
