@@ -1819,8 +1819,12 @@
                         "in": "query"
                     },
                     {
-                        "type": "string",
-                        "description": "The status not equal.",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "description": "Array of domain statuses to exclude.",
                         "name": "status_not_equal",
                         "in": "query"
                     },
@@ -1881,6 +1885,12 @@
                         "format": "boolean",
                         "description": "Indicates, if registry EPP statuses should be retrieved.",
                         "name": "with_registry_statuses",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "The type.",
+                        "name": "response.type",
                         "in": "query"
                     },
                     {
@@ -8479,7 +8489,7 @@
                 },
                 "allocation_token": {
                     "type": "string",
-                    "title": "The allocation token value cannot be empty\nApplicable to: .vuelos"
+                    "title": "The allocation token value cannot be empty\nApplicable to: .abogado, .bayern, .beer, .blog, .boston, .broadway, .casa, .cooking, .cymru, .fashion, .fishing, .fit, .garden, .gop, .horse, .law, .luxe , .miami, .rodeo, .surf, .vip, .vodka, .vuelos, .wales, .wedding, .work, .yoga"
                 },
                 "auth_code": {
                     "type": "string",
@@ -10319,6 +10329,10 @@
                 "to": {
                     "type": "string",
                     "title": "The to"
+                },
+                "type": {
+                    "type": "string",
+                    "title": "The type"
                 }
             }
         },
@@ -21133,7 +21147,6 @@
                                 "rej": 5,
                                 "req": 15
                             },
-                            "projected_economy": 526.55,
                             "total": 999
                         },
                         "level": 3,
@@ -21524,7 +21537,6 @@
                             "rej": 5,
                             "req": 15
                         },
-                        "projected_economy": 526.55,
                         "total": 999
                     },
                     "level": 3,
@@ -21971,7 +21983,6 @@
                         "rej": 5,
                         "req": 15
                     },
-                    "projected_economy": 526.55,
                     "total": 999
                 },
                 "level": 3,
@@ -23392,11 +23403,6 @@
                     "title": "Sort output by status",
                     "$ref": "#/definitions/statisticsDomainStatisticsByStatus"
                 },
-                "projected_economy": {
-                    "type": "number",
-                    "format": "double",
-                    "title": "Predicted reseller savings through membership"
-                },
                 "total": {
                     "type": "integer",
                     "format": "int32",
@@ -23412,7 +23418,6 @@
                     "rej": 5,
                     "req": 15
                 },
-                "projected_economy": 526.55,
                 "total": 999
             }
         },
@@ -23512,7 +23517,6 @@
                             "rej": 5,
                             "req": 15
                         },
-                        "projected_economy": 526.55,
                         "total": 999
                     },
                     "license": {
@@ -23598,7 +23602,6 @@
                         "rej": 5,
                         "req": 15
                     },
-                    "projected_economy": 526.55,
                     "total": 999
                 },
                 "license": {
@@ -24532,6 +24535,7 @@
                         }
                     },
                     "quarantine_period": 38,
+                    "renew_available": false,
                     "reseller_handle_enabled": false,
                     "reseller_handle_supported": false,
                     "restrictions": [
@@ -24784,6 +24788,7 @@
                                 }
                             },
                             "quarantine_period": 38,
+                            "renew_available": false,
                             "reseller_handle_enabled": false,
                             "reseller_handle_supported": false,
                             "restrictions": [
@@ -24978,6 +24983,7 @@
                             }
                         },
                         "quarantine_period": 38,
+                        "renew_available": false,
                         "reseller_handle_enabled": false,
                         "reseller_handle_supported": false,
                         "restrictions": [
@@ -25329,6 +25335,11 @@
                     "format": "int32",
                     "title": "Extension hard quarantine period"
                 },
+                "renew_available": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates, if domain renew is supported by extension"
+                },
                 "reseller_handle_enabled": {
                     "type": "boolean",
                     "format": "boolean",
@@ -25531,6 +25542,7 @@
                     }
                 },
                 "quarantine_period": 38,
+                "renew_available": false,
                 "reseller_handle_enabled": false,
                 "reseller_handle_supported": false,
                 "restrictions": [
