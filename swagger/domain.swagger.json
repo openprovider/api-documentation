@@ -1093,9 +1093,12 @@
                         "in": "query"
                     },
                     {
-                        "type": "boolean",
-                        "format": "boolean",
-                        "description": "Returns list of supported pre-registration modes.",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "description": "Array of extension application modes.",
                         "name": "with_application_mode",
                         "in": "query"
                     },
