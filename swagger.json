@@ -8507,8 +8507,11 @@
                     "title": "For companies located in Singapore, the corresponding company registration number has to be given. For Singapore citizens and permanent residents, please provide NRIC or Passport No. For Singapore companies, please provide RCBID as it appears in RCB Certificate. For Singapore societies, please provide RCBID as it appears in ROS Certificate.\nApplicable to: .com.sg, .no, .ro, .sg"
                 },
                 "domain_name_variants": {
-                    "type": "string",
-                    "title": "The domain name variants should be an array of strings, representing appropriate names\nApplicable to: .barcelona, .cat"
+                    "type": "array",
+                    "title": "The domain name variants should be an array of strings, representing appropriate names\nApplicable to: .barcelona, .cat",
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "eligibility_type": {
                     "type": "string",
@@ -8540,7 +8543,7 @@
                 },
                 "intended_use": {
                     "type": "string",
-                    "title": "The intended use value should contain information on how the domain name will be used\nApplicable to: .barcelona, .cat, .radio, .sport, .swiss"
+                    "title": "The intended use value should contain information on how the domain name will be used\nApplicable to: .barcelona, .cat, .madrid, .radio, .sport, .swiss"
                 },
                 "law_acceptance": {
                     "type": "string",
@@ -8623,7 +8626,9 @@
                 "auth_code": "",
                 "bank_acceptance": "",
                 "company_registration_number": "XX123456789X01",
-                "domain_name_variants": "xn--\u0434\u043e\u043c\u0435\u043d.cat",
+                "domain_name_variants": [
+                    "xn--\u0434\u043e\u043c\u0435\u043d.cat"
+                ],
                 "eligibility_type": "",
                 "eligibility_type_relationship": "",
                 "ftld_token": "",
@@ -9199,7 +9204,9 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
-                    "domain_name_variants": "xn--\u0434\u043e\u043c\u0435\u043d.cat",
+                    "domain_name_variants": [
+                        "xn--\u0434\u043e\u043c\u0435\u043d.cat"
+                    ],
                     "eligibility_type": "",
                     "eligibility_type_relationship": "",
                     "ftld_token": "",
@@ -9313,7 +9320,9 @@
                         "auth_code": "",
                         "bank_acceptance": "",
                         "company_registration_number": "XX123456789X01",
-                        "domain_name_variants": "xn--\u0434\u043e\u043c\u0435\u043d.cat",
+                        "domain_name_variants": [
+                            "xn--\u0434\u043e\u043c\u0435\u043d.cat"
+                        ],
                         "eligibility_type": "",
                         "eligibility_type_relationship": "",
                         "ftld_token": "",
@@ -9394,7 +9403,9 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
-                    "domain_name_variants": "xn--\u0434\u043e\u043c\u0435\u043d.cat",
+                    "domain_name_variants": [
+                        "xn--\u0434\u043e\u043c\u0435\u043d.cat"
+                    ],
                     "eligibility_type": "",
                     "eligibility_type_relationship": "",
                     "ftld_token": "",
@@ -9582,7 +9593,9 @@
                         "auth_code": "",
                         "bank_acceptance": "",
                         "company_registration_number": "XX123456789X01",
-                        "domain_name_variants": "xn--\u0434\u043e\u043c\u0435\u043d.cat",
+                        "domain_name_variants": [
+                            "xn--\u0434\u043e\u043c\u0435\u043d.cat"
+                        ],
                         "eligibility_type": "",
                         "eligibility_type_relationship": "",
                         "ftld_token": "",
@@ -10093,7 +10106,9 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
-                    "domain_name_variants": "xn--\u0434\u043e\u043c\u0435\u043d.cat",
+                    "domain_name_variants": [
+                        "xn--\u0434\u043e\u043c\u0435\u043d.cat"
+                    ],
                     "eligibility_type": "",
                     "eligibility_type_relationship": "",
                     "ftld_token": "",
@@ -10388,7 +10403,9 @@
                                 "auth_code": "",
                                 "bank_acceptance": "",
                                 "company_registration_number": "XX123456789X01",
-                                "domain_name_variants": "xn--\u0434\u043e\u043c\u0435\u043d.cat",
+                                "domain_name_variants": [
+                                    "xn--\u0434\u043e\u043c\u0435\u043d.cat"
+                                ],
                                 "eligibility_type": "",
                                 "eligibility_type_relationship": "",
                                 "ftld_token": "",
@@ -10579,7 +10596,9 @@
                             "auth_code": "",
                             "bank_acceptance": "",
                             "company_registration_number": "XX123456789X01",
-                            "domain_name_variants": "xn--\u0434\u043e\u043c\u0435\u043d.cat",
+                            "domain_name_variants": [
+                                "xn--\u0434\u043e\u043c\u0435\u043d.cat"
+                            ],
                             "eligibility_type": "",
                             "eligibility_type_relationship": "",
                             "ftld_token": "",
@@ -11173,7 +11192,9 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
-                    "domain_name_variants": "xn--\u0434\u043e\u043c\u0435\u043d.cat",
+                    "domain_name_variants": [
+                        "xn--\u0434\u043e\u043c\u0435\u043d.cat"
+                    ],
                     "eligibility_type": "",
                     "eligibility_type_relationship": "",
                     "ftld_token": "",
@@ -11319,8 +11340,11 @@
                     "title": "For companies located in Singapore, the corresponding company registration number has to be given. For Singapore citizens and permanent residents, please provide NRIC or Passport No. For Singapore companies, please provide RCBID as it appears in RCB Certificate. For Singapore societies, please provide RCBID as it appears in ROS Certificate.\nApplicable to: .com.sg, .no, .ro, .sg"
                 },
                 "domain_name_variants": {
-                    "type": "string",
-                    "title": "The domain name variants should be an array of strings, representing appropriate names\nApplicable to: .cat"
+                    "type": "array",
+                    "title": "The domain name variants should be an array of strings, representing appropriate names\nApplicable to: .cat",
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "idn_script": {
                     "type": "string",
@@ -11362,7 +11386,9 @@
             "example": {
                 "admin_sing_pass_id": "",
                 "company_registration_number": "XX123456789X03",
-                "domain_name_variants": "xn--\u0434\u043e\u043c\u0435\u043d.cat",
+                "domain_name_variants": [
+                    "xn--\u0434\u043e\u043c\u0435\u043d.cat"
+                ],
                 "idn_script": "SPA",
                 "intended_use": "generic",
                 "legal_type": "Individual",
@@ -11492,7 +11518,9 @@
                 "additional_data": {
                     "admin_sing_pass_id": "",
                     "company_registration_number": "XX123456789X03",
-                    "domain_name_variants": "xn--\u0434\u043e\u043c\u0435\u043d.cat",
+                    "domain_name_variants": [
+                        "xn--\u0434\u043e\u043c\u0435\u043d.cat"
+                    ],
                     "idn_script": "SPA",
                     "intended_use": "generic",
                     "legal_type": "Individual",
@@ -11684,8 +11712,11 @@
                     "title": "For companies located in Singapore, the corresponding company registration number has to be given. For Singapore citizens and permanent residents, please provide NRIC or Passport No. For Singapore companies, please provide RCBID as it appears in RCB Certificate. For Singapore societies, please provide RCBID as it appears in ROS Certificate.\nApplicable to: .com.sg, .no, .ro, .sg"
                 },
                 "domain_name_variants": {
-                    "type": "string",
-                    "title": "The domain name variants should be an array of strings, representing appropriate names\nApplicable to: .cat"
+                    "type": "array",
+                    "title": "The domain name variants should be an array of strings, representing appropriate names\nApplicable to: .cat",
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "intended_use": {
                     "type": "string",
@@ -11724,7 +11755,9 @@
                 "abogado_acceptance": "",
                 "admin_sing_pass_id": "",
                 "company_registration_number": "XX123456789X02",
-                "domain_name_variants": "xn--\u0434\u043e\u043c\u0435\u043d.cat",
+                "domain_name_variants": [
+                    "xn--\u0434\u043e\u043c\u0435\u043d.cat"
+                ],
                 "intended_use": "generic",
                 "law_acceptance": "",
                 "maintainer": "",
@@ -11850,7 +11883,9 @@
                     "abogado_acceptance": "",
                     "admin_sing_pass_id": "",
                     "company_registration_number": "XX123456789X02",
-                    "domain_name_variants": "xn--\u0434\u043e\u043c\u0435\u043d.cat",
+                    "domain_name_variants": [
+                        "xn--\u0434\u043e\u043c\u0435\u043d.cat"
+                    ],
                     "intended_use": "generic",
                     "law_acceptance": "",
                     "maintainer": "",
