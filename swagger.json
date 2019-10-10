@@ -6892,6 +6892,7 @@
                             "company_name_latin": "Example company",
                             "company_registration_number": "XX123456789X11",
                             "contact_title": "CEO",
+                            "country_of_citizenship": "NL",
                             "ens_auth_id": "",
                             "ens_key": "",
                             "first_name_cyrillic": "Test",
@@ -7163,6 +7164,7 @@
                     "company_name_latin": "Example company",
                     "company_registration_number": "XX123456789X11",
                     "contact_title": "CEO",
+                    "country_of_citizenship": "NL",
                     "ens_auth_id": "",
                     "ens_key": "",
                     "first_name_cyrillic": "Test",
@@ -7225,6 +7227,10 @@
                 "contact_title": {
                     "type": "string",
                     "title": "The contactTitle should be filled with the title of the domain contact in the organization.\nApplicable to: .jobs"
+                },
+                "country_of_citizenship": {
+                    "type": "string",
+                    "title": "Country of citizenship (only applicable for natural persons if country of residence is not within the eligible countries)\nApplicable to: .eu"
                 },
                 "ens_auth_id": {
                     "type": "string",
@@ -7343,6 +7349,7 @@
                 "company_name_latin": "Example company",
                 "company_registration_number": "XX123456789X11",
                 "contact_title": "CEO",
+                "country_of_citizenship": "NL",
                 "ens_auth_id": "",
                 "ens_key": "",
                 "first_name_cyrillic": "Test",
@@ -7471,6 +7478,7 @@
                                 "company_name_latin": "Example company",
                                 "company_registration_number": "XX123456789X11",
                                 "contact_title": "CEO",
+                                "country_of_citizenship": "NL",
                                 "ens_auth_id": "",
                                 "ens_key": "",
                                 "first_name_cyrillic": "Test",
@@ -7674,6 +7682,7 @@
                             "company_name_latin": "Example company",
                             "company_registration_number": "XX123456789X11",
                             "contact_title": "CEO",
+                            "country_of_citizenship": "NL",
                             "ens_auth_id": "",
                             "ens_key": "",
                             "first_name_cyrillic": "Test",
@@ -7867,6 +7876,7 @@
                                         "company_name_latin": "Example company",
                                         "company_registration_number": "XX123456789X11",
                                         "contact_title": "CEO",
+                                        "country_of_citizenship": "NL",
                                         "ens_auth_id": "",
                                         "ens_key": "",
                                         "first_name_cyrillic": "Test",
@@ -7991,6 +8001,7 @@
                                     "company_name_latin": "Example company",
                                     "company_registration_number": "XX123456789X11",
                                     "contact_title": "CEO",
+                                    "country_of_citizenship": "NL",
                                     "ens_auth_id": "",
                                     "ens_key": "",
                                     "first_name_cyrillic": "Test",
@@ -8176,6 +8187,7 @@
                             "company_name_latin": "Example company",
                             "company_registration_number": "XX123456789X11",
                             "contact_title": "CEO",
+                            "country_of_citizenship": "NL",
                             "ens_auth_id": "",
                             "ens_key": "",
                             "first_name_cyrillic": "Test",
@@ -8345,6 +8357,7 @@
                             "company_name_latin": "Example company",
                             "company_registration_number": "XX123456789X11",
                             "contact_title": "CEO",
+                            "country_of_citizenship": "NL",
                             "ens_auth_id": "",
                             "ens_key": "",
                             "first_name_cyrillic": "Test",
@@ -21215,7 +21228,7 @@
                             "total": 999
                         }
                     },
-                    "status": "regular",
+                    "status": "new",
                     "vat": "",
                     "vatperc": 21
                 },
@@ -21605,7 +21618,7 @@
                         "total": 999
                     }
                 },
-                "status": "regular",
+                "status": "new",
                 "vat": "",
                 "vatperc": 21
             }
