@@ -4534,6 +4534,10 @@
                     "type": "string",
                     "title": "If the admin contact is a natural person located in Singapore, the corresponding Singapore Personal Access ID has to be given. The format of the SingPassID is: X1234567X   - where X is an upper case letter at the beginning and end of a seven digit string In case of a foreign organization, it is possible to use the SGNICID: SGNICID-X12-345678   - the SGNICID will look like this example\nApplicable to: .com.sg, .sg"
                 },
+                "auth_code": {
+                    "type": "string",
+                    "title": "The auth code\nApplicable to: .nz"
+                },
                 "company_registration_number": {
                     "type": "string",
                     "title": "For companies located in Singapore, the corresponding company registration number has to be given. For Singapore citizens and permanent residents, please provide NRIC or Passport No. For Singapore companies, please provide RCBID as it appears in RCB Certificate. For Singapore societies, please provide RCBID as it appears in ROS Certificate.\nApplicable to: .com.sg, .no, .ro, .sg"
@@ -4545,13 +4549,17 @@
                         "type": "string"
                     }
                 },
+                "ftld_token": {
+                    "type": "string",
+                    "title": "The fTLD token and data in owner handle must be exactly the same as in token. You need to request token from registry\nApplicable to: .bank, .insurance"
+                },
                 "idn_script": {
                     "type": "string",
                     "title": "The idn script states what language or character set the domain name is in\nApplicable to: .eus, .gal, .hiv, .quebec, .scot, .xn--55qx5d, .xn--5tzm5g, .xn--czru2d, .xn--io0a7i, .xn--mk1bu44c, .xn--t60b56a, .xn--tckwe"
                 },
                 "intended_use": {
                     "type": "string",
-                    "title": "The intended use value must contain information on how the domain name will be used\nApplicable to: .cat"
+                    "title": "The intended use value must contain information on how the domain name will be used\nApplicable to:  .cat, .scot, .gal, .eus, .swiss, .radio, .barcelona, .sport, .pl, .aid.pl, .agro.pl, .atm.pl, .auto.pl, .biz.pl, .com.pl, .edu.pl, .gmina.pl, .gsm.pl, .info.pl, .mail.pl, .miasta.pl, .media.pl, .mil.pl, .net.pl, .nieruchomosci.pl, .nom.pl, .org.pl, .pc.pl, .powiat.pl, .priv.pl, .realestate.pl, .rel.pl, .sex.pl, .shop.pl, .sklep.pl, .sos.pl, .szkola.pl, .targi.pl, .tm.pl, .tourism.pl, .travel.pl, .turystyka.pl, .augustow.pl, .babia-gora.pl, .bedzin.pl, .beskidy.pl, .bialowieza.pl, .bialystok.pl, .bielawa.pl, .bieszczady.pl, .boleslawiec.pl, .bydgoszcz.pl, .bytom.pl, .cieszyn.pl, .czeladz.pl, .czest.pl, .dlugoleka.pl, .elblag.pl, .elk.pl, .glogow.pl, .gniezno.pl, .gorlice.pl, .grajewo.pl, .ilawa.pl, .jaworzno.pl, .jelenia-gora.pl, .jgora.pl, .kalisz.pl, .kazimierz-dolny.pl, .karpacz.pl, .kartuzy.pl, .kaszuby.pl, .katowice.pl, .kepno.pl, .ketrzyn.pl, .klodzko.pl, .kobierzyce.pl, .kolobrzeg.pl, .konin.pl, .konskowola.pl, .kutno.pl, .lapy.pl, .lebork.pl, .legnica.pl, .lezajsk.pl, .limanowa.pl, .lomza.pl, .lowicz.pl, .lubin.pl, .lukow.pl, .malbork.pl, .malopolska.pl, .mazowsze.pl, .mazury.pl, .mielec.pl, .mielno.pl, .mragowo.pl, .naklo.pl, .nowaruda.pl, .nysa.pl, .olawa.pl, .olecko.pl, .olkusz.pl, .olsztyn.pl, .opoczno.pl, .opole.pl, .ostroda.pl, .ostroleka.pl, .ostrowiec.pl, .ostrowwlkp.pl, .pila.pl, .pisz.pl, .podhale.pl, .podlasie.pl, .polkowice.pl, .pomorze.pl, .pomorskie.pl, .prochowice.pl, .pruszkow.pl, .przeworsk.pl, .pulawy.pl, .radom.pl, .rawa-maz.pl, .rybnik.pl, .rzeszow.pl, .sanok.pl, .sejny.pl, .slask.pl, .slupsk.pl, .sosnowiec.pl, .stalowa-wola.pl, .skoczow.pl, .starachowice.pl, .stargard.pl, .suwalki.pl, .swidnica.pl, .swiebodzin.pl, .swinoujscie.pl, .szczecin.pl, .szczytno.pl, .tarnobrzeg.pl, .tgory.pl, .turek.pl, .tychy.pl, .ustka.pl, .walbrzych.pl, .warmia.pl, .warszawa.pl, .waw.pl, .wegrow.pl, .wielun.pl, .wlocl.pl, .wloclawek.pl, .wodzislaw.pl, .wolomin.pl, .wroclaw.pl, .zachpomor.pl, .zagan.pl, .zarow.pl, .zgora.pl, .zgorzelec.pl"
                 },
                 "legal_type": {
                     "type": "string",
@@ -4573,6 +4581,14 @@
                     "type": "string",
                     "title": "The passport number. Required in case if domain requester is a private individual\nApplicable to: .co.hu, .hu"
                 },
+                "self_service": {
+                    "type": "string",
+                    "title": "The self service\nApplicable to: .feedback"
+                },
+                "trademark": {
+                    "type": "string",
+                    "title": "The trademark\nApplicable to: .ca"
+                },
                 "vat": {
                     "type": "string",
                     "title": "The vat number. Required in case if domain requester is a legal entity\nApplicable to: .co.hu, .hu"
@@ -4584,10 +4600,12 @@
             },
             "example": {
                 "admin_sing_pass_id": "",
+                "auth_code": "",
                 "company_registration_number": "XX123456789X03",
                 "domain_name_variants": [
                     "xn--домен.cat"
                 ],
+                "ftld_token": "",
                 "idn_script": "SPA",
                 "intended_use": "generic",
                 "legal_type": "Individual",
@@ -4595,6 +4613,8 @@
                 "membership_id": "A",
                 "mobile_phone_number_verification": "",
                 "passport_number": "X123458",
+                "self_service": "1",
+                "trademark": "1",
                 "vat": "11843009X",
                 "verification_code": ""
             }
@@ -4626,7 +4646,8 @@
                 },
                 "autorenew": {
                     "type": "string",
-                    "title": "Desired autorenew value: off, on, or default"
+                    "title": "Desired autorenew value: off, on, or default",
+                    "default": "default"
                 },
                 "billing_handle": {
                     "type": "string",
@@ -4681,11 +4702,6 @@
                     "type": "string",
                     "title": "Owner contact handle"
                 },
-                "period": {
-                    "type": "integer",
-                    "format": "int32",
-                    "title": "Domain registration period in years unless otherwise specified"
-                },
                 "promo_code": {
                     "type": "string",
                     "title": "Promo code to apply to operation"
@@ -4694,13 +4710,13 @@
                     "type": "string",
                     "title": "Reseller handle"
                 },
+                "roid": {
+                    "type": "string",
+                    "title": "Registry id of domain"
+                },
                 "tech_handle": {
                     "type": "string",
                     "title": "Tech contact handle"
-                },
-                "type": {
-                    "type": "string",
-                    "title": "Transfer type"
                 },
                 "unit": {
                     "type": "string",
@@ -4716,10 +4732,12 @@
                 "accept_premium_fee": 17,
                 "additional_data": {
                     "admin_sing_pass_id": "",
+                    "auth_code": "",
                     "company_registration_number": "XX123456789X03",
                     "domain_name_variants": [
                         "xn--домен.cat"
                     ],
+                    "ftld_token": "",
                     "idn_script": "SPA",
                     "intended_use": "generic",
                     "legal_type": "Individual",
@@ -4727,6 +4745,8 @@
                     "membership_id": "A",
                     "mobile_phone_number_verification": "",
                     "passport_number": "X123458",
+                    "self_service": "1",
+                    "trademark": "1",
                     "vat": "11843009X",
                     "verification_code": ""
                 },
@@ -4763,11 +4783,10 @@
                 "ns_template_id": 30951,
                 "ns_template_name": "example",
                 "owner_handle": "XX123456-XX",
-                "period": 0,
                 "promo_code": "PROMOCODE",
                 "reseller_handle": "XX123456-XX",
+                "roid": "100590-UK",
                 "tech_handle": "XX123456-XX",
-                "type": "",
                 "unit": "y",
                 "use_domicile": false
             }
