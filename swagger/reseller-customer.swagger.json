@@ -4192,7 +4192,8 @@
                                             "zar": 0
                                         }
                                     },
-                                    "transaction_fee": 0
+                                    "transaction_fee": 0,
+                                    "transaction_fee_absolute": 0
                                 }
                             }
                         ],
@@ -4582,7 +4583,8 @@
                                         "zar": 0
                                     }
                                 },
-                                "transaction_fee": 0
+                                "transaction_fee": 0,
+                                "transaction_fee_absolute": 0
                             }
                         }
                     ],
@@ -4989,7 +4991,8 @@
                                     "zar": 0
                                 }
                             },
-                            "transaction_fee": 0
+                            "transaction_fee": 0,
+                            "transaction_fee_absolute": 0
                         }
                     }
                 ],
@@ -5404,7 +5407,8 @@
                                         "zar": 0
                                     }
                                 },
-                                "transaction_fee": 0
+                                "transaction_fee": 0,
+                                "transaction_fee_absolute": 0
                             }
                         }
                     ],
@@ -5755,7 +5759,8 @@
                                     "zar": 0
                                 }
                             },
-                            "transaction_fee": 0
+                            "transaction_fee": 0,
+                            "transaction_fee_absolute": 0
                         }
                     }
                 ],
@@ -6131,7 +6136,12 @@
                 "transaction_fee": {
                     "type": "number",
                     "format": "double",
-                    "title": "Additional fee per payment"
+                    "title": "Additional percentage fee per payment"
+                },
+                "transaction_fee_absolute": {
+                    "type": "number",
+                    "format": "double",
+                    "title": "Additional absolute fee per payment"
                 }
             },
             "example": {
@@ -6215,7 +6225,8 @@
                         "zar": 0
                     }
                 },
-                "transaction_fee": 0
+                "transaction_fee": 0,
+                "transaction_fee_absolute": 0
             }
         },
         "settingsPaymentMethods": {
@@ -6314,7 +6325,8 @@
                             "zar": 0
                         }
                     },
-                    "transaction_fee": 0
+                    "transaction_fee": 0,
+                    "transaction_fee_absolute": 0
                 }
             }
         },
