@@ -1427,6 +1427,11 @@
                 "technical_handle": {
                     "type": "string",
                     "title": "Handle of the technical contact"
+                },
+                "wildcard_domain_amount": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Amount of the wildcard domains in the order"
                 }
             },
             "example": {
@@ -1450,7 +1455,8 @@
                 "signature_hash_algorithm": "sha2",
                 "software_id": "linux",
                 "start_provision": true,
-                "technical_handle": "TH000001-NL"
+                "technical_handle": "TH000001-NL",
+                "wildcard_domain_amount": 5
             }
         },
         "orderCreateOrderResponse": {
@@ -2614,6 +2620,7 @@
                     "is_idn_supported": false,
                     "is_mobile_supported": false,
                     "is_sgc_supported": false,
+                    "is_wildcard_multidomain_supported": false,
                     "is_wildcard_supported": false,
                     "level_prices": [
                         {
@@ -2622,6 +2629,16 @@
                             "prices": [
                                 {
                                     "extra_domain_price": {
+                                        "product": {
+                                            "currency": "USD",
+                                            "price": 0
+                                        },
+                                        "reseller": {
+                                            "currency": "EUR",
+                                            "price": 0
+                                        }
+                                    },
+                                    "extra_wildcard_domain_price": {
                                         "product": {
                                             "currency": "USD",
                                             "price": 0
@@ -2654,6 +2671,16 @@
                     "prices": [
                         {
                             "extra_domain_price": {
+                                "product": {
+                                    "currency": "USD",
+                                    "price": 0
+                                },
+                                "reseller": {
+                                    "currency": "EUR",
+                                    "price": 0
+                                }
+                            },
+                            "extra_wildcard_domain_price": {
                                 "product": {
                                     "currency": "USD",
                                     "price": 0
@@ -2778,6 +2805,7 @@
                             "is_idn_supported": false,
                             "is_mobile_supported": false,
                             "is_sgc_supported": false,
+                            "is_wildcard_multidomain_supported": false,
                             "is_wildcard_supported": false,
                             "level_prices": [
                                 {
@@ -2786,6 +2814,16 @@
                                     "prices": [
                                         {
                                             "extra_domain_price": {
+                                                "product": {
+                                                    "currency": "USD",
+                                                    "price": 0
+                                                },
+                                                "reseller": {
+                                                    "currency": "EUR",
+                                                    "price": 0
+                                                }
+                                            },
+                                            "extra_wildcard_domain_price": {
                                                 "product": {
                                                     "currency": "USD",
                                                     "price": 0
@@ -2818,6 +2856,16 @@
                             "prices": [
                                 {
                                     "extra_domain_price": {
+                                        "product": {
+                                            "currency": "USD",
+                                            "price": 0
+                                        },
+                                        "reseller": {
+                                            "currency": "EUR",
+                                            "price": 0
+                                        }
+                                    },
+                                    "extra_wildcard_domain_price": {
                                         "product": {
                                             "currency": "USD",
                                             "price": 0
@@ -2900,6 +2948,7 @@
                         "is_idn_supported": false,
                         "is_mobile_supported": false,
                         "is_sgc_supported": false,
+                        "is_wildcard_multidomain_supported": false,
                         "is_wildcard_supported": false,
                         "level_prices": [
                             {
@@ -2908,6 +2957,16 @@
                                 "prices": [
                                     {
                                         "extra_domain_price": {
+                                            "product": {
+                                                "currency": "USD",
+                                                "price": 0
+                                            },
+                                            "reseller": {
+                                                "currency": "EUR",
+                                                "price": 0
+                                            }
+                                        },
+                                        "extra_wildcard_domain_price": {
                                             "product": {
                                                 "currency": "USD",
                                                 "price": 0
@@ -2940,6 +2999,16 @@
                         "prices": [
                             {
                                 "extra_domain_price": {
+                                    "product": {
+                                        "currency": "USD",
+                                        "price": 0
+                                    },
+                                    "reseller": {
+                                        "currency": "EUR",
+                                        "price": 0
+                                    }
+                                },
+                                "extra_wildcard_domain_price": {
                                     "product": {
                                         "currency": "USD",
                                         "price": 0
@@ -3053,6 +3122,11 @@
                     "format": "boolean",
                     "title": "Indicates, if Server Gated Cryptography supported (deprecated)"
                 },
+                "is_wildcard_multidomain_supported": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates, if product supports wildcard domains"
+                },
                 "is_wildcard_supported": {
                     "type": "boolean",
                     "format": "boolean",
@@ -3066,7 +3140,7 @@
                     }
                 },
                 "max_domains": {
-                    "description": "\"Applies only to multi-domain certificates.",
+                    "description": "Applies only to multi-domain certificates.",
                     "type": "integer",
                     "format": "int32"
                 },
@@ -3134,6 +3208,7 @@
                 "is_idn_supported": false,
                 "is_mobile_supported": false,
                 "is_sgc_supported": false,
+                "is_wildcard_multidomain_supported": false,
                 "is_wildcard_supported": false,
                 "level_prices": [
                     {
@@ -3142,6 +3217,16 @@
                         "prices": [
                             {
                                 "extra_domain_price": {
+                                    "product": {
+                                        "currency": "USD",
+                                        "price": 0
+                                    },
+                                    "reseller": {
+                                        "currency": "EUR",
+                                        "price": 0
+                                    }
+                                },
+                                "extra_wildcard_domain_price": {
                                     "product": {
                                         "currency": "USD",
                                         "price": 0
@@ -3174,6 +3259,16 @@
                 "prices": [
                     {
                         "extra_domain_price": {
+                            "product": {
+                                "currency": "USD",
+                                "price": 0
+                            },
+                            "reseller": {
+                                "currency": "EUR",
+                                "price": 0
+                            }
+                        },
+                        "extra_wildcard_domain_price": {
                             "product": {
                                 "currency": "USD",
                                 "price": 0
@@ -3253,6 +3348,16 @@
                                 "price": 0
                             }
                         },
+                        "extra_wildcard_domain_price": {
+                            "product": {
+                                "currency": "USD",
+                                "price": 0
+                            },
+                            "reseller": {
+                                "currency": "EUR",
+                                "price": 0
+                            }
+                        },
                         "period": 1,
                         "price": {
                             "product": {
@@ -3319,6 +3424,10 @@
                     "title": "Group of parameters indicating price for additional (extra) domains",
                     "$ref": "#/definitions/productSslProductPriceGroup"
                 },
+                "extra_wildcard_domain_price": {
+                    "title": "Group of parameters indicating price for additional (extra) wildcard domains",
+                    "$ref": "#/definitions/productSslProductPriceGroup"
+                },
                 "period": {
                     "type": "integer",
                     "format": "int32",
@@ -3331,6 +3440,16 @@
             },
             "example": {
                 "extra_domain_price": {
+                    "product": {
+                        "currency": "USD",
+                        "price": 0
+                    },
+                    "reseller": {
+                        "currency": "EUR",
+                        "price": 0
+                    }
+                },
+                "extra_wildcard_domain_price": {
                     "product": {
                         "currency": "USD",
                         "price": 0
