@@ -2523,7 +2523,7 @@
                     "200": {
                         "description": "A successful response.",
                         "schema": {
-                            "$ref": "#/definitions/domainBoolResponse"
+                            "$ref": "#/definitions/responseBoolResponse"
                         }
                     },
                     "default": {
@@ -2646,7 +2646,7 @@
                     "200": {
                         "description": "A successful response.",
                         "schema": {
-                            "$ref": "#/definitions/domainBoolResponse"
+                            "$ref": "#/definitions/responseBoolResponse"
                         }
                     },
                     "default": {
@@ -2687,7 +2687,7 @@
                     "200": {
                         "description": "A successful response.",
                         "schema": {
-                            "$ref": "#/definitions/domainBoolResponse"
+                            "$ref": "#/definitions/responseBoolResponse"
                         }
                     },
                     "default": {
@@ -8742,58 +8742,6 @@
                 "registrar_tag": "REGISTRAR-TAG"
             }
         },
-        "domainBoolResponse": {
-            "type": "object",
-            "title": "BoolResponse",
-            "properties": {
-                "code": {
-                    "type": "integer",
-                    "format": "int32",
-                    "title": "Response code"
-                },
-                "data": {
-                    "title": "Response data",
-                    "$ref": "#/definitions/domainBoolResponseData"
-                },
-                "desc": {
-                    "type": "string",
-                    "title": "Response description"
-                },
-                "maintenance": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "Indicates that the Openprovider system is temporarily unavailable because of maintenance"
-                },
-                "warnings": {
-                    "type": "array",
-                    "title": "Contains warning responses if any",
-                    "items": {
-                        "$ref": "#/definitions/errorWarning"
-                    }
-                }
-            },
-            "example": {
-                "code": 0,
-                "data": {
-                    "success": false
-                },
-                "desc": ""
-            }
-        },
-        "domainBoolResponseData": {
-            "type": "object",
-            "title": "BoolResponseData",
-            "properties": {
-                "success": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "Indicates if operation was successful"
-                }
-            },
-            "example": {
-                "success": false
-            }
-        },
         "domainCheckAdditionalData": {
             "type": "object",
             "title": "CheckAdditionalData",
@@ -8807,30 +8755,6 @@
                 "idn_script": "cyrl"
             }
         },
-        "domainCheckDomainPrice": {
-            "type": "object",
-            "title": "CheckDomainPrice",
-            "properties": {
-                "product": {
-                    "title": "The product",
-                    "$ref": "#/definitions/domainCommonPrice"
-                },
-                "reseller": {
-                    "title": "Amount in reseller currency",
-                    "$ref": "#/definitions/domainCommonPrice"
-                }
-            },
-            "example": {
-                "product": {
-                    "currency": "USD",
-                    "price": 9.33
-                },
-                "reseller": {
-                    "currency": "USD",
-                    "price": 9.33
-                }
-            }
-        },
         "domainCheckDomainRequest": {
             "type": "object",
             "title": "CheckDomainRequest",
@@ -8839,9 +8763,13 @@
                     "title": "Additional domain data",
                     "$ref": "#/definitions/domainCheckAdditionalData"
                 },
+                "application_mode": {
+                    "description": "When new gTLD is started it gets through several phases before it becomes available for registration to everybody (General availability or GA). There are several phases before GA when it is still possible to apply for a domain, but with some restrictions.",
+                    "type": "string"
+                },
                 "domains": {
                     "type": "array",
-                    "title": "Domain name to check",
+                    "title": "Array of domains to check",
                     "items": {
                         "$ref": "#/definitions/domainDomain"
                     }
@@ -8850,25 +8778,20 @@
                     "type": "boolean",
                     "format": "boolean",
                     "title": "Indicate whether to include the domain price with domain availability"
-                },
-                "with_whois": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "Returns domain whois data"
                 }
             },
             "example": {
                 "additional_data": {
                     "idn_script": "cyrl"
                 },
+                "application_mode": "preregistration",
                 "domains": [
                     {
                         "extension": "london",
                         "name": "test4"
                     }
                 ],
-                "with_price": false,
-                "with_whois": false
+                "with_price": false
             }
         },
         "domainCheckDomainResponse": {
@@ -8881,11 +8804,8 @@
                     "title": "Response code"
                 },
                 "data": {
-                    "type": "array",
                     "title": "Response data",
-                    "items": {
-                        "$ref": "#/definitions/domainCheckDomainResponseData"
-                    }
+                    "$ref": "#/definitions/domainCheckDomainResponseData"
                 },
                 "desc": {
                     "type": "string",
@@ -8906,43 +8826,34 @@
             },
             "example": {
                 "code": 0,
-                "data": [
-                    {
-                        "claim_key": "Test key",
-                        "domain": "example.com",
-                        "is_premium": false,
-                        "premium": {
-                            "currency": "USD",
+                "data": {
+                    "results": [
+                        {
+                            "claim_key": "",
+                            "domain": "example.com",
+                            "is_premium": false,
+                            "premium": {
+                                "currency": "USD",
+                                "price": {
+                                    "create": 0
+                                }
+                            },
                             "price": {
-                                "create": 0,
-                                "renew": 9.33,
-                                "renewal": 0,
-                                "restore": [
-                                    {
-                                        "description": "Domain Restore Autorenew",
-                                        "fee": 9.33
-                                    }
-                                ],
-                                "transfer": 0
+                                "product": {
+                                    "currency": "USD",
+                                    "price": 8.06
+                                },
+                                "reseller": {
+                                    "currency": "USD",
+                                    "price": 8.06
+                                }
                             },
-                            "price_category": "BBBB",
-                            "price_currency": "USD"
-                        },
-                        "price": {
-                            "product": {
-                                "currency": "USD",
-                                "price": 9.33
-                            },
-                            "reseller": {
-                                "currency": "USD",
-                                "price": 9.33
-                            }
-                        },
-                        "reason": "Domain exists",
-                        "status": "free",
-                        "whois": ""
-                    }
-                ],
+                            "reason": "Domain exists",
+                            "status": "active",
+                            "whois": ""
+                        }
+                    ]
+                },
                 "desc": ""
             }
         },
@@ -8950,13 +8861,54 @@
             "type": "object",
             "title": "CheckDomainResponseData",
             "properties": {
+                "results": {
+                    "type": "array",
+                    "title": "Array of results",
+                    "items": {
+                        "$ref": "#/definitions/domainCheckDomainResult"
+                    }
+                }
+            },
+            "example": {
+                "results": [
+                    {
+                        "claim_key": "",
+                        "domain": "example.com",
+                        "is_premium": false,
+                        "premium": {
+                            "currency": "USD",
+                            "price": {
+                                "create": 0
+                            }
+                        },
+                        "price": {
+                            "product": {
+                                "currency": "USD",
+                                "price": 8.06
+                            },
+                            "reseller": {
+                                "currency": "USD",
+                                "price": 8.06
+                            }
+                        },
+                        "reason": "Domain exists",
+                        "status": "active",
+                        "whois": ""
+                    }
+                ]
+            }
+        },
+        "domainCheckDomainResult": {
+            "type": "object",
+            "title": "CheckDomainResult",
+            "properties": {
                 "claim_key": {
                     "type": "string",
                     "title": "The claim key"
                 },
                 "domain": {
                     "type": "string",
-                    "title": "Domain name and extension"
+                    "title": "Domain full name"
                 },
                 "is_premium": {
                     "type": "boolean",
@@ -8964,12 +8916,12 @@
                     "title": "Indicates that a domain has a premium price"
                 },
                 "premium": {
-                    "title": "Indicates, if domain is premium",
+                    "title": "Domain premium price",
                     "$ref": "#/definitions/domainPremiumPrice"
                 },
                 "price": {
-                    "title": "Operation price",
-                    "$ref": "#/definitions/domainCheckDomainPrice"
+                    "title": "Price for non-premium domain",
+                    "$ref": "#/definitions/domainPriceGroup"
                 },
                 "reason": {
                     "type": "string",
@@ -8977,46 +8929,35 @@
                 },
                 "status": {
                     "type": "string",
-                    "title": "Domain status"
+                    "title": "Domain status (free or active)"
                 },
                 "whois": {
                     "type": "string",
-                    "title": "The whois"
+                    "title": "Domain whois data"
                 }
             },
             "example": {
-                "claim_key": "Test key",
+                "claim_key": "",
                 "domain": "example.com",
                 "is_premium": false,
                 "premium": {
                     "currency": "USD",
                     "price": {
-                        "create": 0,
-                        "renew": 9.33,
-                        "renewal": 0,
-                        "restore": [
-                            {
-                                "description": "Domain Restore Autorenew",
-                                "fee": 9.33
-                            }
-                        ],
-                        "transfer": 0
-                    },
-                    "price_category": "BBBB",
-                    "price_currency": "USD"
+                        "create": 0
+                    }
                 },
                 "price": {
                     "product": {
                         "currency": "USD",
-                        "price": 9.33
+                        "price": 8.06
                     },
                     "reseller": {
                         "currency": "USD",
-                        "price": 9.33
+                        "price": 8.06
                     }
                 },
                 "reason": "Domain exists",
-                "status": "free",
+                "status": "active",
                 "whois": ""
             }
         },
@@ -9058,25 +8999,6 @@
             "example": {
                 "is_changeable": false,
                 "value": 0
-            }
-        },
-        "domainCommonPrice": {
-            "type": "object",
-            "title": "CommonPrice",
-            "properties": {
-                "currency": {
-                    "type": "string",
-                    "title": "The currency"
-                },
-                "price": {
-                    "type": "number",
-                    "format": "double",
-                    "title": "Price for non-premium domain"
-                }
-            },
-            "example": {
-                "currency": "USD",
-                "price": 9.33
             }
         },
         "domainCreateDomainRequest": {
@@ -10795,6 +10717,20 @@
                 "seq_nr": 1
             }
         },
+        "domainOperationPrice": {
+            "type": "object",
+            "title": "OperationPrice",
+            "properties": {
+                "create": {
+                    "type": "number",
+                    "format": "double",
+                    "title": "Registration price"
+                }
+            },
+            "example": {
+                "create": 0
+            }
+        },
         "domainOwner": {
             "type": "object",
             "title": "Owner",
@@ -10823,78 +10759,57 @@
                 },
                 "price": {
                     "title": "Operation price",
-                    "$ref": "#/definitions/domainPrice"
-                },
-                "price_category": {
-                    "type": "string",
-                    "title": "Premium price catagory"
-                },
-                "price_currency": {
-                    "type": "string",
-                    "title": "Premium price currency"
+                    "$ref": "#/definitions/domainOperationPrice"
                 }
             },
             "example": {
                 "currency": "USD",
                 "price": {
-                    "create": 0,
-                    "renew": 9.33,
-                    "renewal": 0,
-                    "restore": [
-                        {
-                            "description": "Domain Restore Autorenew",
-                            "fee": 9.33
-                        }
-                    ],
-                    "transfer": 0
-                },
-                "price_category": "BBBB",
-                "price_currency": "USD"
+                    "create": 0
+                }
             }
         },
         "domainPrice": {
             "type": "object",
             "title": "Price",
             "properties": {
-                "create": {
+                "currency": {
+                    "type": "string",
+                    "title": "Product or reseller currency"
+                },
+                "price": {
                     "type": "number",
                     "format": "double",
-                    "title": "Registration price"
-                },
-                "renew": {
-                    "type": "number",
-                    "format": "double",
-                    "title": "Price of renewal operation"
-                },
-                "renewal": {
-                    "type": "number",
-                    "format": "double",
-                    "title": "Price of renewal operation"
-                },
-                "restore": {
-                    "type": "array",
-                    "title": "Restore price",
-                    "items": {
-                        "$ref": "#/definitions/domainRestorePrice"
-                    }
-                },
-                "transfer": {
-                    "type": "number",
-                    "format": "double",
-                    "title": "Transfer price"
+                    "title": "Amount in product or reseller currency"
                 }
             },
             "example": {
-                "create": 0,
-                "renew": 9.33,
-                "renewal": 0,
-                "restore": [
-                    {
-                        "description": "Domain Restore Autorenew",
-                        "fee": 9.33
-                    }
-                ],
-                "transfer": 0
+                "currency": "USD",
+                "price": 8.06
+            }
+        },
+        "domainPriceGroup": {
+            "type": "object",
+            "title": "PriceGroup",
+            "properties": {
+                "product": {
+                    "title": "Amount in product currency",
+                    "$ref": "#/definitions/domainPrice"
+                },
+                "reseller": {
+                    "title": "Amount in reseller currency",
+                    "$ref": "#/definitions/domainPrice"
+                }
+            },
+            "example": {
+                "product": {
+                    "currency": "USD",
+                    "price": 8.06
+                },
+                "reseller": {
+                    "currency": "USD",
+                    "price": 8.06
+                }
             }
         },
         "domainRegistryStatuses": {
@@ -11071,25 +10986,6 @@
             },
             "example": {
                 "status": "ACT"
-            }
-        },
-        "domainRestorePrice": {
-            "type": "object",
-            "title": "RestorePrice",
-            "properties": {
-                "description": {
-                    "type": "string",
-                    "title": "Parameter description"
-                },
-                "fee": {
-                    "type": "number",
-                    "format": "double",
-                    "title": "Restore price"
-                }
-            },
-            "example": {
-                "description": "Domain Restore Autorenew",
-                "fee": 9.33
             }
         },
         "domainSendFoa1Request": {
@@ -12063,25 +11959,6 @@
             },
             "example": {
                 "expiration_date": ""
-            }
-        },
-        "domainpricePrice": {
-            "type": "object",
-            "title": "Price",
-            "properties": {
-                "currency": {
-                    "type": "string",
-                    "title": "Product or reseller currency"
-                },
-                "price": {
-                    "type": "number",
-                    "format": "double",
-                    "title": "Amount in product or reseller currency"
-                }
-            },
-            "example": {
-                "currency": "USD",
-                "price": 8.06
             }
         },
         "emailCreateEmailRequest": {
@@ -19891,7 +19768,7 @@
                 },
                 "price": {
                     "title": "Operation price",
-                    "$ref": "#/definitions/pricePrices"
+                    "$ref": "#/definitions/domainPriceGroup"
                 }
             },
             "example": {
@@ -19905,30 +19782,6 @@
                         "currency": "USD",
                         "price": 8.06
                     }
-                }
-            }
-        },
-        "pricePrices": {
-            "type": "object",
-            "title": "Prices",
-            "properties": {
-                "product": {
-                    "title": "Amount in product currency",
-                    "$ref": "#/definitions/domainpricePrice"
-                },
-                "reseller": {
-                    "title": "Amount in reseller currency",
-                    "$ref": "#/definitions/domainpricePrice"
-                }
-            },
-            "example": {
-                "product": {
-                    "currency": "USD",
-                    "price": 8.06
-                },
-                "reseller": {
-                    "currency": "USD",
-                    "price": 8.06
                 }
             }
         },
@@ -22367,6 +22220,58 @@
         "resellerUpdateResellerResponseData": {
             "type": "object",
             "title": "UpdateResellerResponseData",
+            "properties": {
+                "success": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if operation was successful"
+                }
+            },
+            "example": {
+                "success": false
+            }
+        },
+        "responseBoolResponse": {
+            "type": "object",
+            "title": "BoolResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "Response data",
+                    "$ref": "#/definitions/responseBoolResponseData"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "Array of warning messages",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "success": false
+                },
+                "desc": ""
+            }
+        },
+        "responseBoolResponseData": {
+            "type": "object",
+            "title": "BoolResponseData",
             "properties": {
                 "success": {
                     "type": "boolean",
