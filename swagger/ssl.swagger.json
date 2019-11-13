@@ -197,8 +197,12 @@
                         "in": "query"
                     },
                     {
-                        "type": "string",
-                        "description": "Order status.",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "description": "Array of order statuses.",
                         "name": "status",
                         "in": "query"
                     },
@@ -206,6 +210,13 @@
                         "type": "string",
                         "description": "Contact handle.",
                         "name": "contact_handle",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Indicates, whether to return only certificates that are expiring within 30 days.",
+                        "name": "show_expiring",
                         "in": "query"
                     }
                 ],
@@ -644,37 +655,37 @@
                     },
                     {
                         "type": "string",
-                        "description": "The name.",
+                        "description": "Sorting type (asc/desc).",
                         "name": "order_by.name",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "The brand name.",
+                        "description": "Sorting type (asc/desc).",
                         "name": "order_by.brand_name",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "The category.",
+                        "description": "Sorting type (asc/desc).",
                         "name": "order_by.category",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "The sub category.",
+                        "description": "Sorting type (asc/desc).",
                         "name": "order_by.sub_category",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "The brand seqno.",
+                        "description": "Sorting type (asc/desc).",
                         "name": "order_by.brand_seqno",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "The product seqno.",
+                        "description": "Sorting type (asc/desc).",
                         "name": "order_by.product_seqno",
                         "in": "query"
                     }
@@ -740,11 +751,8 @@
                     "title": "Response code"
                 },
                 "data": {
-                    "type": "array",
                     "title": "Response data",
-                    "items": {
-                        "type": "string"
-                    }
+                    "$ref": "#/definitions/approveremailListApproverEmailsResponseData"
                 },
                 "desc": {
                     "type": "string",
@@ -765,10 +773,30 @@
             },
             "example": {
                 "code": 0,
-                "data": [
-                    "admin@example.com"
-                ],
+                "data": {
+                    "results": [
+                        "admin@example.com"
+                    ]
+                },
                 "desc": ""
+            }
+        },
+        "approveremailListApproverEmailsResponseData": {
+            "type": "object",
+            "title": "ListApproverEmailsResponseData",
+            "properties": {
+                "results": {
+                    "type": "array",
+                    "title": "Array of results",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "example": {
+                "results": [
+                    "admin@example.com"
+                ]
             }
         },
         "approveremailResendApproverEmailRequest": {
@@ -2732,27 +2760,27 @@
             "properties": {
                 "brand_name": {
                     "type": "string",
-                    "title": "The brand name"
+                    "title": "Sorting type (asc/desc)"
                 },
                 "brand_seqno": {
                     "type": "string",
-                    "title": "The brand seqno"
+                    "title": "Sorting type (asc/desc)"
                 },
                 "category": {
                     "type": "string",
-                    "title": "The category"
+                    "title": "Sorting type (asc/desc)"
                 },
                 "name": {
                     "type": "string",
-                    "title": "The name"
+                    "title": "Sorting type (asc/desc)"
                 },
                 "product_seqno": {
                     "type": "string",
-                    "title": "The product seqno"
+                    "title": "Sorting type (asc/desc)"
                 },
                 "sub_category": {
                     "type": "string",
-                    "title": "The sub category"
+                    "title": "Sorting type (asc/desc)"
                 }
             }
         },

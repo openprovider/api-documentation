@@ -2252,13 +2252,6 @@
                     {
                         "type": "boolean",
                         "format": "boolean",
-                        "description": "Returns DNSSEC data.",
-                        "name": "with_dnssec_data",
-                        "in": "query"
-                    },
-                    {
-                        "type": "boolean",
-                        "format": "boolean",
                         "description": "Returns domain abuse details.",
                         "name": "with_abuse_details",
                         "in": "query"
@@ -4061,8 +4054,12 @@
                         "in": "query"
                     },
                     {
-                        "type": "string",
-                        "description": "Order status.",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "description": "Array of order statuses.",
                         "name": "status",
                         "in": "query"
                     },
@@ -4070,6 +4067,13 @@
                         "type": "string",
                         "description": "Contact handle.",
                         "name": "contact_handle",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Indicates, whether to return only certificates that are expiring within 30 days.",
+                        "name": "show_expiring",
                         "in": "query"
                     }
                 ],
@@ -4508,37 +4512,37 @@
                     },
                     {
                         "type": "string",
-                        "description": "The name.",
+                        "description": "Sorting type (asc/desc).",
                         "name": "order_by.name",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "The brand name.",
+                        "description": "Sorting type (asc/desc).",
                         "name": "order_by.brand_name",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "The category.",
+                        "description": "Sorting type (asc/desc).",
                         "name": "order_by.category",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "The sub category.",
+                        "description": "Sorting type (asc/desc).",
                         "name": "order_by.sub_category",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "The brand seqno.",
+                        "description": "Sorting type (asc/desc).",
                         "name": "order_by.brand_seqno",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "The product seqno.",
+                        "description": "Sorting type (asc/desc).",
                         "name": "order_by.product_seqno",
                         "in": "query"
                     }
@@ -5124,11 +5128,8 @@
                     "title": "Response code"
                 },
                 "data": {
-                    "type": "array",
                     "title": "Response data",
-                    "items": {
-                        "type": "string"
-                    }
+                    "$ref": "#/definitions/approveremailListApproverEmailsResponseData"
                 },
                 "desc": {
                     "type": "string",
@@ -5149,10 +5150,30 @@
             },
             "example": {
                 "code": 0,
-                "data": [
-                    "admin@example.com"
-                ],
+                "data": {
+                    "results": [
+                        "admin@example.com"
+                    ]
+                },
                 "desc": ""
+            }
+        },
+        "approveremailListApproverEmailsResponseData": {
+            "type": "object",
+            "title": "ListApproverEmailsResponseData",
+            "properties": {
+                "results": {
+                    "type": "array",
+                    "title": "Array of results",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "example": {
+                "results": [
+                    "admin@example.com"
+                ]
             }
         },
         "approveremailResendApproverEmailRequest": {
@@ -8961,46 +8982,6 @@
                 "whois": ""
             }
         },
-        "domainClientHold": {
-            "type": "object",
-            "title": "ClientHold",
-            "properties": {
-                "is_changeable": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "Indicate whether clientHold status can be removed"
-                },
-                "value": {
-                    "type": "integer",
-                    "format": "int32",
-                    "title": "Parameter value"
-                }
-            },
-            "example": {
-                "is_changeable": false,
-                "value": 0
-            }
-        },
-        "domainClientTransferProhibited": {
-            "type": "object",
-            "title": "ClientTransferProhibited",
-            "properties": {
-                "is_changeable": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "indicate whether ClientTransferProhibited can be removed"
-                },
-                "value": {
-                    "type": "integer",
-                    "format": "int32",
-                    "title": "Parameter value"
-                }
-            },
-            "example": {
-                "is_changeable": false,
-                "value": 0
-            }
-        },
         "domainCreateDomainRequest": {
             "type": "object",
             "title": "CreateDomainRequest",
@@ -9574,7 +9555,7 @@
                     "application_mode_title": "",
                     "application_notice_id": "983bdc1a0000100000188801724",
                     "application_smd": "",
-                    "auth_code": "",
+                    "auth_code": "1a2b3c4d5e6f",
                     "autorenew": "default",
                     "billing_handle": "XX123456-XX",
                     "can_renew": false,
@@ -9604,14 +9585,14 @@
                         {
                             "contents": "Domain: test-example.tldAction: registration succeededStatus: ACTOrder date: 2018-01-30Activation date: 2018-01-30Renewal date: 2019-01-27Expiration date: 2019-01-29Comments: registration of this domain has succeeded Nameserver addresses are automatically resolved by system; Nameserver IP addresses are only saved for glue records",
                             "domain": "example.com",
-                            "ip": "",
+                            "ip": "12.123.3.12",
                             "subject": "Sent status e-mail to admin@someemail.nl",
                             "timestamp": "2018-01-30T14:38:45+01:00",
-                            "type": "O"
+                            "type": "I"
                         }
                     ],
                     "id": 123456789,
-                    "internal_auth_code": "",
+                    "internal_auth_code": "1a2b3c4d5e6f",
                     "is_abusive": false,
                     "is_client_hold_enabled": "no",
                     "is_deleted": false,
@@ -9658,7 +9639,7 @@
                     },
                     "renew": 2,
                     "renewal_date": "2022-01-01 0:00:00",
-                    "reseller_handle": "",
+                    "reseller_handle": "XX123456-XX",
                     "reseller_id": 12345,
                     "restorable_until": "",
                     "scheduled_at": "",
@@ -9674,11 +9655,11 @@
                     "unit": "y",
                     "use_domicile": false,
                     "verification_email_exp_date": "0000-00-00 00:00:00",
-                    "verification_email_name": "test@mail.tld",
+                    "verification_email_name": "test@example.com",
                     "verification_email_status": "not verified",
                     "verification_email_status_description": "-",
                     "whois_privacy_data": {
-                        "expiration_date": ""
+                        "expiration_date": "2020-04-29 17:15:19"
                     }
                 },
                 "desc": ""
@@ -9758,7 +9739,7 @@
                 },
                 "comments_last_changed_at": {
                     "type": "string",
-                    "title": "Timestamp indicatig when domain comments were last edited"
+                    "title": "Timestamp indicating when domain comments were last edited"
                 },
                 "creation_date": {
                     "type": "string",
@@ -9843,7 +9824,7 @@
                 "is_lockable": {
                     "type": "boolean",
                     "format": "boolean",
-                    "title": "Inciates, if domain can be transfer locked"
+                    "title": "Indicates, if domain can be transfer locked"
                 },
                 "is_locked": {
                     "type": "boolean",
@@ -9990,7 +9971,7 @@
                 "transfer_cancel_supported": {
                     "type": "boolean",
                     "format": "boolean",
-                    "title": "Indicates if trnsfer cancellation supported"
+                    "title": "Indicates if transfer cancellation supported"
                 },
                 "type": {
                     "type": "string",
@@ -10087,7 +10068,7 @@
                 "application_mode_title": "",
                 "application_notice_id": "983bdc1a0000100000188801724",
                 "application_smd": "",
-                "auth_code": "",
+                "auth_code": "1a2b3c4d5e6f",
                 "autorenew": "default",
                 "billing_handle": "XX123456-XX",
                 "can_renew": false,
@@ -10117,14 +10098,14 @@
                     {
                         "contents": "Domain: test-example.tldAction: registration succeededStatus: ACTOrder date: 2018-01-30Activation date: 2018-01-30Renewal date: 2019-01-27Expiration date: 2019-01-29Comments: registration of this domain has succeeded Nameserver addresses are automatically resolved by system; Nameserver IP addresses are only saved for glue records",
                         "domain": "example.com",
-                        "ip": "",
+                        "ip": "12.123.3.12",
                         "subject": "Sent status e-mail to admin@someemail.nl",
                         "timestamp": "2018-01-30T14:38:45+01:00",
-                        "type": "O"
+                        "type": "I"
                     }
                 ],
                 "id": 123456789,
-                "internal_auth_code": "",
+                "internal_auth_code": "1a2b3c4d5e6f",
                 "is_abusive": false,
                 "is_client_hold_enabled": "no",
                 "is_deleted": false,
@@ -10171,7 +10152,7 @@
                 },
                 "renew": 2,
                 "renewal_date": "2022-01-01 0:00:00",
-                "reseller_handle": "",
+                "reseller_handle": "XX123456-XX",
                 "reseller_id": 12345,
                 "restorable_until": "",
                 "scheduled_at": "",
@@ -10187,11 +10168,11 @@
                 "unit": "y",
                 "use_domicile": false,
                 "verification_email_exp_date": "0000-00-00 00:00:00",
-                "verification_email_name": "test@mail.tld",
+                "verification_email_name": "test@example.com",
                 "verification_email_status": "not verified",
                 "verification_email_status_description": "-",
                 "whois_privacy_data": {
-                    "expiration_date": ""
+                    "expiration_date": "2020-04-29 17:15:19"
                 }
             }
         },
@@ -10205,7 +10186,7 @@
                 },
                 "domain": {
                     "type": "string",
-                    "title": "Domain name and extension"
+                    "title": "Domain full name"
                 },
                 "ip": {
                     "type": "string",
@@ -10227,10 +10208,10 @@
             "example": {
                 "contents": "Domain: test-example.tldAction: registration succeededStatus: ACTOrder date: 2018-01-30Activation date: 2018-01-30Renewal date: 2019-01-27Expiration date: 2019-01-29Comments: registration of this domain has succeeded Nameserver addresses are automatically resolved by system; Nameserver IP addresses are only saved for glue records",
                 "domain": "example.com",
-                "ip": "",
+                "ip": "12.123.3.12",
                 "subject": "Sent status e-mail to admin@someemail.nl",
                 "timestamp": "2018-01-30T14:38:45+01:00",
-                "type": "O"
+                "type": "I"
             }
         },
         "domainListDomainsRequestOrderBy": {
@@ -10384,7 +10365,7 @@
                             "application_mode_title": "",
                             "application_notice_id": "983bdc1a0000100000188801724",
                             "application_smd": "",
-                            "auth_code": "",
+                            "auth_code": "1a2b3c4d5e6f",
                             "autorenew": "default",
                             "billing_handle": "XX123456-XX",
                             "can_renew": false,
@@ -10414,14 +10395,14 @@
                                 {
                                     "contents": "Domain: test-example.tldAction: registration succeededStatus: ACTOrder date: 2018-01-30Activation date: 2018-01-30Renewal date: 2019-01-27Expiration date: 2019-01-29Comments: registration of this domain has succeeded Nameserver addresses are automatically resolved by system; Nameserver IP addresses are only saved for glue records",
                                     "domain": "example.com",
-                                    "ip": "",
+                                    "ip": "12.123.3.12",
                                     "subject": "Sent status e-mail to admin@someemail.nl",
                                     "timestamp": "2018-01-30T14:38:45+01:00",
-                                    "type": "O"
+                                    "type": "I"
                                 }
                             ],
                             "id": 123456789,
-                            "internal_auth_code": "",
+                            "internal_auth_code": "1a2b3c4d5e6f",
                             "is_abusive": false,
                             "is_client_hold_enabled": "no",
                             "is_deleted": false,
@@ -10468,7 +10449,7 @@
                             },
                             "renew": 2,
                             "renewal_date": "2022-01-01 0:00:00",
-                            "reseller_handle": "",
+                            "reseller_handle": "XX123456-XX",
                             "reseller_id": 12345,
                             "restorable_until": "",
                             "scheduled_at": "",
@@ -10484,11 +10465,11 @@
                             "unit": "y",
                             "use_domicile": false,
                             "verification_email_exp_date": "0000-00-00 00:00:00",
-                            "verification_email_name": "test@mail.tld",
+                            "verification_email_name": "test@example.com",
                             "verification_email_status": "not verified",
                             "verification_email_status_description": "-",
                             "whois_privacy_data": {
-                                "expiration_date": ""
+                                "expiration_date": "2020-04-29 17:15:19"
                             }
                         }
                     ],
@@ -10577,7 +10558,7 @@
                         "application_mode_title": "",
                         "application_notice_id": "983bdc1a0000100000188801724",
                         "application_smd": "",
-                        "auth_code": "",
+                        "auth_code": "1a2b3c4d5e6f",
                         "autorenew": "default",
                         "billing_handle": "XX123456-XX",
                         "can_renew": false,
@@ -10607,14 +10588,14 @@
                             {
                                 "contents": "Domain: test-example.tldAction: registration succeededStatus: ACTOrder date: 2018-01-30Activation date: 2018-01-30Renewal date: 2019-01-27Expiration date: 2019-01-29Comments: registration of this domain has succeeded Nameserver addresses are automatically resolved by system; Nameserver IP addresses are only saved for glue records",
                                 "domain": "example.com",
-                                "ip": "",
+                                "ip": "12.123.3.12",
                                 "subject": "Sent status e-mail to admin@someemail.nl",
                                 "timestamp": "2018-01-30T14:38:45+01:00",
-                                "type": "O"
+                                "type": "I"
                             }
                         ],
                         "id": 123456789,
-                        "internal_auth_code": "",
+                        "internal_auth_code": "1a2b3c4d5e6f",
                         "is_abusive": false,
                         "is_client_hold_enabled": "no",
                         "is_deleted": false,
@@ -10661,7 +10642,7 @@
                         },
                         "renew": 2,
                         "renewal_date": "2022-01-01 0:00:00",
-                        "reseller_handle": "",
+                        "reseller_handle": "XX123456-XX",
                         "reseller_id": 12345,
                         "restorable_until": "",
                         "scheduled_at": "",
@@ -10677,11 +10658,11 @@
                         "unit": "y",
                         "use_domicile": false,
                         "verification_email_exp_date": "0000-00-00 00:00:00",
-                        "verification_email_name": "test@mail.tld",
+                        "verification_email_name": "test@example.com",
                         "verification_email_status": "not verified",
                         "verification_email_status_description": "-",
                         "whois_privacy_data": {
-                            "expiration_date": ""
+                            "expiration_date": "2020-04-29 17:15:19"
                         }
                     }
                 ],
@@ -10812,17 +10793,37 @@
                 }
             }
         },
+        "domainRegistryStatus": {
+            "type": "object",
+            "title": "RegistryStatus",
+            "properties": {
+                "is_changeable": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicate whether status can be removed"
+                },
+                "value": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Status value"
+                }
+            },
+            "example": {
+                "is_changeable": false,
+                "value": 0
+            }
+        },
         "domainRegistryStatuses": {
             "type": "object",
             "title": "RegistryStatuses",
             "properties": {
                 "client_hold": {
-                    "title": "Indicates, if client hold EPP status is enabled",
-                    "$ref": "#/definitions/domainClientHold"
+                    "title": "Client hold EPP status",
+                    "$ref": "#/definitions/domainRegistryStatus"
                 },
                 "client_transfer_prohibited": {
-                    "title": "Indicates, if client transfer prohibited EPP status is enabled",
-                    "$ref": "#/definitions/domainClientTransferProhibited"
+                    "title": "Client transfer prohibited EPP status",
+                    "$ref": "#/definitions/domainRegistryStatus"
                 }
             },
             "example": {
@@ -11954,11 +11955,11 @@
             "properties": {
                 "expiration_date": {
                     "type": "string",
-                    "title": "The expiration date"
+                    "title": "WPP expiration date"
                 }
             },
             "example": {
-                "expiration_date": ""
+                "expiration_date": "2020-04-29 17:15:19"
             }
         },
         "emailCreateEmailRequest": {
@@ -19733,7 +19734,7 @@
                 },
                 "warnings": {
                     "type": "array",
-                    "title": "Contains warning responses if any",
+                    "title": "Array of warning messages",
                     "items": {
                         "$ref": "#/definitions/errorWarning"
                     }
@@ -19944,27 +19945,27 @@
             "properties": {
                 "brand_name": {
                     "type": "string",
-                    "title": "The brand name"
+                    "title": "Sorting type (asc/desc)"
                 },
                 "brand_seqno": {
                     "type": "string",
-                    "title": "The brand seqno"
+                    "title": "Sorting type (asc/desc)"
                 },
                 "category": {
                     "type": "string",
-                    "title": "The category"
+                    "title": "Sorting type (asc/desc)"
                 },
                 "name": {
                     "type": "string",
-                    "title": "The name"
+                    "title": "Sorting type (asc/desc)"
                 },
                 "product_seqno": {
                     "type": "string",
-                    "title": "The product seqno"
+                    "title": "Sorting type (asc/desc)"
                 },
                 "sub_category": {
                     "type": "string",
-                    "title": "The sub category"
+                    "title": "Sorting type (asc/desc)"
                 }
             }
         },
