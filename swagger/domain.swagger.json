@@ -681,10 +681,17 @@
                         "in": "query"
                     },
                     {
-                        "type": "integer",
-                        "format": "int32",
+                        "type": "boolean",
+                        "format": "boolean",
                         "description": "Deletes domain, skipping the soft quarantine.",
                         "name": "skip_soft_quarantine",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Force delete domain even if it has glue records.",
+                        "name": "force_delete",
                         "in": "query"
                     }
                 ],
