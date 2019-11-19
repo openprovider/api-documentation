@@ -18322,9 +18322,13 @@
                             "file_location": "example.com/.well-known/pki-validation/fileauth.txt",
                             "file_name": "fileauth.txt",
                             "md5": "73d01a1232214f96ebf08d6f9d0af6f9",
-                            "old_cert_format": "dywtgtjttvdk5v4ncd8231yl6v5ji8pv",
+                            "old_cert_format": [
+                                "dywtgtjttvdk5v4ncd8231yl6v5ji8pv"
+                            ],
                             "sha1": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
-                            "sha256": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c"
+                            "sha256": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
+                            "token": "a9a5775036334709b3c04e0e4a095f15",
+                            "url": "http://3.example.com/.well-known/pki-validation/12345e32k4j32kljlkfsdjlkfjsdlk333.txt"
                         }
                     ],
                     "administrative_handle": "XX123456-XX",
@@ -18453,9 +18457,13 @@
                                     "file_location": "example.com/.well-known/pki-validation/fileauth.txt",
                                     "file_name": "fileauth.txt",
                                     "md5": "73d01a1232214f96ebf08d6f9d0af6f9",
-                                    "old_cert_format": "dywtgtjttvdk5v4ncd8231yl6v5ji8pv",
+                                    "old_cert_format": [
+                                        "dywtgtjttvdk5v4ncd8231yl6v5ji8pv"
+                                    ],
                                     "sha1": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
-                                    "sha256": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c"
+                                    "sha256": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
+                                    "token": "a9a5775036334709b3c04e0e4a095f15",
+                                    "url": "http://3.example.com/.well-known/pki-validation/12345e32k4j32kljlkfsdjlkfjsdlk333.txt"
                                 }
                             ],
                             "administrative_handle": "XX123456-XX",
@@ -18541,9 +18549,13 @@
                                 "file_location": "example.com/.well-known/pki-validation/fileauth.txt",
                                 "file_name": "fileauth.txt",
                                 "md5": "73d01a1232214f96ebf08d6f9d0af6f9",
-                                "old_cert_format": "dywtgtjttvdk5v4ncd8231yl6v5ji8pv",
+                                "old_cert_format": [
+                                    "dywtgtjttvdk5v4ncd8231yl6v5ji8pv"
+                                ],
                                 "sha1": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
-                                "sha256": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c"
+                                "sha256": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
+                                "token": "a9a5775036334709b3c04e0e4a095f15",
+                                "url": "http://3.example.com/.well-known/pki-validation/12345e32k4j32kljlkfsdjlkfjsdlk333.txt"
                             }
                         ],
                         "administrative_handle": "XX123456-XX",
@@ -18947,9 +18959,13 @@
                         "file_location": "example.com/.well-known/pki-validation/fileauth.txt",
                         "file_name": "fileauth.txt",
                         "md5": "73d01a1232214f96ebf08d6f9d0af6f9",
-                        "old_cert_format": "dywtgtjttvdk5v4ncd8231yl6v5ji8pv",
+                        "old_cert_format": [
+                            "dywtgtjttvdk5v4ncd8231yl6v5ji8pv"
+                        ],
                         "sha1": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
-                        "sha256": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c"
+                        "sha256": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
+                        "token": "a9a5775036334709b3c04e0e4a095f15",
+                        "url": "http://3.example.com/.well-known/pki-validation/12345e32k4j32kljlkfsdjlkfjsdlk333.txt"
                     }
                 ],
                 "administrative_handle": "XX123456-XX",
@@ -19039,8 +19055,11 @@
                     "title": "Order MD5 checksum"
                 },
                 "old_cert_format": {
-                    "type": "string",
-                    "title": "This old format (before transition to digicert)"
+                    "type": "array",
+                    "title": "This old format (before transition to digicert)",
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "sha1": {
                     "type": "string",
@@ -19049,6 +19068,14 @@
                 "sha256": {
                     "type": "string",
                     "title": "Order SHA256 checksum"
+                },
+                "token": {
+                    "type": "string",
+                    "title": "The token"
+                },
+                "url": {
+                    "type": "string",
+                    "title": "The url"
                 }
             },
             "example": {
@@ -19061,9 +19088,13 @@
                 "file_location": "example.com/.well-known/pki-validation/fileauth.txt",
                 "file_name": "fileauth.txt",
                 "md5": "73d01a1232214f96ebf08d6f9d0af6f9",
-                "old_cert_format": "dywtgtjttvdk5v4ncd8231yl6v5ji8pv",
+                "old_cert_format": [
+                    "dywtgtjttvdk5v4ncd8231yl6v5ji8pv"
+                ],
                 "sha1": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
-                "sha256": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c"
+                "sha256": "0453ff12343c6d5e24466832668aa13658e5893c917b9486d7c59a5727074c9c",
+                "token": "a9a5775036334709b3c04e0e4a095f15",
+                "url": "http://3.example.com/.well-known/pki-validation/12345e32k4j32kljlkfsdjlkfjsdlk333.txt"
             }
         },
         "orderSslOrderDomainValidationMethods": {
