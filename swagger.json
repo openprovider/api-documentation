@@ -3220,7 +3220,7 @@
                     },
                     {
                         "type": "string",
-                        "description": "Custom title pattern. Wildcard (*) can be sued.",
+                        "description": "Custom title pattern. Wildcard (*) can be used.",
                         "name": "title_pattern",
                         "in": "query"
                     },
@@ -3458,7 +3458,7 @@
                     },
                     {
                         "type": "string",
-                        "description": "Custom title pattern. Wildcard (*) can be sued.",
+                        "description": "Custom title pattern. Wildcard (*) can be used.",
                         "name": "title_pattern",
                         "in": "query"
                     },
@@ -6921,6 +6921,7 @@
                             "company_registration_number": "XX123456789X11",
                             "contact_title": "CEO",
                             "country_of_citizenship": "NL",
+                            "customer_uin": "",
                             "ens_auth_id": "",
                             "ens_key": "",
                             "first_name_cyrillic": "Test",
@@ -7193,6 +7194,7 @@
                     "company_registration_number": "XX123456789X11",
                     "contact_title": "CEO",
                     "country_of_citizenship": "NL",
+                    "customer_uin": "",
                     "ens_auth_id": "",
                     "ens_key": "",
                     "first_name_cyrillic": "Test",
@@ -7259,6 +7261,10 @@
                 "country_of_citizenship": {
                     "type": "string",
                     "title": "Country of citizenship (only applicable for natural persons if country of residence is not within the eligible countries)\nApplicable to: .eu"
+                },
+                "customer_uin": {
+                    "type": "string",
+                    "title": "Unique identification customer number\nApplicable to: .sk"
                 },
                 "ens_auth_id": {
                     "type": "string",
@@ -7354,7 +7360,7 @@
                 },
                 "user_type": {
                     "type": "string",
-                    "title": "The type of Customer\nApplicable to: .dk"
+                    "title": "The type of Customer\nApplicable to: .dk, .sk"
                 },
                 "vat": {
                     "type": "string",
@@ -7378,6 +7384,7 @@
                 "company_registration_number": "XX123456789X11",
                 "contact_title": "CEO",
                 "country_of_citizenship": "NL",
+                "customer_uin": "",
                 "ens_auth_id": "",
                 "ens_key": "",
                 "first_name_cyrillic": "Test",
@@ -7507,6 +7514,7 @@
                                 "company_registration_number": "XX123456789X11",
                                 "contact_title": "CEO",
                                 "country_of_citizenship": "NL",
+                                "customer_uin": "",
                                 "ens_auth_id": "",
                                 "ens_key": "",
                                 "first_name_cyrillic": "Test",
@@ -7711,6 +7719,7 @@
                             "company_registration_number": "XX123456789X11",
                             "contact_title": "CEO",
                             "country_of_citizenship": "NL",
+                            "customer_uin": "",
                             "ens_auth_id": "",
                             "ens_key": "",
                             "first_name_cyrillic": "Test",
@@ -7905,6 +7914,7 @@
                                         "company_registration_number": "XX123456789X11",
                                         "contact_title": "CEO",
                                         "country_of_citizenship": "NL",
+                                        "customer_uin": "",
                                         "ens_auth_id": "",
                                         "ens_key": "",
                                         "first_name_cyrillic": "Test",
@@ -8030,6 +8040,7 @@
                                     "company_registration_number": "XX123456789X11",
                                     "contact_title": "CEO",
                                     "country_of_citizenship": "NL",
+                                    "customer_uin": "",
                                     "ens_auth_id": "",
                                     "ens_key": "",
                                     "first_name_cyrillic": "Test",
@@ -8216,6 +8227,7 @@
                             "company_registration_number": "XX123456789X11",
                             "contact_title": "CEO",
                             "country_of_citizenship": "NL",
+                            "customer_uin": "",
                             "ens_auth_id": "",
                             "ens_key": "",
                             "first_name_cyrillic": "Test",
@@ -8386,6 +8398,7 @@
                             "company_registration_number": "XX123456789X11",
                             "contact_title": "CEO",
                             "country_of_citizenship": "NL",
+                            "customer_uin": "",
                             "ens_auth_id": "",
                             "ens_key": "",
                             "first_name_cyrillic": "Test",

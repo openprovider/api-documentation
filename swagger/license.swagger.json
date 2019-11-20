@@ -304,7 +304,7 @@
                     },
                     {
                         "type": "string",
-                        "description": "Custom title pattern. Wildcard (*) can be sued.",
+                        "description": "Custom title pattern. Wildcard (*) can be used.",
                         "name": "title_pattern",
                         "in": "query"
                     },
@@ -542,7 +542,7 @@
                     },
                     {
                         "type": "string",
-                        "description": "Custom title pattern. Wildcard (*) can be sued.",
+                        "description": "Custom title pattern. Wildcard (*) can be used.",
                         "name": "title_pattern",
                         "in": "query"
                     },
