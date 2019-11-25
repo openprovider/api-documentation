@@ -1136,8 +1136,11 @@
                     "title": "State / province used in CSR"
                 },
                 "unit": {
-                    "type": "string",
-                    "title": "Organization unit used in CSR"
+                    "type": "array",
+                    "title": "Organization unit used in CSR",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             },
             "example": {
@@ -1147,7 +1150,9 @@
                 "locality": "City",
                 "organization": "MyCompany B.V.",
                 "state": "Testprovince",
-                "unit": "Dev"
+                "unit": [
+                    "Domain Control Validated"
+                ]
             }
         },
         "csrDecodeCsrRequest": {
@@ -1209,7 +1214,9 @@
                         "locality": "City",
                         "organization": "MyCompany B.V.",
                         "state": "Testprovince",
-                        "unit": "Dev"
+                        "unit": [
+                            "Domain Control Validated"
+                        ]
                     },
                     "subject_alternative_name": [
                         "www.example.com"
@@ -1261,7 +1268,9 @@
                     "locality": "City",
                     "organization": "MyCompany B.V.",
                     "state": "Testprovince",
-                    "unit": "Dev"
+                    "unit": [
+                        "Domain Control Validated"
+                    ]
                 },
                 "subject_alternative_name": [
                     "www.example.com"
