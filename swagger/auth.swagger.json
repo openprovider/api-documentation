@@ -46,6 +46,39 @@
                     }
                 }
             }
+        },
+        "/v1beta/spam-expert/generate-login-url": {
+            "post": {
+                "tags": [
+                    "SpamExpert"
+                ],
+                "summary": "Generate login url",
+                "operationId": "GenerateLoginURL",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/spam_expertGenerateLoginURLRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/spam_expertGenerateLoginURLResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -177,6 +210,88 @@
                 "data": "",
                 "desc": ""
             }
+        },
+        "spam_expertGenerateLoginURLRequest": {
+            "type": "object",
+            "title": "GenerateLoginURLRequest",
+            "properties": {
+                "bundle": {
+                    "description": "If you use the new, individually purchased, filters then set this to false. If you use the old bundled variant, then set this to true.",
+                    "type": "boolean",
+                    "format": "boolean"
+                },
+                "domain_or_email": {
+                    "type": "string",
+                    "title": "Domain or email connected with the spam filter"
+                }
+            },
+            "example": {
+                "bundle": false,
+                "domain_or_email": "example.com"
+            }
+        },
+        "spam_expertGenerateLoginURLResponse": {
+            "type": "object",
+            "title": "GenerateLoginURLResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "Response data",
+                    "$ref": "#/definitions/spam_expertGenerateLoginURLResponseData"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "Array of warning messages",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "url": "http://spamexperts.example.com//?authticket=fdsaffdkaj3432fjkfjdslkjflk345435433fdfe"
+                },
+                "desc": ""
+            }
+        },
+        "spam_expertGenerateLoginURLResponseData": {
+            "type": "object",
+            "title": "GenerateLoginURLResponseData",
+            "properties": {
+                "url": {
+                    "type": "string",
+                    "title": "An url that can be used for logging in to the SpamExperts control panel. If you want you can whitelabel the hostname by taking the auth at the end of the URL and replacing the part in front of it by your own URL, as long as it leads to our platform via DNS"
+                }
+            },
+            "example": {
+                "url": "http://spamexperts.example.com//?authticket=fdsaffdkaj3432fjkfjdslkjflk345435433fdfe"
+            }
         }
-    }
+    },
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    },
+    "security": [
+        {
+            "Bearer": []
+        }
+    ]
 }
