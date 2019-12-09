@@ -6914,6 +6914,13 @@
             },
             "example": {
                 "additional_data": {
+                    "attached_files": [
+                        {
+                            "description": "My passport scan",
+                            "doc_type": "passport",
+                            "path": "https://drive.google.com/open?id=1EclbGeo8Y3UWg3KSF7ebmwcK7ddLTtC7m3aHZ1qMnjE"
+                        }
+                    ],
                     "birth_address": "test street 45",
                     "birth_city": "Test city",
                     "birth_country": "NL",
@@ -7068,6 +7075,13 @@
             "type": "object",
             "title": "CustomerAdditionalData",
             "properties": {
+                "attached_files": {
+                    "type": "array",
+                    "title": "File(s) attached to customer handle e.g. like the proof of the customer identity (passport scan or legal entity documents)",
+                    "items": {
+                        "$ref": "#/definitions/customerFile"
+                    }
+                },
                 "birth_address": {
                     "type": "string",
                     "title": "Birth address"
@@ -7134,6 +7148,13 @@
                 }
             },
             "example": {
+                "attached_files": [
+                    {
+                        "description": "My passport scan",
+                        "doc_type": "passport",
+                        "path": "https://drive.google.com/open?id=1EclbGeo8Y3UWg3KSF7ebmwcK7ddLTtC7m3aHZ1qMnjE"
+                    }
+                ],
                 "birth_address": "test street 45",
                 "birth_city": "Test city",
                 "birth_country": "NL",
@@ -7470,6 +7491,29 @@
                 "subscriber_number": ""
             }
         },
+        "customerFile": {
+            "type": "object",
+            "title": "File",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "title": "Brief description of the file content"
+                },
+                "doc_type": {
+                    "type": "string",
+                    "title": "Type of the document, e.g. 'passport', 'id'"
+                },
+                "path": {
+                    "type": "string",
+                    "title": "Link to the external file storage"
+                }
+            },
+            "example": {
+                "description": "My passport scan",
+                "doc_type": "passport",
+                "path": "https://drive.google.com/open?id=1EclbGeo8Y3UWg3KSF7ebmwcK7ddLTtC7m3aHZ1qMnjE"
+            }
+        },
         "customerGetCustomerResponse": {
             "type": "object",
             "title": "GetCustomerResponse",
@@ -7504,6 +7548,13 @@
                 "code": 0,
                 "data": {
                     "additional_data": {
+                        "attached_files": [
+                            {
+                                "description": "My passport scan",
+                                "doc_type": "passport",
+                                "path": "https://drive.google.com/open?id=1EclbGeo8Y3UWg3KSF7ebmwcK7ddLTtC7m3aHZ1qMnjE"
+                            }
+                        ],
                         "birth_address": "test street 45",
                         "birth_city": "Test city",
                         "birth_country": "NL",
@@ -7709,6 +7760,13 @@
             },
             "example": {
                 "additional_data": {
+                    "attached_files": [
+                        {
+                            "description": "My passport scan",
+                            "doc_type": "passport",
+                            "path": "https://drive.google.com/open?id=1EclbGeo8Y3UWg3KSF7ebmwcK7ddLTtC7m3aHZ1qMnjE"
+                        }
+                    ],
                     "birth_address": "test street 45",
                     "birth_city": "Test city",
                     "birth_country": "NL",
@@ -7904,6 +7962,13 @@
                     "results": [
                         {
                             "additional_data": {
+                                "attached_files": [
+                                    {
+                                        "description": "My passport scan",
+                                        "doc_type": "passport",
+                                        "path": "https://drive.google.com/open?id=1EclbGeo8Y3UWg3KSF7ebmwcK7ddLTtC7m3aHZ1qMnjE"
+                                    }
+                                ],
                                 "birth_address": "test street 45",
                                 "birth_city": "Test city",
                                 "birth_country": "NL",
@@ -8030,6 +8095,13 @@
                 "results": [
                     {
                         "additional_data": {
+                            "attached_files": [
+                                {
+                                    "description": "My passport scan",
+                                    "doc_type": "passport",
+                                    "path": "https://drive.google.com/open?id=1EclbGeo8Y3UWg3KSF7ebmwcK7ddLTtC7m3aHZ1qMnjE"
+                                }
+                            ],
                             "birth_address": "test street 45",
                             "birth_city": "Test city",
                             "birth_country": "NL",
@@ -8217,6 +8289,13 @@
             },
             "example": {
                 "additional_data": {
+                    "attached_files": [
+                        {
+                            "description": "My passport scan",
+                            "doc_type": "passport",
+                            "path": "https://drive.google.com/open?id=1EclbGeo8Y3UWg3KSF7ebmwcK7ddLTtC7m3aHZ1qMnjE"
+                        }
+                    ],
                     "birth_address": "test street 45",
                     "birth_city": "Test city",
                     "birth_country": "NL",
@@ -8392,6 +8471,13 @@
             },
             "example": {
                 "additional_data": {
+                    "attached_files": [
+                        {
+                            "description": "My passport scan",
+                            "doc_type": "passport",
+                            "path": "https://drive.google.com/open?id=1EclbGeo8Y3UWg3KSF7ebmwcK7ddLTtC7m3aHZ1qMnjE"
+                        }
+                    ],
                     "birth_address": "test street 45",
                     "birth_city": "Test city",
                     "birth_country": "NL",
@@ -8593,6 +8679,14 @@
                     "type": "string",
                     "title": "For companies located in Singapore, the corresponding company registration number has to be given. For Singapore citizens and permanent residents, please provide NRIC or Passport No. For Singapore companies, please provide RCBID as it appears in RCB Certificate. For Singapore societies, please provide RCBID as it appears in ROS Certificate.\nApplicable to: .com.sg, .no, .ro, .sg"
                 },
+                "customer_uin": {
+                    "type": "string",
+                    "title": "Identification number of domain owner document that proves his identity (e.g. passport number, number of driving license or else in case if domain owner is a private person; chamber of commerce registration number, taxpayer number or else in case of legal entity)\nApplicable for all TLDs which require documents to complete operation with domain (e.g. .bg, .cn etc.)"
+                },
+                "customer_uin_doc_type": {
+                    "title": "Type of the domain owner document used to prove his identity (e.g. passport, driving license or else in case if domain owner is a private person; chamber of commerce extract, business certificate or else in case of legal entity)\nApplicable for all TLDs which require documents to complete operation with domain (e.g. .bg, .cn etc.)",
+                    "$ref": "#/definitions/domainUINDocumentType"
+                },
                 "domain_name_variants": {
                     "type": "array",
                     "title": "The domain name variants should be an array of strings, representing appropriate names\nApplicable to: .barcelona, .cat",
@@ -8713,6 +8807,11 @@
                 "auth_code": "",
                 "bank_acceptance": "",
                 "company_registration_number": "XX123456789X01",
+                "customer_uin": "374892173498127349",
+                "customer_uin_doc_type": {
+                    "description": "Singapore Personal Access ID",
+                    "doc_type": "singpass"
+                },
                 "domain_name_variants": [
                     "xn--\u0434\u043e\u043c\u0435\u043d.cat"
                 ],
@@ -9173,6 +9272,11 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
+                    "customer_uin": "374892173498127349",
+                    "customer_uin_doc_type": {
+                        "description": "Singapore Personal Access ID",
+                        "doc_type": "singpass"
+                    },
                     "domain_name_variants": [
                         "xn--\u0434\u043e\u043c\u0435\u043d.cat"
                     ],
@@ -9289,6 +9393,11 @@
                         "auth_code": "",
                         "bank_acceptance": "",
                         "company_registration_number": "XX123456789X01",
+                        "customer_uin": "374892173498127349",
+                        "customer_uin_doc_type": {
+                            "description": "Singapore Personal Access ID",
+                            "doc_type": "singpass"
+                        },
                         "domain_name_variants": [
                             "xn--\u0434\u043e\u043c\u0435\u043d.cat"
                         ],
@@ -9372,6 +9481,11 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
+                    "customer_uin": "374892173498127349",
+                    "customer_uin_doc_type": {
+                        "description": "Singapore Personal Access ID",
+                        "doc_type": "singpass"
+                    },
                     "domain_name_variants": [
                         "xn--\u0434\u043e\u043c\u0435\u043d.cat"
                     ],
@@ -9562,6 +9676,11 @@
                         "auth_code": "",
                         "bank_acceptance": "",
                         "company_registration_number": "XX123456789X01",
+                        "customer_uin": "374892173498127349",
+                        "customer_uin_doc_type": {
+                            "description": "Singapore Personal Access ID",
+                            "doc_type": "singpass"
+                        },
                         "domain_name_variants": [
                             "xn--\u0434\u043e\u043c\u0435\u043d.cat"
                         ],
@@ -10075,6 +10194,11 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
+                    "customer_uin": "374892173498127349",
+                    "customer_uin_doc_type": {
+                        "description": "Singapore Personal Access ID",
+                        "doc_type": "singpass"
+                    },
                     "domain_name_variants": [
                         "xn--\u0434\u043e\u043c\u0435\u043d.cat"
                     ],
@@ -10372,6 +10496,11 @@
                                 "auth_code": "",
                                 "bank_acceptance": "",
                                 "company_registration_number": "XX123456789X01",
+                                "customer_uin": "374892173498127349",
+                                "customer_uin_doc_type": {
+                                    "description": "Singapore Personal Access ID",
+                                    "doc_type": "singpass"
+                                },
                                 "domain_name_variants": [
                                     "xn--\u0434\u043e\u043c\u0435\u043d.cat"
                                 ],
@@ -10565,6 +10694,11 @@
                             "auth_code": "",
                             "bank_acceptance": "",
                             "company_registration_number": "XX123456789X01",
+                            "customer_uin": "374892173498127349",
+                            "customer_uin_doc_type": {
+                                "description": "Singapore Personal Access ID",
+                                "doc_type": "singpass"
+                            },
                             "domain_name_variants": [
                                 "xn--\u0434\u043e\u043c\u0435\u043d.cat"
                             ],
@@ -11155,6 +11289,11 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
+                    "customer_uin": "374892173498127349",
+                    "customer_uin_doc_type": {
+                        "description": "Singapore Personal Access ID",
+                        "doc_type": "singpass"
+                    },
                     "domain_name_variants": [
                         "xn--\u0434\u043e\u043c\u0435\u043d.cat"
                     ],
@@ -11677,6 +11816,24 @@
                 "id": 0
             }
         },
+        "domainUINDocumentType": {
+            "type": "object",
+            "title": "UINDocumentType",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "title": "Brief description of the document used to prove domain owner's identity"
+                },
+                "doc_type": {
+                    "type": "string",
+                    "title": "Type of the document used to prove domain owner's identity"
+                }
+            },
+            "example": {
+                "description": "Singapore Personal Access ID",
+                "doc_type": "singpass"
+            }
+        },
         "domainUpdateAdditionalData": {
             "type": "object",
             "title": "UpdateAdditionalData",
@@ -11696,6 +11853,14 @@
                 "company_registration_number": {
                     "type": "string",
                     "title": "For companies located in Singapore, the corresponding company registration number has to be given. For Singapore citizens and permanent residents, please provide NRIC or Passport No. For Singapore companies, please provide RCBID as it appears in RCB Certificate. For Singapore societies, please provide RCBID as it appears in ROS Certificate.\nApplicable to: .com.sg, .no, .ro, .sg"
+                },
+                "customer_uin": {
+                    "type": "string",
+                    "title": "Identification number of domain owner document that proves his identity (e.g. passport number, number of driving license or else in case if domain owner is a private person; chamber of commerce registration number, taxpayer number or else in case of legal entity)\nApplicable for all TLDs which require documents to complete operation with domain (e.g. .bg, .cn etc.)"
+                },
+                "customer_uin_doc_type": {
+                    "title": "Type of the domain owner document used to prove his identity (e.g. passport, driving license or else in case if domain owner is a private person; chamber of commerce extract, business certificate or else in case of legal entity)\nApplicable for all TLDs which require documents to complete operation with domain (e.g. .bg, .cn etc.)",
+                    "$ref": "#/definitions/domainUINDocumentType"
                 },
                 "domain_name_variants": {
                     "type": "array",
@@ -11754,6 +11919,11 @@
                 "admin_sing_pass_id": "",
                 "auth_code": "",
                 "company_registration_number": "XX123456789X02",
+                "customer_uin": "374892173498127349",
+                "customer_uin_doc_type": {
+                    "description": "Singapore Personal Access ID",
+                    "doc_type": "singpass"
+                },
                 "domain_name_variants": [
                     "xn--\u0434\u043e\u043c\u0435\u043d.cat"
                 ],
@@ -11887,6 +12057,11 @@
                     "admin_sing_pass_id": "",
                     "auth_code": "",
                     "company_registration_number": "XX123456789X02",
+                    "customer_uin": "374892173498127349",
+                    "customer_uin_doc_type": {
+                        "description": "Singapore Personal Access ID",
+                        "doc_type": "singpass"
+                    },
                     "domain_name_variants": [
                         "xn--\u0434\u043e\u043c\u0435\u043d.cat"
                     ],

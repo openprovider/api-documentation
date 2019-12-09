@@ -1850,6 +1850,13 @@
             },
             "example": {
                 "additional_data": {
+                    "attached_files": [
+                        {
+                            "description": "My passport scan",
+                            "doc_type": "passport",
+                            "path": "https://drive.google.com/open?id=1EclbGeo8Y3UWg3KSF7ebmwcK7ddLTtC7m3aHZ1qMnjE"
+                        }
+                    ],
                     "birth_address": "test street 45",
                     "birth_city": "Test city",
                     "birth_country": "NL",
@@ -2004,6 +2011,13 @@
             "type": "object",
             "title": "CustomerAdditionalData",
             "properties": {
+                "attached_files": {
+                    "type": "array",
+                    "title": "File(s) attached to customer handle e.g. like the proof of the customer identity (passport scan or legal entity documents)",
+                    "items": {
+                        "$ref": "#/definitions/customerFile"
+                    }
+                },
                 "birth_address": {
                     "type": "string",
                     "title": "Birth address"
@@ -2070,6 +2084,13 @@
                 }
             },
             "example": {
+                "attached_files": [
+                    {
+                        "description": "My passport scan",
+                        "doc_type": "passport",
+                        "path": "https://drive.google.com/open?id=1EclbGeo8Y3UWg3KSF7ebmwcK7ddLTtC7m3aHZ1qMnjE"
+                    }
+                ],
                 "birth_address": "test street 45",
                 "birth_city": "Test city",
                 "birth_country": "NL",
@@ -2406,6 +2427,29 @@
                 "subscriber_number": ""
             }
         },
+        "customerFile": {
+            "type": "object",
+            "title": "File",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "title": "Brief description of the file content"
+                },
+                "doc_type": {
+                    "type": "string",
+                    "title": "Type of the document, e.g. 'passport', 'id'"
+                },
+                "path": {
+                    "type": "string",
+                    "title": "Link to the external file storage"
+                }
+            },
+            "example": {
+                "description": "My passport scan",
+                "doc_type": "passport",
+                "path": "https://drive.google.com/open?id=1EclbGeo8Y3UWg3KSF7ebmwcK7ddLTtC7m3aHZ1qMnjE"
+            }
+        },
         "customerGetCustomerResponse": {
             "type": "object",
             "title": "GetCustomerResponse",
@@ -2440,6 +2484,13 @@
                 "code": 0,
                 "data": {
                     "additional_data": {
+                        "attached_files": [
+                            {
+                                "description": "My passport scan",
+                                "doc_type": "passport",
+                                "path": "https://drive.google.com/open?id=1EclbGeo8Y3UWg3KSF7ebmwcK7ddLTtC7m3aHZ1qMnjE"
+                            }
+                        ],
                         "birth_address": "test street 45",
                         "birth_city": "Test city",
                         "birth_country": "NL",
@@ -2645,6 +2696,13 @@
             },
             "example": {
                 "additional_data": {
+                    "attached_files": [
+                        {
+                            "description": "My passport scan",
+                            "doc_type": "passport",
+                            "path": "https://drive.google.com/open?id=1EclbGeo8Y3UWg3KSF7ebmwcK7ddLTtC7m3aHZ1qMnjE"
+                        }
+                    ],
                     "birth_address": "test street 45",
                     "birth_city": "Test city",
                     "birth_country": "NL",
@@ -2788,6 +2846,13 @@
                     "results": [
                         {
                             "additional_data": {
+                                "attached_files": [
+                                    {
+                                        "description": "My passport scan",
+                                        "doc_type": "passport",
+                                        "path": "https://drive.google.com/open?id=1EclbGeo8Y3UWg3KSF7ebmwcK7ddLTtC7m3aHZ1qMnjE"
+                                    }
+                                ],
                                 "birth_address": "test street 45",
                                 "birth_city": "Test city",
                                 "birth_country": "NL",
@@ -2914,6 +2979,13 @@
                 "results": [
                     {
                         "additional_data": {
+                            "attached_files": [
+                                {
+                                    "description": "My passport scan",
+                                    "doc_type": "passport",
+                                    "path": "https://drive.google.com/open?id=1EclbGeo8Y3UWg3KSF7ebmwcK7ddLTtC7m3aHZ1qMnjE"
+                                }
+                            ],
                             "birth_address": "test street 45",
                             "birth_city": "Test city",
                             "birth_country": "NL",
@@ -3101,6 +3173,13 @@
             },
             "example": {
                 "additional_data": {
+                    "attached_files": [
+                        {
+                            "description": "My passport scan",
+                            "doc_type": "passport",
+                            "path": "https://drive.google.com/open?id=1EclbGeo8Y3UWg3KSF7ebmwcK7ddLTtC7m3aHZ1qMnjE"
+                        }
+                    ],
                     "birth_address": "test street 45",
                     "birth_city": "Test city",
                     "birth_country": "NL",
@@ -3276,6 +3355,13 @@
             },
             "example": {
                 "additional_data": {
+                    "attached_files": [
+                        {
+                            "description": "My passport scan",
+                            "doc_type": "passport",
+                            "path": "https://drive.google.com/open?id=1EclbGeo8Y3UWg3KSF7ebmwcK7ddLTtC7m3aHZ1qMnjE"
+                        }
+                    ],
                     "birth_address": "test street 45",
                     "birth_city": "Test city",
                     "birth_country": "NL",

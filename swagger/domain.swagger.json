@@ -1705,6 +1705,14 @@
                     "type": "string",
                     "title": "For companies located in Singapore, the corresponding company registration number has to be given. For Singapore citizens and permanent residents, please provide NRIC or Passport No. For Singapore companies, please provide RCBID as it appears in RCB Certificate. For Singapore societies, please provide RCBID as it appears in ROS Certificate.\nApplicable to: .com.sg, .no, .ro, .sg"
                 },
+                "customer_uin": {
+                    "type": "string",
+                    "title": "Identification number of domain owner document that proves his identity (e.g. passport number, number of driving license or else in case if domain owner is a private person; chamber of commerce registration number, taxpayer number or else in case of legal entity)\nApplicable for all TLDs which require documents to complete operation with domain (e.g. .bg, .cn etc.)"
+                },
+                "customer_uin_doc_type": {
+                    "title": "Type of the domain owner document used to prove his identity (e.g. passport, driving license or else in case if domain owner is a private person; chamber of commerce extract, business certificate or else in case of legal entity)\nApplicable for all TLDs which require documents to complete operation with domain (e.g. .bg, .cn etc.)",
+                    "$ref": "#/definitions/domainUINDocumentType"
+                },
                 "domain_name_variants": {
                     "type": "array",
                     "title": "The domain name variants should be an array of strings, representing appropriate names\nApplicable to: .barcelona, .cat",
@@ -1825,6 +1833,11 @@
                 "auth_code": "",
                 "bank_acceptance": "",
                 "company_registration_number": "XX123456789X01",
+                "customer_uin": "374892173498127349",
+                "customer_uin_doc_type": {
+                    "description": "Singapore Personal Access ID",
+                    "doc_type": "singpass"
+                },
                 "domain_name_variants": [
                     "xn--домен.cat"
                 ],
@@ -2285,6 +2298,11 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
+                    "customer_uin": "374892173498127349",
+                    "customer_uin_doc_type": {
+                        "description": "Singapore Personal Access ID",
+                        "doc_type": "singpass"
+                    },
                     "domain_name_variants": [
                         "xn--домен.cat"
                     ],
@@ -2401,6 +2419,11 @@
                         "auth_code": "",
                         "bank_acceptance": "",
                         "company_registration_number": "XX123456789X01",
+                        "customer_uin": "374892173498127349",
+                        "customer_uin_doc_type": {
+                            "description": "Singapore Personal Access ID",
+                            "doc_type": "singpass"
+                        },
                         "domain_name_variants": [
                             "xn--домен.cat"
                         ],
@@ -2484,6 +2507,11 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
+                    "customer_uin": "374892173498127349",
+                    "customer_uin_doc_type": {
+                        "description": "Singapore Personal Access ID",
+                        "doc_type": "singpass"
+                    },
                     "domain_name_variants": [
                         "xn--домен.cat"
                     ],
@@ -2674,6 +2702,11 @@
                         "auth_code": "",
                         "bank_acceptance": "",
                         "company_registration_number": "XX123456789X01",
+                        "customer_uin": "374892173498127349",
+                        "customer_uin_doc_type": {
+                            "description": "Singapore Personal Access ID",
+                            "doc_type": "singpass"
+                        },
                         "domain_name_variants": [
                             "xn--домен.cat"
                         ],
@@ -3187,6 +3220,11 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
+                    "customer_uin": "374892173498127349",
+                    "customer_uin_doc_type": {
+                        "description": "Singapore Personal Access ID",
+                        "doc_type": "singpass"
+                    },
                     "domain_name_variants": [
                         "xn--домен.cat"
                     ],
@@ -3484,6 +3522,11 @@
                                 "auth_code": "",
                                 "bank_acceptance": "",
                                 "company_registration_number": "XX123456789X01",
+                                "customer_uin": "374892173498127349",
+                                "customer_uin_doc_type": {
+                                    "description": "Singapore Personal Access ID",
+                                    "doc_type": "singpass"
+                                },
                                 "domain_name_variants": [
                                     "xn--домен.cat"
                                 ],
@@ -3677,6 +3720,11 @@
                             "auth_code": "",
                             "bank_acceptance": "",
                             "company_registration_number": "XX123456789X01",
+                            "customer_uin": "374892173498127349",
+                            "customer_uin_doc_type": {
+                                "description": "Singapore Personal Access ID",
+                                "doc_type": "singpass"
+                            },
                             "domain_name_variants": [
                                 "xn--домен.cat"
                             ],
@@ -4267,6 +4315,11 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
+                    "customer_uin": "374892173498127349",
+                    "customer_uin_doc_type": {
+                        "description": "Singapore Personal Access ID",
+                        "doc_type": "singpass"
+                    },
                     "domain_name_variants": [
                         "xn--домен.cat"
                     ],
@@ -4789,6 +4842,24 @@
                 "id": 0
             }
         },
+        "domainUINDocumentType": {
+            "type": "object",
+            "title": "UINDocumentType",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "title": "Brief description of the document used to prove domain owner's identity"
+                },
+                "doc_type": {
+                    "type": "string",
+                    "title": "Type of the document used to prove domain owner's identity"
+                }
+            },
+            "example": {
+                "description": "Singapore Personal Access ID",
+                "doc_type": "singpass"
+            }
+        },
         "domainUpdateAdditionalData": {
             "type": "object",
             "title": "UpdateAdditionalData",
@@ -4808,6 +4879,14 @@
                 "company_registration_number": {
                     "type": "string",
                     "title": "For companies located in Singapore, the corresponding company registration number has to be given. For Singapore citizens and permanent residents, please provide NRIC or Passport No. For Singapore companies, please provide RCBID as it appears in RCB Certificate. For Singapore societies, please provide RCBID as it appears in ROS Certificate.\nApplicable to: .com.sg, .no, .ro, .sg"
+                },
+                "customer_uin": {
+                    "type": "string",
+                    "title": "Identification number of domain owner document that proves his identity (e.g. passport number, number of driving license or else in case if domain owner is a private person; chamber of commerce registration number, taxpayer number or else in case of legal entity)\nApplicable for all TLDs which require documents to complete operation with domain (e.g. .bg, .cn etc.)"
+                },
+                "customer_uin_doc_type": {
+                    "title": "Type of the domain owner document used to prove his identity (e.g. passport, driving license or else in case if domain owner is a private person; chamber of commerce extract, business certificate or else in case of legal entity)\nApplicable for all TLDs which require documents to complete operation with domain (e.g. .bg, .cn etc.)",
+                    "$ref": "#/definitions/domainUINDocumentType"
                 },
                 "domain_name_variants": {
                     "type": "array",
@@ -4866,6 +4945,11 @@
                 "admin_sing_pass_id": "",
                 "auth_code": "",
                 "company_registration_number": "XX123456789X02",
+                "customer_uin": "374892173498127349",
+                "customer_uin_doc_type": {
+                    "description": "Singapore Personal Access ID",
+                    "doc_type": "singpass"
+                },
                 "domain_name_variants": [
                     "xn--домен.cat"
                 ],
@@ -4999,6 +5083,11 @@
                     "admin_sing_pass_id": "",
                     "auth_code": "",
                     "company_registration_number": "XX123456789X02",
+                    "customer_uin": "374892173498127349",
+                    "customer_uin_doc_type": {
+                        "description": "Singapore Personal Access ID",
+                        "doc_type": "singpass"
+                    },
                     "domain_name_variants": [
                         "xn--домен.cat"
                     ],
