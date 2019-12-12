@@ -3878,6 +3878,161 @@
                 }
             }
         },
+        "/v1beta/spam-expert/domains": {
+            "post": {
+                "tags": [
+                    "SEDomain"
+                ],
+                "summary": "Create domain",
+                "operationId": "CreateDomainMixin7",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/se_domainCreateDomainRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/responseBoolResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/spam-expert/domains/{domain_name}": {
+            "get": {
+                "tags": [
+                    "SEDomain"
+                ],
+                "summary": "Get domain",
+                "operationId": "GetDomainMixin7",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Domain full name",
+                        "name": "domain_name",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "default": false,
+                        "description": "Indicates, whether records should be displayed in output.",
+                        "name": "with_records",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Indicates if old subscriptions backward compatibility is used.",
+                        "name": "bundle",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/se_domainGetDomainResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "SEDomain"
+                ],
+                "summary": "Update domain",
+                "operationId": "UpdateDomainMixin7",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Domain full name",
+                        "name": "domain_name",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/se_domainUpdateDomainRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/responseBoolResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "SEDomain"
+                ],
+                "summary": "Delete domain",
+                "operationId": "DeleteDomainMixin7",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Domain full name",
+                        "name": "domain_name",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Indicates if old subscriptions backward compatibility is used.",
+                        "name": "bundle",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/responseBoolResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
         "/v1beta/spam-expert/generate-login-url": {
             "post": {
                 "tags": [
@@ -22543,6 +22698,387 @@
                 "success": false
             }
         },
+        "se_domainAliasUpdates": {
+            "type": "object",
+            "title": "AliasUpdates",
+            "properties": {
+                "add": {
+                    "type": "array",
+                    "title": "Array of aliases to add",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "remove": {
+                    "type": "array",
+                    "title": "Array of aliases to remove",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "example": {
+                "add": [
+                    "alias-to-add-example.com"
+                ],
+                "remove": [
+                    "alias-to-remove-example.com"
+                ]
+            }
+        },
+        "se_domainCreateDomainRequest": {
+            "type": "object",
+            "title": "CreateDomainRequest",
+            "properties": {
+                "aliases": {
+                    "type": "array",
+                    "title": "Array of aliases",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "bundle": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if old subscriptions backward compatibility is used"
+                },
+                "destinations": {
+                    "type": "array",
+                    "title": "Array of destinations",
+                    "items": {
+                        "$ref": "#/definitions/se_domainDestination"
+                    }
+                },
+                "domain_name": {
+                    "type": "string",
+                    "title": "Domain full name"
+                },
+                "products": {
+                    "title": "Indicates which products are enabled",
+                    "$ref": "#/definitions/se_domainProducts"
+                }
+            },
+            "example": {
+                "aliases": [
+                    "alias.example.com"
+                ],
+                "bundle": false,
+                "destinations": [
+                    {
+                        "hostname": "dest.example.com",
+                        "port": 25
+                    }
+                ],
+                "domain_name": "example.com",
+                "products": {
+                    "archiving": false,
+                    "incoming": false,
+                    "outgoing": false
+                }
+            }
+        },
+        "se_domainDestination": {
+            "type": "object",
+            "title": "Destination",
+            "properties": {
+                "hostname": {
+                    "type": "string",
+                    "title": "Destination host name"
+                },
+                "port": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Destination port"
+                }
+            },
+            "example": {
+                "hostname": "dest.example.com",
+                "port": 25
+            }
+        },
+        "se_domainDomain": {
+            "type": "object",
+            "title": "Domain",
+            "properties": {
+                "bundle": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "The bundle"
+                },
+                "domain_name": {
+                    "type": "string",
+                    "title": "Domain full name"
+                },
+                "expiration_date": {
+                    "type": "string",
+                    "title": "Expiration date"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Domain ID"
+                },
+                "is_active": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if it is active"
+                },
+                "order_id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Order ID"
+                },
+                "products": {
+                    "title": "Indicates which products are enabled",
+                    "$ref": "#/definitions/se_domainProducts"
+                },
+                "records": {
+                    "title": "Array of records",
+                    "$ref": "#/definitions/se_domainRecords"
+                },
+                "reseller_id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Reseller ID"
+                },
+                "smtp_password": {
+                    "type": "string",
+                    "title": "SMTP password"
+                },
+                "user_email": {
+                    "type": "string",
+                    "title": "User email"
+                },
+                "user_password": {
+                    "type": "string",
+                    "title": "User password"
+                },
+                "with_outgoing_filter": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "With outgoing filter"
+                }
+            },
+            "example": {
+                "bundle": false,
+                "domain_name": "example-filter.nl",
+                "expiration_date": "2018-08-21 09:03:38",
+                "id": 0,
+                "is_active": false,
+                "order_id": 0,
+                "products": {
+                    "archiving": false,
+                    "incoming": false,
+                    "outgoing": false
+                },
+                "records": {
+                    "aliases": [
+                        "alias.example.com"
+                    ],
+                    "destinations": [
+                        {
+                            "hostname": "dest.example.com",
+                            "port": 25
+                        }
+                    ],
+                    "outgoing_user_ips": [
+                        "123.123.123.123"
+                    ]
+                },
+                "reseller_id": 0,
+                "smtp_password": "567example912",
+                "user_email": "admin@example-filter.nl",
+                "user_password": "123example567",
+                "with_outgoing_filter": false
+            }
+        },
+        "se_domainGetDomainResponse": {
+            "type": "object",
+            "title": "GetDomainResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "Response data",
+                    "$ref": "#/definitions/se_domainDomain"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates that the Openprovider system is temporarily unavailable because of maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "Contains warning responses if any",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "bundle": false,
+                    "domain_name": "example-filter.nl",
+                    "expiration_date": "2018-08-21 09:03:38",
+                    "id": 0,
+                    "is_active": false,
+                    "order_id": 0,
+                    "products": {
+                        "archiving": false,
+                        "incoming": false,
+                        "outgoing": false
+                    },
+                    "records": {
+                        "aliases": [
+                            "alias.example.com"
+                        ],
+                        "destinations": [
+                            {
+                                "hostname": "dest.example.com",
+                                "port": 25
+                            }
+                        ],
+                        "outgoing_user_ips": [
+                            "123.123.123.123"
+                        ]
+                    },
+                    "reseller_id": 0,
+                    "smtp_password": "567example912",
+                    "user_email": "admin@example-filter.nl",
+                    "user_password": "123example567",
+                    "with_outgoing_filter": false
+                },
+                "desc": ""
+            }
+        },
+        "se_domainProducts": {
+            "type": "object",
+            "title": "Products",
+            "properties": {
+                "archiving": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if archiving enabled"
+                },
+                "incoming": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if incoming enabled"
+                },
+                "outgoing": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if outgoing enabled"
+                }
+            },
+            "example": {
+                "archiving": false,
+                "incoming": false,
+                "outgoing": false
+            }
+        },
+        "se_domainRecords": {
+            "type": "object",
+            "title": "Records",
+            "properties": {
+                "aliases": {
+                    "type": "array",
+                    "title": "Array of aliases",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "destinations": {
+                    "type": "array",
+                    "title": "Array of destinations",
+                    "items": {
+                        "$ref": "#/definitions/se_domainDestination"
+                    }
+                },
+                "outgoing_user_ips": {
+                    "type": "array",
+                    "title": "Array of outgoing user IP addresses",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "example": {
+                "aliases": [
+                    "alias.example.com"
+                ],
+                "destinations": [
+                    {
+                        "hostname": "dest.example.com",
+                        "port": 25
+                    }
+                ],
+                "outgoing_user_ips": [
+                    "123.123.123.123"
+                ]
+            }
+        },
+        "se_domainUpdateDomainRequest": {
+            "type": "object",
+            "title": "UpdateDomainRequest",
+            "properties": {
+                "aliases": {
+                    "title": "Aliases grouped by action",
+                    "$ref": "#/definitions/se_domainAliasUpdates"
+                },
+                "bundle": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if old subscriptions backward compatibility is used"
+                },
+                "destinations": {
+                    "type": "array",
+                    "title": "Array of destinations",
+                    "items": {
+                        "$ref": "#/definitions/se_domainDestination"
+                    }
+                },
+                "domain_name": {
+                    "type": "string",
+                    "title": "Domain full name"
+                },
+                "products": {
+                    "title": "Indicates which products are enabled",
+                    "$ref": "#/definitions/se_domainProducts"
+                }
+            },
+            "example": {
+                "aliases": {
+                    "add": [
+                        "alias-to-add-example.com"
+                    ],
+                    "remove": [
+                        "alias-to-remove-example.com"
+                    ]
+                },
+                "bundle": false,
+                "destinations": [
+                    {
+                        "hostname": "dest.example.com",
+                        "port": 25
+                    }
+                ],
+                "domain_name": "example.com",
+                "products": {
+                    "archiving": false,
+                    "incoming": false,
+                    "outgoing": false
+                }
+            }
+        },
         "settingsGetSettingsResponse": {
             "type": "object",
             "title": "GetSettingsResponse",
@@ -27190,6 +27726,12 @@
                 "Settings",
                 "Statistics",
                 "TagService"
+            ]
+        },
+        {
+            "name": "Spam Experts",
+            "tags": [
+                "SEDomain"
             ]
         },
         {
