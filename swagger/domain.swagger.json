@@ -1732,6 +1732,14 @@
                     "type": "string",
                     "title": "The fTLD token required for registration and data in owner handle must be exactly the same as in token. You need to request token from registry\nApplicable to: .bank, .insurance"
                 },
+                "gay_donation_acceptance": {
+                    "type": "string",
+                    "title": "The .gay donation acceptance value should be set to 1\nApplicable to: .gay"
+                },
+                "gay_rights_protection_acceptance": {
+                    "type": "string",
+                    "title": "The .gay rights protection acceptance value should be set to 1\nApplicable to: .gay"
+                },
                 "id_number": {
                     "type": "string",
                     "title": "The identification number\nApplicable to: .com.au, .net.au, .org.au"
@@ -1792,10 +1800,6 @@
                     "type": "string",
                     "title": "The self service\nApplicable to: .feedback"
                 },
-                "send_verification_email": {
-                    "type": "string",
-                    "title": "The send verification email value should be set to 1 if you want Openprovider to send a verification domain to registrant or to 0 if you want to do this yourself\nApplicable to: .ngo, .ong"
-                },
                 "trademark": {
                     "type": "string",
                     "title": "The trademark\nApplicable to: .ca"
@@ -1844,6 +1848,8 @@
                 "eligibility_type": "",
                 "eligibility_type_relationship": "",
                 "ftld_token": "",
+                "gay_donation_acceptance": "1",
+                "gay_rights_protection_acceptance": "1",
                 "id_number": "123456789X",
                 "id_type": "",
                 "idn_script": "SPA",
@@ -1859,7 +1865,6 @@
                 "passport_number": "X123456",
                 "rurf_blocked_domains": "",
                 "self_service": "1",
-                "send_verification_email": "",
                 "trademark": "1",
                 "trademark_id": "",
                 "travel_acceptance": "1",
@@ -2309,6 +2314,8 @@
                     "eligibility_type": "",
                     "eligibility_type_relationship": "",
                     "ftld_token": "",
+                    "gay_donation_acceptance": "1",
+                    "gay_rights_protection_acceptance": "1",
                     "id_number": "123456789X",
                     "id_type": "",
                     "idn_script": "SPA",
@@ -2324,7 +2331,6 @@
                     "passport_number": "X123456",
                     "rurf_blocked_domains": "",
                     "self_service": "1",
-                    "send_verification_email": "",
                     "trademark": "1",
                     "trademark_id": "",
                     "travel_acceptance": "1",
@@ -2430,6 +2436,8 @@
                         "eligibility_type": "",
                         "eligibility_type_relationship": "",
                         "ftld_token": "",
+                        "gay_donation_acceptance": "1",
+                        "gay_rights_protection_acceptance": "1",
                         "id_number": "123456789X",
                         "id_type": "",
                         "idn_script": "SPA",
@@ -2445,7 +2453,6 @@
                         "passport_number": "X123456",
                         "rurf_blocked_domains": "",
                         "self_service": "1",
-                        "send_verification_email": "",
                         "trademark": "1",
                         "trademark_id": "",
                         "travel_acceptance": "1",
@@ -2518,6 +2525,8 @@
                     "eligibility_type": "",
                     "eligibility_type_relationship": "",
                     "ftld_token": "",
+                    "gay_donation_acceptance": "1",
+                    "gay_rights_protection_acceptance": "1",
                     "id_number": "123456789X",
                     "id_type": "",
                     "idn_script": "SPA",
@@ -2533,7 +2542,6 @@
                     "passport_number": "X123456",
                     "rurf_blocked_domains": "",
                     "self_service": "1",
-                    "send_verification_email": "",
                     "trademark": "1",
                     "trademark_id": "",
                     "travel_acceptance": "1",
@@ -2713,6 +2721,8 @@
                         "eligibility_type": "",
                         "eligibility_type_relationship": "",
                         "ftld_token": "",
+                        "gay_donation_acceptance": "1",
+                        "gay_rights_protection_acceptance": "1",
                         "id_number": "123456789X",
                         "id_type": "",
                         "idn_script": "SPA",
@@ -2728,7 +2738,6 @@
                         "passport_number": "X123456",
                         "rurf_blocked_domains": "",
                         "self_service": "1",
-                        "send_verification_email": "",
                         "trademark": "1",
                         "trademark_id": "",
                         "travel_acceptance": "1",
@@ -3231,6 +3240,8 @@
                     "eligibility_type": "",
                     "eligibility_type_relationship": "",
                     "ftld_token": "",
+                    "gay_donation_acceptance": "1",
+                    "gay_rights_protection_acceptance": "1",
                     "id_number": "123456789X",
                     "id_type": "",
                     "idn_script": "SPA",
@@ -3246,7 +3257,6 @@
                     "passport_number": "X123456",
                     "rurf_blocked_domains": "",
                     "self_service": "1",
-                    "send_verification_email": "",
                     "trademark": "1",
                     "trademark_id": "",
                     "travel_acceptance": "1",
@@ -3533,6 +3543,8 @@
                                 "eligibility_type": "",
                                 "eligibility_type_relationship": "",
                                 "ftld_token": "",
+                                "gay_donation_acceptance": "1",
+                                "gay_rights_protection_acceptance": "1",
                                 "id_number": "123456789X",
                                 "id_type": "",
                                 "idn_script": "SPA",
@@ -3548,7 +3560,6 @@
                                 "passport_number": "X123456",
                                 "rurf_blocked_domains": "",
                                 "self_service": "1",
-                                "send_verification_email": "",
                                 "trademark": "1",
                                 "trademark_id": "",
                                 "travel_acceptance": "1",
@@ -3731,6 +3742,8 @@
                             "eligibility_type": "",
                             "eligibility_type_relationship": "",
                             "ftld_token": "",
+                            "gay_donation_acceptance": "1",
+                            "gay_rights_protection_acceptance": "1",
                             "id_number": "123456789X",
                             "id_type": "",
                             "idn_script": "SPA",
@@ -3746,7 +3759,6 @@
                             "passport_number": "X123456",
                             "rurf_blocked_domains": "",
                             "self_service": "1",
-                            "send_verification_email": "",
                             "trademark": "1",
                             "trademark_id": "",
                             "travel_acceptance": "1",
@@ -4326,6 +4338,8 @@
                     "eligibility_type": "",
                     "eligibility_type_relationship": "",
                     "ftld_token": "",
+                    "gay_donation_acceptance": "1",
+                    "gay_rights_protection_acceptance": "1",
                     "id_number": "123456789X",
                     "id_type": "",
                     "idn_script": "SPA",
@@ -4341,7 +4355,6 @@
                     "passport_number": "X123456",
                     "rurf_blocked_domains": "",
                     "self_service": "1",
-                    "send_verification_email": "",
                     "trademark": "1",
                     "trademark_id": "",
                     "travel_acceptance": "1",
@@ -4471,6 +4484,14 @@
                     "type": "string",
                     "title": "For companies located in Singapore, the corresponding company registration number has to be given. For Singapore citizens and permanent residents, please provide NRIC or Passport No. For Singapore companies, please provide RCBID as it appears in RCB Certificate. For Singapore societies, please provide RCBID as it appears in ROS Certificate.\nApplicable to: .com.sg, .no, .ro, .sg"
                 },
+                "customer_uin": {
+                    "type": "string",
+                    "title": "Identification number of domain owner document that proves his identity (e.g. passport number, number of driving license or else in case if domain owner is a private person; chamber of commerce registration number, taxpayer number or else in case of legal entity)\nApplicable for all TLDs which require documents to complete operation with domain (e.g. .bg, .cn etc.)"
+                },
+                "customer_uin_doc_type": {
+                    "title": "Type of the domain owner document used to prove his identity (e.g. passport, driving license or else in case if domain owner is a private person; chamber of commerce extract, business certificate or else in case of legal entity)\nApplicable for all TLDs which require documents to complete operation with domain (e.g. .bg, .cn etc.)",
+                    "$ref": "#/definitions/domainUINDocumentType"
+                },
                 "domain_name_variants": {
                     "type": "array",
                     "title": "The domain name variants should be an array of strings, representing appropriate names\nApplicable to: .cat",
@@ -4481,6 +4502,14 @@
                 "ftld_token": {
                     "type": "string",
                     "title": "The fTLD token and data in owner handle must be exactly the same as in token. You need to request token from registry\nApplicable to: .bank, .insurance"
+                },
+                "gay_donation_acceptance": {
+                    "type": "string",
+                    "title": "The .gay donation acceptance value should be set to 1\nApplicable to: .gay"
+                },
+                "gay_rights_protection_acceptance": {
+                    "type": "string",
+                    "title": "The .gay rights protection acceptance value should be set to 1\nApplicable to: .gay"
                 },
                 "idn_script": {
                     "type": "string",
@@ -4531,10 +4560,17 @@
                 "admin_sing_pass_id": "",
                 "auth_code": "",
                 "company_registration_number": "XX123456789X03",
+                "customer_uin": "374892173498127349",
+                "customer_uin_doc_type": {
+                    "description": "Singapore Personal Access ID",
+                    "doc_type": "singpass"
+                },
                 "domain_name_variants": [
                     "xn--домен.cat"
                 ],
                 "ftld_token": "",
+                "gay_donation_acceptance": "1",
+                "gay_rights_protection_acceptance": "1",
                 "idn_script": "SPA",
                 "intended_use": "generic",
                 "legal_type": "Individual",
@@ -4663,10 +4699,17 @@
                     "admin_sing_pass_id": "",
                     "auth_code": "",
                     "company_registration_number": "XX123456789X03",
+                    "customer_uin": "374892173498127349",
+                    "customer_uin_doc_type": {
+                        "description": "Singapore Personal Access ID",
+                        "doc_type": "singpass"
+                    },
                     "domain_name_variants": [
                         "xn--домен.cat"
                     ],
                     "ftld_token": "",
+                    "gay_donation_acceptance": "1",
+                    "gay_rights_protection_acceptance": "1",
                     "idn_script": "SPA",
                     "intended_use": "generic",
                     "legal_type": "Individual",
@@ -4927,10 +4970,6 @@
                     "type": "string",
                     "title": "The passport number. Required in case if domain requester is a private individual\nApplicable to: .co.hu, .hu"
                 },
-                "send_verification_email": {
-                    "type": "string",
-                    "title": "The send verification email value should be set to 1 if you want Openprovider to send a verification domain to registrant or to 0 if you want to do this yourself\nApplicable to: .ngo, .ong"
-                },
                 "vat": {
                     "type": "string",
                     "title": "The vat number. Required in case if domain requester is a legal entity\nApplicable to: .co.hu, .hu"
@@ -4961,7 +5000,6 @@
                 "ngo_ong_eligibility_acceptance": "",
                 "ngo_ong_policy_acceptance": "",
                 "passport_number": "X123457",
-                "send_verification_email": "",
                 "vat": "11843009X",
                 "verification_code": ""
             }
@@ -4970,6 +5008,11 @@
             "type": "object",
             "title": "UpdateDomainRequest",
             "properties": {
+                "accept_update_fee": {
+                    "type": "number",
+                    "format": "double",
+                    "title": "Amount that will be charged for domain modification"
+                },
                 "additional_data": {
                     "title": "Additional domain data",
                     "$ref": "#/definitions/domainUpdateAdditionalData"
@@ -5078,6 +5121,7 @@
                 }
             },
             "example": {
+                "accept_update_fee": 0,
                 "additional_data": {
                     "abogado_acceptance": "",
                     "admin_sing_pass_id": "",
@@ -5099,7 +5143,6 @@
                     "ngo_ong_eligibility_acceptance": "",
                     "ngo_ong_policy_acceptance": "",
                     "passport_number": "X123457",
-                    "send_verification_email": "",
                     "vat": "11843009X",
                     "verification_code": ""
                 },
@@ -5612,6 +5655,7 @@
                     "restrictions": [
                         "Los dominios premium (cortos y nombres genéricos) son más caros para registros y renovaciones"
                     ],
+                    "soft_quarantine_period": 44,
                     "status": "ACT",
                     "supported_application_mode": [
                         {
@@ -5865,6 +5909,7 @@
                             "restrictions": [
                                 "Los dominios premium (cortos y nombres genéricos) son más caros para registros y renovaciones"
                             ],
+                            "soft_quarantine_period": 44,
                             "status": "ACT",
                             "supported_application_mode": [
                                 {
@@ -6060,6 +6105,7 @@
                         "restrictions": [
                             "Los dominios premium (cortos y nombres genéricos) son más caros para registros y renovaciones"
                         ],
+                        "soft_quarantine_period": 44,
                         "status": "ACT",
                         "supported_application_mode": [
                             {
@@ -6428,6 +6474,11 @@
                         "type": "string"
                     }
                 },
+                "soft_quarantine_period": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Extension soft quarantine period"
+                },
                 "status": {
                     "type": "string",
                     "title": "Extension status"
@@ -6619,6 +6670,7 @@
                 "restrictions": [
                     "Los dominios premium (cortos y nombres genéricos) son más caros para registros y renovaciones"
                 ],
+                "soft_quarantine_period": 44,
                 "status": "ACT",
                 "supported_application_mode": [
                     {

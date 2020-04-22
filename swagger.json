@@ -750,6 +750,34 @@
                         "description": "Nameserver name search pattern. Wildcatd (*) can be used.",
                         "name": "pattern",
                         "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "default": 100,
+                        "description": "Limits the number of objects in the output.",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Used to retrieve all objects from a certain offset up to the limit.",
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "default": "asc",
+                        "description": "Sorting type (asc/desc).",
+                        "name": "order",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "default": "name",
+                        "description": "Field for sorting output. Possible values: id, name.",
+                        "name": "order_by",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -8861,6 +8889,14 @@
                     "type": "string",
                     "title": "The fTLD token required for registration and data in owner handle must be exactly the same as in token. You need to request token from registry\nApplicable to: .bank, .insurance"
                 },
+                "gay_donation_acceptance": {
+                    "type": "string",
+                    "title": "The .gay donation acceptance value should be set to 1\nApplicable to: .gay"
+                },
+                "gay_rights_protection_acceptance": {
+                    "type": "string",
+                    "title": "The .gay rights protection acceptance value should be set to 1\nApplicable to: .gay"
+                },
                 "id_number": {
                     "type": "string",
                     "title": "The identification number\nApplicable to: .com.au, .net.au, .org.au"
@@ -8921,10 +8957,6 @@
                     "type": "string",
                     "title": "The self service\nApplicable to: .feedback"
                 },
-                "send_verification_email": {
-                    "type": "string",
-                    "title": "The send verification email value should be set to 1 if you want Openprovider to send a verification domain to registrant or to 0 if you want to do this yourself\nApplicable to: .ngo, .ong"
-                },
                 "trademark": {
                     "type": "string",
                     "title": "The trademark\nApplicable to: .ca"
@@ -8973,6 +9005,8 @@
                 "eligibility_type": "",
                 "eligibility_type_relationship": "",
                 "ftld_token": "",
+                "gay_donation_acceptance": "1",
+                "gay_rights_protection_acceptance": "1",
                 "id_number": "123456789X",
                 "id_type": "",
                 "idn_script": "SPA",
@@ -8988,7 +9022,6 @@
                 "passport_number": "X123456",
                 "rurf_blocked_domains": "",
                 "self_service": "1",
-                "send_verification_email": "",
                 "trademark": "1",
                 "trademark_id": "",
                 "travel_acceptance": "1",
@@ -9438,6 +9471,8 @@
                     "eligibility_type": "",
                     "eligibility_type_relationship": "",
                     "ftld_token": "",
+                    "gay_donation_acceptance": "1",
+                    "gay_rights_protection_acceptance": "1",
                     "id_number": "123456789X",
                     "id_type": "",
                     "idn_script": "SPA",
@@ -9453,7 +9488,6 @@
                     "passport_number": "X123456",
                     "rurf_blocked_domains": "",
                     "self_service": "1",
-                    "send_verification_email": "",
                     "trademark": "1",
                     "trademark_id": "",
                     "travel_acceptance": "1",
@@ -9559,6 +9593,8 @@
                         "eligibility_type": "",
                         "eligibility_type_relationship": "",
                         "ftld_token": "",
+                        "gay_donation_acceptance": "1",
+                        "gay_rights_protection_acceptance": "1",
                         "id_number": "123456789X",
                         "id_type": "",
                         "idn_script": "SPA",
@@ -9574,7 +9610,6 @@
                         "passport_number": "X123456",
                         "rurf_blocked_domains": "",
                         "self_service": "1",
-                        "send_verification_email": "",
                         "trademark": "1",
                         "trademark_id": "",
                         "travel_acceptance": "1",
@@ -9647,6 +9682,8 @@
                     "eligibility_type": "",
                     "eligibility_type_relationship": "",
                     "ftld_token": "",
+                    "gay_donation_acceptance": "1",
+                    "gay_rights_protection_acceptance": "1",
                     "id_number": "123456789X",
                     "id_type": "",
                     "idn_script": "SPA",
@@ -9662,7 +9699,6 @@
                     "passport_number": "X123456",
                     "rurf_blocked_domains": "",
                     "self_service": "1",
-                    "send_verification_email": "",
                     "trademark": "1",
                     "trademark_id": "",
                     "travel_acceptance": "1",
@@ -9842,6 +9878,8 @@
                         "eligibility_type": "",
                         "eligibility_type_relationship": "",
                         "ftld_token": "",
+                        "gay_donation_acceptance": "1",
+                        "gay_rights_protection_acceptance": "1",
                         "id_number": "123456789X",
                         "id_type": "",
                         "idn_script": "SPA",
@@ -9857,7 +9895,6 @@
                         "passport_number": "X123456",
                         "rurf_blocked_domains": "",
                         "self_service": "1",
-                        "send_verification_email": "",
                         "trademark": "1",
                         "trademark_id": "",
                         "travel_acceptance": "1",
@@ -10360,6 +10397,8 @@
                     "eligibility_type": "",
                     "eligibility_type_relationship": "",
                     "ftld_token": "",
+                    "gay_donation_acceptance": "1",
+                    "gay_rights_protection_acceptance": "1",
                     "id_number": "123456789X",
                     "id_type": "",
                     "idn_script": "SPA",
@@ -10375,7 +10414,6 @@
                     "passport_number": "X123456",
                     "rurf_blocked_domains": "",
                     "self_service": "1",
-                    "send_verification_email": "",
                     "trademark": "1",
                     "trademark_id": "",
                     "travel_acceptance": "1",
@@ -10662,6 +10700,8 @@
                                 "eligibility_type": "",
                                 "eligibility_type_relationship": "",
                                 "ftld_token": "",
+                                "gay_donation_acceptance": "1",
+                                "gay_rights_protection_acceptance": "1",
                                 "id_number": "123456789X",
                                 "id_type": "",
                                 "idn_script": "SPA",
@@ -10677,7 +10717,6 @@
                                 "passport_number": "X123456",
                                 "rurf_blocked_domains": "",
                                 "self_service": "1",
-                                "send_verification_email": "",
                                 "trademark": "1",
                                 "trademark_id": "",
                                 "travel_acceptance": "1",
@@ -10860,6 +10899,8 @@
                             "eligibility_type": "",
                             "eligibility_type_relationship": "",
                             "ftld_token": "",
+                            "gay_donation_acceptance": "1",
+                            "gay_rights_protection_acceptance": "1",
                             "id_number": "123456789X",
                             "id_type": "",
                             "idn_script": "SPA",
@@ -10875,7 +10916,6 @@
                             "passport_number": "X123456",
                             "rurf_blocked_domains": "",
                             "self_service": "1",
-                            "send_verification_email": "",
                             "trademark": "1",
                             "trademark_id": "",
                             "travel_acceptance": "1",
@@ -11455,6 +11495,8 @@
                     "eligibility_type": "",
                     "eligibility_type_relationship": "",
                     "ftld_token": "",
+                    "gay_donation_acceptance": "1",
+                    "gay_rights_protection_acceptance": "1",
                     "id_number": "123456789X",
                     "id_type": "",
                     "idn_script": "SPA",
@@ -11470,7 +11512,6 @@
                     "passport_number": "X123456",
                     "rurf_blocked_domains": "",
                     "self_service": "1",
-                    "send_verification_email": "",
                     "trademark": "1",
                     "trademark_id": "",
                     "travel_acceptance": "1",
@@ -11600,6 +11641,14 @@
                     "type": "string",
                     "title": "For companies located in Singapore, the corresponding company registration number has to be given. For Singapore citizens and permanent residents, please provide NRIC or Passport No. For Singapore companies, please provide RCBID as it appears in RCB Certificate. For Singapore societies, please provide RCBID as it appears in ROS Certificate.\nApplicable to: .com.sg, .no, .ro, .sg"
                 },
+                "customer_uin": {
+                    "type": "string",
+                    "title": "Identification number of domain owner document that proves his identity (e.g. passport number, number of driving license or else in case if domain owner is a private person; chamber of commerce registration number, taxpayer number or else in case of legal entity)\nApplicable for all TLDs which require documents to complete operation with domain (e.g. .bg, .cn etc.)"
+                },
+                "customer_uin_doc_type": {
+                    "title": "Type of the domain owner document used to prove his identity (e.g. passport, driving license or else in case if domain owner is a private person; chamber of commerce extract, business certificate or else in case of legal entity)\nApplicable for all TLDs which require documents to complete operation with domain (e.g. .bg, .cn etc.)",
+                    "$ref": "#/definitions/domainUINDocumentType"
+                },
                 "domain_name_variants": {
                     "type": "array",
                     "title": "The domain name variants should be an array of strings, representing appropriate names\nApplicable to: .cat",
@@ -11610,6 +11659,14 @@
                 "ftld_token": {
                     "type": "string",
                     "title": "The fTLD token and data in owner handle must be exactly the same as in token. You need to request token from registry\nApplicable to: .bank, .insurance"
+                },
+                "gay_donation_acceptance": {
+                    "type": "string",
+                    "title": "The .gay donation acceptance value should be set to 1\nApplicable to: .gay"
+                },
+                "gay_rights_protection_acceptance": {
+                    "type": "string",
+                    "title": "The .gay rights protection acceptance value should be set to 1\nApplicable to: .gay"
                 },
                 "idn_script": {
                     "type": "string",
@@ -11660,10 +11717,17 @@
                 "admin_sing_pass_id": "",
                 "auth_code": "",
                 "company_registration_number": "XX123456789X03",
+                "customer_uin": "374892173498127349",
+                "customer_uin_doc_type": {
+                    "description": "Singapore Personal Access ID",
+                    "doc_type": "singpass"
+                },
                 "domain_name_variants": [
                     "xn--\u0434\u043e\u043c\u0435\u043d.cat"
                 ],
                 "ftld_token": "",
+                "gay_donation_acceptance": "1",
+                "gay_rights_protection_acceptance": "1",
                 "idn_script": "SPA",
                 "intended_use": "generic",
                 "legal_type": "Individual",
@@ -11792,10 +11856,17 @@
                     "admin_sing_pass_id": "",
                     "auth_code": "",
                     "company_registration_number": "XX123456789X03",
+                    "customer_uin": "374892173498127349",
+                    "customer_uin_doc_type": {
+                        "description": "Singapore Personal Access ID",
+                        "doc_type": "singpass"
+                    },
                     "domain_name_variants": [
                         "xn--\u0434\u043e\u043c\u0435\u043d.cat"
                     ],
                     "ftld_token": "",
+                    "gay_donation_acceptance": "1",
+                    "gay_rights_protection_acceptance": "1",
                     "idn_script": "SPA",
                     "intended_use": "generic",
                     "legal_type": "Individual",
@@ -12056,10 +12127,6 @@
                     "type": "string",
                     "title": "The passport number. Required in case if domain requester is a private individual\nApplicable to: .co.hu, .hu"
                 },
-                "send_verification_email": {
-                    "type": "string",
-                    "title": "The send verification email value should be set to 1 if you want Openprovider to send a verification domain to registrant or to 0 if you want to do this yourself\nApplicable to: .ngo, .ong"
-                },
                 "vat": {
                     "type": "string",
                     "title": "The vat number. Required in case if domain requester is a legal entity\nApplicable to: .co.hu, .hu"
@@ -12090,7 +12157,6 @@
                 "ngo_ong_eligibility_acceptance": "",
                 "ngo_ong_policy_acceptance": "",
                 "passport_number": "X123457",
-                "send_verification_email": "",
                 "vat": "11843009X",
                 "verification_code": ""
             }
@@ -12099,6 +12165,11 @@
             "type": "object",
             "title": "UpdateDomainRequest",
             "properties": {
+                "accept_update_fee": {
+                    "type": "number",
+                    "format": "double",
+                    "title": "Amount that will be charged for domain modification"
+                },
                 "additional_data": {
                     "title": "Additional domain data",
                     "$ref": "#/definitions/domainUpdateAdditionalData"
@@ -12207,6 +12278,7 @@
                 }
             },
             "example": {
+                "accept_update_fee": 0,
                 "additional_data": {
                     "abogado_acceptance": "",
                     "admin_sing_pass_id": "",
@@ -12228,7 +12300,6 @@
                     "ngo_ong_eligibility_acceptance": "",
                     "ngo_ong_policy_acceptance": "",
                     "passport_number": "X123457",
-                    "send_verification_email": "",
                     "vat": "11843009X",
                     "verification_code": ""
                 },
@@ -13773,8 +13844,12 @@
                     "title": "Product type (Plesk or Virtuozzo)"
                 },
                 "sku_values": {
+                    "type": "object",
                     "title": "List of license SKU values",
-                    "$ref": "#/definitions/licenseSkuValues"
+                    "additionalProperties": {
+                        "type": "boolean",
+                        "format": "boolean"
+                    }
                 },
                 "status": {
                     "type": "string",
@@ -13868,8 +13943,12 @@
                     "title": "Product type (Plesk or Virtuozzo)"
                 },
                 "sku_values": {
+                    "type": "object",
                     "title": "List of license SKU values",
-                    "$ref": "#/definitions/licenseSkuValues"
+                    "additionalProperties": {
+                        "type": "boolean",
+                        "format": "boolean"
+                    }
                 },
                 "title": {
                     "type": "string",
@@ -13879,330 +13958,7 @@
             "example": {
                 "item": "PLESK-12-VPS-WEB-HOST-1M",
                 "product": "plesk",
-                "sku_values": {
-                    "addon_mla2005_w_m": false,
-                    "clnx_m": false,
-                    "email_plsk_20_l": false,
-                    "email_vz_1": false,
-                    "ft_plesk_additional_services_off": false,
-                    "ft_plesk_disable_feature_upgrades": false,
-                    "ft_plesk_disable_google_tools": false,
-                    "ft_plesk_disable_sitebuilder": false,
-                    "ft_plesk_extras_buttons_off": false,
-                    "ft_plesk_fotolia_off": false,
-                    "ft_plesk_newsfeed_off": false,
-                    "ft_plesk_store_button_off": false,
-                    "ft_plesk_virtuozzo_promo_off": false,
-                    "pcs_1c_arm_5ct_pva_m": false,
-                    "pcs_8c_100ct_pva_l_m": false,
-                    "pcs_8c_100vm_pva_m": false,
-                    "pcs_8c_10ct_pva_l_m": false,
-                    "pcs_8c_10vm_pva_m": false,
-                    "pcs_8c_150ct_pva_l_m": false,
-                    "pcs_8c_15vm_pva_m": false,
-                    "pcs_8c_1ct_pva_l_m": false,
-                    "pcs_8c_1vm_pva_m": false,
-                    "pcs_8c_200ct_pva_l_m": false,
-                    "pcs_8c_20ct_pva_l_m": false,
-                    "pcs_8c_20vm_pva_m": false,
-                    "pcs_8c_250ct_pva_l_m": false,
-                    "pcs_8c_2vm_pva_m": false,
-                    "pcs_8c_300ct_pva_l_m": false,
-                    "pcs_8c_30ct_pva_l_m": false,
-                    "pcs_8c_30vm_pva_m": false,
-                    "pcs_8c_350ct_pva_l_m": false,
-                    "pcs_8c_3ct_pva_l_m": false,
-                    "pcs_8c_3vm_pva_m": false,
-                    "pcs_8c_400ct_pva_l_m": false,
-                    "pcs_8c_40ct_pva_l_m": false,
-                    "pcs_8c_40vm_pva_m": false,
-                    "pcs_8c_450ct_pva_l_m": false,
-                    "pcs_8c_4vm_pva_m": false,
-                    "pcs_8c_500ct_pva_l_m": false,
-                    "pcs_8c_50ct_pva_l_m": false,
-                    "pcs_8c_50vm_pva_m": false,
-                    "pcs_8c_5ct_pva_l_m": false,
-                    "pcs_8c_5vm_pva_m": false,
-                    "pcs_8c_60ct_pva_l_m": false,
-                    "pcs_8c_60vm_pva_m": false,
-                    "pcs_8c_6vm_pva_m": false,
-                    "pcs_8c_70ct_pva_l_m": false,
-                    "pcs_8c_70vm_pva_m": false,
-                    "pcs_8c_7vm_pva_m": false,
-                    "pcs_8c_80ct_pva_l_m": false,
-                    "pcs_8c_80vm_pva_m": false,
-                    "pcs_8c_8vm_pva_m": false,
-                    "pcs_8c_90ct_pva_l_m": false,
-                    "pcs_8c_90vm_pva_m": false,
-                    "pcs_8c_9vm_pva_m": false,
-                    "pcs_8c_unlvm_pva_m": false,
-                    "pcs_addon_rlu_m": false,
-                    "pcsci_8c_30vc_pva_m": false,
-                    "pcsci_8c_5vc_pva_m": false,
-                    "pcsci_8c_unlvc_pva_m": false,
-                    "pcsci_addon_ha_m": false,
-                    "pcss_100gb_m": false,
-                    "plsk_add_devp_m": false,
-                    "plsk_add_esp_dw_l_m": false,
-                    "plsk_add_esp_kav_l_m": false,
-                    "plsk_add_kav_m": false,
-                    "plsk_add_lp_m": false,
-                    "plsk_add_lp_unl_m": false,
-                    "plsk_add_mspam_m": false,
-                    "plsk_add_pp_m": false,
-                    "plsk_add_secc_m": false,
-                    "plsk_add_srvs_adv_m": false,
-                    "plsk_add_srvs_m": false,
-                    "plsk_add_ssp_m": false,
-                    "plsk_add_wpb_1000_m": false,
-                    "plsk_add_wpb_100_m": false,
-                    "plsk_add_wpb_10_m": false,
-                    "plsk_add_wpb_30_m": false,
-                    "plsk_add_wpb_ml_m": false,
-                    "plsk_add_wprs_m": false,
-                    "plsk_adm_m": false,
-                    "plsk_ext_acr_bc_1000_m": false,
-                    "plsk_ext_acr_bc_100_m": false,
-                    "plsk_ext_acr_bc_250_m": false,
-                    "plsk_ext_acr_bc_500_m": false,
-                    "plsk_ext_addn_dck_bu_m": false,
-                    "plsk_ext_addn_dck_gr_m": false,
-                    "plsk_ext_addn_dck_st_m": false,
-                    "plsk_ext_bce_kol_e_m": false,
-                    "plsk_ext_bce_kol_f_m": false,
-                    "plsk_ext_bce_kol_l_m": false,
-                    "plsk_ext_bce_kol_m_m": false,
-                    "plsk_ext_bce_kol_p_m": false,
-                    "plsk_ext_bce_kol_s_m": false,
-                    "plsk_ext_bce_kol_st_m": false,
-                    "plsk_ext_bcp_m": false,
-                    "plsk_ext_bg_prem_m": false,
-                    "plsk_ext_bk_site_m": false,
-                    "plsk_ext_c_stk_xo_pe_m": false,
-                    "plsk_ext_c_stk_xo_pr_m": false,
-                    "plsk_ext_cgs_m": false,
-                    "plsk_ext_deev_ap_m": false,
-                    "plsk_ext_deev_as_m": false,
-                    "plsk_ext_deev_fp_m": false,
-                    "plsk_ext_deev_fs_m": false,
-                    "plsk_ext_deev_wp_m": false,
-                    "plsk_ext_deev_ws_m": false,
-                    "plsk_ext_dgvp_m": false,
-                    "plsk_ext_dnss_m": false,
-                    "plsk_ext_dock_m": false,
-                    "plsk_ext_dw_m": false,
-                    "plsk_ext_hp_m": false,
-                    "plsk_ext_i_stk_xo_ag_m": false,
-                    "plsk_ext_i_stk_xo_bu_m": false,
-                    "plsk_ext_i_stk_xo_pe_m": false,
-                    "plsk_ext_i_stk_xo_pr_m": false,
-                    "plsk_ext_ify_1_m": false,
-                    "plsk_ext_ify_250_m": false,
-                    "plsk_ext_ify_30_m": false,
-                    "plsk_ext_ify_unl_m": false,
-                    "plsk_ext_jtk_m": false,
-                    "plsk_ext_kc_m": false,
-                    "plsk_ext_mgc_f_m": false,
-                    "plsk_ext_msrv_m": false,
-                    "plsk_ext_pdsh_srv_m": false,
-                    "plsk_ext_rav_pre_m": false,
-                    "plsk_ext_rav_sh_m": false,
-                    "plsk_ext_rc_adv_m": false,
-                    "plsk_ext_rc_std_m": false,
-                    "plsk_ext_rzad_b_m": false,
-                    "plsk_ext_rzad_l_m": false,
-                    "plsk_ext_rzad_p_m": false,
-                    "plsk_ext_se_i_10_m": false,
-                    "plsk_ext_se_i_1_m": false,
-                    "plsk_ext_se_i_60_m": false,
-                    "plsk_ext_se_i_ar_10_m": false,
-                    "plsk_ext_se_i_ar_1_m": false,
-                    "plsk_ext_se_io_10_m": false,
-                    "plsk_ext_se_io_1_m": false,
-                    "plsk_ext_se_io_60_m": false,
-                    "plsk_ext_se_io_ar_10_m": false,
-                    "plsk_ext_se_io_ar_1_m": false,
-                    "plsk_ext_se_io_ar_60_m": false,
-                    "plsk_ext_se_o_10_m": false,
-                    "plsk_ext_se_o_1_m": false,
-                    "plsk_ext_se_o_60_m": false,
-                    "plsk_ext_se_o_ar_10_m": false,
-                    "plsk_ext_se_o_ar_1_m": false,
-                    "plsk_ext_se_o_ar_60_m": false,
-                    "plsk_ext_sk_10_m": false,
-                    "plsk_ext_sk_1_m": false,
-                    "plsk_ext_sk_30_m": false,
-                    "plsk_ext_sk_unl_m": false,
-                    "plsk_ext_sosh_adv_m": false,
-                    "plsk_ext_sosh_mas_m": false,
-                    "plsk_ext_sosh_sol_m": false,
-                    "plsk_ext_sosh_sta_m": false,
-                    "plsk_ext_spad_m": false,
-                    "plsk_ext_spb_ent_m": false,
-                    "plsk_ext_spb_pre_m": false,
-                    "plsk_ext_stac_m": false,
-                    "plsk_ext_stk_xo_ag_m": false,
-                    "plsk_ext_stk_xo_bu_m": false,
-                    "plsk_ext_stk_xo_pe_m": false,
-                    "plsk_ext_stk_xo_pr_m": false,
-                    "plsk_ext_su_100_m": false,
-                    "plsk_ext_su_10_m": false,
-                    "plsk_ext_su_1_m": false,
-                    "plsk_ext_su_30_m": false,
-                    "plsk_ext_su_unl_m": false,
-                    "plsk_ext_va_dd_la_m": false,
-                    "plsk_ext_va_dd_me_m": false,
-                    "plsk_ext_va_dd_sm_m": false,
-                    "plsk_ext_va_dd_st_m": false,
-                    "plsk_ext_vzrk_m": false,
-                    "plsk_hst_clnx_m": false,
-                    "plsk_hst_m": false,
-                    "plsk_pro_clnx_m": false,
-                    "plsk_pro_m": false,
-                    "plskvps_add_devp_m": false,
-                    "plskvps_add_esp_dw_l_m": false,
-                    "plskvps_add_esp_kav_l_m": false,
-                    "plskvps_add_kav_m": false,
-                    "plskvps_add_lp_m": false,
-                    "plskvps_add_lp_unl_m": false,
-                    "plskvps_add_mspam_m": false,
-                    "plskvps_add_pp_m": false,
-                    "plskvps_add_secc_m": false,
-                    "plskvps_add_srvs_adv_m": false,
-                    "plskvps_add_ssp_m": false,
-                    "plskvps_add_wpb_1000_m": false,
-                    "plskvps_add_wpb_100_m": false,
-                    "plskvps_add_wpb_10_m": false,
-                    "plskvps_add_wpb_30_m": false,
-                    "plskvps_add_wpb_ml_m": false,
-                    "plskvps_add_wprs_m": false,
-                    "plskvps_adm_m": false,
-                    "plskvps_ext_dw_m": false,
-                    "plskvps_ext_stac_m": false,
-                    "plskvps_hst_clnx_m": false,
-                    "plskvps_hst_m": false,
-                    "plskvps_pro_clnx_m": false,
-                    "plskvps_pro_m": false,
-                    "plskvps_sol_bs_m": false,
-                    "plskvps_sol_ws_m": false,
-                    "pvc_2c_100_pim_l_m": false,
-                    "pvc_2c_100_pim_w_m": false,
-                    "pvc_2c_10_pim_l_m": false,
-                    "pvc_2c_10_pim_w_m": false,
-                    "pvc_2c_150_pim_l_m": false,
-                    "pvc_2c_150_pim_w_m": false,
-                    "pvc_2c_15_pim_l_m": false,
-                    "pvc_2c_1_pim_l_m": false,
-                    "pvc_2c_1_pim_w_m": false,
-                    "pvc_2c_200_pim_l_m": false,
-                    "pvc_2c_200_pim_w_m": false,
-                    "pvc_2c_20_pim_l_m": false,
-                    "pvc_2c_20_pim_w_m": false,
-                    "pvc_2c_250_pim_l_m": false,
-                    "pvc_2c_300_pim_l_m": false,
-                    "pvc_2c_30_pim_l_m": false,
-                    "pvc_2c_30_pim_w_m": false,
-                    "pvc_2c_35_pim_l_m": false,
-                    "pvc_2c_3_pim_l_m": false,
-                    "pvc_2c_3_pim_w_m": false,
-                    "pvc_2c_400_pim_l_m": false,
-                    "pvc_2c_4095_pim_l_m": false,
-                    "pvc_2c_40_pim_l_m": false,
-                    "pvc_2c_40_pim_w_m": false,
-                    "pvc_2c_4_pim_l_m": false,
-                    "pvc_2c_500_pim_l_m": false,
-                    "pvc_2c_50_pim_l_m": false,
-                    "pvc_2c_50_pim_w_m": false,
-                    "pvc_2c_5_pim_l_m": false,
-                    "pvc_2c_5_pim_w_m": false,
-                    "pvc_2c_60_pim_l_m": false,
-                    "pvc_2c_60_pim_w_m": false,
-                    "pvc_2c_70_pim_l_m": false,
-                    "pvc_2c_70_pim_w_m": false,
-                    "pvc_2c_80_pim_l_m": false,
-                    "pvc_2c_80_pim_w_m": false,
-                    "pvc_2c_90_pim_l_m": false,
-                    "pvc_2c_90_pim_w_m": false,
-                    "pvc_4c_100_pim_l_m": false,
-                    "pvc_4c_100_pim_w_m": false,
-                    "pvc_4c_10_pim_l_m": false,
-                    "pvc_4c_10_pim_w_m": false,
-                    "pvc_4c_150_pim_l_m": false,
-                    "pvc_4c_150_pim_w_m": false,
-                    "pvc_4c_15_pim_l_m": false,
-                    "pvc_4c_1_pim_l_m": false,
-                    "pvc_4c_1_pim_w_m": false,
-                    "pvc_4c_200_pim_l_m": false,
-                    "pvc_4c_200_pim_w_m": false,
-                    "pvc_4c_20_pim_l_m": false,
-                    "pvc_4c_20_pim_w_m": false,
-                    "pvc_4c_250_pim_l_m": false,
-                    "pvc_4c_300_pim_l_m": false,
-                    "pvc_4c_30_pim_l_m": false,
-                    "pvc_4c_30_pim_w_m": false,
-                    "pvc_4c_35_pim_l_m": false,
-                    "pvc_4c_3_pim_l_m": false,
-                    "pvc_4c_3_pim_w_m": false,
-                    "pvc_4c_400_pim_l_m": false,
-                    "pvc_4c_4095_pim_l_m": false,
-                    "pvc_4c_40_pim_l_m": false,
-                    "pvc_4c_40_pim_w_m": false,
-                    "pvc_4c_4_pim_l_m": false,
-                    "pvc_4c_500_pim_l_m": false,
-                    "pvc_4c_50_pim_l_m": false,
-                    "pvc_4c_50_pim_w_m": false,
-                    "pvc_4c_5_pim_l_m": false,
-                    "pvc_4c_5_pim_w_m": false,
-                    "pvc_4c_60_pim_l_m": false,
-                    "pvc_4c_60_pim_w_m": false,
-                    "pvc_4c_70_pim_l_m": false,
-                    "pvc_4c_70_pim_w_m": false,
-                    "pvc_4c_80_pim_l_m": false,
-                    "pvc_4c_80_pim_w_m": false,
-                    "pvc_4c_90_pim_l_m": false,
-                    "pvc_4c_90_pim_w_m": false,
-                    "pvc_is_8c_30_l_m": false,
-                    "pvc_is_8c_50_l_m": false,
-                    "rk_100_m": false,
-                    "rk_10_m": false,
-                    "rk_15_m": false,
-                    "rk_1_m": false,
-                    "rk_200_m": false,
-                    "rk_20_m": false,
-                    "rk_2_m": false,
-                    "rk_300_m": false,
-                    "rk_30_m": false,
-                    "rk_3_m": false,
-                    "rk_400_m": false,
-                    "rk_40_m": false,
-                    "rk_4_m": false,
-                    "rk_500_m": false,
-                    "rk_50_m": false,
-                    "rk_5_m": false,
-                    "rk_6_m": false,
-                    "rk_75_m": false,
-                    "rk_7_m": false,
-                    "rk_8_m": false,
-                    "rk_9_m": false,
-                    "sth_wmp_bsc_m": false,
-                    "sth_wmp_bus_m": false,
-                    "sth_wmp_busp_m": false,
-                    "sth_wmp_pro_m": false,
-                    "vz_bsc_2_m": false,
-                    "vz_bsc_4_m": false,
-                    "vz_bsc_8_m": false,
-                    "vz_ld_2_m": false,
-                    "vz_ld_4_m": false,
-                    "vz_ld_8_m": false,
-                    "vz_one_2_m": false,
-                    "vz_one_4_m": false,
-                    "vz_one_8_m": false,
-                    "vz_os_lnx_m": false,
-                    "vz_ssk_5_5_m": false,
-                    "vz_unl_2_m": false,
-                    "vz_unl_4_m": false,
-                    "vz_unl_8_m": false
-                },
+                "sku_values": null,
                 "title": "Plesk for VPS Web Host Edition"
             }
         },
@@ -14219,8 +13975,12 @@
                     "title": "Product type (Plesk or Virtuozzo)"
                 },
                 "sku_values": {
+                    "type": "object",
                     "title": "List of license SKU values",
-                    "$ref": "#/definitions/licenseSkuValues"
+                    "additionalProperties": {
+                        "type": "boolean",
+                        "format": "boolean"
+                    }
                 },
                 "title": {
                     "type": "string",
@@ -14230,330 +13990,7 @@
             "example": {
                 "item": "FT-PLESK-VPS-WPB-100-SITES-1M",
                 "product": "plesk",
-                "sku_values": {
-                    "addon_mla2005_w_m": false,
-                    "clnx_m": false,
-                    "email_plsk_20_l": false,
-                    "email_vz_1": false,
-                    "ft_plesk_additional_services_off": false,
-                    "ft_plesk_disable_feature_upgrades": false,
-                    "ft_plesk_disable_google_tools": false,
-                    "ft_plesk_disable_sitebuilder": false,
-                    "ft_plesk_extras_buttons_off": false,
-                    "ft_plesk_fotolia_off": false,
-                    "ft_plesk_newsfeed_off": false,
-                    "ft_plesk_store_button_off": false,
-                    "ft_plesk_virtuozzo_promo_off": false,
-                    "pcs_1c_arm_5ct_pva_m": false,
-                    "pcs_8c_100ct_pva_l_m": false,
-                    "pcs_8c_100vm_pva_m": false,
-                    "pcs_8c_10ct_pva_l_m": false,
-                    "pcs_8c_10vm_pva_m": false,
-                    "pcs_8c_150ct_pva_l_m": false,
-                    "pcs_8c_15vm_pva_m": false,
-                    "pcs_8c_1ct_pva_l_m": false,
-                    "pcs_8c_1vm_pva_m": false,
-                    "pcs_8c_200ct_pva_l_m": false,
-                    "pcs_8c_20ct_pva_l_m": false,
-                    "pcs_8c_20vm_pva_m": false,
-                    "pcs_8c_250ct_pva_l_m": false,
-                    "pcs_8c_2vm_pva_m": false,
-                    "pcs_8c_300ct_pva_l_m": false,
-                    "pcs_8c_30ct_pva_l_m": false,
-                    "pcs_8c_30vm_pva_m": false,
-                    "pcs_8c_350ct_pva_l_m": false,
-                    "pcs_8c_3ct_pva_l_m": false,
-                    "pcs_8c_3vm_pva_m": false,
-                    "pcs_8c_400ct_pva_l_m": false,
-                    "pcs_8c_40ct_pva_l_m": false,
-                    "pcs_8c_40vm_pva_m": false,
-                    "pcs_8c_450ct_pva_l_m": false,
-                    "pcs_8c_4vm_pva_m": false,
-                    "pcs_8c_500ct_pva_l_m": false,
-                    "pcs_8c_50ct_pva_l_m": false,
-                    "pcs_8c_50vm_pva_m": false,
-                    "pcs_8c_5ct_pva_l_m": false,
-                    "pcs_8c_5vm_pva_m": false,
-                    "pcs_8c_60ct_pva_l_m": false,
-                    "pcs_8c_60vm_pva_m": false,
-                    "pcs_8c_6vm_pva_m": false,
-                    "pcs_8c_70ct_pva_l_m": false,
-                    "pcs_8c_70vm_pva_m": false,
-                    "pcs_8c_7vm_pva_m": false,
-                    "pcs_8c_80ct_pva_l_m": false,
-                    "pcs_8c_80vm_pva_m": false,
-                    "pcs_8c_8vm_pva_m": false,
-                    "pcs_8c_90ct_pva_l_m": false,
-                    "pcs_8c_90vm_pva_m": false,
-                    "pcs_8c_9vm_pva_m": false,
-                    "pcs_8c_unlvm_pva_m": false,
-                    "pcs_addon_rlu_m": false,
-                    "pcsci_8c_30vc_pva_m": false,
-                    "pcsci_8c_5vc_pva_m": false,
-                    "pcsci_8c_unlvc_pva_m": false,
-                    "pcsci_addon_ha_m": false,
-                    "pcss_100gb_m": false,
-                    "plsk_add_devp_m": false,
-                    "plsk_add_esp_dw_l_m": false,
-                    "plsk_add_esp_kav_l_m": false,
-                    "plsk_add_kav_m": false,
-                    "plsk_add_lp_m": false,
-                    "plsk_add_lp_unl_m": false,
-                    "plsk_add_mspam_m": false,
-                    "plsk_add_pp_m": false,
-                    "plsk_add_secc_m": false,
-                    "plsk_add_srvs_adv_m": false,
-                    "plsk_add_srvs_m": false,
-                    "plsk_add_ssp_m": false,
-                    "plsk_add_wpb_1000_m": false,
-                    "plsk_add_wpb_100_m": false,
-                    "plsk_add_wpb_10_m": false,
-                    "plsk_add_wpb_30_m": false,
-                    "plsk_add_wpb_ml_m": false,
-                    "plsk_add_wprs_m": false,
-                    "plsk_adm_m": false,
-                    "plsk_ext_acr_bc_1000_m": false,
-                    "plsk_ext_acr_bc_100_m": false,
-                    "plsk_ext_acr_bc_250_m": false,
-                    "plsk_ext_acr_bc_500_m": false,
-                    "plsk_ext_addn_dck_bu_m": false,
-                    "plsk_ext_addn_dck_gr_m": false,
-                    "plsk_ext_addn_dck_st_m": false,
-                    "plsk_ext_bce_kol_e_m": false,
-                    "plsk_ext_bce_kol_f_m": false,
-                    "plsk_ext_bce_kol_l_m": false,
-                    "plsk_ext_bce_kol_m_m": false,
-                    "plsk_ext_bce_kol_p_m": false,
-                    "plsk_ext_bce_kol_s_m": false,
-                    "plsk_ext_bce_kol_st_m": false,
-                    "plsk_ext_bcp_m": false,
-                    "plsk_ext_bg_prem_m": false,
-                    "plsk_ext_bk_site_m": false,
-                    "plsk_ext_c_stk_xo_pe_m": false,
-                    "plsk_ext_c_stk_xo_pr_m": false,
-                    "plsk_ext_cgs_m": false,
-                    "plsk_ext_deev_ap_m": false,
-                    "plsk_ext_deev_as_m": false,
-                    "plsk_ext_deev_fp_m": false,
-                    "plsk_ext_deev_fs_m": false,
-                    "plsk_ext_deev_wp_m": false,
-                    "plsk_ext_deev_ws_m": false,
-                    "plsk_ext_dgvp_m": false,
-                    "plsk_ext_dnss_m": false,
-                    "plsk_ext_dock_m": false,
-                    "plsk_ext_dw_m": false,
-                    "plsk_ext_hp_m": false,
-                    "plsk_ext_i_stk_xo_ag_m": false,
-                    "plsk_ext_i_stk_xo_bu_m": false,
-                    "plsk_ext_i_stk_xo_pe_m": false,
-                    "plsk_ext_i_stk_xo_pr_m": false,
-                    "plsk_ext_ify_1_m": false,
-                    "plsk_ext_ify_250_m": false,
-                    "plsk_ext_ify_30_m": false,
-                    "plsk_ext_ify_unl_m": false,
-                    "plsk_ext_jtk_m": false,
-                    "plsk_ext_kc_m": false,
-                    "plsk_ext_mgc_f_m": false,
-                    "plsk_ext_msrv_m": false,
-                    "plsk_ext_pdsh_srv_m": false,
-                    "plsk_ext_rav_pre_m": false,
-                    "plsk_ext_rav_sh_m": false,
-                    "plsk_ext_rc_adv_m": false,
-                    "plsk_ext_rc_std_m": false,
-                    "plsk_ext_rzad_b_m": false,
-                    "plsk_ext_rzad_l_m": false,
-                    "plsk_ext_rzad_p_m": false,
-                    "plsk_ext_se_i_10_m": false,
-                    "plsk_ext_se_i_1_m": false,
-                    "plsk_ext_se_i_60_m": false,
-                    "plsk_ext_se_i_ar_10_m": false,
-                    "plsk_ext_se_i_ar_1_m": false,
-                    "plsk_ext_se_io_10_m": false,
-                    "plsk_ext_se_io_1_m": false,
-                    "plsk_ext_se_io_60_m": false,
-                    "plsk_ext_se_io_ar_10_m": false,
-                    "plsk_ext_se_io_ar_1_m": false,
-                    "plsk_ext_se_io_ar_60_m": false,
-                    "plsk_ext_se_o_10_m": false,
-                    "plsk_ext_se_o_1_m": false,
-                    "plsk_ext_se_o_60_m": false,
-                    "plsk_ext_se_o_ar_10_m": false,
-                    "plsk_ext_se_o_ar_1_m": false,
-                    "plsk_ext_se_o_ar_60_m": false,
-                    "plsk_ext_sk_10_m": false,
-                    "plsk_ext_sk_1_m": false,
-                    "plsk_ext_sk_30_m": false,
-                    "plsk_ext_sk_unl_m": false,
-                    "plsk_ext_sosh_adv_m": false,
-                    "plsk_ext_sosh_mas_m": false,
-                    "plsk_ext_sosh_sol_m": false,
-                    "plsk_ext_sosh_sta_m": false,
-                    "plsk_ext_spad_m": false,
-                    "plsk_ext_spb_ent_m": false,
-                    "plsk_ext_spb_pre_m": false,
-                    "plsk_ext_stac_m": false,
-                    "plsk_ext_stk_xo_ag_m": false,
-                    "plsk_ext_stk_xo_bu_m": false,
-                    "plsk_ext_stk_xo_pe_m": false,
-                    "plsk_ext_stk_xo_pr_m": false,
-                    "plsk_ext_su_100_m": false,
-                    "plsk_ext_su_10_m": false,
-                    "plsk_ext_su_1_m": false,
-                    "plsk_ext_su_30_m": false,
-                    "plsk_ext_su_unl_m": false,
-                    "plsk_ext_va_dd_la_m": false,
-                    "plsk_ext_va_dd_me_m": false,
-                    "plsk_ext_va_dd_sm_m": false,
-                    "plsk_ext_va_dd_st_m": false,
-                    "plsk_ext_vzrk_m": false,
-                    "plsk_hst_clnx_m": false,
-                    "plsk_hst_m": false,
-                    "plsk_pro_clnx_m": false,
-                    "plsk_pro_m": false,
-                    "plskvps_add_devp_m": false,
-                    "plskvps_add_esp_dw_l_m": false,
-                    "plskvps_add_esp_kav_l_m": false,
-                    "plskvps_add_kav_m": false,
-                    "plskvps_add_lp_m": false,
-                    "plskvps_add_lp_unl_m": false,
-                    "plskvps_add_mspam_m": false,
-                    "plskvps_add_pp_m": false,
-                    "plskvps_add_secc_m": false,
-                    "plskvps_add_srvs_adv_m": false,
-                    "plskvps_add_ssp_m": false,
-                    "plskvps_add_wpb_1000_m": false,
-                    "plskvps_add_wpb_100_m": false,
-                    "plskvps_add_wpb_10_m": false,
-                    "plskvps_add_wpb_30_m": false,
-                    "plskvps_add_wpb_ml_m": false,
-                    "plskvps_add_wprs_m": false,
-                    "plskvps_adm_m": false,
-                    "plskvps_ext_dw_m": false,
-                    "plskvps_ext_stac_m": false,
-                    "plskvps_hst_clnx_m": false,
-                    "plskvps_hst_m": false,
-                    "plskvps_pro_clnx_m": false,
-                    "plskvps_pro_m": false,
-                    "plskvps_sol_bs_m": false,
-                    "plskvps_sol_ws_m": false,
-                    "pvc_2c_100_pim_l_m": false,
-                    "pvc_2c_100_pim_w_m": false,
-                    "pvc_2c_10_pim_l_m": false,
-                    "pvc_2c_10_pim_w_m": false,
-                    "pvc_2c_150_pim_l_m": false,
-                    "pvc_2c_150_pim_w_m": false,
-                    "pvc_2c_15_pim_l_m": false,
-                    "pvc_2c_1_pim_l_m": false,
-                    "pvc_2c_1_pim_w_m": false,
-                    "pvc_2c_200_pim_l_m": false,
-                    "pvc_2c_200_pim_w_m": false,
-                    "pvc_2c_20_pim_l_m": false,
-                    "pvc_2c_20_pim_w_m": false,
-                    "pvc_2c_250_pim_l_m": false,
-                    "pvc_2c_300_pim_l_m": false,
-                    "pvc_2c_30_pim_l_m": false,
-                    "pvc_2c_30_pim_w_m": false,
-                    "pvc_2c_35_pim_l_m": false,
-                    "pvc_2c_3_pim_l_m": false,
-                    "pvc_2c_3_pim_w_m": false,
-                    "pvc_2c_400_pim_l_m": false,
-                    "pvc_2c_4095_pim_l_m": false,
-                    "pvc_2c_40_pim_l_m": false,
-                    "pvc_2c_40_pim_w_m": false,
-                    "pvc_2c_4_pim_l_m": false,
-                    "pvc_2c_500_pim_l_m": false,
-                    "pvc_2c_50_pim_l_m": false,
-                    "pvc_2c_50_pim_w_m": false,
-                    "pvc_2c_5_pim_l_m": false,
-                    "pvc_2c_5_pim_w_m": false,
-                    "pvc_2c_60_pim_l_m": false,
-                    "pvc_2c_60_pim_w_m": false,
-                    "pvc_2c_70_pim_l_m": false,
-                    "pvc_2c_70_pim_w_m": false,
-                    "pvc_2c_80_pim_l_m": false,
-                    "pvc_2c_80_pim_w_m": false,
-                    "pvc_2c_90_pim_l_m": false,
-                    "pvc_2c_90_pim_w_m": false,
-                    "pvc_4c_100_pim_l_m": false,
-                    "pvc_4c_100_pim_w_m": false,
-                    "pvc_4c_10_pim_l_m": false,
-                    "pvc_4c_10_pim_w_m": false,
-                    "pvc_4c_150_pim_l_m": false,
-                    "pvc_4c_150_pim_w_m": false,
-                    "pvc_4c_15_pim_l_m": false,
-                    "pvc_4c_1_pim_l_m": false,
-                    "pvc_4c_1_pim_w_m": false,
-                    "pvc_4c_200_pim_l_m": false,
-                    "pvc_4c_200_pim_w_m": false,
-                    "pvc_4c_20_pim_l_m": false,
-                    "pvc_4c_20_pim_w_m": false,
-                    "pvc_4c_250_pim_l_m": false,
-                    "pvc_4c_300_pim_l_m": false,
-                    "pvc_4c_30_pim_l_m": false,
-                    "pvc_4c_30_pim_w_m": false,
-                    "pvc_4c_35_pim_l_m": false,
-                    "pvc_4c_3_pim_l_m": false,
-                    "pvc_4c_3_pim_w_m": false,
-                    "pvc_4c_400_pim_l_m": false,
-                    "pvc_4c_4095_pim_l_m": false,
-                    "pvc_4c_40_pim_l_m": false,
-                    "pvc_4c_40_pim_w_m": false,
-                    "pvc_4c_4_pim_l_m": false,
-                    "pvc_4c_500_pim_l_m": false,
-                    "pvc_4c_50_pim_l_m": false,
-                    "pvc_4c_50_pim_w_m": false,
-                    "pvc_4c_5_pim_l_m": false,
-                    "pvc_4c_5_pim_w_m": false,
-                    "pvc_4c_60_pim_l_m": false,
-                    "pvc_4c_60_pim_w_m": false,
-                    "pvc_4c_70_pim_l_m": false,
-                    "pvc_4c_70_pim_w_m": false,
-                    "pvc_4c_80_pim_l_m": false,
-                    "pvc_4c_80_pim_w_m": false,
-                    "pvc_4c_90_pim_l_m": false,
-                    "pvc_4c_90_pim_w_m": false,
-                    "pvc_is_8c_30_l_m": false,
-                    "pvc_is_8c_50_l_m": false,
-                    "rk_100_m": false,
-                    "rk_10_m": false,
-                    "rk_15_m": false,
-                    "rk_1_m": false,
-                    "rk_200_m": false,
-                    "rk_20_m": false,
-                    "rk_2_m": false,
-                    "rk_300_m": false,
-                    "rk_30_m": false,
-                    "rk_3_m": false,
-                    "rk_400_m": false,
-                    "rk_40_m": false,
-                    "rk_4_m": false,
-                    "rk_500_m": false,
-                    "rk_50_m": false,
-                    "rk_5_m": false,
-                    "rk_6_m": false,
-                    "rk_75_m": false,
-                    "rk_7_m": false,
-                    "rk_8_m": false,
-                    "rk_9_m": false,
-                    "sth_wmp_bsc_m": false,
-                    "sth_wmp_bus_m": false,
-                    "sth_wmp_busp_m": false,
-                    "sth_wmp_pro_m": false,
-                    "vz_bsc_2_m": false,
-                    "vz_bsc_4_m": false,
-                    "vz_bsc_8_m": false,
-                    "vz_ld_2_m": false,
-                    "vz_ld_4_m": false,
-                    "vz_ld_8_m": false,
-                    "vz_one_2_m": false,
-                    "vz_one_4_m": false,
-                    "vz_one_8_m": false,
-                    "vz_os_lnx_m": false,
-                    "vz_ssk_5_5_m": false,
-                    "vz_unl_2_m": false,
-                    "vz_unl_4_m": false,
-                    "vz_unl_8_m": false
-                },
+                "sku_values": null,
                 "title": "DNSSEC for Plesk (Bundled)"
             }
         },
@@ -14629,8 +14066,12 @@
                     "title": "Product type (Plesk or Virtuozzo)"
                 },
                 "sku_values": {
+                    "type": "object",
                     "title": "List of license SKU values",
-                    "$ref": "#/definitions/licenseSkuValues"
+                    "additionalProperties": {
+                        "type": "boolean",
+                        "format": "boolean"
+                    }
                 },
                 "status": {
                     "type": "string",
@@ -14722,330 +14163,7 @@
                         {
                             "item": "FT-PLESK-VPS-WPB-100-SITES-1M",
                             "product": "plesk",
-                            "sku_values": {
-                                "addon_mla2005_w_m": false,
-                                "clnx_m": false,
-                                "email_plsk_20_l": false,
-                                "email_vz_1": false,
-                                "ft_plesk_additional_services_off": false,
-                                "ft_plesk_disable_feature_upgrades": false,
-                                "ft_plesk_disable_google_tools": false,
-                                "ft_plesk_disable_sitebuilder": false,
-                                "ft_plesk_extras_buttons_off": false,
-                                "ft_plesk_fotolia_off": false,
-                                "ft_plesk_newsfeed_off": false,
-                                "ft_plesk_store_button_off": false,
-                                "ft_plesk_virtuozzo_promo_off": false,
-                                "pcs_1c_arm_5ct_pva_m": false,
-                                "pcs_8c_100ct_pva_l_m": false,
-                                "pcs_8c_100vm_pva_m": false,
-                                "pcs_8c_10ct_pva_l_m": false,
-                                "pcs_8c_10vm_pva_m": false,
-                                "pcs_8c_150ct_pva_l_m": false,
-                                "pcs_8c_15vm_pva_m": false,
-                                "pcs_8c_1ct_pva_l_m": false,
-                                "pcs_8c_1vm_pva_m": false,
-                                "pcs_8c_200ct_pva_l_m": false,
-                                "pcs_8c_20ct_pva_l_m": false,
-                                "pcs_8c_20vm_pva_m": false,
-                                "pcs_8c_250ct_pva_l_m": false,
-                                "pcs_8c_2vm_pva_m": false,
-                                "pcs_8c_300ct_pva_l_m": false,
-                                "pcs_8c_30ct_pva_l_m": false,
-                                "pcs_8c_30vm_pva_m": false,
-                                "pcs_8c_350ct_pva_l_m": false,
-                                "pcs_8c_3ct_pva_l_m": false,
-                                "pcs_8c_3vm_pva_m": false,
-                                "pcs_8c_400ct_pva_l_m": false,
-                                "pcs_8c_40ct_pva_l_m": false,
-                                "pcs_8c_40vm_pva_m": false,
-                                "pcs_8c_450ct_pva_l_m": false,
-                                "pcs_8c_4vm_pva_m": false,
-                                "pcs_8c_500ct_pva_l_m": false,
-                                "pcs_8c_50ct_pva_l_m": false,
-                                "pcs_8c_50vm_pva_m": false,
-                                "pcs_8c_5ct_pva_l_m": false,
-                                "pcs_8c_5vm_pva_m": false,
-                                "pcs_8c_60ct_pva_l_m": false,
-                                "pcs_8c_60vm_pva_m": false,
-                                "pcs_8c_6vm_pva_m": false,
-                                "pcs_8c_70ct_pva_l_m": false,
-                                "pcs_8c_70vm_pva_m": false,
-                                "pcs_8c_7vm_pva_m": false,
-                                "pcs_8c_80ct_pva_l_m": false,
-                                "pcs_8c_80vm_pva_m": false,
-                                "pcs_8c_8vm_pva_m": false,
-                                "pcs_8c_90ct_pva_l_m": false,
-                                "pcs_8c_90vm_pva_m": false,
-                                "pcs_8c_9vm_pva_m": false,
-                                "pcs_8c_unlvm_pva_m": false,
-                                "pcs_addon_rlu_m": false,
-                                "pcsci_8c_30vc_pva_m": false,
-                                "pcsci_8c_5vc_pva_m": false,
-                                "pcsci_8c_unlvc_pva_m": false,
-                                "pcsci_addon_ha_m": false,
-                                "pcss_100gb_m": false,
-                                "plsk_add_devp_m": false,
-                                "plsk_add_esp_dw_l_m": false,
-                                "plsk_add_esp_kav_l_m": false,
-                                "plsk_add_kav_m": false,
-                                "plsk_add_lp_m": false,
-                                "plsk_add_lp_unl_m": false,
-                                "plsk_add_mspam_m": false,
-                                "plsk_add_pp_m": false,
-                                "plsk_add_secc_m": false,
-                                "plsk_add_srvs_adv_m": false,
-                                "plsk_add_srvs_m": false,
-                                "plsk_add_ssp_m": false,
-                                "plsk_add_wpb_1000_m": false,
-                                "plsk_add_wpb_100_m": false,
-                                "plsk_add_wpb_10_m": false,
-                                "plsk_add_wpb_30_m": false,
-                                "plsk_add_wpb_ml_m": false,
-                                "plsk_add_wprs_m": false,
-                                "plsk_adm_m": false,
-                                "plsk_ext_acr_bc_1000_m": false,
-                                "plsk_ext_acr_bc_100_m": false,
-                                "plsk_ext_acr_bc_250_m": false,
-                                "plsk_ext_acr_bc_500_m": false,
-                                "plsk_ext_addn_dck_bu_m": false,
-                                "plsk_ext_addn_dck_gr_m": false,
-                                "plsk_ext_addn_dck_st_m": false,
-                                "plsk_ext_bce_kol_e_m": false,
-                                "plsk_ext_bce_kol_f_m": false,
-                                "plsk_ext_bce_kol_l_m": false,
-                                "plsk_ext_bce_kol_m_m": false,
-                                "plsk_ext_bce_kol_p_m": false,
-                                "plsk_ext_bce_kol_s_m": false,
-                                "plsk_ext_bce_kol_st_m": false,
-                                "plsk_ext_bcp_m": false,
-                                "plsk_ext_bg_prem_m": false,
-                                "plsk_ext_bk_site_m": false,
-                                "plsk_ext_c_stk_xo_pe_m": false,
-                                "plsk_ext_c_stk_xo_pr_m": false,
-                                "plsk_ext_cgs_m": false,
-                                "plsk_ext_deev_ap_m": false,
-                                "plsk_ext_deev_as_m": false,
-                                "plsk_ext_deev_fp_m": false,
-                                "plsk_ext_deev_fs_m": false,
-                                "plsk_ext_deev_wp_m": false,
-                                "plsk_ext_deev_ws_m": false,
-                                "plsk_ext_dgvp_m": false,
-                                "plsk_ext_dnss_m": false,
-                                "plsk_ext_dock_m": false,
-                                "plsk_ext_dw_m": false,
-                                "plsk_ext_hp_m": false,
-                                "plsk_ext_i_stk_xo_ag_m": false,
-                                "plsk_ext_i_stk_xo_bu_m": false,
-                                "plsk_ext_i_stk_xo_pe_m": false,
-                                "plsk_ext_i_stk_xo_pr_m": false,
-                                "plsk_ext_ify_1_m": false,
-                                "plsk_ext_ify_250_m": false,
-                                "plsk_ext_ify_30_m": false,
-                                "plsk_ext_ify_unl_m": false,
-                                "plsk_ext_jtk_m": false,
-                                "plsk_ext_kc_m": false,
-                                "plsk_ext_mgc_f_m": false,
-                                "plsk_ext_msrv_m": false,
-                                "plsk_ext_pdsh_srv_m": false,
-                                "plsk_ext_rav_pre_m": false,
-                                "plsk_ext_rav_sh_m": false,
-                                "plsk_ext_rc_adv_m": false,
-                                "plsk_ext_rc_std_m": false,
-                                "plsk_ext_rzad_b_m": false,
-                                "plsk_ext_rzad_l_m": false,
-                                "plsk_ext_rzad_p_m": false,
-                                "plsk_ext_se_i_10_m": false,
-                                "plsk_ext_se_i_1_m": false,
-                                "plsk_ext_se_i_60_m": false,
-                                "plsk_ext_se_i_ar_10_m": false,
-                                "plsk_ext_se_i_ar_1_m": false,
-                                "plsk_ext_se_io_10_m": false,
-                                "plsk_ext_se_io_1_m": false,
-                                "plsk_ext_se_io_60_m": false,
-                                "plsk_ext_se_io_ar_10_m": false,
-                                "plsk_ext_se_io_ar_1_m": false,
-                                "plsk_ext_se_io_ar_60_m": false,
-                                "plsk_ext_se_o_10_m": false,
-                                "plsk_ext_se_o_1_m": false,
-                                "plsk_ext_se_o_60_m": false,
-                                "plsk_ext_se_o_ar_10_m": false,
-                                "plsk_ext_se_o_ar_1_m": false,
-                                "plsk_ext_se_o_ar_60_m": false,
-                                "plsk_ext_sk_10_m": false,
-                                "plsk_ext_sk_1_m": false,
-                                "plsk_ext_sk_30_m": false,
-                                "plsk_ext_sk_unl_m": false,
-                                "plsk_ext_sosh_adv_m": false,
-                                "plsk_ext_sosh_mas_m": false,
-                                "plsk_ext_sosh_sol_m": false,
-                                "plsk_ext_sosh_sta_m": false,
-                                "plsk_ext_spad_m": false,
-                                "plsk_ext_spb_ent_m": false,
-                                "plsk_ext_spb_pre_m": false,
-                                "plsk_ext_stac_m": false,
-                                "plsk_ext_stk_xo_ag_m": false,
-                                "plsk_ext_stk_xo_bu_m": false,
-                                "plsk_ext_stk_xo_pe_m": false,
-                                "plsk_ext_stk_xo_pr_m": false,
-                                "plsk_ext_su_100_m": false,
-                                "plsk_ext_su_10_m": false,
-                                "plsk_ext_su_1_m": false,
-                                "plsk_ext_su_30_m": false,
-                                "plsk_ext_su_unl_m": false,
-                                "plsk_ext_va_dd_la_m": false,
-                                "plsk_ext_va_dd_me_m": false,
-                                "plsk_ext_va_dd_sm_m": false,
-                                "plsk_ext_va_dd_st_m": false,
-                                "plsk_ext_vzrk_m": false,
-                                "plsk_hst_clnx_m": false,
-                                "plsk_hst_m": false,
-                                "plsk_pro_clnx_m": false,
-                                "plsk_pro_m": false,
-                                "plskvps_add_devp_m": false,
-                                "plskvps_add_esp_dw_l_m": false,
-                                "plskvps_add_esp_kav_l_m": false,
-                                "plskvps_add_kav_m": false,
-                                "plskvps_add_lp_m": false,
-                                "plskvps_add_lp_unl_m": false,
-                                "plskvps_add_mspam_m": false,
-                                "plskvps_add_pp_m": false,
-                                "plskvps_add_secc_m": false,
-                                "plskvps_add_srvs_adv_m": false,
-                                "plskvps_add_ssp_m": false,
-                                "plskvps_add_wpb_1000_m": false,
-                                "plskvps_add_wpb_100_m": false,
-                                "plskvps_add_wpb_10_m": false,
-                                "plskvps_add_wpb_30_m": false,
-                                "plskvps_add_wpb_ml_m": false,
-                                "plskvps_add_wprs_m": false,
-                                "plskvps_adm_m": false,
-                                "plskvps_ext_dw_m": false,
-                                "plskvps_ext_stac_m": false,
-                                "plskvps_hst_clnx_m": false,
-                                "plskvps_hst_m": false,
-                                "plskvps_pro_clnx_m": false,
-                                "plskvps_pro_m": false,
-                                "plskvps_sol_bs_m": false,
-                                "plskvps_sol_ws_m": false,
-                                "pvc_2c_100_pim_l_m": false,
-                                "pvc_2c_100_pim_w_m": false,
-                                "pvc_2c_10_pim_l_m": false,
-                                "pvc_2c_10_pim_w_m": false,
-                                "pvc_2c_150_pim_l_m": false,
-                                "pvc_2c_150_pim_w_m": false,
-                                "pvc_2c_15_pim_l_m": false,
-                                "pvc_2c_1_pim_l_m": false,
-                                "pvc_2c_1_pim_w_m": false,
-                                "pvc_2c_200_pim_l_m": false,
-                                "pvc_2c_200_pim_w_m": false,
-                                "pvc_2c_20_pim_l_m": false,
-                                "pvc_2c_20_pim_w_m": false,
-                                "pvc_2c_250_pim_l_m": false,
-                                "pvc_2c_300_pim_l_m": false,
-                                "pvc_2c_30_pim_l_m": false,
-                                "pvc_2c_30_pim_w_m": false,
-                                "pvc_2c_35_pim_l_m": false,
-                                "pvc_2c_3_pim_l_m": false,
-                                "pvc_2c_3_pim_w_m": false,
-                                "pvc_2c_400_pim_l_m": false,
-                                "pvc_2c_4095_pim_l_m": false,
-                                "pvc_2c_40_pim_l_m": false,
-                                "pvc_2c_40_pim_w_m": false,
-                                "pvc_2c_4_pim_l_m": false,
-                                "pvc_2c_500_pim_l_m": false,
-                                "pvc_2c_50_pim_l_m": false,
-                                "pvc_2c_50_pim_w_m": false,
-                                "pvc_2c_5_pim_l_m": false,
-                                "pvc_2c_5_pim_w_m": false,
-                                "pvc_2c_60_pim_l_m": false,
-                                "pvc_2c_60_pim_w_m": false,
-                                "pvc_2c_70_pim_l_m": false,
-                                "pvc_2c_70_pim_w_m": false,
-                                "pvc_2c_80_pim_l_m": false,
-                                "pvc_2c_80_pim_w_m": false,
-                                "pvc_2c_90_pim_l_m": false,
-                                "pvc_2c_90_pim_w_m": false,
-                                "pvc_4c_100_pim_l_m": false,
-                                "pvc_4c_100_pim_w_m": false,
-                                "pvc_4c_10_pim_l_m": false,
-                                "pvc_4c_10_pim_w_m": false,
-                                "pvc_4c_150_pim_l_m": false,
-                                "pvc_4c_150_pim_w_m": false,
-                                "pvc_4c_15_pim_l_m": false,
-                                "pvc_4c_1_pim_l_m": false,
-                                "pvc_4c_1_pim_w_m": false,
-                                "pvc_4c_200_pim_l_m": false,
-                                "pvc_4c_200_pim_w_m": false,
-                                "pvc_4c_20_pim_l_m": false,
-                                "pvc_4c_20_pim_w_m": false,
-                                "pvc_4c_250_pim_l_m": false,
-                                "pvc_4c_300_pim_l_m": false,
-                                "pvc_4c_30_pim_l_m": false,
-                                "pvc_4c_30_pim_w_m": false,
-                                "pvc_4c_35_pim_l_m": false,
-                                "pvc_4c_3_pim_l_m": false,
-                                "pvc_4c_3_pim_w_m": false,
-                                "pvc_4c_400_pim_l_m": false,
-                                "pvc_4c_4095_pim_l_m": false,
-                                "pvc_4c_40_pim_l_m": false,
-                                "pvc_4c_40_pim_w_m": false,
-                                "pvc_4c_4_pim_l_m": false,
-                                "pvc_4c_500_pim_l_m": false,
-                                "pvc_4c_50_pim_l_m": false,
-                                "pvc_4c_50_pim_w_m": false,
-                                "pvc_4c_5_pim_l_m": false,
-                                "pvc_4c_5_pim_w_m": false,
-                                "pvc_4c_60_pim_l_m": false,
-                                "pvc_4c_60_pim_w_m": false,
-                                "pvc_4c_70_pim_l_m": false,
-                                "pvc_4c_70_pim_w_m": false,
-                                "pvc_4c_80_pim_l_m": false,
-                                "pvc_4c_80_pim_w_m": false,
-                                "pvc_4c_90_pim_l_m": false,
-                                "pvc_4c_90_pim_w_m": false,
-                                "pvc_is_8c_30_l_m": false,
-                                "pvc_is_8c_50_l_m": false,
-                                "rk_100_m": false,
-                                "rk_10_m": false,
-                                "rk_15_m": false,
-                                "rk_1_m": false,
-                                "rk_200_m": false,
-                                "rk_20_m": false,
-                                "rk_2_m": false,
-                                "rk_300_m": false,
-                                "rk_30_m": false,
-                                "rk_3_m": false,
-                                "rk_400_m": false,
-                                "rk_40_m": false,
-                                "rk_4_m": false,
-                                "rk_500_m": false,
-                                "rk_50_m": false,
-                                "rk_5_m": false,
-                                "rk_6_m": false,
-                                "rk_75_m": false,
-                                "rk_7_m": false,
-                                "rk_8_m": false,
-                                "rk_9_m": false,
-                                "sth_wmp_bsc_m": false,
-                                "sth_wmp_bus_m": false,
-                                "sth_wmp_busp_m": false,
-                                "sth_wmp_pro_m": false,
-                                "vz_bsc_2_m": false,
-                                "vz_bsc_4_m": false,
-                                "vz_bsc_8_m": false,
-                                "vz_ld_2_m": false,
-                                "vz_ld_4_m": false,
-                                "vz_ld_8_m": false,
-                                "vz_one_2_m": false,
-                                "vz_one_4_m": false,
-                                "vz_one_8_m": false,
-                                "vz_os_lnx_m": false,
-                                "vz_ssk_5_5_m": false,
-                                "vz_unl_2_m": false,
-                                "vz_unl_4_m": false,
-                                "vz_unl_8_m": false
-                            },
+                            "sku_values": null,
                             "title": "DNSSEC for Plesk (Bundled)"
                         }
                     ],
@@ -15076,330 +14194,7 @@
                     {
                         "item": "FT-PLESK-VPS-WPB-100-SITES-1M",
                         "product": "plesk",
-                        "sku_values": {
-                            "addon_mla2005_w_m": false,
-                            "clnx_m": false,
-                            "email_plsk_20_l": false,
-                            "email_vz_1": false,
-                            "ft_plesk_additional_services_off": false,
-                            "ft_plesk_disable_feature_upgrades": false,
-                            "ft_plesk_disable_google_tools": false,
-                            "ft_plesk_disable_sitebuilder": false,
-                            "ft_plesk_extras_buttons_off": false,
-                            "ft_plesk_fotolia_off": false,
-                            "ft_plesk_newsfeed_off": false,
-                            "ft_plesk_store_button_off": false,
-                            "ft_plesk_virtuozzo_promo_off": false,
-                            "pcs_1c_arm_5ct_pva_m": false,
-                            "pcs_8c_100ct_pva_l_m": false,
-                            "pcs_8c_100vm_pva_m": false,
-                            "pcs_8c_10ct_pva_l_m": false,
-                            "pcs_8c_10vm_pva_m": false,
-                            "pcs_8c_150ct_pva_l_m": false,
-                            "pcs_8c_15vm_pva_m": false,
-                            "pcs_8c_1ct_pva_l_m": false,
-                            "pcs_8c_1vm_pva_m": false,
-                            "pcs_8c_200ct_pva_l_m": false,
-                            "pcs_8c_20ct_pva_l_m": false,
-                            "pcs_8c_20vm_pva_m": false,
-                            "pcs_8c_250ct_pva_l_m": false,
-                            "pcs_8c_2vm_pva_m": false,
-                            "pcs_8c_300ct_pva_l_m": false,
-                            "pcs_8c_30ct_pva_l_m": false,
-                            "pcs_8c_30vm_pva_m": false,
-                            "pcs_8c_350ct_pva_l_m": false,
-                            "pcs_8c_3ct_pva_l_m": false,
-                            "pcs_8c_3vm_pva_m": false,
-                            "pcs_8c_400ct_pva_l_m": false,
-                            "pcs_8c_40ct_pva_l_m": false,
-                            "pcs_8c_40vm_pva_m": false,
-                            "pcs_8c_450ct_pva_l_m": false,
-                            "pcs_8c_4vm_pva_m": false,
-                            "pcs_8c_500ct_pva_l_m": false,
-                            "pcs_8c_50ct_pva_l_m": false,
-                            "pcs_8c_50vm_pva_m": false,
-                            "pcs_8c_5ct_pva_l_m": false,
-                            "pcs_8c_5vm_pva_m": false,
-                            "pcs_8c_60ct_pva_l_m": false,
-                            "pcs_8c_60vm_pva_m": false,
-                            "pcs_8c_6vm_pva_m": false,
-                            "pcs_8c_70ct_pva_l_m": false,
-                            "pcs_8c_70vm_pva_m": false,
-                            "pcs_8c_7vm_pva_m": false,
-                            "pcs_8c_80ct_pva_l_m": false,
-                            "pcs_8c_80vm_pva_m": false,
-                            "pcs_8c_8vm_pva_m": false,
-                            "pcs_8c_90ct_pva_l_m": false,
-                            "pcs_8c_90vm_pva_m": false,
-                            "pcs_8c_9vm_pva_m": false,
-                            "pcs_8c_unlvm_pva_m": false,
-                            "pcs_addon_rlu_m": false,
-                            "pcsci_8c_30vc_pva_m": false,
-                            "pcsci_8c_5vc_pva_m": false,
-                            "pcsci_8c_unlvc_pva_m": false,
-                            "pcsci_addon_ha_m": false,
-                            "pcss_100gb_m": false,
-                            "plsk_add_devp_m": false,
-                            "plsk_add_esp_dw_l_m": false,
-                            "plsk_add_esp_kav_l_m": false,
-                            "plsk_add_kav_m": false,
-                            "plsk_add_lp_m": false,
-                            "plsk_add_lp_unl_m": false,
-                            "plsk_add_mspam_m": false,
-                            "plsk_add_pp_m": false,
-                            "plsk_add_secc_m": false,
-                            "plsk_add_srvs_adv_m": false,
-                            "plsk_add_srvs_m": false,
-                            "plsk_add_ssp_m": false,
-                            "plsk_add_wpb_1000_m": false,
-                            "plsk_add_wpb_100_m": false,
-                            "plsk_add_wpb_10_m": false,
-                            "plsk_add_wpb_30_m": false,
-                            "plsk_add_wpb_ml_m": false,
-                            "plsk_add_wprs_m": false,
-                            "plsk_adm_m": false,
-                            "plsk_ext_acr_bc_1000_m": false,
-                            "plsk_ext_acr_bc_100_m": false,
-                            "plsk_ext_acr_bc_250_m": false,
-                            "plsk_ext_acr_bc_500_m": false,
-                            "plsk_ext_addn_dck_bu_m": false,
-                            "plsk_ext_addn_dck_gr_m": false,
-                            "plsk_ext_addn_dck_st_m": false,
-                            "plsk_ext_bce_kol_e_m": false,
-                            "plsk_ext_bce_kol_f_m": false,
-                            "plsk_ext_bce_kol_l_m": false,
-                            "plsk_ext_bce_kol_m_m": false,
-                            "plsk_ext_bce_kol_p_m": false,
-                            "plsk_ext_bce_kol_s_m": false,
-                            "plsk_ext_bce_kol_st_m": false,
-                            "plsk_ext_bcp_m": false,
-                            "plsk_ext_bg_prem_m": false,
-                            "plsk_ext_bk_site_m": false,
-                            "plsk_ext_c_stk_xo_pe_m": false,
-                            "plsk_ext_c_stk_xo_pr_m": false,
-                            "plsk_ext_cgs_m": false,
-                            "plsk_ext_deev_ap_m": false,
-                            "plsk_ext_deev_as_m": false,
-                            "plsk_ext_deev_fp_m": false,
-                            "plsk_ext_deev_fs_m": false,
-                            "plsk_ext_deev_wp_m": false,
-                            "plsk_ext_deev_ws_m": false,
-                            "plsk_ext_dgvp_m": false,
-                            "plsk_ext_dnss_m": false,
-                            "plsk_ext_dock_m": false,
-                            "plsk_ext_dw_m": false,
-                            "plsk_ext_hp_m": false,
-                            "plsk_ext_i_stk_xo_ag_m": false,
-                            "plsk_ext_i_stk_xo_bu_m": false,
-                            "plsk_ext_i_stk_xo_pe_m": false,
-                            "plsk_ext_i_stk_xo_pr_m": false,
-                            "plsk_ext_ify_1_m": false,
-                            "plsk_ext_ify_250_m": false,
-                            "plsk_ext_ify_30_m": false,
-                            "plsk_ext_ify_unl_m": false,
-                            "plsk_ext_jtk_m": false,
-                            "plsk_ext_kc_m": false,
-                            "plsk_ext_mgc_f_m": false,
-                            "plsk_ext_msrv_m": false,
-                            "plsk_ext_pdsh_srv_m": false,
-                            "plsk_ext_rav_pre_m": false,
-                            "plsk_ext_rav_sh_m": false,
-                            "plsk_ext_rc_adv_m": false,
-                            "plsk_ext_rc_std_m": false,
-                            "plsk_ext_rzad_b_m": false,
-                            "plsk_ext_rzad_l_m": false,
-                            "plsk_ext_rzad_p_m": false,
-                            "plsk_ext_se_i_10_m": false,
-                            "plsk_ext_se_i_1_m": false,
-                            "plsk_ext_se_i_60_m": false,
-                            "plsk_ext_se_i_ar_10_m": false,
-                            "plsk_ext_se_i_ar_1_m": false,
-                            "plsk_ext_se_io_10_m": false,
-                            "plsk_ext_se_io_1_m": false,
-                            "plsk_ext_se_io_60_m": false,
-                            "plsk_ext_se_io_ar_10_m": false,
-                            "plsk_ext_se_io_ar_1_m": false,
-                            "plsk_ext_se_io_ar_60_m": false,
-                            "plsk_ext_se_o_10_m": false,
-                            "plsk_ext_se_o_1_m": false,
-                            "plsk_ext_se_o_60_m": false,
-                            "plsk_ext_se_o_ar_10_m": false,
-                            "plsk_ext_se_o_ar_1_m": false,
-                            "plsk_ext_se_o_ar_60_m": false,
-                            "plsk_ext_sk_10_m": false,
-                            "plsk_ext_sk_1_m": false,
-                            "plsk_ext_sk_30_m": false,
-                            "plsk_ext_sk_unl_m": false,
-                            "plsk_ext_sosh_adv_m": false,
-                            "plsk_ext_sosh_mas_m": false,
-                            "plsk_ext_sosh_sol_m": false,
-                            "plsk_ext_sosh_sta_m": false,
-                            "plsk_ext_spad_m": false,
-                            "plsk_ext_spb_ent_m": false,
-                            "plsk_ext_spb_pre_m": false,
-                            "plsk_ext_stac_m": false,
-                            "plsk_ext_stk_xo_ag_m": false,
-                            "plsk_ext_stk_xo_bu_m": false,
-                            "plsk_ext_stk_xo_pe_m": false,
-                            "plsk_ext_stk_xo_pr_m": false,
-                            "plsk_ext_su_100_m": false,
-                            "plsk_ext_su_10_m": false,
-                            "plsk_ext_su_1_m": false,
-                            "plsk_ext_su_30_m": false,
-                            "plsk_ext_su_unl_m": false,
-                            "plsk_ext_va_dd_la_m": false,
-                            "plsk_ext_va_dd_me_m": false,
-                            "plsk_ext_va_dd_sm_m": false,
-                            "plsk_ext_va_dd_st_m": false,
-                            "plsk_ext_vzrk_m": false,
-                            "plsk_hst_clnx_m": false,
-                            "plsk_hst_m": false,
-                            "plsk_pro_clnx_m": false,
-                            "plsk_pro_m": false,
-                            "plskvps_add_devp_m": false,
-                            "plskvps_add_esp_dw_l_m": false,
-                            "plskvps_add_esp_kav_l_m": false,
-                            "plskvps_add_kav_m": false,
-                            "plskvps_add_lp_m": false,
-                            "plskvps_add_lp_unl_m": false,
-                            "plskvps_add_mspam_m": false,
-                            "plskvps_add_pp_m": false,
-                            "plskvps_add_secc_m": false,
-                            "plskvps_add_srvs_adv_m": false,
-                            "plskvps_add_ssp_m": false,
-                            "plskvps_add_wpb_1000_m": false,
-                            "plskvps_add_wpb_100_m": false,
-                            "plskvps_add_wpb_10_m": false,
-                            "plskvps_add_wpb_30_m": false,
-                            "plskvps_add_wpb_ml_m": false,
-                            "plskvps_add_wprs_m": false,
-                            "plskvps_adm_m": false,
-                            "plskvps_ext_dw_m": false,
-                            "plskvps_ext_stac_m": false,
-                            "plskvps_hst_clnx_m": false,
-                            "plskvps_hst_m": false,
-                            "plskvps_pro_clnx_m": false,
-                            "plskvps_pro_m": false,
-                            "plskvps_sol_bs_m": false,
-                            "plskvps_sol_ws_m": false,
-                            "pvc_2c_100_pim_l_m": false,
-                            "pvc_2c_100_pim_w_m": false,
-                            "pvc_2c_10_pim_l_m": false,
-                            "pvc_2c_10_pim_w_m": false,
-                            "pvc_2c_150_pim_l_m": false,
-                            "pvc_2c_150_pim_w_m": false,
-                            "pvc_2c_15_pim_l_m": false,
-                            "pvc_2c_1_pim_l_m": false,
-                            "pvc_2c_1_pim_w_m": false,
-                            "pvc_2c_200_pim_l_m": false,
-                            "pvc_2c_200_pim_w_m": false,
-                            "pvc_2c_20_pim_l_m": false,
-                            "pvc_2c_20_pim_w_m": false,
-                            "pvc_2c_250_pim_l_m": false,
-                            "pvc_2c_300_pim_l_m": false,
-                            "pvc_2c_30_pim_l_m": false,
-                            "pvc_2c_30_pim_w_m": false,
-                            "pvc_2c_35_pim_l_m": false,
-                            "pvc_2c_3_pim_l_m": false,
-                            "pvc_2c_3_pim_w_m": false,
-                            "pvc_2c_400_pim_l_m": false,
-                            "pvc_2c_4095_pim_l_m": false,
-                            "pvc_2c_40_pim_l_m": false,
-                            "pvc_2c_40_pim_w_m": false,
-                            "pvc_2c_4_pim_l_m": false,
-                            "pvc_2c_500_pim_l_m": false,
-                            "pvc_2c_50_pim_l_m": false,
-                            "pvc_2c_50_pim_w_m": false,
-                            "pvc_2c_5_pim_l_m": false,
-                            "pvc_2c_5_pim_w_m": false,
-                            "pvc_2c_60_pim_l_m": false,
-                            "pvc_2c_60_pim_w_m": false,
-                            "pvc_2c_70_pim_l_m": false,
-                            "pvc_2c_70_pim_w_m": false,
-                            "pvc_2c_80_pim_l_m": false,
-                            "pvc_2c_80_pim_w_m": false,
-                            "pvc_2c_90_pim_l_m": false,
-                            "pvc_2c_90_pim_w_m": false,
-                            "pvc_4c_100_pim_l_m": false,
-                            "pvc_4c_100_pim_w_m": false,
-                            "pvc_4c_10_pim_l_m": false,
-                            "pvc_4c_10_pim_w_m": false,
-                            "pvc_4c_150_pim_l_m": false,
-                            "pvc_4c_150_pim_w_m": false,
-                            "pvc_4c_15_pim_l_m": false,
-                            "pvc_4c_1_pim_l_m": false,
-                            "pvc_4c_1_pim_w_m": false,
-                            "pvc_4c_200_pim_l_m": false,
-                            "pvc_4c_200_pim_w_m": false,
-                            "pvc_4c_20_pim_l_m": false,
-                            "pvc_4c_20_pim_w_m": false,
-                            "pvc_4c_250_pim_l_m": false,
-                            "pvc_4c_300_pim_l_m": false,
-                            "pvc_4c_30_pim_l_m": false,
-                            "pvc_4c_30_pim_w_m": false,
-                            "pvc_4c_35_pim_l_m": false,
-                            "pvc_4c_3_pim_l_m": false,
-                            "pvc_4c_3_pim_w_m": false,
-                            "pvc_4c_400_pim_l_m": false,
-                            "pvc_4c_4095_pim_l_m": false,
-                            "pvc_4c_40_pim_l_m": false,
-                            "pvc_4c_40_pim_w_m": false,
-                            "pvc_4c_4_pim_l_m": false,
-                            "pvc_4c_500_pim_l_m": false,
-                            "pvc_4c_50_pim_l_m": false,
-                            "pvc_4c_50_pim_w_m": false,
-                            "pvc_4c_5_pim_l_m": false,
-                            "pvc_4c_5_pim_w_m": false,
-                            "pvc_4c_60_pim_l_m": false,
-                            "pvc_4c_60_pim_w_m": false,
-                            "pvc_4c_70_pim_l_m": false,
-                            "pvc_4c_70_pim_w_m": false,
-                            "pvc_4c_80_pim_l_m": false,
-                            "pvc_4c_80_pim_w_m": false,
-                            "pvc_4c_90_pim_l_m": false,
-                            "pvc_4c_90_pim_w_m": false,
-                            "pvc_is_8c_30_l_m": false,
-                            "pvc_is_8c_50_l_m": false,
-                            "rk_100_m": false,
-                            "rk_10_m": false,
-                            "rk_15_m": false,
-                            "rk_1_m": false,
-                            "rk_200_m": false,
-                            "rk_20_m": false,
-                            "rk_2_m": false,
-                            "rk_300_m": false,
-                            "rk_30_m": false,
-                            "rk_3_m": false,
-                            "rk_400_m": false,
-                            "rk_40_m": false,
-                            "rk_4_m": false,
-                            "rk_500_m": false,
-                            "rk_50_m": false,
-                            "rk_5_m": false,
-                            "rk_6_m": false,
-                            "rk_75_m": false,
-                            "rk_7_m": false,
-                            "rk_8_m": false,
-                            "rk_9_m": false,
-                            "sth_wmp_bsc_m": false,
-                            "sth_wmp_bus_m": false,
-                            "sth_wmp_busp_m": false,
-                            "sth_wmp_pro_m": false,
-                            "vz_bsc_2_m": false,
-                            "vz_bsc_4_m": false,
-                            "vz_bsc_8_m": false,
-                            "vz_ld_2_m": false,
-                            "vz_ld_4_m": false,
-                            "vz_ld_8_m": false,
-                            "vz_one_2_m": false,
-                            "vz_one_4_m": false,
-                            "vz_one_8_m": false,
-                            "vz_os_lnx_m": false,
-                            "vz_ssk_5_5_m": false,
-                            "vz_unl_2_m": false,
-                            "vz_unl_4_m": false,
-                            "vz_unl_8_m": false
-                        },
+                        "sku_values": null,
                         "title": "DNSSEC for Plesk (Bundled)"
                     }
                 ],
@@ -15616,1946 +14411,6 @@
             },
             "example": {
                 "success": false
-            }
-        },
-        "licenseSkuValues": {
-            "type": "object",
-            "title": "SkuValues",
-            "properties": {
-                "ADDON-MLA2005-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The addon mla2005 w m"
-                },
-                "CLNX-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The clnx m"
-                },
-                "EMAIL-PLSK-20-L": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The email plsk 20 l"
-                },
-                "EMAIL-VZ-1": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The email vz 1"
-                },
-                "FT-PLESK-ADDITIONAL-SERVICES-OFF": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The ft plesk additional services off"
-                },
-                "FT-PLESK-DISABLE-FEATURE-UPGRADES": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The ft plesk disable feature upgrades"
-                },
-                "FT-PLESK-DISABLE-GOOGLE-TOOLS": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The ft plesk disable google tools"
-                },
-                "FT-PLESK-DISABLE-SITEBUILDER": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The ft plesk disable sitebuilder"
-                },
-                "FT-PLESK-EXTRAS-BUTTONS-OFF": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The ft plesk extras buttons off"
-                },
-                "FT-PLESK-FOTOLIA-OFF": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The ft plesk fotolia off"
-                },
-                "FT-PLESK-NEWSFEED-OFF": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The ft plesk newsfeed off"
-                },
-                "FT-PLESK-STORE-BUTTON-OFF": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The ft plesk store button off"
-                },
-                "FT-PLESK-VIRTUOZZO-PROMO-OFF": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The ft plesk virtuozzo promo off"
-                },
-                "PCS-1C-ARM-5CT-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 1c arm 5ct pva m"
-                },
-                "PCS-8C-100CT-PVA-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 100ct pva l m"
-                },
-                "PCS-8C-100VM-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 100vm pva m"
-                },
-                "PCS-8C-10CT-PVA-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 10ct pva l m"
-                },
-                "PCS-8C-10VM-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 10vm pva m"
-                },
-                "PCS-8C-150CT-PVA-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 150ct pva l m"
-                },
-                "PCS-8C-15VM-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 15vm pva m"
-                },
-                "PCS-8C-1CT-PVA-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 1ct pva l m"
-                },
-                "PCS-8C-1VM-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 1vm pva m"
-                },
-                "PCS-8C-200CT-PVA-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 200ct pva l m"
-                },
-                "PCS-8C-20CT-PVA-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 20ct pva l m"
-                },
-                "PCS-8C-20VM-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 20vm pva m"
-                },
-                "PCS-8C-250CT-PVA-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 250ct pva l m"
-                },
-                "PCS-8C-2VM-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 2vm pva m"
-                },
-                "PCS-8C-300CT-PVA-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 300ct pva l m"
-                },
-                "PCS-8C-30CT-PVA-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 30ct pva l m"
-                },
-                "PCS-8C-30VM-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 30vm pva m"
-                },
-                "PCS-8C-350CT-PVA-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 350ct pva l m"
-                },
-                "PCS-8C-3CT-PVA-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 3ct pva l m"
-                },
-                "PCS-8C-3VM-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 3vm pva m"
-                },
-                "PCS-8C-400CT-PVA-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 400ct pva l m"
-                },
-                "PCS-8C-40CT-PVA-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 40ct pva l m"
-                },
-                "PCS-8C-40VM-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 40vm pva m"
-                },
-                "PCS-8C-450CT-PVA-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 450ct pva l m"
-                },
-                "PCS-8C-4VM-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 4vm pva m"
-                },
-                "PCS-8C-500CT-PVA-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 500ct pva l m"
-                },
-                "PCS-8C-50CT-PVA-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 50ct pva l m"
-                },
-                "PCS-8C-50VM-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 50vm pva m"
-                },
-                "PCS-8C-5CT-PVA-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 5ct pva l m"
-                },
-                "PCS-8C-5VM-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 5vm pva m"
-                },
-                "PCS-8C-60CT-PVA-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 60ct pva l m"
-                },
-                "PCS-8C-60VM-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 60vm pva m"
-                },
-                "PCS-8C-6VM-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 6vm pva m"
-                },
-                "PCS-8C-70CT-PVA-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 70ct pva l m"
-                },
-                "PCS-8C-70VM-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 70vm pva m"
-                },
-                "PCS-8C-7VM-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 7vm pva m"
-                },
-                "PCS-8C-80CT-PVA-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 80ct pva l m"
-                },
-                "PCS-8C-80VM-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 80vm pva m"
-                },
-                "PCS-8C-8VM-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 8vm pva m"
-                },
-                "PCS-8C-90CT-PVA-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 90ct pva l m"
-                },
-                "PCS-8C-90VM-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 90vm pva m"
-                },
-                "PCS-8C-9VM-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c 9vm pva m"
-                },
-                "PCS-8C-UNLVM-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs 8c unlvm pva m"
-                },
-                "PCS-ADDON-RLU-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcs addon rlu m"
-                },
-                "PCSCI-8C-30VC-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcsci 8c 30vc pva m"
-                },
-                "PCSCI-8C-5VC-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcsci 8c 5vc pva m"
-                },
-                "PCSCI-8C-UNLVC-PVA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcsci 8c unlvc pva m"
-                },
-                "PCSCI-ADDON-HA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcsci addon ha m"
-                },
-                "PCSS-100GB-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pcss 100gb m"
-                },
-                "PLSK-ADD-DEVP-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk add devp m"
-                },
-                "PLSK-ADD-ESP-DW-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk add esp dw l m"
-                },
-                "PLSK-ADD-ESP-KAV-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk add esp kav l m"
-                },
-                "PLSK-ADD-KAV-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk add kav m"
-                },
-                "PLSK-ADD-LP-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk add lp m"
-                },
-                "PLSK-ADD-LP-UNL-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk add lp unl m"
-                },
-                "PLSK-ADD-MSPAM-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk add mspam m"
-                },
-                "PLSK-ADD-PP-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk add pp m"
-                },
-                "PLSK-ADD-SECC-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk add secc m"
-                },
-                "PLSK-ADD-SRVS-ADV-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk add srvs adv m"
-                },
-                "PLSK-ADD-SRVS-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk add srvs m"
-                },
-                "PLSK-ADD-SSP-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk add ssp m"
-                },
-                "PLSK-ADD-WPB-10-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk add wpb 10 m"
-                },
-                "PLSK-ADD-WPB-100-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk add wpb 100 m"
-                },
-                "PLSK-ADD-WPB-1000-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk add wpb 1000 m"
-                },
-                "PLSK-ADD-WPB-30-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk add wpb 30 m"
-                },
-                "PLSK-ADD-WPB-ML-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk add wpb ml m"
-                },
-                "PLSK-ADD-WPRS-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk add wprs m"
-                },
-                "PLSK-ADM-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk adm m"
-                },
-                "PLSK-EXT-ACR-BC-100-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext acr bc 100 m"
-                },
-                "PLSK-EXT-ACR-BC-1000-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext acr bc 1000 m"
-                },
-                "PLSK-EXT-ACR-BC-250-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext acr bc 250 m"
-                },
-                "PLSK-EXT-ACR-BC-500-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext acr bc 500 m"
-                },
-                "PLSK-EXT-ADDN-DCK-BU-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext addn dck bu m"
-                },
-                "PLSK-EXT-ADDN-DCK-GR-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext addn dck gr m"
-                },
-                "PLSK-EXT-ADDN-DCK-ST-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext addn dck st m"
-                },
-                "PLSK-EXT-BCE-KOL-E-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext bce kol e m"
-                },
-                "PLSK-EXT-BCE-KOL-F-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext bce kol f m"
-                },
-                "PLSK-EXT-BCE-KOL-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext bce kol l m"
-                },
-                "PLSK-EXT-BCE-KOL-M-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext bce kol m m"
-                },
-                "PLSK-EXT-BCE-KOL-P-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext bce kol p m"
-                },
-                "PLSK-EXT-BCE-KOL-S-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext bce kol s m"
-                },
-                "PLSK-EXT-BCE-KOL-ST-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext bce kol st m"
-                },
-                "PLSK-EXT-BCP-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext bcp m"
-                },
-                "PLSK-EXT-BG-PREM-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext bg prem m"
-                },
-                "PLSK-EXT-BK-SITE-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext bk site m"
-                },
-                "PLSK-EXT-C-STK-XO-PE-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext c stk xo pe m"
-                },
-                "PLSK-EXT-C-STK-XO-PR-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext c stk xo pr m"
-                },
-                "PLSK-EXT-CGS-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext cgs m"
-                },
-                "PLSK-EXT-DEEV-AP-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext deev ap m"
-                },
-                "PLSK-EXT-DEEV-AS-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext deev as m"
-                },
-                "PLSK-EXT-DEEV-FP-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext deev fp m"
-                },
-                "PLSK-EXT-DEEV-FS-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext deev fs m"
-                },
-                "PLSK-EXT-DEEV-WP-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext deev wp m"
-                },
-                "PLSK-EXT-DEEV-WS-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext deev ws m"
-                },
-                "PLSK-EXT-DGVP-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext dgvp m"
-                },
-                "PLSK-EXT-DNSS-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext dnss m"
-                },
-                "PLSK-EXT-DOCK-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext dock m"
-                },
-                "PLSK-EXT-DW-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext dw m"
-                },
-                "PLSK-EXT-HP-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext hp m"
-                },
-                "PLSK-EXT-I-STK-XO-AG-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext i stk xo ag m"
-                },
-                "PLSK-EXT-I-STK-XO-BU-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext i stk xo bu m"
-                },
-                "PLSK-EXT-I-STK-XO-PE-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext i stk xo pe m"
-                },
-                "PLSK-EXT-I-STK-XO-PR-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext i stk xo pr m"
-                },
-                "PLSK-EXT-IFY-1-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext ify 1 m"
-                },
-                "PLSK-EXT-IFY-250-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext ify 250 m"
-                },
-                "PLSK-EXT-IFY-30-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext ify 30 m"
-                },
-                "PLSK-EXT-IFY-UNL-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext ify unl m"
-                },
-                "PLSK-EXT-JTK-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext jtk m"
-                },
-                "PLSK-EXT-KC-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext kc m"
-                },
-                "PLSK-EXT-MGC-F-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext mgc f m"
-                },
-                "PLSK-EXT-MSRV-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext msrv m"
-                },
-                "PLSK-EXT-PDSH-SRV-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext pdsh srv m"
-                },
-                "PLSK-EXT-RAV-PRE-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext rav pre m"
-                },
-                "PLSK-EXT-RAV-SH-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext rav sh m"
-                },
-                "PLSK-EXT-RC-ADV-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext rc adv m"
-                },
-                "PLSK-EXT-RC-STD-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext rc std m"
-                },
-                "PLSK-EXT-RZAD-B-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext rzad b m"
-                },
-                "PLSK-EXT-RZAD-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext rzad l m"
-                },
-                "PLSK-EXT-RZAD-P-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext rzad p m"
-                },
-                "PLSK-EXT-SE-I-1-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext se i 1 m"
-                },
-                "PLSK-EXT-SE-I-10-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext se i 10 m"
-                },
-                "PLSK-EXT-SE-I-60-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext se i 60 m"
-                },
-                "PLSK-EXT-SE-I-AR-1-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext se i ar 1 m"
-                },
-                "PLSK-EXT-SE-I-AR-10-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext se i ar 10 m"
-                },
-                "PLSK-EXT-SE-IO-1-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext se io 1 m"
-                },
-                "PLSK-EXT-SE-IO-10-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext se io 10 m"
-                },
-                "PLSK-EXT-SE-IO-60-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext se io 60 m"
-                },
-                "PLSK-EXT-SE-IO-AR-1-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext se io ar 1 m"
-                },
-                "PLSK-EXT-SE-IO-AR-10-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext se io ar 10 m"
-                },
-                "PLSK-EXT-SE-IO-AR-60-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext se io ar 60 m"
-                },
-                "PLSK-EXT-SE-O-1-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext se o 1 m"
-                },
-                "PLSK-EXT-SE-O-10-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext se o 10 m"
-                },
-                "PLSK-EXT-SE-O-60-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext se o 60 m"
-                },
-                "PLSK-EXT-SE-O-AR-1-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext se o ar 1 m"
-                },
-                "PLSK-EXT-SE-O-AR-10-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext se o ar 10 m"
-                },
-                "PLSK-EXT-SE-O-AR-60-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext se o ar 60 m"
-                },
-                "PLSK-EXT-SK-1-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext sk 1 m"
-                },
-                "PLSK-EXT-SK-10-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext sk 10 m"
-                },
-                "PLSK-EXT-SK-30-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext sk 30 m"
-                },
-                "PLSK-EXT-SK-UNL-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext sk unl m"
-                },
-                "PLSK-EXT-SOSH-ADV-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext sosh adv m"
-                },
-                "PLSK-EXT-SOSH-MAS-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext sosh mas m"
-                },
-                "PLSK-EXT-SOSH-SOL-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext sosh sol m"
-                },
-                "PLSK-EXT-SOSH-STA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext sosh sta m"
-                },
-                "PLSK-EXT-SPAD-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext spad m"
-                },
-                "PLSK-EXT-SPB-ENT-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext spb ent m"
-                },
-                "PLSK-EXT-SPB-PRE-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext spb pre m"
-                },
-                "PLSK-EXT-STAC-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext stac m"
-                },
-                "PLSK-EXT-STK-XO-AG-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext stk xo ag m"
-                },
-                "PLSK-EXT-STK-XO-BU-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext stk xo bu m"
-                },
-                "PLSK-EXT-STK-XO-PE-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext stk xo pe m"
-                },
-                "PLSK-EXT-STK-XO-PR-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext stk xo pr m"
-                },
-                "PLSK-EXT-SU-1-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext su 1 m"
-                },
-                "PLSK-EXT-SU-10-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext su 10 m"
-                },
-                "PLSK-EXT-SU-100-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext su 100 m"
-                },
-                "PLSK-EXT-SU-30-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext su 30 m"
-                },
-                "PLSK-EXT-SU-UNL-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext su unl m"
-                },
-                "PLSK-EXT-VA-DD-LA-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext va dd la m"
-                },
-                "PLSK-EXT-VA-DD-ME-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext va dd me m"
-                },
-                "PLSK-EXT-VA-DD-SM-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext va dd sm m"
-                },
-                "PLSK-EXT-VA-DD-ST-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext va dd st m"
-                },
-                "PLSK-EXT-VZRK-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk ext vzrk m"
-                },
-                "PLSK-HST-CLNX-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk hst clnx m"
-                },
-                "PLSK-HST-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk hst m"
-                },
-                "PLSK-PRO-CLNX-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk pro clnx m"
-                },
-                "PLSK-PRO-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plsk pro m"
-                },
-                "PLSKVPS-ADD-DEVP-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps add devp m"
-                },
-                "PLSKVPS-ADD-ESP-DW-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps add esp dw l m"
-                },
-                "PLSKVPS-ADD-ESP-KAV-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps add esp kav l m"
-                },
-                "PLSKVPS-ADD-KAV-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps add kav m"
-                },
-                "PLSKVPS-ADD-LP-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps add lp m"
-                },
-                "PLSKVPS-ADD-LP-UNL-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps add lp unl m"
-                },
-                "PLSKVPS-ADD-MSPAM-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps add mspam m"
-                },
-                "PLSKVPS-ADD-PP-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps add pp m"
-                },
-                "PLSKVPS-ADD-SECC-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps add secc m"
-                },
-                "PLSKVPS-ADD-SRVS-ADV-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps add srvs adv m"
-                },
-                "PLSKVPS-ADD-SSP-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps add ssp m"
-                },
-                "PLSKVPS-ADD-WPB-10-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps add wpb 10 m"
-                },
-                "PLSKVPS-ADD-WPB-100-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps add wpb 100 m"
-                },
-                "PLSKVPS-ADD-WPB-1000-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps add wpb 1000 m"
-                },
-                "PLSKVPS-ADD-WPB-30-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps add wpb 30 m"
-                },
-                "PLSKVPS-ADD-WPB-ML-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps add wpb ml m"
-                },
-                "PLSKVPS-ADD-WPRS-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps add wprs m"
-                },
-                "PLSKVPS-ADM-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps adm m"
-                },
-                "PLSKVPS-EXT-DW-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps ext dw m"
-                },
-                "PLSKVPS-EXT-STAC-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps ext stac m"
-                },
-                "PLSKVPS-HST-CLNX-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps hst clnx m"
-                },
-                "PLSKVPS-HST-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps hst m"
-                },
-                "PLSKVPS-PRO-CLNX-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps pro clnx m"
-                },
-                "PLSKVPS-PRO-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps pro m"
-                },
-                "PLSKVPS-SOL-BS-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps sol bs m"
-                },
-                "PLSKVPS-SOL-WS-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The plskvps sol ws m"
-                },
-                "PVC-2C-1-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 1 pim l m"
-                },
-                "PVC-2C-1-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 1 pim w m"
-                },
-                "PVC-2C-10-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 10 pim l m"
-                },
-                "PVC-2C-10-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 10 pim w m"
-                },
-                "PVC-2C-100-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 100 pim l m"
-                },
-                "PVC-2C-100-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 100 pim w m"
-                },
-                "PVC-2C-15-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 15 pim l m"
-                },
-                "PVC-2C-150-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 150 pim l m"
-                },
-                "PVC-2C-150-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 150 pim w m"
-                },
-                "PVC-2C-20-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 20 pim l m"
-                },
-                "PVC-2C-20-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 20 pim w m"
-                },
-                "PVC-2C-200-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 200 pim l m"
-                },
-                "PVC-2C-200-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 200 pim w m"
-                },
-                "PVC-2C-250-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 250 pim l m"
-                },
-                "PVC-2C-3-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 3 pim l m"
-                },
-                "PVC-2C-3-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 3 pim w m"
-                },
-                "PVC-2C-30-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 30 pim l m"
-                },
-                "PVC-2C-30-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 30 pim w m"
-                },
-                "PVC-2C-300-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 300 pim l m"
-                },
-                "PVC-2C-35-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 35 pim l m"
-                },
-                "PVC-2C-4-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 4 pim l m"
-                },
-                "PVC-2C-40-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 40 pim l m"
-                },
-                "PVC-2C-40-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 40 pim w m"
-                },
-                "PVC-2C-400-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 400 pim l m"
-                },
-                "PVC-2C-4095-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 4095 pim l m"
-                },
-                "PVC-2C-5-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 5 pim l m"
-                },
-                "PVC-2C-5-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 5 pim w m"
-                },
-                "PVC-2C-50-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 50 pim l m"
-                },
-                "PVC-2C-50-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 50 pim w m"
-                },
-                "PVC-2C-500-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 500 pim l m"
-                },
-                "PVC-2C-60-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 60 pim l m"
-                },
-                "PVC-2C-60-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 60 pim w m"
-                },
-                "PVC-2C-70-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 70 pim l m"
-                },
-                "PVC-2C-70-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 70 pim w m"
-                },
-                "PVC-2C-80-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 80 pim l m"
-                },
-                "PVC-2C-80-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 80 pim w m"
-                },
-                "PVC-2C-90-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 90 pim l m"
-                },
-                "PVC-2C-90-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 2c 90 pim w m"
-                },
-                "PVC-4C-1-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 1 pim l m"
-                },
-                "PVC-4C-1-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 1 pim w m"
-                },
-                "PVC-4C-10-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 10 pim l m"
-                },
-                "PVC-4C-10-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 10 pim w m"
-                },
-                "PVC-4C-100-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 100 pim l m"
-                },
-                "PVC-4C-100-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 100 pim w m"
-                },
-                "PVC-4C-15-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 15 pim l m"
-                },
-                "PVC-4C-150-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 150 pim l m"
-                },
-                "PVC-4C-150-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 150 pim w m"
-                },
-                "PVC-4C-20-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 20 pim l m"
-                },
-                "PVC-4C-20-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 20 pim w m"
-                },
-                "PVC-4C-200-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 200 pim l m"
-                },
-                "PVC-4C-200-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 200 pim w m"
-                },
-                "PVC-4C-250-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 250 pim l m"
-                },
-                "PVC-4C-3-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 3 pim l m"
-                },
-                "PVC-4C-3-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 3 pim w m"
-                },
-                "PVC-4C-30-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 30 pim l m"
-                },
-                "PVC-4C-30-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 30 pim w m"
-                },
-                "PVC-4C-300-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 300 pim l m"
-                },
-                "PVC-4C-35-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 35 pim l m"
-                },
-                "PVC-4C-4-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 4 pim l m"
-                },
-                "PVC-4C-40-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 40 pim l m"
-                },
-                "PVC-4C-40-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 40 pim w m"
-                },
-                "PVC-4C-400-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 400 pim l m"
-                },
-                "PVC-4C-4095-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 4095 pim l m"
-                },
-                "PVC-4C-5-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 5 pim l m"
-                },
-                "PVC-4C-5-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 5 pim w m"
-                },
-                "PVC-4C-50-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 50 pim l m"
-                },
-                "PVC-4C-50-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 50 pim w m"
-                },
-                "PVC-4C-500-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 500 pim l m"
-                },
-                "PVC-4C-60-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 60 pim l m"
-                },
-                "PVC-4C-60-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 60 pim w m"
-                },
-                "PVC-4C-70-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 70 pim l m"
-                },
-                "PVC-4C-70-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 70 pim w m"
-                },
-                "PVC-4C-80-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 80 pim l m"
-                },
-                "PVC-4C-80-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 80 pim w m"
-                },
-                "PVC-4C-90-PIM-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 90 pim l m"
-                },
-                "PVC-4C-90-PIM-W-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc 4c 90 pim w m"
-                },
-                "PVC-IS-8C-30-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc is 8c 30 l m"
-                },
-                "PVC-IS-8C-50-L-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The pvc is 8c 50 l m"
-                },
-                "RK-1-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The rk 1 m"
-                },
-                "RK-10-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The rk 10 m"
-                },
-                "RK-100-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The rk 100 m"
-                },
-                "RK-15-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The rk 15 m"
-                },
-                "RK-2-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The rk 2 m"
-                },
-                "RK-20-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The rk 20 m"
-                },
-                "RK-200-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The rk 200 m"
-                },
-                "RK-3-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The rk 3 m"
-                },
-                "RK-30-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The rk 30 m"
-                },
-                "RK-300-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The rk 300 m"
-                },
-                "RK-4-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The rk 4 m"
-                },
-                "RK-40-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The rk 40 m"
-                },
-                "RK-400-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The rk 400 m"
-                },
-                "RK-5-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The rk 5 m"
-                },
-                "RK-50-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The rk 50 m"
-                },
-                "RK-500-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The rk 500 m"
-                },
-                "RK-6-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The rk 6 m"
-                },
-                "RK-7-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The rk 7 m"
-                },
-                "RK-75-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The rk 75 m"
-                },
-                "RK-8-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The rk 8 m"
-                },
-                "RK-9-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The rk 9 m"
-                },
-                "STH-WMP-BSC-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The sth wmp bsc m"
-                },
-                "STH-WMP-BUS-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The sth wmp bus m"
-                },
-                "STH-WMP-BUSP-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The sth wmp busp m"
-                },
-                "STH-WMP-PRO-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The sth wmp pro m"
-                },
-                "VZ-BSC-2-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The vz bsc 2 m"
-                },
-                "VZ-BSC-4-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The vz bsc 4 m"
-                },
-                "VZ-BSC-8-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The vz bsc 8 m"
-                },
-                "VZ-LD-2-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The vz ld 2 m"
-                },
-                "VZ-LD-4-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The vz ld 4 m"
-                },
-                "VZ-LD-8-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The vz ld 8 m"
-                },
-                "VZ-ONE-2-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The vz one 2 m"
-                },
-                "VZ-ONE-4-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The vz one 4 m"
-                },
-                "VZ-ONE-8-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The vz one 8 m"
-                },
-                "VZ-OS-LNX-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The vz os lnx m"
-                },
-                "VZ-SSK-5-5-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The vz ssk 5 5 m"
-                },
-                "VZ-UNL-2-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The vz unl 2 m"
-                },
-                "VZ-UNL-4-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The vz unl 4 m"
-                },
-                "VZ-UNL-8-M": {
-                    "type": "boolean",
-                    "format": "boolean",
-                    "title": "The vz unl 8 m"
-                }
-            },
-            "example": {
-                "addon_mla2005_w_m": false,
-                "clnx_m": false,
-                "email_plsk_20_l": false,
-                "email_vz_1": false,
-                "ft_plesk_additional_services_off": false,
-                "ft_plesk_disable_feature_upgrades": false,
-                "ft_plesk_disable_google_tools": false,
-                "ft_plesk_disable_sitebuilder": false,
-                "ft_plesk_extras_buttons_off": false,
-                "ft_plesk_fotolia_off": false,
-                "ft_plesk_newsfeed_off": false,
-                "ft_plesk_store_button_off": false,
-                "ft_plesk_virtuozzo_promo_off": false,
-                "pcs_1c_arm_5ct_pva_m": false,
-                "pcs_8c_100ct_pva_l_m": false,
-                "pcs_8c_100vm_pva_m": false,
-                "pcs_8c_10ct_pva_l_m": false,
-                "pcs_8c_10vm_pva_m": false,
-                "pcs_8c_150ct_pva_l_m": false,
-                "pcs_8c_15vm_pva_m": false,
-                "pcs_8c_1ct_pva_l_m": false,
-                "pcs_8c_1vm_pva_m": false,
-                "pcs_8c_200ct_pva_l_m": false,
-                "pcs_8c_20ct_pva_l_m": false,
-                "pcs_8c_20vm_pva_m": false,
-                "pcs_8c_250ct_pva_l_m": false,
-                "pcs_8c_2vm_pva_m": false,
-                "pcs_8c_300ct_pva_l_m": false,
-                "pcs_8c_30ct_pva_l_m": false,
-                "pcs_8c_30vm_pva_m": false,
-                "pcs_8c_350ct_pva_l_m": false,
-                "pcs_8c_3ct_pva_l_m": false,
-                "pcs_8c_3vm_pva_m": false,
-                "pcs_8c_400ct_pva_l_m": false,
-                "pcs_8c_40ct_pva_l_m": false,
-                "pcs_8c_40vm_pva_m": false,
-                "pcs_8c_450ct_pva_l_m": false,
-                "pcs_8c_4vm_pva_m": false,
-                "pcs_8c_500ct_pva_l_m": false,
-                "pcs_8c_50ct_pva_l_m": false,
-                "pcs_8c_50vm_pva_m": false,
-                "pcs_8c_5ct_pva_l_m": false,
-                "pcs_8c_5vm_pva_m": false,
-                "pcs_8c_60ct_pva_l_m": false,
-                "pcs_8c_60vm_pva_m": false,
-                "pcs_8c_6vm_pva_m": false,
-                "pcs_8c_70ct_pva_l_m": false,
-                "pcs_8c_70vm_pva_m": false,
-                "pcs_8c_7vm_pva_m": false,
-                "pcs_8c_80ct_pva_l_m": false,
-                "pcs_8c_80vm_pva_m": false,
-                "pcs_8c_8vm_pva_m": false,
-                "pcs_8c_90ct_pva_l_m": false,
-                "pcs_8c_90vm_pva_m": false,
-                "pcs_8c_9vm_pva_m": false,
-                "pcs_8c_unlvm_pva_m": false,
-                "pcs_addon_rlu_m": false,
-                "pcsci_8c_30vc_pva_m": false,
-                "pcsci_8c_5vc_pva_m": false,
-                "pcsci_8c_unlvc_pva_m": false,
-                "pcsci_addon_ha_m": false,
-                "pcss_100gb_m": false,
-                "plsk_add_devp_m": false,
-                "plsk_add_esp_dw_l_m": false,
-                "plsk_add_esp_kav_l_m": false,
-                "plsk_add_kav_m": false,
-                "plsk_add_lp_m": false,
-                "plsk_add_lp_unl_m": false,
-                "plsk_add_mspam_m": false,
-                "plsk_add_pp_m": false,
-                "plsk_add_secc_m": false,
-                "plsk_add_srvs_adv_m": false,
-                "plsk_add_srvs_m": false,
-                "plsk_add_ssp_m": false,
-                "plsk_add_wpb_1000_m": false,
-                "plsk_add_wpb_100_m": false,
-                "plsk_add_wpb_10_m": false,
-                "plsk_add_wpb_30_m": false,
-                "plsk_add_wpb_ml_m": false,
-                "plsk_add_wprs_m": false,
-                "plsk_adm_m": false,
-                "plsk_ext_acr_bc_1000_m": false,
-                "plsk_ext_acr_bc_100_m": false,
-                "plsk_ext_acr_bc_250_m": false,
-                "plsk_ext_acr_bc_500_m": false,
-                "plsk_ext_addn_dck_bu_m": false,
-                "plsk_ext_addn_dck_gr_m": false,
-                "plsk_ext_addn_dck_st_m": false,
-                "plsk_ext_bce_kol_e_m": false,
-                "plsk_ext_bce_kol_f_m": false,
-                "plsk_ext_bce_kol_l_m": false,
-                "plsk_ext_bce_kol_m_m": false,
-                "plsk_ext_bce_kol_p_m": false,
-                "plsk_ext_bce_kol_s_m": false,
-                "plsk_ext_bce_kol_st_m": false,
-                "plsk_ext_bcp_m": false,
-                "plsk_ext_bg_prem_m": false,
-                "plsk_ext_bk_site_m": false,
-                "plsk_ext_c_stk_xo_pe_m": false,
-                "plsk_ext_c_stk_xo_pr_m": false,
-                "plsk_ext_cgs_m": false,
-                "plsk_ext_deev_ap_m": false,
-                "plsk_ext_deev_as_m": false,
-                "plsk_ext_deev_fp_m": false,
-                "plsk_ext_deev_fs_m": false,
-                "plsk_ext_deev_wp_m": false,
-                "plsk_ext_deev_ws_m": false,
-                "plsk_ext_dgvp_m": false,
-                "plsk_ext_dnss_m": false,
-                "plsk_ext_dock_m": false,
-                "plsk_ext_dw_m": false,
-                "plsk_ext_hp_m": false,
-                "plsk_ext_i_stk_xo_ag_m": false,
-                "plsk_ext_i_stk_xo_bu_m": false,
-                "plsk_ext_i_stk_xo_pe_m": false,
-                "plsk_ext_i_stk_xo_pr_m": false,
-                "plsk_ext_ify_1_m": false,
-                "plsk_ext_ify_250_m": false,
-                "plsk_ext_ify_30_m": false,
-                "plsk_ext_ify_unl_m": false,
-                "plsk_ext_jtk_m": false,
-                "plsk_ext_kc_m": false,
-                "plsk_ext_mgc_f_m": false,
-                "plsk_ext_msrv_m": false,
-                "plsk_ext_pdsh_srv_m": false,
-                "plsk_ext_rav_pre_m": false,
-                "plsk_ext_rav_sh_m": false,
-                "plsk_ext_rc_adv_m": false,
-                "plsk_ext_rc_std_m": false,
-                "plsk_ext_rzad_b_m": false,
-                "plsk_ext_rzad_l_m": false,
-                "plsk_ext_rzad_p_m": false,
-                "plsk_ext_se_i_10_m": false,
-                "plsk_ext_se_i_1_m": false,
-                "plsk_ext_se_i_60_m": false,
-                "plsk_ext_se_i_ar_10_m": false,
-                "plsk_ext_se_i_ar_1_m": false,
-                "plsk_ext_se_io_10_m": false,
-                "plsk_ext_se_io_1_m": false,
-                "plsk_ext_se_io_60_m": false,
-                "plsk_ext_se_io_ar_10_m": false,
-                "plsk_ext_se_io_ar_1_m": false,
-                "plsk_ext_se_io_ar_60_m": false,
-                "plsk_ext_se_o_10_m": false,
-                "plsk_ext_se_o_1_m": false,
-                "plsk_ext_se_o_60_m": false,
-                "plsk_ext_se_o_ar_10_m": false,
-                "plsk_ext_se_o_ar_1_m": false,
-                "plsk_ext_se_o_ar_60_m": false,
-                "plsk_ext_sk_10_m": false,
-                "plsk_ext_sk_1_m": false,
-                "plsk_ext_sk_30_m": false,
-                "plsk_ext_sk_unl_m": false,
-                "plsk_ext_sosh_adv_m": false,
-                "plsk_ext_sosh_mas_m": false,
-                "plsk_ext_sosh_sol_m": false,
-                "plsk_ext_sosh_sta_m": false,
-                "plsk_ext_spad_m": false,
-                "plsk_ext_spb_ent_m": false,
-                "plsk_ext_spb_pre_m": false,
-                "plsk_ext_stac_m": false,
-                "plsk_ext_stk_xo_ag_m": false,
-                "plsk_ext_stk_xo_bu_m": false,
-                "plsk_ext_stk_xo_pe_m": false,
-                "plsk_ext_stk_xo_pr_m": false,
-                "plsk_ext_su_100_m": false,
-                "plsk_ext_su_10_m": false,
-                "plsk_ext_su_1_m": false,
-                "plsk_ext_su_30_m": false,
-                "plsk_ext_su_unl_m": false,
-                "plsk_ext_va_dd_la_m": false,
-                "plsk_ext_va_dd_me_m": false,
-                "plsk_ext_va_dd_sm_m": false,
-                "plsk_ext_va_dd_st_m": false,
-                "plsk_ext_vzrk_m": false,
-                "plsk_hst_clnx_m": false,
-                "plsk_hst_m": false,
-                "plsk_pro_clnx_m": false,
-                "plsk_pro_m": false,
-                "plskvps_add_devp_m": false,
-                "plskvps_add_esp_dw_l_m": false,
-                "plskvps_add_esp_kav_l_m": false,
-                "plskvps_add_kav_m": false,
-                "plskvps_add_lp_m": false,
-                "plskvps_add_lp_unl_m": false,
-                "plskvps_add_mspam_m": false,
-                "plskvps_add_pp_m": false,
-                "plskvps_add_secc_m": false,
-                "plskvps_add_srvs_adv_m": false,
-                "plskvps_add_ssp_m": false,
-                "plskvps_add_wpb_1000_m": false,
-                "plskvps_add_wpb_100_m": false,
-                "plskvps_add_wpb_10_m": false,
-                "plskvps_add_wpb_30_m": false,
-                "plskvps_add_wpb_ml_m": false,
-                "plskvps_add_wprs_m": false,
-                "plskvps_adm_m": false,
-                "plskvps_ext_dw_m": false,
-                "plskvps_ext_stac_m": false,
-                "plskvps_hst_clnx_m": false,
-                "plskvps_hst_m": false,
-                "plskvps_pro_clnx_m": false,
-                "plskvps_pro_m": false,
-                "plskvps_sol_bs_m": false,
-                "plskvps_sol_ws_m": false,
-                "pvc_2c_100_pim_l_m": false,
-                "pvc_2c_100_pim_w_m": false,
-                "pvc_2c_10_pim_l_m": false,
-                "pvc_2c_10_pim_w_m": false,
-                "pvc_2c_150_pim_l_m": false,
-                "pvc_2c_150_pim_w_m": false,
-                "pvc_2c_15_pim_l_m": false,
-                "pvc_2c_1_pim_l_m": false,
-                "pvc_2c_1_pim_w_m": false,
-                "pvc_2c_200_pim_l_m": false,
-                "pvc_2c_200_pim_w_m": false,
-                "pvc_2c_20_pim_l_m": false,
-                "pvc_2c_20_pim_w_m": false,
-                "pvc_2c_250_pim_l_m": false,
-                "pvc_2c_300_pim_l_m": false,
-                "pvc_2c_30_pim_l_m": false,
-                "pvc_2c_30_pim_w_m": false,
-                "pvc_2c_35_pim_l_m": false,
-                "pvc_2c_3_pim_l_m": false,
-                "pvc_2c_3_pim_w_m": false,
-                "pvc_2c_400_pim_l_m": false,
-                "pvc_2c_4095_pim_l_m": false,
-                "pvc_2c_40_pim_l_m": false,
-                "pvc_2c_40_pim_w_m": false,
-                "pvc_2c_4_pim_l_m": false,
-                "pvc_2c_500_pim_l_m": false,
-                "pvc_2c_50_pim_l_m": false,
-                "pvc_2c_50_pim_w_m": false,
-                "pvc_2c_5_pim_l_m": false,
-                "pvc_2c_5_pim_w_m": false,
-                "pvc_2c_60_pim_l_m": false,
-                "pvc_2c_60_pim_w_m": false,
-                "pvc_2c_70_pim_l_m": false,
-                "pvc_2c_70_pim_w_m": false,
-                "pvc_2c_80_pim_l_m": false,
-                "pvc_2c_80_pim_w_m": false,
-                "pvc_2c_90_pim_l_m": false,
-                "pvc_2c_90_pim_w_m": false,
-                "pvc_4c_100_pim_l_m": false,
-                "pvc_4c_100_pim_w_m": false,
-                "pvc_4c_10_pim_l_m": false,
-                "pvc_4c_10_pim_w_m": false,
-                "pvc_4c_150_pim_l_m": false,
-                "pvc_4c_150_pim_w_m": false,
-                "pvc_4c_15_pim_l_m": false,
-                "pvc_4c_1_pim_l_m": false,
-                "pvc_4c_1_pim_w_m": false,
-                "pvc_4c_200_pim_l_m": false,
-                "pvc_4c_200_pim_w_m": false,
-                "pvc_4c_20_pim_l_m": false,
-                "pvc_4c_20_pim_w_m": false,
-                "pvc_4c_250_pim_l_m": false,
-                "pvc_4c_300_pim_l_m": false,
-                "pvc_4c_30_pim_l_m": false,
-                "pvc_4c_30_pim_w_m": false,
-                "pvc_4c_35_pim_l_m": false,
-                "pvc_4c_3_pim_l_m": false,
-                "pvc_4c_3_pim_w_m": false,
-                "pvc_4c_400_pim_l_m": false,
-                "pvc_4c_4095_pim_l_m": false,
-                "pvc_4c_40_pim_l_m": false,
-                "pvc_4c_40_pim_w_m": false,
-                "pvc_4c_4_pim_l_m": false,
-                "pvc_4c_500_pim_l_m": false,
-                "pvc_4c_50_pim_l_m": false,
-                "pvc_4c_50_pim_w_m": false,
-                "pvc_4c_5_pim_l_m": false,
-                "pvc_4c_5_pim_w_m": false,
-                "pvc_4c_60_pim_l_m": false,
-                "pvc_4c_60_pim_w_m": false,
-                "pvc_4c_70_pim_l_m": false,
-                "pvc_4c_70_pim_w_m": false,
-                "pvc_4c_80_pim_l_m": false,
-                "pvc_4c_80_pim_w_m": false,
-                "pvc_4c_90_pim_l_m": false,
-                "pvc_4c_90_pim_w_m": false,
-                "pvc_is_8c_30_l_m": false,
-                "pvc_is_8c_50_l_m": false,
-                "rk_100_m": false,
-                "rk_10_m": false,
-                "rk_15_m": false,
-                "rk_1_m": false,
-                "rk_200_m": false,
-                "rk_20_m": false,
-                "rk_2_m": false,
-                "rk_300_m": false,
-                "rk_30_m": false,
-                "rk_3_m": false,
-                "rk_400_m": false,
-                "rk_40_m": false,
-                "rk_4_m": false,
-                "rk_500_m": false,
-                "rk_50_m": false,
-                "rk_5_m": false,
-                "rk_6_m": false,
-                "rk_75_m": false,
-                "rk_7_m": false,
-                "rk_8_m": false,
-                "rk_9_m": false,
-                "sth_wmp_bsc_m": false,
-                "sth_wmp_bus_m": false,
-                "sth_wmp_busp_m": false,
-                "sth_wmp_pro_m": false,
-                "vz_bsc_2_m": false,
-                "vz_bsc_4_m": false,
-                "vz_bsc_8_m": false,
-                "vz_ld_2_m": false,
-                "vz_ld_4_m": false,
-                "vz_ld_8_m": false,
-                "vz_one_2_m": false,
-                "vz_one_4_m": false,
-                "vz_one_8_m": false,
-                "vz_os_lnx_m": false,
-                "vz_ssk_5_5_m": false,
-                "vz_unl_2_m": false,
-                "vz_unl_4_m": false,
-                "vz_unl_8_m": false
             }
         },
         "licenseUpdateLicenseResponse": {
@@ -17792,8 +14647,12 @@
                     "title": "Product type (Plesk or Virtuozzo)"
                 },
                 "sku_values": {
+                    "type": "object",
                     "title": "List of license SKU values",
-                    "$ref": "#/definitions/licenseSkuValues"
+                    "additionalProperties": {
+                        "type": "boolean",
+                        "format": "boolean"
+                    }
                 },
                 "status": {
                     "type": "string",
@@ -25538,6 +22397,7 @@
                     "restrictions": [
                         "Los dominios premium (cortos y nombres gen\u00e9ricos) son m\u00e1s caros para registros y renovaciones"
                     ],
+                    "soft_quarantine_period": 44,
                     "status": "ACT",
                     "supported_application_mode": [
                         {
@@ -25791,6 +22651,7 @@
                             "restrictions": [
                                 "Los dominios premium (cortos y nombres gen\u00e9ricos) son m\u00e1s caros para registros y renovaciones"
                             ],
+                            "soft_quarantine_period": 44,
                             "status": "ACT",
                             "supported_application_mode": [
                                 {
@@ -25986,6 +22847,7 @@
                         "restrictions": [
                             "Los dominios premium (cortos y nombres gen\u00e9ricos) son m\u00e1s caros para registros y renovaciones"
                         ],
+                        "soft_quarantine_period": 44,
                         "status": "ACT",
                         "supported_application_mode": [
                             {
@@ -26354,6 +23216,11 @@
                         "type": "string"
                     }
                 },
+                "soft_quarantine_period": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Extension soft quarantine period"
+                },
                 "status": {
                     "type": "string",
                     "title": "Extension status"
@@ -26545,6 +23412,7 @@
                 "restrictions": [
                     "Los dominios premium (cortos y nombres gen\u00e9ricos) son m\u00e1s caros para registros y renovaciones"
                 ],
+                "soft_quarantine_period": 44,
                 "status": "ACT",
                 "supported_application_mode": [
                     {

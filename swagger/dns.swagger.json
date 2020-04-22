@@ -45,6 +45,34 @@
                         "description": "Nameserver name search pattern. Wildcatd (*) can be used.",
                         "name": "pattern",
                         "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "default": 100,
+                        "description": "Limits the number of objects in the output.",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Used to retrieve all objects from a certain offset up to the limit.",
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "default": "asc",
+                        "description": "Sorting type (asc/desc).",
+                        "name": "order",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "default": "name",
+                        "description": "Field for sorting output. Possible values: id, name.",
+                        "name": "order_by",
+                        "in": "query"
                     }
                 ],
                 "responses": {
