@@ -17025,7 +17025,7 @@
                 "data": {
                     "is_premium": false,
                     "is_promotion": false,
-                    "non_promo_price": {
+                    "membership_price": {
                         "product": {
                             "currency": "USD",
                             "price": 8.06
@@ -17048,6 +17048,16 @@
                     "promotion_data": {
                         "end_date": "1589932800",
                         "start_date": "1582156800"
+                    },
+                    "tier_price": {
+                        "product": {
+                            "currency": "USD",
+                            "price": 8.06
+                        },
+                        "reseller": {
+                            "currency": "USD",
+                            "price": 8.06
+                        }
                     }
                 },
                 "desc": ""
@@ -17067,8 +17077,8 @@
                     "format": "boolean",
                     "title": "Indicates whether price is promotion or not"
                 },
-                "non_promo_price": {
-                    "title": "Operation price without promo",
+                "membership_price": {
+                    "title": "Operation membership price",
                     "$ref": "#/definitions/domainPriceGroup"
                 },
                 "price": {
@@ -17078,12 +17088,16 @@
                 "promotion_data": {
                     "title": "Promotion data",
                     "$ref": "#/definitions/pricePromotionData"
+                },
+                "tier_price": {
+                    "title": "Operation price without promo",
+                    "$ref": "#/definitions/domainPriceGroup"
                 }
             },
             "example": {
                 "is_premium": false,
                 "is_promotion": false,
-                "non_promo_price": {
+                "membership_price": {
                     "product": {
                         "currency": "USD",
                         "price": 8.06
@@ -17106,6 +17120,16 @@
                 "promotion_data": {
                     "end_date": "1589932800",
                     "start_date": "1582156800"
+                },
+                "tier_price": {
+                    "product": {
+                        "currency": "USD",
+                        "price": 8.06
+                    },
+                    "reseller": {
+                        "currency": "USD",
+                        "price": 8.06
+                    }
                 }
             }
         },
@@ -22392,6 +22416,20 @@
                                 "currency": "USD",
                                 "price": 226
                             },
+                            "promotion_details": {
+                                "end_date": "1589932800",
+                                "non_promo_price": {
+                                    "product": {
+                                        "currency": "USD",
+                                        "price": 226
+                                    },
+                                    "reseller": {
+                                        "currency": "USD",
+                                        "price": 226
+                                    }
+                                },
+                                "start_date": "1582156800"
+                            },
                             "reseller": {
                                 "currency": "USD",
                                 "price": 226
@@ -22646,6 +22684,20 @@
                                         "currency": "USD",
                                         "price": 226
                                     },
+                                    "promotion_details": {
+                                        "end_date": "1589932800",
+                                        "non_promo_price": {
+                                            "product": {
+                                                "currency": "USD",
+                                                "price": 226
+                                            },
+                                            "reseller": {
+                                                "currency": "USD",
+                                                "price": 226
+                                            }
+                                        },
+                                        "start_date": "1582156800"
+                                    },
                                     "reseller": {
                                         "currency": "USD",
                                         "price": 226
@@ -22842,6 +22894,20 @@
                                     "currency": "USD",
                                     "price": 226
                                 },
+                                "promotion_details": {
+                                    "end_date": "1589932800",
+                                    "non_promo_price": {
+                                        "product": {
+                                            "currency": "USD",
+                                            "price": 226
+                                        },
+                                        "reseller": {
+                                            "currency": "USD",
+                                            "price": 226
+                                        }
+                                    },
+                                    "start_date": "1582156800"
+                                },
                                 "reseller": {
                                     "currency": "USD",
                                     "price": 226
@@ -22981,6 +23047,48 @@
                 "price": 226
             }
         },
+        "tldPriceWithPromoInfo": {
+            "type": "object",
+            "title": "PriceWithPromoInfo",
+            "properties": {
+                "product": {
+                    "title": "Price in product currency",
+                    "$ref": "#/definitions/tldPriceInCurrency"
+                },
+                "promotion_details": {
+                    "title": "Additional info about current promotion",
+                    "$ref": "#/definitions/tldPromoDetails"
+                },
+                "reseller": {
+                    "title": "Price in reseller's currency",
+                    "$ref": "#/definitions/tldPriceInCurrency"
+                }
+            },
+            "example": {
+                "product": {
+                    "currency": "USD",
+                    "price": 226
+                },
+                "promotion_details": {
+                    "end_date": "1589932800",
+                    "non_promo_price": {
+                        "product": {
+                            "currency": "USD",
+                            "price": 226
+                        },
+                        "reseller": {
+                            "currency": "USD",
+                            "price": 226
+                        }
+                    },
+                    "start_date": "1582156800"
+                },
+                "reseller": {
+                    "currency": "USD",
+                    "price": 226
+                }
+            }
+        },
         "tldPrices": {
             "type": "object",
             "title": "Prices",
@@ -23008,8 +23116,8 @@
                     "$ref": "#/definitions/tldPrice"
                 },
                 "reseller_price": {
-                    "title": "Price in reseller's currency",
-                    "$ref": "#/definitions/tldPrice"
+                    "title": "Reseller's price with personal discounts or promo",
+                    "$ref": "#/definitions/tldPriceWithPromoInfo"
                 },
                 "restore_price": {
                     "title": "Domain restoration price",
@@ -23074,6 +23182,20 @@
                         "currency": "USD",
                         "price": 226
                     },
+                    "promotion_details": {
+                        "end_date": "1589932800",
+                        "non_promo_price": {
+                            "product": {
+                                "currency": "USD",
+                                "price": 226
+                            },
+                            "reseller": {
+                                "currency": "USD",
+                                "price": 226
+                            }
+                        },
+                        "start_date": "1582156800"
+                    },
                     "reseller": {
                         "currency": "USD",
                         "price": 226
@@ -23139,6 +23261,38 @@
                         "price": 226
                     }
                 }
+            }
+        },
+        "tldPromoDetails": {
+            "type": "object",
+            "title": "PromoDetails",
+            "properties": {
+                "end_date": {
+                    "type": "string",
+                    "title": "Date when promotion is end"
+                },
+                "non_promo_price": {
+                    "title": "Domain regular price without promotions",
+                    "$ref": "#/definitions/tldPrice"
+                },
+                "start_date": {
+                    "type": "string",
+                    "title": "Date when promotion is start"
+                }
+            },
+            "example": {
+                "end_date": "1589932800",
+                "non_promo_price": {
+                    "product": {
+                        "currency": "USD",
+                        "price": 226
+                    },
+                    "reseller": {
+                        "currency": "USD",
+                        "price": 226
+                    }
+                },
+                "start_date": "1582156800"
             }
         },
         "tldTld": {
@@ -23406,6 +23560,20 @@
                         "product": {
                             "currency": "USD",
                             "price": 226
+                        },
+                        "promotion_details": {
+                            "end_date": "1589932800",
+                            "non_promo_price": {
+                                "product": {
+                                    "currency": "USD",
+                                    "price": 226
+                                },
+                                "reseller": {
+                                    "currency": "USD",
+                                    "price": 226
+                                }
+                            },
+                            "start_date": "1582156800"
                         },
                         "reseller": {
                             "currency": "USD",
