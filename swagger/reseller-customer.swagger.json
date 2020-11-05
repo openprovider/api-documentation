@@ -1866,13 +1866,15 @@
                     "company_registration_city": "Testcity",
                     "company_registration_number": "XX123456789X04",
                     "company_registration_subscription_date": "2000-01-01",
+                    "company_url": "https://openprovider.com",
                     "headquarters_address": "Test street 5",
                     "headquarters_city": "Testcity",
                     "headquarters_country": "NL",
                     "headquarters_state": "Testprovince",
                     "headquarters_zipcode": "123",
                     "passport_number": "123456",
-                    "social_security_number": "6543210"
+                    "social_security_number": "6543210",
+                    "trading_name": "Openprovider"
                 },
                 "address": {
                     "city": "Test city",
@@ -2054,6 +2056,10 @@
                     "type": "string",
                     "title": "Customer company's registration date"
                 },
+                "company_url": {
+                    "type": "string",
+                    "title": "Company URL"
+                },
                 "headquarters_address": {
                     "type": "string",
                     "title": "Company's headquarters address"
@@ -2081,6 +2087,10 @@
                 "social_security_number": {
                     "type": "string",
                     "title": "Social security number"
+                },
+                "trading_name": {
+                    "type": "string",
+                    "title": "Trading name"
                 }
             },
             "example": {
@@ -2100,13 +2110,15 @@
                 "company_registration_city": "Testcity",
                 "company_registration_number": "XX123456789X04",
                 "company_registration_subscription_date": "2000-01-01",
+                "company_url": "https://openprovider.com",
                 "headquarters_address": "Test street 5",
                 "headquarters_city": "Testcity",
                 "headquarters_country": "NL",
                 "headquarters_state": "Testprovince",
                 "headquarters_zipcode": "123",
                 "passport_number": "123456",
-                "social_security_number": "6543210"
+                "social_security_number": "6543210",
+                "trading_name": "Openprovider"
             }
         },
         "customerDeleteCustomerResponse": {
@@ -2500,13 +2512,15 @@
                         "company_registration_city": "Testcity",
                         "company_registration_number": "XX123456789X04",
                         "company_registration_subscription_date": "2000-01-01",
+                        "company_url": "https://openprovider.com",
                         "headquarters_address": "Test street 5",
                         "headquarters_city": "Testcity",
                         "headquarters_country": "NL",
                         "headquarters_state": "Testprovince",
                         "headquarters_zipcode": "123",
                         "passport_number": "123456",
-                        "social_security_number": "6543210"
+                        "social_security_number": "6543210",
+                        "trading_name": "Openprovider"
                     },
                     "address": {
                         "city": "Test city",
@@ -2712,13 +2726,15 @@
                     "company_registration_city": "Testcity",
                     "company_registration_number": "XX123456789X04",
                     "company_registration_subscription_date": "2000-01-01",
+                    "company_url": "https://openprovider.com",
                     "headquarters_address": "Test street 5",
                     "headquarters_city": "Testcity",
                     "headquarters_country": "NL",
                     "headquarters_state": "Testprovince",
                     "headquarters_zipcode": "123",
                     "passport_number": "123456",
-                    "social_security_number": "6543210"
+                    "social_security_number": "6543210",
+                    "trading_name": "Openprovider"
                 },
                 "address": {
                     "city": "Test city",
@@ -2862,13 +2878,15 @@
                                 "company_registration_city": "Testcity",
                                 "company_registration_number": "XX123456789X04",
                                 "company_registration_subscription_date": "2000-01-01",
+                                "company_url": "https://openprovider.com",
                                 "headquarters_address": "Test street 5",
                                 "headquarters_city": "Testcity",
                                 "headquarters_country": "NL",
                                 "headquarters_state": "Testprovince",
                                 "headquarters_zipcode": "123",
                                 "passport_number": "123456",
-                                "social_security_number": "6543210"
+                                "social_security_number": "6543210",
+                                "trading_name": "Openprovider"
                             },
                             "address": {
                                 "city": "Test city",
@@ -2995,13 +3013,15 @@
                             "company_registration_city": "Testcity",
                             "company_registration_number": "XX123456789X04",
                             "company_registration_subscription_date": "2000-01-01",
+                            "company_url": "https://openprovider.com",
                             "headquarters_address": "Test street 5",
                             "headquarters_city": "Testcity",
                             "headquarters_country": "NL",
                             "headquarters_state": "Testprovince",
                             "headquarters_zipcode": "123",
                             "passport_number": "123456",
-                            "social_security_number": "6543210"
+                            "social_security_number": "6543210",
+                            "trading_name": "Openprovider"
                         },
                         "address": {
                             "city": "Test city",
@@ -3189,13 +3209,15 @@
                     "company_registration_city": "Testcity",
                     "company_registration_number": "XX123456789X04",
                     "company_registration_subscription_date": "2000-01-01",
+                    "company_url": "https://openprovider.com",
                     "headquarters_address": "Test street 5",
                     "headquarters_city": "Testcity",
                     "headquarters_country": "NL",
                     "headquarters_state": "Testprovince",
                     "headquarters_zipcode": "123",
                     "passport_number": "123456",
-                    "social_security_number": "6543210"
+                    "social_security_number": "6543210",
+                    "trading_name": "Openprovider"
                 },
                 "address": {
                     "city": "Test city",
@@ -3371,13 +3393,15 @@
                     "company_registration_city": "Testcity",
                     "company_registration_number": "XX123456789X04",
                     "company_registration_subscription_date": "2000-01-01",
+                    "company_url": "https://openprovider.com",
                     "headquarters_address": "Test street 5",
                     "headquarters_city": "Testcity",
                     "headquarters_country": "NL",
                     "headquarters_state": "Testprovince",
                     "headquarters_zipcode": "123",
                     "passport_number": "123456",
-                    "social_security_number": "6543210"
+                    "social_security_number": "6543210",
+                    "trading_name": "Openprovider"
                 },
                 "address": {
                     "city": "Test city",
@@ -4297,6 +4321,95 @@
                             }
                         ],
                         "preregistered_domain_priorities": "[]",
+                        "recurring_payment_methods": [
+                            {
+                                "name": "ideal",
+                                "settings": {
+                                    "limit": {
+                                        "maximum": {
+                                            "aud": 0,
+                                            "bgn": 0,
+                                            "brl": 0,
+                                            "cad": 0,
+                                            "chf": 0,
+                                            "cny": 0,
+                                            "czk": 0,
+                                            "dkk": 0,
+                                            "eek": 0,
+                                            "eur": 0,
+                                            "gbp": 0,
+                                            "ghs": 0,
+                                            "hkd": 0,
+                                            "hrk": 0,
+                                            "huf": 0,
+                                            "idr": 0,
+                                            "ils": 0,
+                                            "inr": 0,
+                                            "jpy": 0,
+                                            "krw": 0,
+                                            "lkr": 0,
+                                            "ltl": 0,
+                                            "lvl": 0,
+                                            "mxn": 0,
+                                            "myr": 0,
+                                            "nok": 0,
+                                            "nzd": 0,
+                                            "php": 0,
+                                            "pln": 0,
+                                            "ron": 0,
+                                            "rub": 0,
+                                            "sek": 0,
+                                            "sgd": 0,
+                                            "thb": 0,
+                                            "try": 0,
+                                            "usd": 0,
+                                            "zar": 0
+                                        },
+                                        "minimum": {
+                                            "aud": 0,
+                                            "bgn": 0,
+                                            "brl": 0,
+                                            "cad": 0,
+                                            "chf": 0,
+                                            "cny": 0,
+                                            "czk": 0,
+                                            "dkk": 0,
+                                            "eek": 0,
+                                            "eur": 0,
+                                            "gbp": 0,
+                                            "ghs": 0,
+                                            "hkd": 0,
+                                            "hrk": 0,
+                                            "huf": 0,
+                                            "idr": 0,
+                                            "ils": 0,
+                                            "inr": 0,
+                                            "jpy": 0,
+                                            "krw": 0,
+                                            "lkr": 0,
+                                            "ltl": 0,
+                                            "lvl": 0,
+                                            "mxn": 0,
+                                            "myr": 0,
+                                            "nok": 0,
+                                            "nzd": 0,
+                                            "php": 0,
+                                            "pln": 0,
+                                            "ron": 0,
+                                            "rub": 0,
+                                            "sek": 0,
+                                            "sgd": 0,
+                                            "thb": 0,
+                                            "try": 0,
+                                            "usd": 0,
+                                            "zar": 0
+                                        }
+                                    },
+                                    "transaction_fee": 0,
+                                    "transaction_fee_absolute": 0
+                                }
+                            }
+                        ],
                         "renew_notification_days": [
                             1
                         ],
@@ -4688,6 +4801,95 @@
                         }
                     ],
                     "preregistered_domain_priorities": "[]",
+                    "recurring_payment_methods": [
+                        {
+                            "name": "ideal",
+                            "settings": {
+                                "limit": {
+                                    "maximum": {
+                                        "aud": 0,
+                                        "bgn": 0,
+                                        "brl": 0,
+                                        "cad": 0,
+                                        "chf": 0,
+                                        "cny": 0,
+                                        "czk": 0,
+                                        "dkk": 0,
+                                        "eek": 0,
+                                        "eur": 0,
+                                        "gbp": 0,
+                                        "ghs": 0,
+                                        "hkd": 0,
+                                        "hrk": 0,
+                                        "huf": 0,
+                                        "idr": 0,
+                                        "ils": 0,
+                                        "inr": 0,
+                                        "jpy": 0,
+                                        "krw": 0,
+                                        "lkr": 0,
+                                        "ltl": 0,
+                                        "lvl": 0,
+                                        "mxn": 0,
+                                        "myr": 0,
+                                        "nok": 0,
+                                        "nzd": 0,
+                                        "php": 0,
+                                        "pln": 0,
+                                        "ron": 0,
+                                        "rub": 0,
+                                        "sek": 0,
+                                        "sgd": 0,
+                                        "thb": 0,
+                                        "try": 0,
+                                        "usd": 0,
+                                        "zar": 0
+                                    },
+                                    "minimum": {
+                                        "aud": 0,
+                                        "bgn": 0,
+                                        "brl": 0,
+                                        "cad": 0,
+                                        "chf": 0,
+                                        "cny": 0,
+                                        "czk": 0,
+                                        "dkk": 0,
+                                        "eek": 0,
+                                        "eur": 0,
+                                        "gbp": 0,
+                                        "ghs": 0,
+                                        "hkd": 0,
+                                        "hrk": 0,
+                                        "huf": 0,
+                                        "idr": 0,
+                                        "ils": 0,
+                                        "inr": 0,
+                                        "jpy": 0,
+                                        "krw": 0,
+                                        "lkr": 0,
+                                        "ltl": 0,
+                                        "lvl": 0,
+                                        "mxn": 0,
+                                        "myr": 0,
+                                        "nok": 0,
+                                        "nzd": 0,
+                                        "php": 0,
+                                        "pln": 0,
+                                        "ron": 0,
+                                        "rub": 0,
+                                        "sek": 0,
+                                        "sgd": 0,
+                                        "thb": 0,
+                                        "try": 0,
+                                        "usd": 0,
+                                        "zar": 0
+                                    }
+                                },
+                                "transaction_fee": 0,
+                                "transaction_fee_absolute": 0
+                            }
+                        }
+                    ],
                     "renew_notification_days": [
                         1
                     ],
@@ -4770,13 +4972,13 @@
             "type": "object",
             "title": "ResellerAdditionalData",
             "properties": {
-                "GSTIN": {
-                    "type": "string",
-                    "title": "The gstin"
-                },
                 "cif_nif_number": {
                     "type": "string",
                     "title": "Custom invoice information"
+                },
+                "gstin": {
+                    "type": "string",
+                    "title": "The gstin"
                 },
                 "internal_reference": {
                     "type": "string",
@@ -4930,7 +5132,7 @@
                 },
                 "payment_methods": {
                     "type": "array",
-                    "title": "Reseller payment methods settings",
+                    "title": "Reseller recurring payment methods settings",
                     "items": {
                         "$ref": "#/definitions/settingsPaymentMethods"
                     }
@@ -4938,6 +5140,13 @@
                 "preregistered_domain_priorities": {
                     "type": "string",
                     "title": "The preregistered domain priorities"
+                },
+                "recurring_payment_methods": {
+                    "type": "array",
+                    "title": "Reseller payment methods settings",
+                    "items": {
+                        "$ref": "#/definitions/settingsPaymentMethods"
+                    }
                 },
                 "renew_notification_days": {
                     "type": "array",
@@ -5096,6 +5305,95 @@
                     }
                 ],
                 "preregistered_domain_priorities": "[]",
+                "recurring_payment_methods": [
+                    {
+                        "name": "ideal",
+                        "settings": {
+                            "limit": {
+                                "maximum": {
+                                    "aud": 0,
+                                    "bgn": 0,
+                                    "brl": 0,
+                                    "cad": 0,
+                                    "chf": 0,
+                                    "cny": 0,
+                                    "czk": 0,
+                                    "dkk": 0,
+                                    "eek": 0,
+                                    "eur": 0,
+                                    "gbp": 0,
+                                    "ghs": 0,
+                                    "hkd": 0,
+                                    "hrk": 0,
+                                    "huf": 0,
+                                    "idr": 0,
+                                    "ils": 0,
+                                    "inr": 0,
+                                    "jpy": 0,
+                                    "krw": 0,
+                                    "lkr": 0,
+                                    "ltl": 0,
+                                    "lvl": 0,
+                                    "mxn": 0,
+                                    "myr": 0,
+                                    "nok": 0,
+                                    "nzd": 0,
+                                    "php": 0,
+                                    "pln": 0,
+                                    "ron": 0,
+                                    "rub": 0,
+                                    "sek": 0,
+                                    "sgd": 0,
+                                    "thb": 0,
+                                    "try": 0,
+                                    "usd": 0,
+                                    "zar": 0
+                                },
+                                "minimum": {
+                                    "aud": 0,
+                                    "bgn": 0,
+                                    "brl": 0,
+                                    "cad": 0,
+                                    "chf": 0,
+                                    "cny": 0,
+                                    "czk": 0,
+                                    "dkk": 0,
+                                    "eek": 0,
+                                    "eur": 0,
+                                    "gbp": 0,
+                                    "ghs": 0,
+                                    "hkd": 0,
+                                    "hrk": 0,
+                                    "huf": 0,
+                                    "idr": 0,
+                                    "ils": 0,
+                                    "inr": 0,
+                                    "jpy": 0,
+                                    "krw": 0,
+                                    "lkr": 0,
+                                    "ltl": 0,
+                                    "lvl": 0,
+                                    "mxn": 0,
+                                    "myr": 0,
+                                    "nok": 0,
+                                    "nzd": 0,
+                                    "php": 0,
+                                    "pln": 0,
+                                    "ron": 0,
+                                    "rub": 0,
+                                    "sek": 0,
+                                    "sgd": 0,
+                                    "thb": 0,
+                                    "try": 0,
+                                    "usd": 0,
+                                    "zar": 0
+                                }
+                            },
+                            "transaction_fee": 0,
+                            "transaction_fee_absolute": 0
+                        }
+                    }
+                ],
                 "renew_notification_days": [
                     1
                 ],
@@ -5512,6 +5810,95 @@
                         }
                     ],
                     "preregistered_domain_priorities": "[]",
+                    "recurring_payment_methods": [
+                        {
+                            "name": "ideal",
+                            "settings": {
+                                "limit": {
+                                    "maximum": {
+                                        "aud": 0,
+                                        "bgn": 0,
+                                        "brl": 0,
+                                        "cad": 0,
+                                        "chf": 0,
+                                        "cny": 0,
+                                        "czk": 0,
+                                        "dkk": 0,
+                                        "eek": 0,
+                                        "eur": 0,
+                                        "gbp": 0,
+                                        "ghs": 0,
+                                        "hkd": 0,
+                                        "hrk": 0,
+                                        "huf": 0,
+                                        "idr": 0,
+                                        "ils": 0,
+                                        "inr": 0,
+                                        "jpy": 0,
+                                        "krw": 0,
+                                        "lkr": 0,
+                                        "ltl": 0,
+                                        "lvl": 0,
+                                        "mxn": 0,
+                                        "myr": 0,
+                                        "nok": 0,
+                                        "nzd": 0,
+                                        "php": 0,
+                                        "pln": 0,
+                                        "ron": 0,
+                                        "rub": 0,
+                                        "sek": 0,
+                                        "sgd": 0,
+                                        "thb": 0,
+                                        "try": 0,
+                                        "usd": 0,
+                                        "zar": 0
+                                    },
+                                    "minimum": {
+                                        "aud": 0,
+                                        "bgn": 0,
+                                        "brl": 0,
+                                        "cad": 0,
+                                        "chf": 0,
+                                        "cny": 0,
+                                        "czk": 0,
+                                        "dkk": 0,
+                                        "eek": 0,
+                                        "eur": 0,
+                                        "gbp": 0,
+                                        "ghs": 0,
+                                        "hkd": 0,
+                                        "hrk": 0,
+                                        "huf": 0,
+                                        "idr": 0,
+                                        "ils": 0,
+                                        "inr": 0,
+                                        "jpy": 0,
+                                        "krw": 0,
+                                        "lkr": 0,
+                                        "ltl": 0,
+                                        "lvl": 0,
+                                        "mxn": 0,
+                                        "myr": 0,
+                                        "nok": 0,
+                                        "nzd": 0,
+                                        "php": 0,
+                                        "pln": 0,
+                                        "ron": 0,
+                                        "rub": 0,
+                                        "sek": 0,
+                                        "sgd": 0,
+                                        "thb": 0,
+                                        "try": 0,
+                                        "usd": 0,
+                                        "zar": 0
+                                    }
+                                },
+                                "transaction_fee": 0,
+                                "transaction_fee_absolute": 0
+                            }
+                        }
+                    ],
                     "renew_notification_days": [
                         1
                     ],
@@ -5700,6 +6087,13 @@
                     "type": "string",
                     "title": "The preregistered domain priorities"
                 },
+                "recurring_payment_methods": {
+                    "type": "array",
+                    "title": "Reseller recurring payment methods settings",
+                    "items": {
+                        "$ref": "#/definitions/settingsPaymentMethods"
+                    }
+                },
                 "renew_notification_days": {
                     "type": "array",
                     "title": "Days before renewal reminder messages are sent",
@@ -5864,6 +6258,95 @@
                     }
                 ],
                 "preregistered_domain_priorities": "[]",
+                "recurring_payment_methods": [
+                    {
+                        "name": "ideal",
+                        "settings": {
+                            "limit": {
+                                "maximum": {
+                                    "aud": 0,
+                                    "bgn": 0,
+                                    "brl": 0,
+                                    "cad": 0,
+                                    "chf": 0,
+                                    "cny": 0,
+                                    "czk": 0,
+                                    "dkk": 0,
+                                    "eek": 0,
+                                    "eur": 0,
+                                    "gbp": 0,
+                                    "ghs": 0,
+                                    "hkd": 0,
+                                    "hrk": 0,
+                                    "huf": 0,
+                                    "idr": 0,
+                                    "ils": 0,
+                                    "inr": 0,
+                                    "jpy": 0,
+                                    "krw": 0,
+                                    "lkr": 0,
+                                    "ltl": 0,
+                                    "lvl": 0,
+                                    "mxn": 0,
+                                    "myr": 0,
+                                    "nok": 0,
+                                    "nzd": 0,
+                                    "php": 0,
+                                    "pln": 0,
+                                    "ron": 0,
+                                    "rub": 0,
+                                    "sek": 0,
+                                    "sgd": 0,
+                                    "thb": 0,
+                                    "try": 0,
+                                    "usd": 0,
+                                    "zar": 0
+                                },
+                                "minimum": {
+                                    "aud": 0,
+                                    "bgn": 0,
+                                    "brl": 0,
+                                    "cad": 0,
+                                    "chf": 0,
+                                    "cny": 0,
+                                    "czk": 0,
+                                    "dkk": 0,
+                                    "eek": 0,
+                                    "eur": 0,
+                                    "gbp": 0,
+                                    "ghs": 0,
+                                    "hkd": 0,
+                                    "hrk": 0,
+                                    "huf": 0,
+                                    "idr": 0,
+                                    "ils": 0,
+                                    "inr": 0,
+                                    "jpy": 0,
+                                    "krw": 0,
+                                    "lkr": 0,
+                                    "ltl": 0,
+                                    "lvl": 0,
+                                    "mxn": 0,
+                                    "myr": 0,
+                                    "nok": 0,
+                                    "nzd": 0,
+                                    "php": 0,
+                                    "pln": 0,
+                                    "ron": 0,
+                                    "rub": 0,
+                                    "sek": 0,
+                                    "sgd": 0,
+                                    "thb": 0,
+                                    "try": 0,
+                                    "usd": 0,
+                                    "zar": 0
+                                }
+                            },
+                            "transaction_fee": 0,
+                            "transaction_fee_absolute": 0
+                        }
+                    }
+                ],
                 "renew_notification_days": [
                     1
                 ],

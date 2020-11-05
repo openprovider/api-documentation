@@ -5104,6 +5104,11 @@
                     "type": "string",
                     "title": "Owner contact handle"
                 },
+                "remove_nses": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Use for deletion of existing nameservers"
+                },
                 "reseller_handle": {
                     "type": "string",
                     "title": "Reseller handle"
@@ -5188,6 +5193,7 @@
                 "ns_template_id": 0,
                 "ns_template_name": "Default",
                 "owner_handle": "XX123456-XX",
+                "remove_nses": false,
                 "reseller_handle": "XX123456-XX",
                 "reset_auth_code": false,
                 "scheduled_at": "2019-03-30",
