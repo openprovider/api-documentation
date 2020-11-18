@@ -1,0 +1,529 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Domain Transfer contracts",
+    "version": "2.0.0-alpha",
+    "contact": {
+      "name": "Openprovider public contracts",
+      "url": "https://github.com/openprovider/contracts"
+    }
+  },
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v2alpha/products/domain/operations/transfer/requests/{id}": {
+      "get": {
+        "summary": "Get domain transfer status info (like state, start and end dates and etc.).",
+        "operationId": "DomainTransfer_GetDomain",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/transferDomain"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "DomainTransfer"
+        ]
+      }
+    },
+    "/v2alpha/products/domain/operations/transfer/requests:batch": {
+      "post": {
+        "summary": "Batch request of incoming domain transfers.",
+        "operationId": "DomainTransfer_BatchTransfer",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/transferBatchTransferResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/transferBatchTransferRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DomainTransfer"
+        ]
+      }
+    },
+    "/v2alpha/products/domain/operations/transfer/requests:search": {
+      "post": {
+        "summary": "Search domain transfers' info (like state, start and end dates and etc.).",
+        "operationId": "DomainTransfer_SearchDomains",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/transferSearchDomainsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/transferSearchDomainsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DomainTransfer"
+        ]
+      }
+    },
+    "/v2alpha/products/domain/operations/transfer:batchInfo": {
+      "post": {
+        "summary": "Batch request of getting information for possible domains transfers.",
+        "operationId": "DomainTransfer_BatchGetTransferInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.(streaming responses)",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "$ref": "#/definitions/transferBatchGetTransferInfoResponse"
+                },
+                "error": {
+                  "$ref": "#/definitions/googlerpcStatus"
+                }
+              },
+              "title": "Stream result of transferBatchGetTransferInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/transferBatchGetTransferInfoRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DomainTransfer"
+        ]
+      }
+    },
+    "/v2alpha/products/domain/operations/transfer:info": {
+      "post": {
+        "summary": "Get information for possible transfer of the domain (like availability for\ntransfer, expiration date, etc.).",
+        "operationId": "DomainTransfer_GetTransferInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/transferGetTransferInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/transferGetTransferInfoRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DomainTransfer"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "DomainSubType": {
+      "type": "string",
+      "enum": [
+        "REGULAR",
+        "ROBOT",
+        "RECOMMENDED",
+        "INTERNAL"
+      ],
+      "default": "REGULAR",
+      "description": "The domain transfer subtype.\n\n - REGULAR: Regular transfer. Outgoing transfer is always regular.\n - ROBOT: Transfer via robots (hidden for end users).\n - RECOMMENDED: Recommended for incoming transfer from another registrar(-s).\n - INTERNAL: Internal transfer (inside the system)."
+    },
+    "GetTransferInfoResponseReason": {
+      "type": "string",
+      "enum": [
+        "UNSPECIFIED",
+        "FREE",
+        "LOCKED",
+        "PENDING_TRANSFER"
+      ],
+      "default": "UNSPECIFIED",
+      "description": "The reason why domain is unavailable for transfer.\nThe reason is specified when availability = false.\n\n - UNSPECIFIED: Not set. It means that the domain is available for transfer (avail = true).\n - FREE: Domain is free and available for registration.\n - LOCKED: Domain is locked for transfer by the domain's owner (registrar)\n(clientTransferProhibited EPP status) or by the registry\n(serverTransferProhibited EPP status).\n - PENDING_TRANSFER: Transfer of the domain is in progress already (pendingTransfer EPP status)."
+    },
+    "googlerpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code]."
+        },
+        "message": {
+          "type": "string",
+          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\n[google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client."
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          },
+          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."
+        }
+      },
+      "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors)."
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        },
+        "value": {
+          "type": "string",
+          "format": "byte",
+          "description": "Must be a valid serialized protocol buffer of the above specified type."
+        }
+      },
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "transferBatchGetTransferInfoRequest": {
+      "type": "object",
+      "properties": {
+        "requests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/transferGetTransferInfoRequest"
+          },
+          "description": "Requests which should be processed in a batch."
+        }
+      },
+      "description": "The request for BatchGetTransferInfo method."
+    },
+    "transferBatchGetTransferInfoResponse": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Requested domain name."
+        },
+        "data": {
+          "$ref": "#/definitions/transferGetTransferInfoResponse",
+          "title": "Transfer info about the domain"
+        },
+        "error": {
+          "$ref": "#/definitions/googlerpcStatus",
+          "title": "The status of operation with the domain"
+        }
+      },
+      "description": "The response from BatchGetTransferInfo method."
+    },
+    "transferBatchTransferRequest": {
+      "type": "object",
+      "properties": {
+        "requests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/transferTransferRequest"
+          },
+          "description": "Requests which should be processed in a batch."
+        }
+      },
+      "description": "The request for BatchTransfer method."
+    },
+    "transferBatchTransferResponse": {
+      "type": "object",
+      "properties": {
+        "responses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/transferTransferResponse"
+          },
+          "description": "Requested transfers."
+        }
+      },
+      "description": "The response from BatchTransfer method."
+    },
+    "transferDomain": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Transfer request ID."
+        },
+        "name": {
+          "type": "string",
+          "description": "The domain name (e.g. openprovider.com)."
+        },
+        "status": {
+          "$ref": "#/definitions/transferDomainStatus",
+          "description": "The transfer status."
+        },
+        "type": {
+          "$ref": "#/definitions/transferDomainType",
+          "description": "The transfer type (incoming or outgoing transfer)."
+        },
+        "subtype": {
+          "$ref": "#/definitions/DomainSubType",
+          "description": "The transfer subtype."
+        },
+        "reason": {
+          "type": "string",
+          "description": "The reason of transfer failure.\nIt will be set only if status = FAILED."
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The UNIX time when transfer was initialized (requested)."
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The UNIX time when transfer status was updated last time."
+        },
+        "startTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The UNIX time when transfer was requested or scheduled at\nIt will be = create time if it's immediate transfer."
+        },
+        "endTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The UNIX time when transfer was completed.\nIt will be set only when operation is completed (successfully,\nfailed, cancelled or rejected)."
+        }
+      },
+      "description": "The domain transfer status info like state and etc."
+    },
+    "transferDomainStatus": {
+      "type": "string",
+      "enum": [
+        "STATUS_UNSPECIFIED",
+        "PENDING",
+        "RUNNING",
+        "CANCELLED",
+        "REJECTED",
+        "DONE",
+        "FAILED",
+        "EXPIRED"
+      ],
+      "default": "STATUS_UNSPECIFIED",
+      "description": "The domain transfer status.\n\n - STATUS_UNSPECIFIED: Not set.\n - PENDING: The transfer has been requested (or scheduled).\n - RUNNING: The transfer is in progress.\n - CANCELLED: The transfer has been cancelled by the user.\n - REJECTED: The transfer has been rejected by other side.\n - DONE: The transfer has been completed successfully.\n - FAILED: The transfer has been failed by some reason (see `reason` field).\n - EXPIRED: Transfer's request has been expired."
+    },
+    "transferDomainType": {
+      "type": "string",
+      "enum": [
+        "INCOMING",
+        "OUTGOING"
+      ],
+      "default": "INCOMING",
+      "description": "The domain transfer type.\n\n - INCOMING: Incoming transfer.\n - OUTGOING: Outgoing transfer."
+    },
+    "transferGetTransferInfoRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The domain name."
+        },
+        "authCode": {
+          "type": "string",
+          "title": "The auth code. It's required parameter for some TLDs.\nTODO: add info about where to get this info"
+        }
+      },
+      "description": "The request for GetTransferInfo method."
+    },
+    "transferGetTransferInfoResponse": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The domain name."
+        },
+        "avail": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "The domain availability status for transfer.\nIt will be true when domain is available for transfer\nIt will be false when domain is unavailable for transfer, you can check the reason for more detailed information."
+        },
+        "reason": {
+          "$ref": "#/definitions/GetTransferInfoResponseReason",
+          "description": "The reason shows why we are unable to transfer a domain. It will be filled only when\navail = false."
+        },
+        "expireTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The UNIX time when the domain will be expired on registry's side.\nIt will be null in cases when the registry doesn't return this info."
+        }
+      },
+      "description": "The response from GetTransferInfo method."
+    },
+    "transferSearchDomainsRequest": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "The search query."
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Page size allows to limit count of returned results.\nIf it is omitted, default page size will be used.\nIf it exceeds the maximum size, the maximum size will be used."
+        },
+        "pageToken": {
+          "type": "string",
+          "description": "The next_page_token value returned from a previous Search request, if any."
+        },
+        "pageNumber": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Page number allows to skip the specified count of pages\nbefore beginning to return results."
+        },
+        "returnTotalResults": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "If true, the total number of results that match the query ignoring the\nLIMIT clause will be included in the response.\nDefault is false."
+        }
+      },
+      "description": "The request for SearchDomain method."
+    },
+    "transferSearchDomainsResponse": {
+      "type": "object",
+      "properties": {
+        "domains": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/transferDomain"
+          },
+          "description": "Requested domains."
+        },
+        "nextPageToken": {
+          "type": "string",
+          "description": "Token to retrieve the next page of results, or empty if there are no\nmore results in the list."
+        },
+        "totalResults": {
+          "type": "integer",
+          "format": "int64",
+          "description": "The total number of results in the query result set."
+        }
+      },
+      "description": "The response from SearchDomain method."
+    },
+    "transferTransferRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The domain name."
+        },
+        "authCode": {
+          "type": "string",
+          "description": "The auth code."
+        },
+        "startTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Start time of the transfer process."
+        },
+        "daysBeforeExpiration": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Days before expiration date when transfer process should be started."
+        }
+      },
+      "description": "The request for Transfer method."
+    },
+    "transferTransferResponse": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of requested domain."
+        },
+        "transferId": {
+          "type": "string",
+          "description": "The transfer's ID for the domain in the system."
+        }
+      },
+      "description": "The response from Transfer method."
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "Bearer": []
+    }
+  ],
+  "externalDocs": {
+    "description": "More about REST API v2",
+    "url": "https://docs.openprovider.com/v2alpha"
+  }
+}
