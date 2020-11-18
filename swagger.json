@@ -2558,9 +2558,105 @@
             "tags": [
                 "DomainTransfer"
             ]
+        },
+        {
+            "name": "Account contracts",
+            "tags": [
+                "AccountService"
+            ]
+        },
+        {
+            "name": "protoc-gen-openapiv2/options/annotations.proto",
+            "tags": []
+        },
+        {
+            "name": "Account attribute contracts",
+            "tags": [
+                "AccountAttributeService"
+            ]
+        },
+        {
+            "name": "Authentication contracts",
+            "tags": [
+                "AuthenticationService"
+            ]
+        },
+        {
+            "name": "Product availability contracts",
+            "tags": [
+                "Availability"
+            ]
+        },
+        {
+            "name": "Registrar credentials contracts",
+            "tags": [
+                "RegistrarService"
+            ]
+        },
+        {
+            "name": "product/price/domain.proto",
+            "tags": []
+        },
+        {
+            "name": "google/api/http.proto",
+            "tags": []
+        },
+        {
+            "name": "google/type/money.proto",
+            "tags": []
+        },
+        {
+            "name": "Domain name suggester contracts",
+            "tags": [
+                "DomainNameSuggester"
+            ]
+        },
+        {
+            "name": "protoc-gen-openapiv2/options/openapiv2.proto",
+            "tags": []
+        },
+        {
+            "name": "Product price contracts",
+            "tags": [
+                "PriceService"
+            ]
+        },
+        {
+            "name": "Product contracts",
+            "tags": []
+        },
+        {
+            "name": "request/request.proto",
+            "tags": []
+        },
+        {
+            "name": "Domain Transfer contracts",
+            "tags": [
+                "DomainTransfer"
+            ]
         }
     ],
     "tags": [
+        {
+            "name": "AccountService",
+            "x-displayName": "Account"
+        },
+        {
+            "name": "AccountAttributeService",
+            "x-displayName": "AccountAttribute"
+        },
+        {
+            "name": "AuthenticationService",
+            "x-displayName": "Authentication"
+        },
+        {
+            "name": "RegistrarService",
+            "x-displayName": "Registrar"
+        },
+        {
+            "name": "PriceService",
+            "x-displayName": "Price"
+        },
         {
             "name": "AccountService",
             "x-displayName": "Account"
