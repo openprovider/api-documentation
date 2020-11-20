@@ -2553,9 +2553,19 @@
     },
     "x-tagGroups": [
         {
-            "name": "Authentication contracts",
+            "name": "Openprovider public contracts",
             "tags": [
-                "AuthenticationService"
+                "AuthenticationService",
+                "AccountAttributeService",
+                "AccountService",
+                "DomainExtensionService",
+                "DomainTransfer",
+                "DomainNameSuggester",
+                "Availability",
+                "PriceService",
+                "CredentialsService",
+                "CredentialsChecker",
+                "RegistrarService"
             ]
         }
     ],
@@ -2563,6 +2573,30 @@
         {
             "name": "AuthenticationService",
             "x-displayName": "Authentication"
+        },
+        {
+            "name": "AccountAttributeService",
+            "x-displayName": "AccountAttribute"
+        },
+        {
+            "name": "AccountService",
+            "x-displayName": "Account"
+        },
+        {
+            "name": "DomainExtensionService",
+            "x-displayName": "DomainExtension"
+        },
+        {
+            "name": "PriceService",
+            "x-displayName": "Price"
+        },
+        {
+            "name": "CredentialsService",
+            "x-displayName": "Credentials"
+        },
+        {
+            "name": "RegistrarService",
+            "x-displayName": "Registrar"
         }
     ]
 }
