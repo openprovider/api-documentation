@@ -458,6 +458,38 @@
           "AccountService"
         ]
       }
+    },
+    "/v2alpha/identity/users/{userId}/accounts": {
+      "get": {
+        "summary": "List accounts user is bound to",
+        "operationId": "AccountService_ListUserAccounts",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/accountListUserAccountsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "description": "The User's ID\nAccounts of this user will be returned",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AccountService"
+        ]
+      }
     }
   },
   "definitions": {
@@ -616,6 +648,18 @@
           "type": "integer",
           "format": "int64",
           "title": "Total amount of records"
+        }
+      }
+    },
+    "accountListUserAccountsResponse": {
+      "type": "object",
+      "properties": {
+        "accounts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Accounts list"
         }
       }
     },

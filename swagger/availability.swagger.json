@@ -51,10 +51,7 @@
             "description": "The product identifier",
             "in": "path",
             "required": true,
-            "type": "string",
-            "enum": [
-              "domain"
-            ]
+            "type": "string"
           },
           {
             "name": "query",
@@ -64,15 +61,15 @@
             "type": "string"
           },
           {
-            "name": "filter.domain.excludePsdName",
-            "description": "The excludePsdName is comma separated string containing the PSDs to be excluded from the list with the results\nFor example, excludePsdName=com,co.uk\nRedundant space characters in the syntax are insignificant. \"com,co.uk\" and \"  com,    co.uk\" are equivalent.",
+            "name": "filter.domain.excludedTldNames",
+            "description": "The excludedTldNames is comma separated string containing the TLDs to be excluded from the list with the results\nFor example, excludedTldNames=com,co.uk\nRedundant space characters in the syntax are insignificant. \"com,co.uk\" and \"  com,    co.uk\" are equivalent.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
-            "name": "filter.domain.includePsdName",
-            "description": "The includePsdName is comma separated string containing the PSDs to be included to the list with the results\nFor example, includePsdName=com,co.uk\nRedundant space characters in the syntax are insignificant. \"com,co.uk\" and \"  com,    co.uk\" are equivalent.",
+            "name": "filter.domain.includedTldNames",
+            "description": "The includedTldNames is comma separated string containing the TLDs to be included to the list with the results\nFor example, includedTldNames=com,co.uk\nRedundant space characters in the syntax are insignificant. \"com,co.uk\" and \"  com,    co.uk\" are equivalent.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -98,21 +95,13 @@
     "availabilityDomainAvailableFilter": {
       "type": "object",
       "properties": {
-        "excludePsdName": {
+        "excludedTldNames": {
           "type": "string",
-          "description": "The excludePsdName is comma separated string containing the PSDs to be excluded from the list with the results\nFor example, excludePsdName=com,co.uk\nRedundant space characters in the syntax are insignificant. \"com,co.uk\" and \"  com,    co.uk\" are equivalent."
+          "description": "The excludedTldNames is comma separated string containing the TLDs to be excluded from the list with the results\nFor example, excludedTldNames=com,co.uk\nRedundant space characters in the syntax are insignificant. \"com,co.uk\" and \"  com,    co.uk\" are equivalent."
         },
-        "excludePsd": {
-          "$ref": "#/definitions/productPSDS",
-          "title": "The PSD array to exclude from result list"
-        },
-        "includePsdName": {
+        "includedTldNames": {
           "type": "string",
-          "description": "The includePsdName is comma separated string containing the PSDs to be included to the list with the results\nFor example, includePsdName=com,co.uk\nRedundant space characters in the syntax are insignificant. \"com,co.uk\" and \"  com,    co.uk\" are equivalent."
-        },
-        "includePsd": {
-          "$ref": "#/definitions/productPSDS",
-          "title": "The PSD array to include in result list"
+          "description": "The includedTldNames is comma separated string containing the TLDs to be included to the list with the results\nFor example, includedTldNames=com,co.uk\nRedundant space characters in the syntax are insignificant. \"com,co.uk\" and \"  com,    co.uk\" are equivalent."
         }
       },
       "title": "The domain availability filters"
@@ -121,7 +110,7 @@
       "type": "object",
       "properties": {
         "domain": {
-          "$ref": "#/definitions/productDomain"
+          "$ref": "#/definitions/domainDomain"
         },
         "available": {
           "type": "boolean",
@@ -131,55 +120,61 @@
       },
       "title": "The response with products availability"
     },
-    "productDomain": {
+    "domainDomain": {
       "type": "object",
       "properties": {
         "name": {
           "type": "string",
           "title": "The domain name\nFor example, for domain example.com.cn the part \"example\" is the name"
         },
-        "psd": {
-          "$ref": "#/definitions/productPSD",
-          "description": "The PSD for domain.\nFor example, for domain example.com.cn the part com.cn is PSD."
+        "tld": {
+          "$ref": "#/definitions/propertyTLD",
+          "description": "The TLD for domain.\nFor example, for domain example.com.cn the part com.cn is TLD."
         }
       },
       "title": "The representation of \"domain\" product"
     },
-    "productPSD": {
+    "propertyTLD": {
       "type": "object",
       "properties": {
-        "tld": {
+        "id": {
           "type": "string",
-          "description": "The tld is one of the domains at the highest level in the hierarchical Domain Name System of the Internet.\nFor example, in the domain name www.example.com, the top-level domain is com."
+          "title": "The ID of the TLD"
         },
-        "sld": {
+        "topLevelDomain": {
           "type": "string",
-          "title": "The sld is a domain that is directly below a top-level domain (TLD).\nFor example, in example.com, example is the second-level domain of the .com TLD"
+          "description": "The topLevelDomain is one of the domains at the highest level in the hierarchical Domain Name System of the Internet.\nFor example, in the domain name www.example.com, the top-level domain is com."
+        },
+        "secondLevelDomain": {
+          "type": "string",
+          "title": "The secondLevelDomain is a domain that is directly below a top-level domain (TLD).\nFor example, in example.com, example is the second-level domain of the .com TLD"
         },
         "name": {
           "type": "string",
           "description": "The name equals tld if sld is empty. If sld is not empty, name equals \u003csld\u003e.\u003ctld\u003e.\nFor example, for example.com name will be com. For example.co.uk name will be co.uk."
         },
-        "type": {
-          "$ref": "#/definitions/productPSDType",
-          "title": "The type of PSD"
+        "info": {
+          "$ref": "#/definitions/propertyTLDInfo",
+          "title": "The TLDInfo contains field with additional info about TLD"
         }
       },
-      "title": "The PSD is the acronym for public suffix domain and means an ordinal-free term to denote domains under which people can register their own domain name"
+      "title": "The TLD means an ordinal-free term to denote domains under which people can register their own domain name"
     },
-    "productPSDS": {
+    "propertyTLDInfo": {
       "type": "object",
       "properties": {
-        "psd": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/productPSD"
-          }
+        "id": {
+          "type": "string",
+          "title": "The ID of the TLDInfo"
+        },
+        "type": {
+          "$ref": "#/definitions/propertyTLDType",
+          "title": "The type of TLD"
         }
       },
-      "title": "The array of PSD message"
+      "title": "The TLDInfo contains field with additional info about TLD"
     },
-    "productPSDType": {
+    "propertyTLDType": {
       "type": "string",
       "enum": [
         "gTLD",
@@ -188,16 +183,7 @@
         "grTLD"
       ],
       "default": "gTLD",
-      "title": "The type of PSD"
-    },
-    "productProduct": {
-      "type": "string",
-      "enum": [
-        "domain"
-      ],
-      "default": "domain",
-      "description": "- domain: The domain product identifier",
-      "title": "The products"
+      "title": "The type of TLD"
     },
     "protobufAny": {
       "type": "object",
