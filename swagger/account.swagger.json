@@ -1,0 +1,810 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Account contracts",
+    "version": "2.0.0-alpha",
+    "contact": {
+      "name": "Openprovider public contracts",
+      "url": "https://github.com/openprovider/contracts"
+    }
+  },
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v2alpha/identity/accounts": {
+      "get": {
+        "summary": "List accounts",
+        "operationId": "AccountService_ListAccounts",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/accountListAccountsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "pageSize",
+            "description": "Count of records in page.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "pageNumber",
+            "description": "Page number.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "parentId",
+            "description": "Show only children of a given account.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "orderBy",
+            "description": "SQL-like order clause\nformat is: \u003cfield1\u003e \u003cASC|DESC\u003e[, \u003cfield2\u003e \u003cASC|DESC\u003e]\nexample: update_time DESC\npossible fields: create_time, update_time, name\ndefault value: \"create_time ASC\".",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AccountService"
+        ]
+      },
+      "post": {
+        "summary": "Create a new account",
+        "operationId": "AccountService_CreateAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/accountAccount"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/accountCreateAccountRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AccountService"
+        ]
+      }
+    },
+    "/v2alpha/identity/accounts/{accountId}/attributes": {
+      "delete": {
+        "summary": "Delete attributes",
+        "operationId": "AccountService_DeleteAttributes",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "accountId",
+            "description": "The Account's ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/accountDeleteAttributesRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AccountService"
+        ]
+      },
+      "post": {
+        "summary": "Set attributes",
+        "operationId": "AccountService_SetAttributes",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "accountId",
+            "description": "The Account's ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/accountSetAttributesRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AccountService"
+        ]
+      }
+    },
+    "/v2alpha/identity/accounts/{accountId}/users": {
+      "get": {
+        "summary": "Get users linked to account",
+        "operationId": "AccountService_ListUsers",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/accountListUsersResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "accountId",
+            "description": "The Account's ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "description": "Count of records in page.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "pageNumber",
+            "description": "Page number.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "orderBy",
+            "description": "SQL-like order clause\nformat is: \u003cfield1\u003e \u003cASC|DESC\u003e[, \u003cfield2\u003e \u003cASC|DESC\u003e]\nexample: update_time DESC\npossible fields: create_time\ndefault value: \"create_time ASC\".",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AccountService"
+        ]
+      }
+    },
+    "/v2alpha/identity/accounts/{accountId}/users/{userId}": {
+      "delete": {
+        "summary": "Delete user from account",
+        "operationId": "AccountService_RemoveUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "accountId",
+            "description": "The Account's ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userId",
+            "description": "The User's ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/accountAccountUserRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AccountService"
+        ]
+      },
+      "post": {
+        "summary": "Attach user to account",
+        "operationId": "AccountService_AddUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "accountId",
+            "description": "The Account's ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userId",
+            "description": "The User's ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/accountAccountUserRequest"
+            }
+          }
+        ],
+        "tags": [
+          "AccountService"
+        ]
+      }
+    },
+    "/v2alpha/identity/accounts/{accountId}:getHierarchy": {
+      "get": {
+        "summary": "Get parent accounts",
+        "operationId": "AccountService_GetHierarchy",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/accountGetHierarchyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "accountId",
+            "description": "The Account's ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AccountService"
+        ]
+      }
+    },
+    "/v2alpha/identity/accounts/{id}": {
+      "get": {
+        "summary": "Get account object",
+        "operationId": "AccountService_GetAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/accountGetAccountResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AccountService"
+        ]
+      },
+      "delete": {
+        "summary": "Delete account",
+        "operationId": "AccountService_DeleteAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AccountService"
+        ]
+      },
+      "put": {
+        "summary": "Update account",
+        "operationId": "AccountService_UpdateAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/accountAccount"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "The Account's ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/accountAccount"
+            }
+          }
+        ],
+        "tags": [
+          "AccountService"
+        ]
+      }
+    },
+    "/v2alpha/identity/users/{userId}/accounts": {
+      "get": {
+        "summary": "List accounts user is bound to",
+        "operationId": "AccountService_ListUserAccounts",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/accountListUserAccountsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "description": "The User's ID\nAccounts of this user will be returned",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AccountService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ValueKind": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN",
+        "STRING",
+        "INT",
+        "BOOL",
+        "FLOAT",
+        "TIMESTAMP",
+        "DURATION"
+      ],
+      "default": "UNKNOWN",
+      "title": "Value type"
+    },
+    "accountAccount": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "The Account's ID"
+        },
+        "parentId": {
+          "type": "string",
+          "title": "The Account's parent ID"
+        },
+        "name": {
+          "type": "string",
+          "title": "The Account's name"
+        },
+        "type": {
+          "$ref": "#/definitions/identityaccountType",
+          "title": "The Account's type"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "The Account's create time"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "The Account's update time"
+        }
+      }
+    },
+    "accountAccountUser": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "title": "The User's ID"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "The Account's ID"
+        }
+      },
+      "title": "Account-user link"
+    },
+    "accountAccountUserRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "title": "The User's ID"
+        },
+        "accountId": {
+          "type": "string",
+          "title": "The Account's ID"
+        }
+      },
+      "title": "Request to add or to remove user from account"
+    },
+    "accountCreateAccountRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "The Account's name"
+        },
+        "type": {
+          "$ref": "#/definitions/identityaccountType",
+          "title": "The Account's type"
+        },
+        "parentId": {
+          "type": "string",
+          "title": "The Account's parent ID"
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/accountattributeValue"
+          },
+          "title": "The Account's attributes"
+        }
+      }
+    },
+    "accountDeleteAttributesRequest": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string",
+          "title": "The Account's ID"
+        },
+        "attributeNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Attribute names to delete"
+        }
+      }
+    },
+    "accountGetAccountResponse": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "$ref": "#/definitions/accountAccount",
+          "title": "The Account itself"
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/accountattributeValue"
+          },
+          "title": "The Account's attributes map"
+        }
+      }
+    },
+    "accountGetHierarchyResponse": {
+      "type": "object",
+      "properties": {
+        "accounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/accountAccount"
+          },
+          "title": "Accounts hierarchy in order of precedence\ni.e master account will be first in list"
+        }
+      }
+    },
+    "accountListAccountsResponse": {
+      "type": "object",
+      "properties": {
+        "accounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/accountAccount"
+          },
+          "title": "Returned accounts collection"
+        },
+        "totalPages": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Total amount of records"
+        }
+      }
+    },
+    "accountListUserAccountsResponse": {
+      "type": "object",
+      "properties": {
+        "accounts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Accounts list"
+        }
+      }
+    },
+    "accountListUsersResponse": {
+      "type": "object",
+      "properties": {
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/accountAccountUser"
+          },
+          "title": "Account-User links"
+        },
+        "totalPages": {
+          "type": "integer",
+          "format": "int64",
+          "title": "Total amount of records"
+        }
+      },
+      "title": "Collection of account-user links"
+    },
+    "accountSetAttributesRequest": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string",
+          "title": "The Account's ID"
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/accountattributeValue"
+          },
+          "title": "Attributes"
+        }
+      }
+    },
+    "accountattributeValue": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "$ref": "#/definitions/ValueKind",
+          "title": "Value type"
+        },
+        "strVal": {
+          "type": "string",
+          "title": "String value"
+        },
+        "intVal": {
+          "type": "string",
+          "format": "int64",
+          "title": "Integer value"
+        },
+        "boolVal": {
+          "type": "boolean",
+          "format": "boolean",
+          "title": "Boolean value"
+        },
+        "floatVal": {
+          "type": "number",
+          "format": "float",
+          "title": "Float value"
+        },
+        "timestampVal": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Timestamp value"
+        },
+        "durationVal": {
+          "type": "string",
+          "title": "Duration value"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Value create time"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Value update time"
+        }
+      },
+      "title": "Attribute value"
+    },
+    "identityaccountType": {
+      "type": "string",
+      "enum": [
+        "TYPE_UNKNOWN",
+        "HEAD_COMPANY",
+        "BRANCH",
+        "COMPANY",
+        "RESELLER",
+        "SUB_RESELLER"
+      ],
+      "default": "TYPE_UNKNOWN"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        },
+        "value": {
+          "type": "string",
+          "format": "byte",
+          "description": "Must be a valid serialized protocol buffer of the above specified type."
+        }
+      },
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "Bearer": []
+    }
+  ],
+  "externalDocs": {
+    "description": "More about REST API v2",
+    "url": "https://docs.openprovider.com/v2alpha"
+  }
+}
