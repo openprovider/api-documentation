@@ -4484,6 +4484,7 @@
                         }
                     },
                     "status": "new",
+                    "tier": 3,
                     "vat": "",
                     "vatperc": 21
                 },
@@ -4563,6 +4564,11 @@
                 "status": {
                     "type": "string",
                     "title": "The status"
+                },
+                "tier": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Openprovider discount tier"
                 },
                 "vat": {
                     "type": "string",
@@ -4964,6 +4970,7 @@
                     }
                 },
                 "status": "new",
+                "tier": 3,
                 "vat": "",
                 "vatperc": 21
             }

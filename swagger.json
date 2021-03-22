@@ -10021,6 +10021,7 @@
                     "is_hosted_whois": false,
                     "is_lockable": false,
                     "is_locked": false,
+                    "is_parked": false,
                     "is_premium": false,
                     "is_private_whois_allowed": false,
                     "is_private_whois_enabled": false,
@@ -10251,6 +10252,11 @@
                     "type": "boolean",
                     "format": "boolean",
                     "title": "Indicates that domain is locked for transfer"
+                },
+                "is_parked": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates whether object is parked"
                 },
                 "is_premium": {
                     "type": "boolean",
@@ -10540,6 +10546,7 @@
                 "is_hosted_whois": false,
                 "is_lockable": false,
                 "is_locked": false,
+                "is_parked": false,
                 "is_premium": false,
                 "is_private_whois_allowed": false,
                 "is_private_whois_enabled": false,
@@ -10843,6 +10850,7 @@
                             "is_hosted_whois": false,
                             "is_lockable": false,
                             "is_locked": false,
+                            "is_parked": false,
                             "is_premium": false,
                             "is_private_whois_allowed": false,
                             "is_private_whois_enabled": false,
@@ -11042,6 +11050,7 @@
                         "is_hosted_whois": false,
                         "is_lockable": false,
                         "is_locked": false,
+                        "is_parked": false,
                         "is_premium": false,
                         "is_private_whois_allowed": false,
                         "is_private_whois_enabled": false,
@@ -18834,6 +18843,7 @@
                         }
                     },
                     "status": "new",
+                    "tier": 3,
                     "vat": "",
                     "vatperc": 21
                 },
@@ -18913,6 +18923,11 @@
                 "status": {
                     "type": "string",
                     "title": "The status"
+                },
+                "tier": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Openprovider discount tier"
                 },
                 "vat": {
                     "type": "string",
@@ -19314,6 +19329,7 @@
                     }
                 },
                 "status": "new",
+                "tier": 3,
                 "vat": "",
                 "vatperc": 21
             }
