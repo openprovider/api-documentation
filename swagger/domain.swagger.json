@@ -1705,6 +1705,10 @@
                     "type": "string",
                     "title": "For companies located in Singapore, the corresponding company registration number has to be given. For Singapore citizens and permanent residents, please provide NRIC or Passport No. For Singapore companies, please provide RCBID as it appears in RCB Certificate. For Singapore societies, please provide RCBID as it appears in ROS Certificate.\nApplicable to: .com.sg, .no, .ro, .sg"
                 },
+                "coop_acceptance": {
+                    "type": "string",
+                    "title": "The coop acceptance value should be set to 1\nApplicable to: .coop"
+                },
                 "customer_uin": {
                     "type": "string",
                     "title": "Identification number of domain owner document that proves his identity (e.g. passport number, number of driving license or else in case if domain owner is a private person; chamber of commerce registration number, taxpayer number or else in case of legal entity)\nApplicable for all TLDs which require documents to complete operation with domain (e.g. .bg, .cn etc.)"
@@ -1837,6 +1841,7 @@
                 "auth_code": "",
                 "bank_acceptance": "",
                 "company_registration_number": "XX123456789X01",
+                "coop_acceptance": "1",
                 "customer_uin": "374892173498127349",
                 "customer_uin_doc_type": {
                     "description": "Singapore Personal Access ID",
@@ -2303,6 +2308,7 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
+                    "coop_acceptance": "1",
                     "customer_uin": "374892173498127349",
                     "customer_uin_doc_type": {
                         "description": "Singapore Personal Access ID",
@@ -2425,6 +2431,7 @@
                         "auth_code": "",
                         "bank_acceptance": "",
                         "company_registration_number": "XX123456789X01",
+                        "coop_acceptance": "1",
                         "customer_uin": "374892173498127349",
                         "customer_uin_doc_type": {
                             "description": "Singapore Personal Access ID",
@@ -2514,6 +2521,7 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
+                    "coop_acceptance": "1",
                     "customer_uin": "374892173498127349",
                     "customer_uin_doc_type": {
                         "description": "Singapore Personal Access ID",
@@ -2710,6 +2718,7 @@
                         "auth_code": "",
                         "bank_acceptance": "",
                         "company_registration_number": "XX123456789X01",
+                        "coop_acceptance": "1",
                         "customer_uin": "374892173498127349",
                         "customer_uin_doc_type": {
                             "description": "Singapore Personal Access ID",
@@ -3235,6 +3244,7 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
+                    "coop_acceptance": "1",
                     "customer_uin": "374892173498127349",
                     "customer_uin_doc_type": {
                         "description": "Singapore Personal Access ID",
@@ -3539,6 +3549,7 @@
                                 "auth_code": "",
                                 "bank_acceptance": "",
                                 "company_registration_number": "XX123456789X01",
+                                "coop_acceptance": "1",
                                 "customer_uin": "374892173498127349",
                                 "customer_uin_doc_type": {
                                     "description": "Singapore Personal Access ID",
@@ -3739,6 +3750,7 @@
                             "auth_code": "",
                             "bank_acceptance": "",
                             "company_registration_number": "XX123456789X01",
+                            "coop_acceptance": "1",
                             "customer_uin": "374892173498127349",
                             "customer_uin_doc_type": {
                                 "description": "Singapore Personal Access ID",
@@ -4336,6 +4348,7 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
+                    "coop_acceptance": "1",
                     "customer_uin": "374892173498127349",
                     "customer_uin_doc_type": {
                         "description": "Singapore Personal Access ID",
@@ -5064,6 +5077,11 @@
                     "title": "Domain name and extension",
                     "$ref": "#/definitions/domainDomain"
                 },
+                "force_registry_update": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Triggers enforced domain update in registry"
+                },
                 "id": {
                     "type": "integer",
                     "format": "int32",
@@ -5185,6 +5203,7 @@
                     "extension": "london",
                     "name": "test4"
                 },
+                "force_registry_update": false,
                 "id": 0,
                 "is_dnssec_enabled": false,
                 "is_locked": false,

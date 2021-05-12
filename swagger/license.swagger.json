@@ -56,7 +56,7 @@
                     },
                     {
                         "type": "string",
-                        "description": "Product type (Plesk or Virtuozzo).",
+                        "description": "Product type (only Plesk is available).",
                         "name": "order_by.product",
                         "in": "query"
                     },
@@ -80,7 +80,7 @@
                     },
                     {
                         "type": "string",
-                        "description": "Product type (Plesk or Virtuozzo).",
+                        "description": "Product type (only Plesk is available).",
                         "name": "product",
                         "in": "query"
                     },
@@ -142,7 +142,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "Product type (Plesk or Virtuozzo)",
+                        "description": "Product type (only Plesk is available)",
                         "name": "product",
                         "in": "path",
                         "required": true
@@ -222,7 +222,7 @@
                     },
                     {
                         "type": "string",
-                        "description": "Product type (Plesk or Virtuozzo).",
+                        "description": "Product type (only Plesk is available).",
                         "name": "order_by.product",
                         "in": "query"
                     },
@@ -246,7 +246,7 @@
                     },
                     {
                         "type": "string",
-                        "description": "Product type (Plesk or Virtuozzo).",
+                        "description": "Product type (only Plesk is available).",
                         "name": "product",
                         "in": "query"
                     }
@@ -512,6 +512,7 @@
                 ],
                 "summary": "List virtuozzo licenses",
                 "operationId": "ListVirtuozzoLicenses",
+                "deprecated": true,
                 "parameters": [
                     {
                         "type": "integer",
@@ -581,6 +582,7 @@
                 ],
                 "summary": "Create virtuozzo license",
                 "operationId": "CreateVirtuozzoLicense",
+                "deprecated": true,
                 "parameters": [
                     {
                         "name": "body",
@@ -614,6 +616,7 @@
                 ],
                 "summary": "Get virtuozzo license",
                 "operationId": "GetVirtuozzoLicense",
+                "deprecated": true,
                 "parameters": [
                     {
                         "type": "integer",
@@ -645,6 +648,7 @@
                 ],
                 "summary": "Update virtuozzo license",
                 "operationId": "UpdateVirtuozzoLicense",
+                "deprecated": true,
                 "parameters": [
                     {
                         "type": "integer",
@@ -684,6 +688,7 @@
                 ],
                 "summary": "Delete virtuozzo license",
                 "operationId": "DeleteVirtuozzoLicense",
+                "deprecated": true,
                 "parameters": [
                     {
                         "type": "integer",
@@ -717,6 +722,7 @@
                 ],
                 "summary": "Get virtuozzo key",
                 "operationId": "GetVirtuozzoKey",
+                "deprecated": true,
                 "parameters": [
                     {
                         "type": "integer",
@@ -1129,7 +1135,7 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "Product type (Plesk or Virtuozzo)"
+                    "title": "Product type (only Plesk is available)"
                 },
                 "sku_values": {
                     "type": "object",
@@ -1228,7 +1234,7 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "Product type (Plesk or Virtuozzo)"
+                    "title": "Product type (only Plesk is available)"
                 },
                 "sku_values": {
                     "type": "object",
@@ -1260,7 +1266,7 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "Product type (Plesk or Virtuozzo)"
+                    "title": "Product type (only Plesk is available)"
                 },
                 "sku_values": {
                     "type": "object",
@@ -1351,7 +1357,7 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "Product type (Plesk or Virtuozzo)"
+                    "title": "Product type (only Plesk is available)"
                 },
                 "sku_values": {
                     "type": "object",
@@ -1393,7 +1399,7 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "Product type (Plesk or Virtuozzo)"
+                    "title": "Product type (only Plesk is available)"
                 },
                 "status": {
                     "type": "string",
@@ -1511,7 +1517,7 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "Product type (Plesk or Virtuozzo)"
+                    "title": "Product type (only Plesk is available)"
                 },
                 "status": {
                     "type": "string",
@@ -1641,7 +1647,7 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "Product type (Plesk or Virtuozzo)"
+                    "title": "Product type (only Plesk is available)"
                 }
             },
             "example": {
@@ -1932,7 +1938,7 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "Product type (Plesk or Virtuozzo)"
+                    "title": "Product type (only Plesk is available)"
                 },
                 "sku_values": {
                     "type": "object",

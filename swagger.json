@@ -3033,7 +3033,7 @@
                     },
                     {
                         "type": "string",
-                        "description": "Product type (Plesk or Virtuozzo).",
+                        "description": "Product type (only Plesk is available).",
                         "name": "order_by.product",
                         "in": "query"
                     },
@@ -3057,7 +3057,7 @@
                     },
                     {
                         "type": "string",
-                        "description": "Product type (Plesk or Virtuozzo).",
+                        "description": "Product type (only Plesk is available).",
                         "name": "product",
                         "in": "query"
                     },
@@ -3119,7 +3119,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "Product type (Plesk or Virtuozzo)",
+                        "description": "Product type (only Plesk is available)",
                         "name": "product",
                         "in": "path",
                         "required": true
@@ -3199,7 +3199,7 @@
                     },
                     {
                         "type": "string",
-                        "description": "Product type (Plesk or Virtuozzo).",
+                        "description": "Product type (only Plesk is available).",
                         "name": "order_by.product",
                         "in": "query"
                     },
@@ -3223,7 +3223,7 @@
                     },
                     {
                         "type": "string",
-                        "description": "Product type (Plesk or Virtuozzo).",
+                        "description": "Product type (only Plesk is available).",
                         "name": "product",
                         "in": "query"
                     }
@@ -3489,6 +3489,7 @@
                 ],
                 "summary": "List virtuozzo licenses",
                 "operationId": "ListVirtuozzoLicenses",
+                "deprecated": true,
                 "parameters": [
                     {
                         "type": "integer",
@@ -3558,6 +3559,7 @@
                 ],
                 "summary": "Create virtuozzo license",
                 "operationId": "CreateVirtuozzoLicense",
+                "deprecated": true,
                 "parameters": [
                     {
                         "name": "body",
@@ -3591,6 +3593,7 @@
                 ],
                 "summary": "Get virtuozzo license",
                 "operationId": "GetVirtuozzoLicense",
+                "deprecated": true,
                 "parameters": [
                     {
                         "type": "integer",
@@ -3622,6 +3625,7 @@
                 ],
                 "summary": "Update virtuozzo license",
                 "operationId": "UpdateVirtuozzoLicense",
+                "deprecated": true,
                 "parameters": [
                     {
                         "type": "integer",
@@ -3661,6 +3665,7 @@
                 ],
                 "summary": "Delete virtuozzo license",
                 "operationId": "DeleteVirtuozzoLicense",
+                "deprecated": true,
                 "parameters": [
                     {
                         "type": "integer",
@@ -3694,6 +3699,7 @@
                 ],
                 "summary": "Get virtuozzo key",
                 "operationId": "GetVirtuozzoKey",
+                "deprecated": true,
                 "parameters": [
                     {
                         "type": "integer",
@@ -8919,6 +8925,10 @@
                     "type": "string",
                     "title": "For companies located in Singapore, the corresponding company registration number has to be given. For Singapore citizens and permanent residents, please provide NRIC or Passport No. For Singapore companies, please provide RCBID as it appears in RCB Certificate. For Singapore societies, please provide RCBID as it appears in ROS Certificate.\nApplicable to: .com.sg, .no, .ro, .sg"
                 },
+                "coop_acceptance": {
+                    "type": "string",
+                    "title": "The coop acceptance value should be set to 1\nApplicable to: .coop"
+                },
                 "customer_uin": {
                     "type": "string",
                     "title": "Identification number of domain owner document that proves his identity (e.g. passport number, number of driving license or else in case if domain owner is a private person; chamber of commerce registration number, taxpayer number or else in case of legal entity)\nApplicable for all TLDs which require documents to complete operation with domain (e.g. .bg, .cn etc.)"
@@ -9051,6 +9061,7 @@
                 "auth_code": "",
                 "bank_acceptance": "",
                 "company_registration_number": "XX123456789X01",
+                "coop_acceptance": "1",
                 "customer_uin": "374892173498127349",
                 "customer_uin_doc_type": {
                     "description": "Singapore Personal Access ID",
@@ -9517,6 +9528,7 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
+                    "coop_acceptance": "1",
                     "customer_uin": "374892173498127349",
                     "customer_uin_doc_type": {
                         "description": "Singapore Personal Access ID",
@@ -9639,6 +9651,7 @@
                         "auth_code": "",
                         "bank_acceptance": "",
                         "company_registration_number": "XX123456789X01",
+                        "coop_acceptance": "1",
                         "customer_uin": "374892173498127349",
                         "customer_uin_doc_type": {
                             "description": "Singapore Personal Access ID",
@@ -9728,6 +9741,7 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
+                    "coop_acceptance": "1",
                     "customer_uin": "374892173498127349",
                     "customer_uin_doc_type": {
                         "description": "Singapore Personal Access ID",
@@ -9924,6 +9938,7 @@
                         "auth_code": "",
                         "bank_acceptance": "",
                         "company_registration_number": "XX123456789X01",
+                        "coop_acceptance": "1",
                         "customer_uin": "374892173498127349",
                         "customer_uin_doc_type": {
                             "description": "Singapore Personal Access ID",
@@ -10449,6 +10464,7 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
+                    "coop_acceptance": "1",
                     "customer_uin": "374892173498127349",
                     "customer_uin_doc_type": {
                         "description": "Singapore Personal Access ID",
@@ -10753,6 +10769,7 @@
                                 "auth_code": "",
                                 "bank_acceptance": "",
                                 "company_registration_number": "XX123456789X01",
+                                "coop_acceptance": "1",
                                 "customer_uin": "374892173498127349",
                                 "customer_uin_doc_type": {
                                     "description": "Singapore Personal Access ID",
@@ -10953,6 +10970,7 @@
                             "auth_code": "",
                             "bank_acceptance": "",
                             "company_registration_number": "XX123456789X01",
+                            "coop_acceptance": "1",
                             "customer_uin": "374892173498127349",
                             "customer_uin_doc_type": {
                                 "description": "Singapore Personal Access ID",
@@ -11550,6 +11568,7 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
+                    "coop_acceptance": "1",
                     "customer_uin": "374892173498127349",
                     "customer_uin_doc_type": {
                         "description": "Singapore Personal Access ID",
@@ -12278,6 +12297,11 @@
                     "title": "Domain name and extension",
                     "$ref": "#/definitions/domainDomain"
                 },
+                "force_registry_update": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Triggers enforced domain update in registry"
+                },
                 "id": {
                     "type": "integer",
                     "format": "int32",
@@ -12399,6 +12423,7 @@
                     "extension": "london",
                     "name": "test4"
                 },
+                "force_registry_update": false,
                 "id": 0,
                 "is_dnssec_enabled": false,
                 "is_locked": false,
@@ -13990,7 +14015,7 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "Product type (Plesk or Virtuozzo)"
+                    "title": "Product type (only Plesk is available)"
                 },
                 "sku_values": {
                     "type": "object",
@@ -14089,7 +14114,7 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "Product type (Plesk or Virtuozzo)"
+                    "title": "Product type (only Plesk is available)"
                 },
                 "sku_values": {
                     "type": "object",
@@ -14121,7 +14146,7 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "Product type (Plesk or Virtuozzo)"
+                    "title": "Product type (only Plesk is available)"
                 },
                 "sku_values": {
                     "type": "object",
@@ -14212,7 +14237,7 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "Product type (Plesk or Virtuozzo)"
+                    "title": "Product type (only Plesk is available)"
                 },
                 "sku_values": {
                     "type": "object",
@@ -14254,7 +14279,7 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "Product type (Plesk or Virtuozzo)"
+                    "title": "Product type (only Plesk is available)"
                 },
                 "status": {
                     "type": "string",
@@ -14372,7 +14397,7 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "Product type (Plesk or Virtuozzo)"
+                    "title": "Product type (only Plesk is available)"
                 },
                 "status": {
                     "type": "string",
@@ -14502,7 +14527,7 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "Product type (Plesk or Virtuozzo)"
+                    "title": "Product type (only Plesk is available)"
                 }
             },
             "example": {
@@ -14793,7 +14818,7 @@
                 },
                 "product": {
                     "type": "string",
-                    "title": "Product type (Plesk or Virtuozzo)"
+                    "title": "Product type (only Plesk is available)"
                 },
                 "sku_values": {
                     "type": "object",
@@ -25287,7 +25312,7 @@
     ],
     "tags": [
         {
-            "description": "Openprovider is a wholesaler of Internet services and products with a unique platform from which you can find and manage all the products you need: Domains, new gTLDs, SSL certificates, licenses for Plesk, spam filters, and more!",
+            "description": "Openprovider is a wholesaler of Internet services and products with a unique platform from which you can find and manage all the products you need: Domains, new gTLDs, SSL certificates, licenses for Plesk and Virtuozzo, spam filters, and more!",
             "name": "descAbout",
             "x-displayName": "What is Openprovider",
             "x-traitTag": true
