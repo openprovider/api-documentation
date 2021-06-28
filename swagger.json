@@ -2188,6 +2188,39 @@
                 }
             }
         },
+        "/v1beta/domains/suggest-name": {
+            "post": {
+                "tags": [
+                    "DomainService"
+                ],
+                "summary": "Suggest name domain",
+                "operationId": "SuggestNameDomain",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domainSuggestNameDomainRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/domainSuggestNameDomainResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
         "/v1beta/domains/trade": {
             "post": {
                 "tags": [
@@ -11477,6 +11510,135 @@
                 "id": 0
             }
         },
+        "domainSuggestNameDomainRequest": {
+            "type": "object",
+            "title": "SuggestNameDomainRequest",
+            "properties": {
+                "language": {
+                    "type": "string",
+                    "title": "The three letter country code for the language in which responses should be generated (ISO-3166 ALPHA-3 code format)"
+                },
+                "limit": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Maximum number of suggestions to return"
+                },
+                "name": {
+                    "type": "string",
+                    "title": "The search term which will be used to generate matches"
+                },
+                "sensitive": {
+                    "description": "Set true to remove domain name suggestions deemed obscene by the supplier. set false to include obscene domain name suggestions.",
+                    "type": "boolean",
+                    "format": "boolean"
+                },
+                "tlds": {
+                    "type": "array",
+                    "title": "List of TLDs which will be used to generate matches",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "example": {
+                "language": "eng",
+                "limit": 50,
+                "name": "example-domain",
+                "sensitive": false,
+                "tlds": [
+                    ""
+                ]
+            }
+        },
+        "domainSuggestNameDomainResponse": {
+            "type": "object",
+            "title": "SuggestNameDomainResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "Response data",
+                    "$ref": "#/definitions/domainSuggestNameDomainResponseData"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "Array of warning messages",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "results": [
+                        {
+                            "domain": "yourexampledomain",
+                            "name": "yourexampledomain.com",
+                            "tld": "com"
+                        }
+                    ]
+                },
+                "desc": ""
+            }
+        },
+        "domainSuggestNameDomainResponseData": {
+            "type": "object",
+            "title": "SuggestNameDomainResponseData",
+            "properties": {
+                "results": {
+                    "type": "array",
+                    "title": "Array of results",
+                    "items": {
+                        "$ref": "#/definitions/domainSuggestNameDomainResult"
+                    }
+                }
+            },
+            "example": {
+                "results": [
+                    {
+                        "domain": "yourexampledomain",
+                        "name": "yourexampledomain.com",
+                        "tld": "com"
+                    }
+                ]
+            }
+        },
+        "domainSuggestNameDomainResult": {
+            "type": "object",
+            "title": "SuggestNameDomainResult",
+            "properties": {
+                "domain": {
+                    "type": "string",
+                    "title": "Domain name, not including the TLD"
+                },
+                "name": {
+                    "type": "string",
+                    "title": "Domain and TLD separated by '.'"
+                },
+                "tld": {
+                    "type": "string",
+                    "title": "TLD"
+                }
+            },
+            "example": {
+                "domain": "yourexampledomain",
+                "name": "yourexampledomain.com",
+                "tld": "com"
+            }
+        },
         "domainTradeDomainRequest": {
             "type": "object",
             "title": "TradeDomainRequest",
@@ -15772,10 +15934,12 @@
                         "features": ""
                     },
                     "order_date": "2019-01-01 0:00:01",
+                    "order_ends_at": "2019-01-01 0:00:01",
                     "organization_handle": "TH000001-NL",
                     "period": 2,
                     "product_id": 5,
                     "product_name": "EssentialSSL",
+                    "reissue_at": "2019-01-01 0:00:01",
                     "root_certificate": "",
                     "software": "linux",
                     "sslinhva_order_id": "11111111-1111-1111-1111-111111111111",
@@ -15907,10 +16071,12 @@
                                 "features": ""
                             },
                             "order_date": "2019-01-01 0:00:01",
+                            "order_ends_at": "2019-01-01 0:00:01",
                             "organization_handle": "TH000001-NL",
                             "period": 2,
                             "product_id": 5,
                             "product_name": "EssentialSSL",
+                            "reissue_at": "2019-01-01 0:00:01",
                             "root_certificate": "",
                             "software": "linux",
                             "sslinhva_order_id": "11111111-1111-1111-1111-111111111111",
@@ -15999,10 +16165,12 @@
                             "features": ""
                         },
                         "order_date": "2019-01-01 0:00:01",
+                        "order_ends_at": "2019-01-01 0:00:01",
                         "organization_handle": "TH000001-NL",
                         "period": 2,
                         "product_id": 5,
                         "product_name": "EssentialSSL",
+                        "reissue_at": "2019-01-01 0:00:01",
                         "root_certificate": "",
                         "software": "linux",
                         "sslinhva_order_id": "11111111-1111-1111-1111-111111111111",
@@ -16304,6 +16472,10 @@
                     "type": "string",
                     "title": "Order date"
                 },
+                "order_ends_at": {
+                    "type": "string",
+                    "title": "date till which order has been paid"
+                },
                 "organization_handle": {
                     "type": "string",
                     "title": "Handle of the organization contact"
@@ -16321,6 +16493,10 @@
                 "product_name": {
                     "type": "string",
                     "title": "Name of the product"
+                },
+                "reissue_at": {
+                    "type": "string",
+                    "title": "date when we will request automatic reissue"
                 },
                 "root_certificate": {
                     "type": "string",
@@ -16409,10 +16585,12 @@
                     "features": ""
                 },
                 "order_date": "2019-01-01 0:00:01",
+                "order_ends_at": "2019-01-01 0:00:01",
                 "organization_handle": "TH000001-NL",
                 "period": 2,
                 "product_id": 5,
                 "product_name": "EssentialSSL",
+                "reissue_at": "2019-01-01 0:00:01",
                 "root_certificate": "",
                 "software": "linux",
                 "sslinhva_order_id": "11111111-1111-1111-1111-111111111111",

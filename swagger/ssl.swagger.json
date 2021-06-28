@@ -1625,10 +1625,12 @@
                         "features": ""
                     },
                     "order_date": "2019-01-01 0:00:01",
+                    "order_ends_at": "2019-01-01 0:00:01",
                     "organization_handle": "TH000001-NL",
                     "period": 2,
                     "product_id": 5,
                     "product_name": "EssentialSSL",
+                    "reissue_at": "2019-01-01 0:00:01",
                     "root_certificate": "",
                     "software": "linux",
                     "sslinhva_order_id": "11111111-1111-1111-1111-111111111111",
@@ -1760,10 +1762,12 @@
                                 "features": ""
                             },
                             "order_date": "2019-01-01 0:00:01",
+                            "order_ends_at": "2019-01-01 0:00:01",
                             "organization_handle": "TH000001-NL",
                             "period": 2,
                             "product_id": 5,
                             "product_name": "EssentialSSL",
+                            "reissue_at": "2019-01-01 0:00:01",
                             "root_certificate": "",
                             "software": "linux",
                             "sslinhva_order_id": "11111111-1111-1111-1111-111111111111",
@@ -1852,10 +1856,12 @@
                             "features": ""
                         },
                         "order_date": "2019-01-01 0:00:01",
+                        "order_ends_at": "2019-01-01 0:00:01",
                         "organization_handle": "TH000001-NL",
                         "period": 2,
                         "product_id": 5,
                         "product_name": "EssentialSSL",
+                        "reissue_at": "2019-01-01 0:00:01",
                         "root_certificate": "",
                         "software": "linux",
                         "sslinhva_order_id": "11111111-1111-1111-1111-111111111111",
@@ -2157,6 +2163,10 @@
                     "type": "string",
                     "title": "Order date"
                 },
+                "order_ends_at": {
+                    "type": "string",
+                    "title": "date till which order has been paid"
+                },
                 "organization_handle": {
                     "type": "string",
                     "title": "Handle of the organization contact"
@@ -2174,6 +2184,10 @@
                 "product_name": {
                     "type": "string",
                     "title": "Name of the product"
+                },
+                "reissue_at": {
+                    "type": "string",
+                    "title": "date when we will request automatic reissue"
                 },
                 "root_certificate": {
                     "type": "string",
@@ -2262,10 +2276,12 @@
                     "features": ""
                 },
                 "order_date": "2019-01-01 0:00:01",
+                "order_ends_at": "2019-01-01 0:00:01",
                 "organization_handle": "TH000001-NL",
                 "period": 2,
                 "product_id": 5,
                 "product_name": "EssentialSSL",
+                "reissue_at": "2019-01-01 0:00:01",
                 "root_certificate": "",
                 "software": "linux",
                 "sslinhva_order_id": "11111111-1111-1111-1111-111111111111",
