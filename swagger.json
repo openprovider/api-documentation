@@ -9494,6 +9494,11 @@
                     "format": "boolean",
                     "title": "Enables or disables whois privacy protection (WPP) on domain"
                 },
+                "is_sectigo_dns_enabled": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Enables or disables premium Sectigo DNS on domain"
+                },
                 "is_spamexperts_enabled": {
                     "type": "boolean",
                     "format": "boolean",
@@ -9621,6 +9626,7 @@
                 },
                 "is_dnssec_enabled": false,
                 "is_private_whois_enabled": false,
+                "is_sectigo_dns_enabled": false,
                 "is_spamexperts_enabled": false,
                 "name_servers": [
                     {
@@ -10049,6 +10055,7 @@
                     },
                     "expiration_date": "2014-07-04 17:14:44",
                     "hard_quarantine_expiry_date": "",
+                    "has_active_sectigo_zone": false,
                     "has_history": false,
                     "history": [
                         {
@@ -10245,6 +10252,11 @@
                 "hard_quarantine_expiry_date": {
                     "type": "string",
                     "title": "Date of hard quarantine expiration"
+                },
+                "has_active_sectigo_zone": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if domain has an active dns zone in Sectigo"
                 },
                 "has_history": {
                     "type": "boolean",
@@ -10575,6 +10587,7 @@
                 },
                 "expiration_date": "2014-07-04 17:14:44",
                 "hard_quarantine_expiry_date": "",
+                "has_active_sectigo_zone": false,
                 "has_history": false,
                 "history": [
                     {
@@ -10880,6 +10893,7 @@
                             },
                             "expiration_date": "2014-07-04 17:14:44",
                             "hard_quarantine_expiry_date": "",
+                            "has_active_sectigo_zone": false,
                             "has_history": false,
                             "history": [
                                 {
@@ -11081,6 +11095,7 @@
                         },
                         "expiration_date": "2014-07-04 17:14:44",
                         "hard_quarantine_expiry_date": "",
+                        "has_active_sectigo_zone": false,
                         "has_history": false,
                         "history": [
                             {
@@ -12484,6 +12499,11 @@
                     "format": "boolean",
                     "title": "Enables or disables whois privacy protection (WPP) on domain"
                 },
+                "is_sectigo_dns_enabled": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Enables or disables premium Sectigo DNS on domain"
+                },
                 "is_spamexperts_enabled": {
                     "type": "boolean",
                     "format": "boolean",
@@ -12590,6 +12610,7 @@
                 "is_dnssec_enabled": false,
                 "is_locked": false,
                 "is_private_whois_enabled": false,
+                "is_sectigo_dns_enabled": false,
                 "is_spamexperts_enabled": false,
                 "name_servers": [
                     {
