@@ -12293,6 +12293,10 @@
             "type": "object",
             "title": "TryAgainLastOperationRequest",
             "properties": {
+                "authCode": {
+                    "type": "string",
+                    "title": "Auth code for transfer"
+                },
                 "domain": {
                     "title": "Domain name and extension",
                     "$ref": "#/definitions/domainDomain"
@@ -25523,7 +25527,7 @@
             "x-traitTag": true
         },
         {
-            "description": "Openprovider API is accessed by making HTTPS requests to a specific version endpoint URL, in which GET, POST, PUT, and DELETE methods dictate how your interact with the available data. Every endpoint is accessed only via the SSL-enabled HTTPS (port 443) protocol.\n\nBe noted that\u00a0in order to maintain compatibility in the future, all requests must specify an API version, which is appended to the URL. The [latest version](http://docs.openprovider.com) is v1beta and the base URL for this version's endpoint is:\n\n```\nhttps://api.openprovider.eu/v1beta/\n```\n\nAside from our production environment we maintain a separate environment for testing called CTE. CTE API calls must use the [api.cte.openprovider.eu](https://api.cte.openprovider.eu) domain.",
+            "description": "Openprovider API is accessed by making HTTPS requests to a specific version endpoint URL, in which GET, POST, PUT, and DELETE methods dictate how your interact with the available data. Every endpoint is accessed only via the SSL-enabled HTTPS (port 443) protocol.\n\nBe noted that\u00a0in order to maintain compatibility in the future, all requests must specify an API version, which is appended to the URL. The [latest version](http://docs.openprovider.com) is v1beta and the base URL for this version's endpoint is:\n\n```\nhttps://api.openprovider.eu/v1beta/\n```",
             "name": "descEndpoints",
             "x-displayName": "Endpoints",
             "x-traitTag": true

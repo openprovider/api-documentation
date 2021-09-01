@@ -5073,6 +5073,10 @@
             "type": "object",
             "title": "TryAgainLastOperationRequest",
             "properties": {
+                "authCode": {
+                    "type": "string",
+                    "title": "Auth code for transfer"
+                },
                 "domain": {
                     "title": "Domain name and extension",
                     "$ref": "#/definitions/domainDomain"
