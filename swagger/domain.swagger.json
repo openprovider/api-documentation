@@ -2860,6 +2860,7 @@
                     "is_premium": false,
                     "is_private_whois_allowed": false,
                     "is_private_whois_enabled": false,
+                    "is_sectigo_dns_enabled": false,
                     "is_spamexperts_enabled": false,
                     "last_changed": "2014-04-18 7:13:05",
                     "modify_owner_allowed": false,
@@ -3112,6 +3113,11 @@
                     "type": "boolean",
                     "format": "boolean",
                     "title": "Enables or disables whois privacy protection (WPP) on domain"
+                },
+                "is_sectigo_dns_enabled": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if domain has an active dns zone in Sectigo"
                 },
                 "is_spamexperts_enabled": {
                     "type": "boolean",
@@ -3392,6 +3398,7 @@
                 "is_premium": false,
                 "is_private_whois_allowed": false,
                 "is_private_whois_enabled": false,
+                "is_sectigo_dns_enabled": false,
                 "is_spamexperts_enabled": false,
                 "last_changed": "2014-04-18 7:13:05",
                 "modify_owner_allowed": false,
@@ -3698,6 +3705,7 @@
                             "is_premium": false,
                             "is_private_whois_allowed": false,
                             "is_private_whois_enabled": false,
+                            "is_sectigo_dns_enabled": false,
                             "is_spamexperts_enabled": false,
                             "last_changed": "2014-04-18 7:13:05",
                             "modify_owner_allowed": false,
@@ -3900,6 +3908,7 @@
                         "is_premium": false,
                         "is_private_whois_allowed": false,
                         "is_private_whois_enabled": false,
+                        "is_sectigo_dns_enabled": false,
                         "is_spamexperts_enabled": false,
                         "last_changed": "2014-04-18 7:13:05",
                         "modify_owner_allowed": false,
@@ -5073,7 +5082,7 @@
             "type": "object",
             "title": "TryAgainLastOperationRequest",
             "properties": {
-                "authCode": {
+                "auth_code": {
                     "type": "string",
                     "title": "Auth code for transfer"
                 },
@@ -5088,6 +5097,7 @@
                 }
             },
             "example": {
+                "auth_code": "1a2b3c4d5e6f",
                 "domain": {
                     "extension": "london",
                     "name": "test4"

@@ -724,6 +724,12 @@
                         "description": "Indicates, whether DNSSEC keys should be displayed in output.",
                         "name": "with_dnskey",
                         "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Name of the DNS provider. Set provider=sectigo in case of only sectigo premium DNS zone should be retrieved.",
+                        "name": "provider",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -824,6 +830,12 @@
                         "description": "Indicates, whether DNSSEC keys should be displayed in output.",
                         "name": "with_dnskey",
                         "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Name of the DNS provider. Set provider=sectigo in case of only sectigo premium DNS zone should be retrieved.",
+                        "name": "provider",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -918,6 +930,12 @@
                         "type": "string",
                         "description": "Domain extension.",
                         "name": "domain.extension",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Name of the DNS provider. Set provider=sectigo in case of sectigo premium DNS zone should be deleted.",
+                        "name": "provider",
                         "in": "query"
                     }
                 ],
@@ -1037,6 +1055,12 @@
                         "description": "DNS record TTL.",
                         "name": "ttl",
                         "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Name of the DNS provider. Set zone_provider=sectigo in case of only sectigo premium DNS zone records should be retrieved.",
+                        "name": "zone_provider",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -1064,10 +1088,15 @@
                 "domain": {
                     "type": "string",
                     "title": "Domain name"
+                },
+                "zone_provider": {
+                    "type": "string",
+                    "title": "Name of the DNS provider"
                 }
             },
             "example": {
-                "domain": "example.com"
+                "domain": "example.com",
+                "zone_provider": "sectigo"
             }
         },
         "domain_tokenCreateTokenResponse": {
@@ -2378,6 +2407,10 @@
                     "type": "string",
                     "title": "IP of the master nameserver for this DNS zone. Required if DNS zone type = slave"
                 },
+                "provider": {
+                    "type": "string",
+                    "title": "Name of the DNS provider. Set provider=sectigo in case of sectigo premium DNS zone should be created"
+                },
                 "records": {
                     "type": "array",
                     "title": "Array of DNS records",
@@ -2406,6 +2439,7 @@
                 },
                 "is_spamexperts_enabled": "on",
                 "master_ip": "127.0.0.1",
+                "provider": "sectigo",
                 "records": [
                     {
                         "name": "domain.com",
@@ -2489,6 +2523,16 @@
                     "is_spamexperts_enabled": false,
                     "modification_date": "2018-11-28 6:57:05",
                     "name": "domain.com",
+                    "premium_dns": {
+                        "sectigo": {
+                            "autorenew": false,
+                            "order_date": "2021-08-05 7:37:28",
+                            "renewal_date": "2022-11-28 6:57:05",
+                            "secured": false,
+                            "website_id": 123456
+                        }
+                    },
+                    "provider": "sectigo",
                     "records": [
                         {
                             "creation_date": "",
@@ -2584,6 +2628,16 @@
                             "is_spamexperts_enabled": false,
                             "modification_date": "2018-11-28 6:57:05",
                             "name": "domain.com",
+                            "premium_dns": {
+                                "sectigo": {
+                                    "autorenew": false,
+                                    "order_date": "2021-08-05 7:37:28",
+                                    "renewal_date": "2022-11-28 6:57:05",
+                                    "secured": false,
+                                    "website_id": 123456
+                                }
+                            },
+                            "provider": "sectigo",
                             "records": [
                                 {
                                     "creation_date": "",
@@ -2643,6 +2697,16 @@
                         "is_spamexperts_enabled": false,
                         "modification_date": "2018-11-28 6:57:05",
                         "name": "domain.com",
+                        "premium_dns": {
+                            "sectigo": {
+                                "autorenew": false,
+                                "order_date": "2021-08-05 7:37:28",
+                                "renewal_date": "2022-11-28 6:57:05",
+                                "secured": false,
+                                "website_id": 123456
+                            }
+                        },
+                        "provider": "sectigo",
                         "records": [
                             {
                                 "creation_date": "",
@@ -2660,6 +2724,25 @@
                     }
                 ],
                 "total": 1888
+            }
+        },
+        "zonePremiumDnsData": {
+            "type": "object",
+            "title": "PremiumDnsData",
+            "properties": {
+                "sectigo": {
+                    "title": "Additional data related to premium DNS zone managed by Sectigo",
+                    "$ref": "#/definitions/zoneSectigoData"
+                }
+            },
+            "example": {
+                "sectigo": {
+                    "autorenew": false,
+                    "order_date": "2021-08-05 7:37:28",
+                    "renewal_date": "2022-11-28 6:57:05",
+                    "secured": false,
+                    "website_id": 123456
+                }
             }
         },
         "zoneRecord": {
@@ -2808,6 +2891,42 @@
                 }
             }
         },
+        "zoneSectigoData": {
+            "type": "object",
+            "title": "SectigoData",
+            "properties": {
+                "autorenew": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Desired autorenew value"
+                },
+                "order_date": {
+                    "type": "string",
+                    "title": "Premium DNS order creation date"
+                },
+                "renewal_date": {
+                    "type": "string",
+                    "title": "Premium DNS order renewal date"
+                },
+                "secured": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Used to enable or disable DNSSEC for this DNS zone"
+                },
+                "website_id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Premium DNS zone external ID"
+                }
+            },
+            "example": {
+                "autorenew": false,
+                "order_date": "2021-08-05 7:37:28",
+                "renewal_date": "2022-11-28 6:57:05",
+                "secured": false,
+                "website_id": 123456
+            }
+        },
         "zoneUpdateZoneRequest": {
             "type": "object",
             "title": "UpdateZoneRequest",
@@ -2834,6 +2953,14 @@
                     "type": "string",
                     "title": "Name of the domain to which DNS zone corresponds"
                 },
+                "premium_dns": {
+                    "title": "Additional data related to premium DNS zone",
+                    "$ref": "#/definitions/zonePremiumDnsData"
+                },
+                "provider": {
+                    "type": "string",
+                    "title": "Name of the DNS provider. Set provider=sectigo in case of sectigo premium DNS zone should be updated"
+                },
                 "records": {
                     "title": "DNS zone records grouped by action",
                     "$ref": "#/definitions/zoneRecordUpdates"
@@ -2852,6 +2979,16 @@
                 "is_spamexperts_enabled": true,
                 "master_ip": "127.0.0.1",
                 "name": "domain.com",
+                "premium_dns": {
+                    "sectigo": {
+                        "autorenew": false,
+                        "order_date": "2021-08-05 7:37:28",
+                        "renewal_date": "2022-11-28 6:57:05",
+                        "secured": false,
+                        "website_id": 123456
+                    }
+                },
+                "provider": "sectigo",
                 "records": {
                     "add": [
                         {
@@ -2958,6 +3095,14 @@
                     "type": "string",
                     "title": "Name of the domain to which DNS zone corresponds"
                 },
+                "premium_dns": {
+                    "title": "Additional data related to premium DNS zone",
+                    "$ref": "#/definitions/zonePremiumDnsData"
+                },
+                "provider": {
+                    "type": "string",
+                    "title": "Name of the DNS provider"
+                },
                 "records": {
                     "type": "array",
                     "title": "Array of DNS records",
@@ -2994,6 +3139,16 @@
                 "is_spamexperts_enabled": false,
                 "modification_date": "2018-11-28 6:57:05",
                 "name": "domain.com",
+                "premium_dns": {
+                    "sectigo": {
+                        "autorenew": false,
+                        "order_date": "2021-08-05 7:37:28",
+                        "renewal_date": "2022-11-28 6:57:05",
+                        "secured": false,
+                        "website_id": 123456
+                    }
+                },
+                "provider": "sectigo",
                 "records": [
                     {
                         "creation_date": "",
