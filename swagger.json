@@ -2817,6 +2817,181 @@
                 }
             }
         },
+        "/v1beta/easydmarcs": {
+            "get": {
+                "tags": [
+                    "EasydmarcOrder"
+                ],
+                "summary": "Get easy dmarc",
+                "operationId": "GetEasyDmarc",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Domain name without extension.",
+                        "name": "domain.name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Domain extension.",
+                        "name": "domain.extension",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/orderGetEasyDmarcResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "EasydmarcOrder"
+                ],
+                "summary": "Create easy dmarc",
+                "operationId": "CreateEasyDmarc",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/orderCreateEasyDmarcRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/orderCreateEasyDmarcResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/easydmarcs/{id}": {
+            "delete": {
+                "tags": [
+                    "EasydmarcOrder"
+                ],
+                "summary": "Delete easy dmarc",
+                "operationId": "DeleteEasyDmarc",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Easydmarc id (order number)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/orderDeleteEasyDmarcResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/easydmarcs/{id}/retry": {
+            "post": {
+                "tags": [
+                    "EasydmarcOrder"
+                ],
+                "summary": "Retry easy dmarc",
+                "operationId": "RetryEasyDmarc",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Easydmarc id (order number)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/orderRetryEasyDmarcRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/orderRetryEasyDmarcResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/easydmarcs/{id}/sso": {
+            "get": {
+                "tags": [
+                    "EasydmarcOrder"
+                ],
+                "summary": "Get easy dmarc sso",
+                "operationId": "GetEasyDmarcSso",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Easy Dmarc id (order id)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/orderGetEasyDmarcSsoResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
         "/v1beta/emails": {
             "get": {
                 "tags": [
@@ -4008,7 +4183,7 @@
                     "SEDomain"
                 ],
                 "summary": "Create domain",
-                "operationId": "CreateDomainMixin7",
+                "operationId": "CreateDomainMixin8",
                 "parameters": [
                     {
                         "name": "body",
@@ -4041,7 +4216,7 @@
                     "SEDomain"
                 ],
                 "summary": "Get domain",
-                "operationId": "GetDomainMixin7",
+                "operationId": "GetDomainMixin8",
                 "parameters": [
                     {
                         "type": "string",
@@ -4086,7 +4261,7 @@
                     "SEDomain"
                 ],
                 "summary": "Update domain",
-                "operationId": "UpdateDomainMixin7",
+                "operationId": "UpdateDomainMixin8",
                 "parameters": [
                     {
                         "type": "string",
@@ -4124,7 +4299,7 @@
                     "SEDomain"
                 ],
                 "summary": "Delete domain",
-                "operationId": "DeleteDomainMixin7",
+                "operationId": "DeleteDomainMixin8",
                 "parameters": [
                     {
                         "type": "string",
@@ -5631,6 +5806,38 @@
             "example": {
                 "id": 1
             }
+        },
+        "attributesCompanySize": {
+            "description": "- UNKNOWN_COMPANY_SIZE: Unknown company size, e.g reseller just created account or didn't specified company size\n - BETWEEN_1_AND_10: Company has from 1 to 10 employees\n - BETWEEN_11_AND_50: Company has from 11 to 50 employees\n - BETWEEN_51_AND_200: Company has from 51 to 200 employees\n - BETWEEN_201_AND_500: Company has from 201 to 500 employees\n - BETWEEN_501_AND_1000: Company has from 501 to 1000 employees\n - MORE_THAN_1000: Company more than 1000 employees",
+            "type": "string",
+            "title": "The size of reseller's company",
+            "default": "UNKNOWN_COMPANY_SIZE",
+            "enum": [
+                "UNKNOWN_COMPANY_SIZE",
+                "BETWEEN_1_AND_10",
+                "BETWEEN_11_AND_50",
+                "BETWEEN_51_AND_200",
+                "BETWEEN_201_AND_500",
+                "BETWEEN_501_AND_1000",
+                "MORE_THAN_1000"
+            ]
+        },
+        "attributesIndustry": {
+            "description": "- UNKNOWN_INDUSTRY: Industry is not specified\n - DOMAIN_REGISTRAR: Reseller's industry is domain registar\n - CLOUD_SERVICES: Reseller's industry is cloud services\n - MARKETING_AGENCIES: Reseller's industry is marketing agencies\n - NETWORKING_SERVICES: Reseller's industry is networking services\n - WEB_HOSTING: Reseller's industry is web hosting\n - SOFTWARE_DEVELOPMENT: Reseller's industry is software development\n - WEBSITE_BUILDERS: Reseller's industry is website builders\n - SECURITY_SERVICES: Reseller's industry is security services",
+            "type": "string",
+            "title": "Reseller's industry",
+            "default": "UNKNOWN_INDUSTRY",
+            "enum": [
+                "UNKNOWN_INDUSTRY",
+                "DOMAIN_REGISTRAR",
+                "CLOUD_SERVICES",
+                "MARKETING_AGENCIES",
+                "NETWORKING_SERVICES",
+                "WEB_HOSTING",
+                "SOFTWARE_DEVELOPMENT",
+                "WEBSITE_BUILDERS",
+                "SECURITY_SERVICES"
+            ]
         },
         "authLoginRequest": {
             "type": "object",
@@ -9022,6 +9229,10 @@
                     "type": "string",
                     "title": "The eligibility type relationship indicates the relationship between the Eligibility Type (e.g. business name) and domain name\nApplicable to: .com.au, .id.au, .net.au, .org.au"
                 },
+                "es_annex_acceptance": {
+                    "type": "string",
+                    "title": "Applicable to: .es"
+                },
                 "ftld_token": {
                     "type": "string",
                     "title": "The fTLD token required for registration and data in owner handle must be exactly the same as in token. You need to request token from registry\nApplicable to: .bank, .insurance"
@@ -9142,6 +9353,7 @@
                 ],
                 "eligibility_type": "",
                 "eligibility_type_relationship": "",
+                "es_annex_acceptance": "1",
                 "ftld_token": "",
                 "gay_donation_acceptance": "1",
                 "gay_rights_protection_acceptance": "1",
@@ -9614,6 +9826,7 @@
                     ],
                     "eligibility_type": "",
                     "eligibility_type_relationship": "",
+                    "es_annex_acceptance": "1",
                     "ftld_token": "",
                     "gay_donation_acceptance": "1",
                     "gay_rights_protection_acceptance": "1",
@@ -9738,6 +9951,7 @@
                         ],
                         "eligibility_type": "",
                         "eligibility_type_relationship": "",
+                        "es_annex_acceptance": "1",
                         "ftld_token": "",
                         "gay_donation_acceptance": "1",
                         "gay_rights_protection_acceptance": "1",
@@ -9828,6 +10042,7 @@
                     ],
                     "eligibility_type": "",
                     "eligibility_type_relationship": "",
+                    "es_annex_acceptance": "1",
                     "ftld_token": "",
                     "gay_donation_acceptance": "1",
                     "gay_rights_protection_acceptance": "1",
@@ -10025,6 +10240,7 @@
                         ],
                         "eligibility_type": "",
                         "eligibility_type_relationship": "",
+                        "es_annex_acceptance": "1",
                         "ftld_token": "",
                         "gay_donation_acceptance": "1",
                         "gay_rights_protection_acceptance": "1",
@@ -10563,6 +10779,7 @@
                     ],
                     "eligibility_type": "",
                     "eligibility_type_relationship": "",
+                    "es_annex_acceptance": "1",
                     "ftld_token": "",
                     "gay_donation_acceptance": "1",
                     "gay_rights_protection_acceptance": "1",
@@ -10870,6 +11087,7 @@
                                 ],
                                 "eligibility_type": "",
                                 "eligibility_type_relationship": "",
+                                "es_annex_acceptance": "1",
                                 "ftld_token": "",
                                 "gay_donation_acceptance": "1",
                                 "gay_rights_protection_acceptance": "1",
@@ -11073,6 +11291,7 @@
                             ],
                             "eligibility_type": "",
                             "eligibility_type_relationship": "",
+                            "es_annex_acceptance": "1",
                             "ftld_token": "",
                             "gay_donation_acceptance": "1",
                             "gay_rights_protection_acceptance": "1",
@@ -11588,6 +11807,10 @@
                     "type": "string",
                     "title": "The search term which will be used to generate matches"
                 },
+                "provider": {
+                    "type": "string",
+                    "title": "Provider of suggest name service"
+                },
                 "sensitive": {
                     "description": "Set true to remove domain name suggestions deemed obscene by the supplier. set false to include obscene domain name suggestions.",
                     "type": "boolean",
@@ -11605,6 +11828,7 @@
                 "language": "eng",
                 "limit": 50,
                 "name": "example-domain",
+                "provider": "namestudio",
                 "sensitive": false,
                 "tlds": [
                     ""
@@ -11802,6 +12026,7 @@
                     ],
                     "eligibility_type": "",
                     "eligibility_type_relationship": "",
+                    "es_annex_acceptance": "1",
                     "ftld_token": "",
                     "gay_donation_acceptance": "1",
                     "gay_rights_protection_acceptance": "1",
@@ -15768,6 +15993,73 @@
                 "id": 1
             }
         },
+        "orderCreateEasyDmarcRequest": {
+            "type": "object",
+            "title": "CreateEasyDmarcRequest",
+            "properties": {
+                "domain": {
+                    "title": "Domain name and extension",
+                    "$ref": "#/definitions/orderDomain"
+                },
+                "owner_handle": {
+                    "type": "string",
+                    "title": "Domain owner handle value"
+                }
+            },
+            "example": {
+                "domain": {
+                    "extension": "london",
+                    "name": "test4"
+                },
+                "owner_handle": "XX123456-XX"
+            }
+        },
+        "orderCreateEasyDmarcResponse": {
+            "type": "object",
+            "title": "CreateEasyDmarcResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "Response data",
+                    "$ref": "#/definitions/orderEasyDmarcOrder"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "Array of warning messages",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "domain": {
+                        "extension": "london",
+                        "name": "test4"
+                    },
+                    "easydmarc_email_address": "",
+                    "id": 123456789,
+                    "recent_easydmarc_action": {
+                        "message": "",
+                        "recent_action": "enabled"
+                    },
+                    "record_host": "",
+                    "record_type": "",
+                    "record_value": "",
+                    "status": ""
+                },
+                "desc": ""
+            }
+        },
         "orderCreateOrderRequest": {
             "type": "object",
             "title": "CreateOrderRequest",
@@ -15923,6 +16215,232 @@
             },
             "example": {
                 "id": 1
+            }
+        },
+        "orderDeleteEasyDmarcResponse": {
+            "type": "object",
+            "title": "DeleteEasyDmarcResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "Response data",
+                    "$ref": "#/definitions/orderDeleteEasyDmarcResponseData"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates that the Openprovider system is temporarily unavailable because of maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "Contains warning responses if any",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "status": "ACT"
+                },
+                "desc": ""
+            }
+        },
+        "orderDeleteEasyDmarcResponseData": {
+            "type": "object",
+            "title": "DeleteEasyDmarcResponseData",
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "title": "Easy Dmarc status"
+                }
+            },
+            "example": {
+                "status": "ACT"
+            }
+        },
+        "orderDomain": {
+            "type": "object",
+            "title": "Domain",
+            "properties": {
+                "extension": {
+                    "type": "string",
+                    "title": "Domain extension"
+                },
+                "name": {
+                    "type": "string",
+                    "title": "Domain name without extension"
+                }
+            },
+            "example": {
+                "extension": "london",
+                "name": "test4"
+            }
+        },
+        "orderEasyDmarcOrder": {
+            "type": "object",
+            "title": "EasyDmarcOrder",
+            "properties": {
+                "domain": {
+                    "title": "Domain name and extension",
+                    "$ref": "#/definitions/orderDomain"
+                },
+                "easydmarc_email_address": {
+                    "type": "string",
+                    "title": "Email address (fake) used in the easy dmarc account"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Easydmarc id (order number)"
+                },
+                "recent_easydmarc_action": {
+                    "title": "Recent client chronicle action and additional information",
+                    "$ref": "#/definitions/orderRecentEasyDmarcAction"
+                },
+                "record_host": {
+                    "type": "string",
+                    "title": "Easy Dmarc CNAME record host"
+                },
+                "record_type": {
+                    "type": "string",
+                    "title": "Easy Dmarc CNAME record type"
+                },
+                "record_value": {
+                    "type": "string",
+                    "title": "Easy Dmarc CNAME record value"
+                },
+                "status": {
+                    "type": "string",
+                    "title": "Status of easy dmarc"
+                }
+            },
+            "example": {
+                "domain": {
+                    "extension": "london",
+                    "name": "test4"
+                },
+                "easydmarc_email_address": "",
+                "id": 123456789,
+                "recent_easydmarc_action": {
+                    "message": "",
+                    "recent_action": "enabled"
+                },
+                "record_host": "",
+                "record_type": "",
+                "record_value": "",
+                "status": ""
+            }
+        },
+        "orderGetEasyDmarcResponse": {
+            "type": "object",
+            "title": "GetEasyDmarcResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "Response data",
+                    "$ref": "#/definitions/orderEasyDmarcOrder"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates that the Openprovider system is temporarily unavailable because of maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "Contains warning responses if any",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "domain": {
+                        "extension": "london",
+                        "name": "test4"
+                    },
+                    "easydmarc_email_address": "",
+                    "id": 123456789,
+                    "recent_easydmarc_action": {
+                        "message": "",
+                        "recent_action": "enabled"
+                    },
+                    "record_host": "",
+                    "record_type": "",
+                    "record_value": "",
+                    "status": ""
+                },
+                "desc": ""
+            }
+        },
+        "orderGetEasyDmarcSsoResponse": {
+            "type": "object",
+            "title": "GetEasyDmarcSsoResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "Response data",
+                    "$ref": "#/definitions/orderGetEasyDmarcSsoResponseData"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates that the Openprovider system is temporarily unavailable because of maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "Contains warning responses if any",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "url": ""
+                },
+                "desc": ""
+            }
+        },
+        "orderGetEasyDmarcSsoResponseData": {
+            "type": "object",
+            "title": "GetEasyDmarcSsoResponseData",
+            "properties": {
+                "url": {
+                    "type": "string",
+                    "title": "Single sign on url along with one time passsword token as query params"
+                }
+            },
+            "example": {
+                "url": ""
             }
         },
         "orderGetOrderResponse": {
@@ -16261,6 +16779,24 @@
                 "total": 999
             }
         },
+        "orderRecentEasyDmarcAction": {
+            "type": "object",
+            "title": "RecentEasyDmarcAction",
+            "properties": {
+                "message": {
+                    "type": "string",
+                    "title": "Additional information of last action if failed"
+                },
+                "recent_action": {
+                    "type": "string",
+                    "title": "Recently triggered action on EasyDmarc API"
+                }
+            },
+            "example": {
+                "message": "",
+                "recent_action": "enabled"
+            }
+        },
         "orderReissueOrderRequest": {
             "type": "object",
             "title": "ReissueOrderRequest",
@@ -16453,6 +16989,66 @@
             },
             "example": {
                 "id": 1
+            }
+        },
+        "orderRetryEasyDmarcRequest": {
+            "type": "object",
+            "title": "RetryEasyDmarcRequest",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Easydmarc id (order number)"
+                }
+            },
+            "example": {
+                "id": 123456789
+            }
+        },
+        "orderRetryEasyDmarcResponse": {
+            "type": "object",
+            "title": "RetryEasyDmarcResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "Response data",
+                    "$ref": "#/definitions/orderEasyDmarcOrder"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "Array of warning messages",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "domain": {
+                        "extension": "london",
+                        "name": "test4"
+                    },
+                    "easydmarc_email_address": "",
+                    "id": 123456789,
+                    "recent_easydmarc_action": {
+                        "message": "",
+                        "recent_action": "enabled"
+                    },
+                    "record_host": "",
+                    "record_type": "",
+                    "record_value": "",
+                    "status": ""
+                },
+                "desc": ""
             }
         },
         "orderSslOrder": {
@@ -20173,6 +20769,10 @@
                     "type": "string",
                     "title": "Company name"
                 },
+                "company_size": {
+                    "title": "Current company size",
+                    "$ref": "#/definitions/attributesCompanySize"
+                },
                 "fax": {
                     "title": "Fax number",
                     "$ref": "#/definitions/customerFax"
@@ -20181,6 +20781,10 @@
                     "type": "integer",
                     "format": "int32",
                     "title": "Object ID"
+                },
+                "industry": {
+                    "title": "Reseller's industry",
+                    "$ref": "#/definitions/attributesIndustry"
                 },
                 "inn": {
                     "type": "string",
@@ -20224,12 +20828,14 @@
                 },
                 "comments": "",
                 "company_name": "Example company",
+                "company_size": "MORE_THAN_1000",
                 "fax": {
                     "area_code": "",
                     "country_code": "",
                     "subscriber_number": ""
                 },
                 "id": 123456789,
+                "industry": "UNKNOWN_INDUSTRY",
                 "inn": "",
                 "kpp": "",
                 "locale": "",
@@ -25854,6 +26460,12 @@
                 "DomainPriceService",
                 "AuthCode",
                 "TldService"
+            ]
+        },
+        {
+            "name": "EasyDmarc",
+            "tags": [
+                "EasydmarcOrder"
             ]
         },
         {

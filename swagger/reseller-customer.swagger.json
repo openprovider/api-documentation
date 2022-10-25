@@ -934,6 +934,38 @@
         }
     },
     "definitions": {
+        "attributesCompanySize": {
+            "description": "- UNKNOWN_COMPANY_SIZE: Unknown company size, e.g reseller just created account or didn't specified company size\n - BETWEEN_1_AND_10: Company has from 1 to 10 employees\n - BETWEEN_11_AND_50: Company has from 11 to 50 employees\n - BETWEEN_51_AND_200: Company has from 51 to 200 employees\n - BETWEEN_201_AND_500: Company has from 201 to 500 employees\n - BETWEEN_501_AND_1000: Company has from 501 to 1000 employees\n - MORE_THAN_1000: Company more than 1000 employees",
+            "type": "string",
+            "title": "The size of reseller's company",
+            "default": "UNKNOWN_COMPANY_SIZE",
+            "enum": [
+                "UNKNOWN_COMPANY_SIZE",
+                "BETWEEN_1_AND_10",
+                "BETWEEN_11_AND_50",
+                "BETWEEN_51_AND_200",
+                "BETWEEN_201_AND_500",
+                "BETWEEN_501_AND_1000",
+                "MORE_THAN_1000"
+            ]
+        },
+        "attributesIndustry": {
+            "description": "- UNKNOWN_INDUSTRY: Industry is not specified\n - DOMAIN_REGISTRAR: Reseller's industry is domain registar\n - CLOUD_SERVICES: Reseller's industry is cloud services\n - MARKETING_AGENCIES: Reseller's industry is marketing agencies\n - NETWORKING_SERVICES: Reseller's industry is networking services\n - WEB_HOSTING: Reseller's industry is web hosting\n - SOFTWARE_DEVELOPMENT: Reseller's industry is software development\n - WEBSITE_BUILDERS: Reseller's industry is website builders\n - SECURITY_SERVICES: Reseller's industry is security services",
+            "type": "string",
+            "title": "Reseller's industry",
+            "default": "UNKNOWN_INDUSTRY",
+            "enum": [
+                "UNKNOWN_INDUSTRY",
+                "DOMAIN_REGISTRAR",
+                "CLOUD_SERVICES",
+                "MARKETING_AGENCIES",
+                "NETWORKING_SERVICES",
+                "WEB_HOSTING",
+                "SOFTWARE_DEVELOPMENT",
+                "WEBSITE_BUILDERS",
+                "SECURITY_SERVICES"
+            ]
+        },
         "contactAdditionalData": {
             "type": "object",
             "title": "AdditionalData",
@@ -5547,6 +5579,10 @@
                     "type": "string",
                     "title": "Company name"
                 },
+                "company_size": {
+                    "title": "Current company size",
+                    "$ref": "#/definitions/attributesCompanySize"
+                },
                 "fax": {
                     "title": "Fax number",
                     "$ref": "#/definitions/customerFax"
@@ -5555,6 +5591,10 @@
                     "type": "integer",
                     "format": "int32",
                     "title": "Object ID"
+                },
+                "industry": {
+                    "title": "Reseller's industry",
+                    "$ref": "#/definitions/attributesIndustry"
                 },
                 "inn": {
                     "type": "string",
@@ -5598,12 +5638,14 @@
                 },
                 "comments": "",
                 "company_name": "Example company",
+                "company_size": "MORE_THAN_1000",
                 "fax": {
                     "area_code": "",
                     "country_code": "",
                     "subscriber_number": ""
                 },
                 "id": 123456789,
+                "industry": "UNKNOWN_INDUSTRY",
                 "inn": "",
                 "kpp": "",
                 "locale": "",

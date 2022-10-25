@@ -1765,6 +1765,10 @@
                     "type": "string",
                     "title": "The eligibility type relationship indicates the relationship between the Eligibility Type (e.g. business name) and domain name\nApplicable to: .com.au, .id.au, .net.au, .org.au"
                 },
+                "es_annex_acceptance": {
+                    "type": "string",
+                    "title": "Applicable to: .es"
+                },
                 "ftld_token": {
                     "type": "string",
                     "title": "The fTLD token required for registration and data in owner handle must be exactly the same as in token. You need to request token from registry\nApplicable to: .bank, .insurance"
@@ -1885,6 +1889,7 @@
                 ],
                 "eligibility_type": "",
                 "eligibility_type_relationship": "",
+                "es_annex_acceptance": "1",
                 "ftld_token": "",
                 "gay_donation_acceptance": "1",
                 "gay_rights_protection_acceptance": "1",
@@ -2357,6 +2362,7 @@
                     ],
                     "eligibility_type": "",
                     "eligibility_type_relationship": "",
+                    "es_annex_acceptance": "1",
                     "ftld_token": "",
                     "gay_donation_acceptance": "1",
                     "gay_rights_protection_acceptance": "1",
@@ -2481,6 +2487,7 @@
                         ],
                         "eligibility_type": "",
                         "eligibility_type_relationship": "",
+                        "es_annex_acceptance": "1",
                         "ftld_token": "",
                         "gay_donation_acceptance": "1",
                         "gay_rights_protection_acceptance": "1",
@@ -2571,6 +2578,7 @@
                     ],
                     "eligibility_type": "",
                     "eligibility_type_relationship": "",
+                    "es_annex_acceptance": "1",
                     "ftld_token": "",
                     "gay_donation_acceptance": "1",
                     "gay_rights_protection_acceptance": "1",
@@ -2768,6 +2776,7 @@
                         ],
                         "eligibility_type": "",
                         "eligibility_type_relationship": "",
+                        "es_annex_acceptance": "1",
                         "ftld_token": "",
                         "gay_donation_acceptance": "1",
                         "gay_rights_protection_acceptance": "1",
@@ -3306,6 +3315,7 @@
                     ],
                     "eligibility_type": "",
                     "eligibility_type_relationship": "",
+                    "es_annex_acceptance": "1",
                     "ftld_token": "",
                     "gay_donation_acceptance": "1",
                     "gay_rights_protection_acceptance": "1",
@@ -3613,6 +3623,7 @@
                                 ],
                                 "eligibility_type": "",
                                 "eligibility_type_relationship": "",
+                                "es_annex_acceptance": "1",
                                 "ftld_token": "",
                                 "gay_donation_acceptance": "1",
                                 "gay_rights_protection_acceptance": "1",
@@ -3816,6 +3827,7 @@
                             ],
                             "eligibility_type": "",
                             "eligibility_type_relationship": "",
+                            "es_annex_acceptance": "1",
                             "ftld_token": "",
                             "gay_donation_acceptance": "1",
                             "gay_rights_protection_acceptance": "1",
@@ -4331,6 +4343,10 @@
                     "type": "string",
                     "title": "The search term which will be used to generate matches"
                 },
+                "provider": {
+                    "type": "string",
+                    "title": "Provider of suggest name service"
+                },
                 "sensitive": {
                     "description": "Set true to remove domain name suggestions deemed obscene by the supplier. set false to include obscene domain name suggestions.",
                     "type": "boolean",
@@ -4348,6 +4364,7 @@
                 "language": "eng",
                 "limit": 50,
                 "name": "example-domain",
+                "provider": "namestudio",
                 "sensitive": false,
                 "tlds": [
                     ""
@@ -4545,6 +4562,7 @@
                     ],
                     "eligibility_type": "",
                     "eligibility_type_relationship": "",
+                    "es_annex_acceptance": "1",
                     "ftld_token": "",
                     "gay_donation_acceptance": "1",
                     "gay_rights_protection_acceptance": "1",

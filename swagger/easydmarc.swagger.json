@@ -1,0 +1,626 @@
+{
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "schemes": [
+        "https"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "title": "EasyDmarc",
+        "version": "1.0.0-beta"
+    },
+    "paths": {
+        "/v1beta/easydmarcs": {
+            "get": {
+                "tags": [
+                    "EasydmarcOrder"
+                ],
+                "summary": "Get easy dmarc",
+                "operationId": "GetEasyDmarc",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Domain name without extension.",
+                        "name": "domain.name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Domain extension.",
+                        "name": "domain.extension",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/orderGetEasyDmarcResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "EasydmarcOrder"
+                ],
+                "summary": "Create easy dmarc",
+                "operationId": "CreateEasyDmarc",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/orderCreateEasyDmarcRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/orderCreateEasyDmarcResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/easydmarcs/{id}": {
+            "delete": {
+                "tags": [
+                    "EasydmarcOrder"
+                ],
+                "summary": "Delete easy dmarc",
+                "operationId": "DeleteEasyDmarc",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Easydmarc id (order number)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/orderDeleteEasyDmarcResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/easydmarcs/{id}/retry": {
+            "post": {
+                "tags": [
+                    "EasydmarcOrder"
+                ],
+                "summary": "Retry easy dmarc",
+                "operationId": "RetryEasyDmarc",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Easydmarc id (order number)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/orderRetryEasyDmarcRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/orderRetryEasyDmarcResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/easydmarcs/{id}/sso": {
+            "get": {
+                "tags": [
+                    "EasydmarcOrder"
+                ],
+                "summary": "Get easy dmarc sso",
+                "operationId": "GetEasyDmarcSso",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Easy Dmarc id (order id)",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/orderGetEasyDmarcSsoResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "errorError": {
+            "type": "object",
+            "title": "Error",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Error code"
+                },
+                "data": {
+                    "type": "string",
+                    "title": "Additional error description"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Error description"
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": "",
+                "desc": ""
+            }
+        },
+        "errorWarning": {
+            "type": "object",
+            "title": "Warning",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Warning code"
+                },
+                "data": {
+                    "type": "string",
+                    "title": "Additional warning description"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Warning description"
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": "",
+                "desc": ""
+            }
+        },
+        "orderCreateEasyDmarcRequest": {
+            "type": "object",
+            "title": "CreateEasyDmarcRequest",
+            "properties": {
+                "domain": {
+                    "title": "Domain name and extension",
+                    "$ref": "#/definitions/orderDomain"
+                },
+                "owner_handle": {
+                    "type": "string",
+                    "title": "Domain owner handle value"
+                }
+            },
+            "example": {
+                "domain": {
+                    "extension": "london",
+                    "name": "test4"
+                },
+                "owner_handle": "XX123456-XX"
+            }
+        },
+        "orderCreateEasyDmarcResponse": {
+            "type": "object",
+            "title": "CreateEasyDmarcResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "Response data",
+                    "$ref": "#/definitions/orderEasyDmarcOrder"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "Array of warning messages",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "domain": {
+                        "extension": "london",
+                        "name": "test4"
+                    },
+                    "easydmarc_email_address": "",
+                    "id": 123456789,
+                    "recent_easydmarc_action": {
+                        "message": "",
+                        "recent_action": "enabled"
+                    },
+                    "record_host": "",
+                    "record_type": "",
+                    "record_value": "",
+                    "status": ""
+                },
+                "desc": ""
+            }
+        },
+        "orderDeleteEasyDmarcResponse": {
+            "type": "object",
+            "title": "DeleteEasyDmarcResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "Response data",
+                    "$ref": "#/definitions/orderDeleteEasyDmarcResponseData"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates that the Openprovider system is temporarily unavailable because of maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "Contains warning responses if any",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "status": "ACT"
+                },
+                "desc": ""
+            }
+        },
+        "orderDeleteEasyDmarcResponseData": {
+            "type": "object",
+            "title": "DeleteEasyDmarcResponseData",
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "title": "Easy Dmarc status"
+                }
+            },
+            "example": {
+                "status": "ACT"
+            }
+        },
+        "orderDomain": {
+            "type": "object",
+            "title": "Domain",
+            "properties": {
+                "extension": {
+                    "type": "string",
+                    "title": "Domain extension"
+                },
+                "name": {
+                    "type": "string",
+                    "title": "Domain name without extension"
+                }
+            },
+            "example": {
+                "extension": "london",
+                "name": "test4"
+            }
+        },
+        "orderEasyDmarcOrder": {
+            "type": "object",
+            "title": "EasyDmarcOrder",
+            "properties": {
+                "domain": {
+                    "title": "Domain name and extension",
+                    "$ref": "#/definitions/orderDomain"
+                },
+                "easydmarc_email_address": {
+                    "type": "string",
+                    "title": "Email address (fake) used in the easy dmarc account"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Easydmarc id (order number)"
+                },
+                "recent_easydmarc_action": {
+                    "title": "Recent client chronicle action and additional information",
+                    "$ref": "#/definitions/orderRecentEasyDmarcAction"
+                },
+                "record_host": {
+                    "type": "string",
+                    "title": "Easy Dmarc CNAME record host"
+                },
+                "record_type": {
+                    "type": "string",
+                    "title": "Easy Dmarc CNAME record type"
+                },
+                "record_value": {
+                    "type": "string",
+                    "title": "Easy Dmarc CNAME record value"
+                },
+                "status": {
+                    "type": "string",
+                    "title": "Status of easy dmarc"
+                }
+            },
+            "example": {
+                "domain": {
+                    "extension": "london",
+                    "name": "test4"
+                },
+                "easydmarc_email_address": "",
+                "id": 123456789,
+                "recent_easydmarc_action": {
+                    "message": "",
+                    "recent_action": "enabled"
+                },
+                "record_host": "",
+                "record_type": "",
+                "record_value": "",
+                "status": ""
+            }
+        },
+        "orderGetEasyDmarcResponse": {
+            "type": "object",
+            "title": "GetEasyDmarcResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "Response data",
+                    "$ref": "#/definitions/orderEasyDmarcOrder"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates that the Openprovider system is temporarily unavailable because of maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "Contains warning responses if any",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "domain": {
+                        "extension": "london",
+                        "name": "test4"
+                    },
+                    "easydmarc_email_address": "",
+                    "id": 123456789,
+                    "recent_easydmarc_action": {
+                        "message": "",
+                        "recent_action": "enabled"
+                    },
+                    "record_host": "",
+                    "record_type": "",
+                    "record_value": "",
+                    "status": ""
+                },
+                "desc": ""
+            }
+        },
+        "orderGetEasyDmarcSsoResponse": {
+            "type": "object",
+            "title": "GetEasyDmarcSsoResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "Response data",
+                    "$ref": "#/definitions/orderGetEasyDmarcSsoResponseData"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates that the Openprovider system is temporarily unavailable because of maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "Contains warning responses if any",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "url": ""
+                },
+                "desc": ""
+            }
+        },
+        "orderGetEasyDmarcSsoResponseData": {
+            "type": "object",
+            "title": "GetEasyDmarcSsoResponseData",
+            "properties": {
+                "url": {
+                    "type": "string",
+                    "title": "Single sign on url along with one time passsword token as query params"
+                }
+            },
+            "example": {
+                "url": ""
+            }
+        },
+        "orderRecentEasyDmarcAction": {
+            "type": "object",
+            "title": "RecentEasyDmarcAction",
+            "properties": {
+                "message": {
+                    "type": "string",
+                    "title": "Additional information of last action if failed"
+                },
+                "recent_action": {
+                    "type": "string",
+                    "title": "Recently triggered action on EasyDmarc API"
+                }
+            },
+            "example": {
+                "message": "",
+                "recent_action": "enabled"
+            }
+        },
+        "orderRetryEasyDmarcRequest": {
+            "type": "object",
+            "title": "RetryEasyDmarcRequest",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Easydmarc id (order number)"
+                }
+            },
+            "example": {
+                "id": 123456789
+            }
+        },
+        "orderRetryEasyDmarcResponse": {
+            "type": "object",
+            "title": "RetryEasyDmarcResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "Response data",
+                    "$ref": "#/definitions/orderEasyDmarcOrder"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "Array of warning messages",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "domain": {
+                        "extension": "london",
+                        "name": "test4"
+                    },
+                    "easydmarc_email_address": "",
+                    "id": 123456789,
+                    "recent_easydmarc_action": {
+                        "message": "",
+                        "recent_action": "enabled"
+                    },
+                    "record_host": "",
+                    "record_type": "",
+                    "record_value": "",
+                    "status": ""
+                },
+                "desc": ""
+            }
+        }
+    },
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    },
+    "security": [
+        {
+            "Bearer": []
+        }
+    ]
+}
