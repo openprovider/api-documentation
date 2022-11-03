@@ -2274,6 +2274,12 @@
                     "format": "boolean",
                     "title": "Enables or disables DNSSEC on domain"
                 },
+                "is_easy_dmarc_enabled": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Enables or disables easy dmarc protection for this domain",
+                    "default": false
+                },
                 "is_private_whois_enabled": {
                     "type": "boolean",
                     "format": "boolean",
@@ -2411,6 +2417,7 @@
                     "name": "test4"
                 },
                 "is_dnssec_enabled": false,
+                "is_easy_dmarc_enabled": false,
                 "is_private_whois_enabled": false,
                 "is_sectigo_dns_enabled": false,
                 "is_spamexperts_enabled": false,
