@@ -82,6 +82,75 @@
                 }
             }
         },
+        "/v1beta/easydmarcs/list": {
+            "get": {
+                "tags": [
+                    "EasydmarcOrder"
+                ],
+                "summary": "List easy dmarc",
+                "operationId": "ListEasyDmarc",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "default": 100,
+                        "description": "Search query limit.",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "default": 0,
+                        "description": "Search query offset.",
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "desc/asc.",
+                        "name": "order_by.id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "description": "Array of order statuses.",
+                        "name": "status",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Domain name without extension.",
+                        "name": "domain.name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Domain extension.",
+                        "name": "domain.extension",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/orderListEasyDmarcResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
         "/v1beta/easydmarcs/{id}": {
             "delete": {
                 "tags": [
@@ -171,6 +240,12 @@
                         "name": "id",
                         "in": "path",
                         "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "SSO url on behalf of the customer or reseller.",
+                        "name": "type",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -288,11 +363,13 @@
             "example": {
                 "code": 0,
                 "data": {
+                    "activated_at": "2019-01-01 0:00:01",
                     "domain": {
                         "extension": "london",
                         "name": "test4"
                     },
                     "easydmarc_email_address": "",
+                    "expired_at": "2019-01-01 0:00:01",
                     "id": 123456789,
                     "recent_easydmarc_action": {
                         "message": "",
@@ -301,6 +378,7 @@
                     "record_host": "",
                     "record_type": "",
                     "record_value": "",
+                    "renew_at": "2019-01-01 0:00:01",
                     "status": ""
                 },
                 "desc": ""
@@ -379,6 +457,10 @@
             "type": "object",
             "title": "EasyDmarcOrder",
             "properties": {
+                "activated_at": {
+                    "type": "string",
+                    "title": "date when we order has been activated last time"
+                },
                 "domain": {
                     "title": "Domain name and extension",
                     "$ref": "#/definitions/orderDomain"
@@ -386,6 +468,10 @@
                 "easydmarc_email_address": {
                     "type": "string",
                     "title": "Email address (fake) used in the easy dmarc account"
+                },
+                "expired_at": {
+                    "type": "string",
+                    "title": "date when order has been expired"
                 },
                 "id": {
                     "type": "integer",
@@ -408,17 +494,23 @@
                     "type": "string",
                     "title": "Easy Dmarc CNAME record value"
                 },
+                "renew_at": {
+                    "type": "string",
+                    "title": "date when we will request automatic renew"
+                },
                 "status": {
                     "type": "string",
                     "title": "Status of easy dmarc"
                 }
             },
             "example": {
+                "activated_at": "2019-01-01 0:00:01",
                 "domain": {
                     "extension": "london",
                     "name": "test4"
                 },
                 "easydmarc_email_address": "",
+                "expired_at": "2019-01-01 0:00:01",
                 "id": 123456789,
                 "recent_easydmarc_action": {
                     "message": "",
@@ -427,6 +519,7 @@
                 "record_host": "",
                 "record_type": "",
                 "record_value": "",
+                "renew_at": "2019-01-01 0:00:01",
                 "status": ""
             }
         },
@@ -463,11 +556,13 @@
             "example": {
                 "code": 0,
                 "data": {
+                    "activated_at": "2019-01-01 0:00:01",
                     "domain": {
                         "extension": "london",
                         "name": "test4"
                     },
                     "easydmarc_email_address": "",
+                    "expired_at": "2019-01-01 0:00:01",
                     "id": 123456789,
                     "recent_easydmarc_action": {
                         "message": "",
@@ -476,6 +571,7 @@
                     "record_host": "",
                     "record_type": "",
                     "record_value": "",
+                    "renew_at": "2019-01-01 0:00:01",
                     "status": ""
                 },
                 "desc": ""
@@ -530,6 +626,164 @@
             },
             "example": {
                 "url": ""
+            }
+        },
+        "orderListEasyDmarcOrder": {
+            "type": "object",
+            "title": "ListEasyDmarcOrder",
+            "properties": {
+                "activated_at": {
+                    "type": "string",
+                    "title": "date when we order has been activated last time"
+                },
+                "domain": {
+                    "title": "Domain name and extension",
+                    "$ref": "#/definitions/orderDomain"
+                },
+                "expired_at": {
+                    "type": "string",
+                    "title": "date when order has been expired"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Order id number"
+                },
+                "record_host": {
+                    "type": "string",
+                    "title": "Easy Dmarc CNAME record host"
+                },
+                "record_type": {
+                    "type": "string",
+                    "title": "Easy Dmarc CNAME record type"
+                },
+                "record_value": {
+                    "type": "string",
+                    "title": "Easy Dmarc CNAME record value"
+                },
+                "renew_at": {
+                    "type": "string",
+                    "title": "date when we will request automatic renew"
+                },
+                "status": {
+                    "type": "string",
+                    "title": "Status of order"
+                }
+            },
+            "example": {
+                "activated_at": "2019-01-01 0:00:01",
+                "domain": {
+                    "extension": "london",
+                    "name": "test4"
+                },
+                "expired_at": "2019-01-01 0:00:01",
+                "id": 123456789,
+                "record_host": "",
+                "record_type": "",
+                "record_value": "",
+                "renew_at": "2019-01-01 0:00:01",
+                "status": ""
+            }
+        },
+        "orderListEasyDmarcRequestOrderBy": {
+            "type": "object",
+            "title": "ListEasyDmarcRequestOrderBy",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "title": "desc/asc"
+                }
+            }
+        },
+        "orderListEasyDmarcResponse": {
+            "type": "object",
+            "title": "ListEasyDmarcResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "Response data",
+                    "$ref": "#/definitions/orderListEasyDmarcResponseData"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "Array of warning messages",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "results": [
+                        {
+                            "activated_at": "2019-01-01 0:00:01",
+                            "domain": {
+                                "extension": "london",
+                                "name": "test4"
+                            },
+                            "expired_at": "2019-01-01 0:00:01",
+                            "id": 123456789,
+                            "record_host": "",
+                            "record_type": "",
+                            "record_value": "",
+                            "renew_at": "2019-01-01 0:00:01",
+                            "status": ""
+                        }
+                    ],
+                    "total": 999
+                },
+                "desc": ""
+            }
+        },
+        "orderListEasyDmarcResponseData": {
+            "type": "object",
+            "title": "ListEasyDmarcResponseData",
+            "properties": {
+                "results": {
+                    "type": "array",
+                    "title": "Results list",
+                    "items": {
+                        "$ref": "#/definitions/orderListEasyDmarcOrder"
+                    }
+                },
+                "total": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Results count"
+                }
+            },
+            "example": {
+                "results": [
+                    {
+                        "activated_at": "2019-01-01 0:00:01",
+                        "domain": {
+                            "extension": "london",
+                            "name": "test4"
+                        },
+                        "expired_at": "2019-01-01 0:00:01",
+                        "id": 123456789,
+                        "record_host": "",
+                        "record_type": "",
+                        "record_value": "",
+                        "renew_at": "2019-01-01 0:00:01",
+                        "status": ""
+                    }
+                ],
+                "total": 999
             }
         },
         "orderRecentEasyDmarcAction": {
@@ -592,11 +846,13 @@
             "example": {
                 "code": 0,
                 "data": {
+                    "activated_at": "2019-01-01 0:00:01",
                     "domain": {
                         "extension": "london",
                         "name": "test4"
                     },
                     "easydmarc_email_address": "",
+                    "expired_at": "2019-01-01 0:00:01",
                     "id": 123456789,
                     "recent_easydmarc_action": {
                         "message": "",
@@ -605,6 +861,7 @@
                     "record_host": "",
                     "record_type": "",
                     "record_value": "",
+                    "renew_at": "2019-01-01 0:00:01",
                     "status": ""
                 },
                 "desc": ""
