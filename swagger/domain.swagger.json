@@ -2021,6 +2021,10 @@
                         "$ref": "#/definitions/domainDomain"
                     }
                 },
+                "provider": {
+                    "type": "string",
+                    "title": "Indicates what provider should be chosen for domain operation"
+                },
                 "with_price": {
                     "type": "boolean",
                     "format": "boolean",
@@ -2038,6 +2042,7 @@
                         "name": "test4"
                     }
                 ],
+                "provider": "SEDO",
                 "with_price": false
             }
         },
@@ -2328,6 +2333,10 @@
                     "type": "string",
                     "title": "Promo code to apply to operation"
                 },
+                "provider": {
+                    "type": "string",
+                    "title": "Indicates what provider should be chosen for domain operation"
+                },
                 "reseller_handle": {
                     "type": "string",
                     "title": "Reseller handle"
@@ -2435,6 +2444,7 @@
                 "owner_handle": "XX123456-XX",
                 "period": 1,
                 "promo_code": "PROMOCODE",
+                "provider": "SEDO",
                 "reseller_handle": "XX123456-XX",
                 "tech_handle": "XX123456-XX",
                 "unit": "y",
