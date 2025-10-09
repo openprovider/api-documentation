@@ -11,10 +11,6 @@
     "swagger": "2.0",
     "info": {
         "title": "Reseller/Customer",
-        "contact": {
-            "name": "Person contracts project",
-            "url": "https://github.com/openprovider/person-contracts/issues"
-        },
         "version": "1.0.0-beta"
     },
     "paths": {
@@ -1989,6 +1985,8 @@
                             "middle_name_cyrillic": "Nikolaevich",
                             "middle_name_latin": "Nikolaevich",
                             "mobile_phone_number": "+7 (123) 456-78-90",
+                            "music_nexus_connection_to_music": "MSCN",
+                            "music_nexus_registry_policies_attestation": "YES",
                             "nexus_category": "C31",
                             "org_type": "1",
                             "passport_issue_date": "2009-01-11",
@@ -2287,6 +2285,8 @@
                     "middle_name_cyrillic": "Nikolaevich",
                     "middle_name_latin": "Nikolaevich",
                     "mobile_phone_number": "+7 (123) 456-78-90",
+                    "music_nexus_connection_to_music": "MSCN",
+                    "music_nexus_registry_policies_attestation": "YES",
                     "nexus_category": "C31",
                     "org_type": "1",
                     "passport_issue_date": "2009-01-11",
@@ -2401,6 +2401,14 @@
                     "type": "string",
                     "title": "The mobile phone number with SMS function\nApplicable to: .ru, .su, .xn--p1ai"
                 },
+                "music_nexus_connection_to_music": {
+                    "type": "string",
+                    "title": "The nexus connection to music\nApplicable to: .music"
+                },
+                "music_nexus_registry_policies_attestation": {
+                    "type": "string",
+                    "title": "The nexus registry policy\nApplicable to: .music"
+                },
                 "nexus_category": {
                     "type": "string",
                     "title": "The nexus Category\nApplicable to: .us"
@@ -2482,6 +2490,8 @@
                 "middle_name_cyrillic": "Nikolaevich",
                 "middle_name_latin": "Nikolaevich",
                 "mobile_phone_number": "+7 (123) 456-78-90",
+                "music_nexus_connection_to_music": "MSCN",
+                "music_nexus_registry_policies_attestation": "YES",
                 "nexus_category": "C31",
                 "org_type": "1",
                 "passport_issue_date": "2009-01-11",
@@ -2645,6 +2655,8 @@
                                 "middle_name_cyrillic": "Nikolaevich",
                                 "middle_name_latin": "Nikolaevich",
                                 "mobile_phone_number": "+7 (123) 456-78-90",
+                                "music_nexus_connection_to_music": "MSCN",
+                                "music_nexus_registry_policies_attestation": "YES",
                                 "nexus_category": "C31",
                                 "org_type": "1",
                                 "passport_issue_date": "2009-01-11",
@@ -2860,6 +2872,8 @@
                             "middle_name_cyrillic": "Nikolaevich",
                             "middle_name_latin": "Nikolaevich",
                             "mobile_phone_number": "+7 (123) 456-78-90",
+                            "music_nexus_connection_to_music": "MSCN",
+                            "music_nexus_registry_policies_attestation": "YES",
                             "nexus_category": "C31",
                             "org_type": "1",
                             "passport_issue_date": "2009-01-11",
@@ -3013,6 +3027,8 @@
                                         "middle_name_cyrillic": "Nikolaevich",
                                         "middle_name_latin": "Nikolaevich",
                                         "mobile_phone_number": "+7 (123) 456-78-90",
+                                        "music_nexus_connection_to_music": "MSCN",
+                                        "music_nexus_registry_policies_attestation": "YES",
                                         "nexus_category": "C31",
                                         "org_type": "1",
                                         "passport_issue_date": "2009-01-11",
@@ -3149,6 +3165,8 @@
                                     "middle_name_cyrillic": "Nikolaevich",
                                     "middle_name_latin": "Nikolaevich",
                                     "mobile_phone_number": "+7 (123) 456-78-90",
+                                    "music_nexus_connection_to_music": "MSCN",
+                                    "music_nexus_registry_policies_attestation": "YES",
                                     "nexus_category": "C31",
                                     "org_type": "1",
                                     "passport_issue_date": "2009-01-11",
@@ -3346,6 +3364,8 @@
                             "middle_name_cyrillic": "Nikolaevich",
                             "middle_name_latin": "Nikolaevich",
                             "mobile_phone_number": "+7 (123) 456-78-90",
+                            "music_nexus_connection_to_music": "MSCN",
+                            "music_nexus_registry_policies_attestation": "YES",
                             "nexus_category": "C31",
                             "org_type": "1",
                             "passport_issue_date": "2009-01-11",
@@ -3527,6 +3547,8 @@
                             "middle_name_cyrillic": "Nikolaevich",
                             "middle_name_latin": "Nikolaevich",
                             "mobile_phone_number": "+7 (123) 456-78-90",
+                            "music_nexus_connection_to_music": "MSCN",
+                            "music_nexus_registry_policies_attestation": "YES",
                             "nexus_category": "C31",
                             "org_type": "1",
                             "passport_issue_date": "2009-01-11",
@@ -4264,6 +4286,7 @@
                             "vat": "XX123456789X12"
                         }
                     ],
+                    "created_at": "2014-07-16 15:22:48",
                     "email": "",
                     "fax": {
                         "area_code": "",
@@ -4611,6 +4634,10 @@
                         "$ref": "#/definitions/personcontactContact"
                     }
                 },
+                "created_at": {
+                    "type": "string",
+                    "title": "Reseller creation date"
+                },
                 "email": {
                     "type": "string",
                     "title": "Email address"
@@ -4750,6 +4777,7 @@
                         "vat": "XX123456789X12"
                     }
                 ],
+                "created_at": "2014-07-16 15:22:48",
                 "email": "",
                 "fax": {
                     "area_code": "",
@@ -7774,9 +7802,5 @@
         {
             "Bearer": []
         }
-    ],
-    "externalDocs": {
-        "description": "More about REST API v1",
-        "url": "https://docs.openprovider.com"
-    }
+    ]
 }

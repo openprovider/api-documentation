@@ -11,10 +11,6 @@
     "swagger": "2.0",
     "info": {
         "title": "License",
-        "contact": {
-            "name": "License contracts project",
-            "url": "https://github.com/openprovider/license-contracts/issues"
-        },
         "version": "1.0.0-beta"
     },
     "paths": {
@@ -421,6 +417,13 @@
                         "name": "key_id",
                         "in": "path",
                         "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "License ID.",
+                        "name": "id",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -629,6 +632,13 @@
                         "name": "key_id",
                         "in": "path",
                         "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "License ID.",
+                        "name": "id",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -1099,6 +1109,11 @@
                         "$ref": "#/definitions/licenseLicenseItem"
                     }
                 },
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "License ID"
+                },
                 "ip_address_binding": {
                     "type": "string",
                     "title": "IP addess to bind license to"
@@ -1328,6 +1343,11 @@
                 "expiration_date": {
                     "type": "string",
                     "title": "License expiration date"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "License ID"
                 },
                 "items": {
                     "type": "array",
@@ -1974,9 +1994,5 @@
         {
             "Bearer": []
         }
-    ],
-    "externalDocs": {
-        "description": "More about REST API v1",
-        "url": "https://docs.openprovider.com"
-    }
+    ]
 }

@@ -11,10 +11,6 @@
     "swagger": "2.0",
     "info": {
         "title": "Domain",
-        "contact": {
-            "name": "Domain contracts project",
-            "url": "https://github.com/openprovider/domain-contracts/issues"
-        },
         "version": "1.0.0-beta"
     },
     "paths": {
@@ -58,13 +54,13 @@
                     },
                     {
                         "type": "string",
-                        "description": "Domain expiration date.",
+                        "description": "This value might align with the registry_expiration_date. It is not the primary reference for domain expiration in Openprovider.",
                         "name": "order_by.expiration_date",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "Date on which domain will be renewed.",
+                        "description": "The date and time by which a domain must be renewed to avoid expiration, please always refer to the renewal_date to process domain renewals.",
                         "name": "order_by.renewal_date",
                         "in": "query"
                     },
@@ -109,7 +105,7 @@
                     },
                     {
                         "type": "string",
-                        "description": "Date on which domain will be renewed.",
+                        "description": "The date and time by which a domain must be renewed to avoid expiration, please always refer to the renewal_date to process domain renewals.",
                         "name": "renewal_date",
                         "in": "query"
                     },
@@ -1742,6 +1738,10 @@
                     "type": "string",
                     "title": "For companies located in Singapore, the corresponding company registration number has to be given. For Singapore citizens and permanent residents, please provide NRIC or Passport No. For Singapore companies, please provide RCBID as it appears in RCB Certificate. For Singapore societies, please provide RCBID as it appears in ROS Certificate.\nApplicable to: .com.sg, .no, .ro, .sg"
                 },
+                "consent_for_publishing": {
+                    "type": "string",
+                    "title": "Consent for publishing private domain contacts data to registrar Whois/RDAP\nApplicable to: GTLD domains"
+                },
                 "coop_acceptance": {
                     "type": "string",
                     "title": "The coop acceptance value should be set to 1\nApplicable to: .coop"
@@ -1801,6 +1801,10 @@
                     "type": "string",
                     "title": "The IDN script states what language or character set the domain name is in\nApplicable to: .accountant, .actor, .ae.org, .airforce, .army, .art, .attorney, .auction, .band, .bar, .best, .bid, .br.com, .buzz, .ceo, .club, .cn.com, .college, .com, .com.de, .com.se, .consulting, .cricket, .dance, .date, .de.com, .degree, .democrat, .dentist, .design, .download, .engineer, .eu.com, .eus, .faith, .feedback, .fm, .forsale, .frl, .fun, .futbol, .gal, .gb.net, .gives, .gr.com, .haus, .hiv, .host, .immobilien, .in.net, .info, .ink, .jetzt, .jp.net, .jpn.com, .kaufen, .kyoto, .lawyer, .loan, .love, .market, .me, .mex.com, .moda, .moe, .mortgage, .navy, .net, .ninja, .nrw, .nyc, .online, .ooo, .org, .osaka, .party, .press, .protection, .pub, .pw, .qpon, .quebec, .racing, .radio.am, .radio.fm, .realty, .rehab, .rent, .republican, .rest, .review, .reviews, .rip, .rocks, .ru.com, .sa.com, .science, .scot, .se.net, .security, .shop, .site, .social, .software, .space, .store, .tech, .theatre, .tickets, .top, .trade, .uk.com, .uk.net, .uno, .us.com, .us.org, .vet, .webcam, .website, .whoswho, .wiki, .win, .xn--4gbrim, .xn--55qx5d, .xn--5tzm5g, .xn--80adxhks, .xn--80asehdb, .xn--80aswg, .xn--c1avg, .xn--czru2d, .xn--i1b6b1a6a2e, .xn--io0a7i, .xn--mk1bu44c, .xn--ngbc5azd, .xn--nqv7f, .xn--t60b56a, .xn--tckwe, .xyz, .za.com"
                 },
+                "iisse_acceptance": {
+                    "type": "string",
+                    "title": "The iisse acceptance value should be set to 1\nApplicable to: .se/nu"
+                },
                 "insurance_acceptance": {
                     "type": "string",
                     "title": "The insurance acceptance value should be set to 1\nApplicable to: .insurance"
@@ -1849,6 +1853,10 @@
                     "type": "string",
                     "title": "The self service\nApplicable to: .feedback"
                 },
+                "trade_auth_key": {
+                    "type": "string",
+                    "title": "Authorization key for domain trade"
+                },
                 "trademark": {
                     "type": "string",
                     "title": "The trademark\nApplicable to: .ca"
@@ -1886,6 +1894,7 @@
                 "auth_code": "",
                 "bank_acceptance": "",
                 "company_registration_number": "XX123456789X01",
+                "consent_for_publishing": "",
                 "coop_acceptance": "1",
                 "customer_uin": "374892173498127349",
                 "customer_uin_doc_type": {
@@ -1905,6 +1914,7 @@
                 "id_number": "123456789X",
                 "id_type": "",
                 "idn_script": "SPA",
+                "iisse_acceptance": "",
                 "insurance_acceptance": "",
                 "intended_use": "generic",
                 "law_acceptance": "",
@@ -1917,6 +1927,7 @@
                 "passport_number": "X123456",
                 "rurf_blocked_domains": "",
                 "self_service": "1",
+                "trade_auth_key": "",
                 "trademark": "1",
                 "trademark_id": "",
                 "travel_acceptance": "1",
@@ -2295,9 +2306,9 @@
                     "default": false
                 },
                 "is_hosted_accreditation": {
+                    "description": "Optional. Enables or disables hosted accreditation route. Using this field requires prior activation by the Openprovider team. Please contact sales team for more information.",
                     "type": "boolean",
                     "format": "boolean",
-                    "title": "Enables or disables hosted accreditation route",
                     "default": false
                 },
                 "is_private_whois_enabled": {
@@ -2381,6 +2392,7 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
+                    "consent_for_publishing": "",
                     "coop_acceptance": "1",
                     "customer_uin": "374892173498127349",
                     "customer_uin_doc_type": {
@@ -2400,6 +2412,7 @@
                     "id_number": "123456789X",
                     "id_type": "",
                     "idn_script": "SPA",
+                    "iisse_acceptance": "",
                     "insurance_acceptance": "",
                     "intended_use": "generic",
                     "law_acceptance": "",
@@ -2412,6 +2425,7 @@
                     "passport_number": "X123456",
                     "rurf_blocked_domains": "",
                     "self_service": "1",
+                    "trade_auth_key": "",
                     "trademark": "1",
                     "trademark_id": "",
                     "travel_acceptance": "1",
@@ -2510,6 +2524,7 @@
                         "auth_code": "",
                         "bank_acceptance": "",
                         "company_registration_number": "XX123456789X01",
+                        "consent_for_publishing": "",
                         "coop_acceptance": "1",
                         "customer_uin": "374892173498127349",
                         "customer_uin_doc_type": {
@@ -2529,6 +2544,7 @@
                         "id_number": "123456789X",
                         "id_type": "",
                         "idn_script": "SPA",
+                        "iisse_acceptance": "",
                         "insurance_acceptance": "",
                         "intended_use": "generic",
                         "law_acceptance": "",
@@ -2541,6 +2557,7 @@
                         "passport_number": "X123456",
                         "rurf_blocked_domains": "",
                         "self_service": "1",
+                        "trade_auth_key": "",
                         "trademark": "1",
                         "trademark_id": "",
                         "travel_acceptance": "1",
@@ -2575,8 +2592,8 @@
                     "title": "Authorization code"
                 },
                 "expiration_date": {
-                    "type": "string",
-                    "title": "Domain expiration date"
+                    "description": "This value might align with the registry_expiration_date. It is not the primary reference for domain expiration in Openprovider.",
+                    "type": "string"
                 },
                 "id": {
                     "type": "integer",
@@ -2584,8 +2601,8 @@
                     "title": "Domain id number"
                 },
                 "renewal_date": {
-                    "type": "string",
-                    "title": "Date on which domain will be renewed"
+                    "description": "The date and time by which a domain must be renewed to avoid expiration, please always refer to the renewal_date to process domain renewals.",
+                    "type": "string"
                 },
                 "status": {
                     "type": "string",
@@ -2602,6 +2619,7 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
+                    "consent_for_publishing": "",
                     "coop_acceptance": "1",
                     "customer_uin": "374892173498127349",
                     "customer_uin_doc_type": {
@@ -2621,6 +2639,7 @@
                     "id_number": "123456789X",
                     "id_type": "",
                     "idn_script": "SPA",
+                    "iisse_acceptance": "",
                     "insurance_acceptance": "",
                     "intended_use": "generic",
                     "law_acceptance": "",
@@ -2633,6 +2652,7 @@
                     "passport_number": "X123456",
                     "rurf_blocked_domains": "",
                     "self_service": "1",
+                    "trade_auth_key": "",
                     "trademark": "1",
                     "trademark_id": "",
                     "travel_acceptance": "1",
@@ -2801,6 +2821,7 @@
                         "auth_code": "",
                         "bank_acceptance": "",
                         "company_registration_number": "XX123456789X01",
+                        "consent_for_publishing": "",
                         "coop_acceptance": "1",
                         "customer_uin": "374892173498127349",
                         "customer_uin_doc_type": {
@@ -2820,6 +2841,7 @@
                         "id_number": "123456789X",
                         "id_type": "",
                         "idn_script": "SPA",
+                        "iisse_acceptance": "",
                         "insurance_acceptance": "",
                         "intended_use": "generic",
                         "law_acceptance": "",
@@ -2832,6 +2854,7 @@
                         "passport_number": "X123456",
                         "rurf_blocked_domains": "",
                         "self_service": "1",
+                        "trade_auth_key": "",
                         "trademark": "1",
                         "trademark_id": "",
                         "travel_acceptance": "1",
@@ -3073,8 +3096,8 @@
                     "$ref": "#/definitions/domainDomain"
                 },
                 "expiration_date": {
-                    "type": "string",
-                    "title": "Domain expiration date"
+                    "description": "This value might align with the registry_expiration_date. It is not the primary reference for domain expiration in Openprovider.",
+                    "type": "string"
                 },
                 "hard_quarantine_expiry_date": {
                     "type": "string",
@@ -3238,8 +3261,8 @@
                     "title": "The renew"
                 },
                 "renewal_date": {
-                    "type": "string",
-                    "title": "Date on which domain will be renewed"
+                    "description": "The date and time by which a domain must be renewed to avoid expiration, please always refer to the renewal_date to process domain renewals.",
+                    "type": "string"
                 },
                 "reseller_handle": {
                     "type": "string",
@@ -3341,6 +3364,7 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
+                    "consent_for_publishing": "",
                     "coop_acceptance": "1",
                     "customer_uin": "374892173498127349",
                     "customer_uin_doc_type": {
@@ -3360,6 +3384,7 @@
                     "id_number": "123456789X",
                     "id_type": "",
                     "idn_script": "SPA",
+                    "iisse_acceptance": "",
                     "insurance_acceptance": "",
                     "intended_use": "generic",
                     "law_acceptance": "",
@@ -3372,6 +3397,7 @@
                     "passport_number": "X123456",
                     "rurf_blocked_domains": "",
                     "self_service": "1",
+                    "trade_auth_key": "",
                     "trademark": "1",
                     "trademark_id": "",
                     "travel_acceptance": "1",
@@ -3562,8 +3588,8 @@
                     "title": "The domain name"
                 },
                 "expiration_date": {
-                    "type": "string",
-                    "title": "Domain expiration date"
+                    "description": "This value might align with the registry_expiration_date. It is not the primary reference for domain expiration in Openprovider.",
+                    "type": "string"
                 },
                 "id": {
                     "type": "string",
@@ -3574,8 +3600,8 @@
                     "title": "The order date"
                 },
                 "renewal_date": {
-                    "type": "string",
-                    "title": "Date on which domain will be renewed"
+                    "description": "The date and time by which a domain must be renewed to avoid expiration, please always refer to the renewal_date to process domain renewals.",
+                    "type": "string"
                 },
                 "status": {
                     "type": "string",
@@ -3650,6 +3676,7 @@
                                 "auth_code": "",
                                 "bank_acceptance": "",
                                 "company_registration_number": "XX123456789X01",
+                                "consent_for_publishing": "",
                                 "coop_acceptance": "1",
                                 "customer_uin": "374892173498127349",
                                 "customer_uin_doc_type": {
@@ -3669,6 +3696,7 @@
                                 "id_number": "123456789X",
                                 "id_type": "",
                                 "idn_script": "SPA",
+                                "iisse_acceptance": "",
                                 "insurance_acceptance": "",
                                 "intended_use": "generic",
                                 "law_acceptance": "",
@@ -3681,6 +3709,7 @@
                                 "passport_number": "X123456",
                                 "rurf_blocked_domains": "",
                                 "self_service": "1",
+                                "trade_auth_key": "",
                                 "trademark": "1",
                                 "trademark_id": "",
                                 "travel_acceptance": "1",
@@ -3855,6 +3884,7 @@
                             "auth_code": "",
                             "bank_acceptance": "",
                             "company_registration_number": "XX123456789X01",
+                            "consent_for_publishing": "",
                             "coop_acceptance": "1",
                             "customer_uin": "374892173498127349",
                             "customer_uin_doc_type": {
@@ -3874,6 +3904,7 @@
                             "id_number": "123456789X",
                             "id_type": "",
                             "idn_script": "SPA",
+                            "iisse_acceptance": "",
                             "insurance_acceptance": "",
                             "intended_use": "generic",
                             "law_acceptance": "",
@@ -3886,6 +3917,7 @@
                             "passport_number": "X123456",
                             "rurf_blocked_domains": "",
                             "self_service": "1",
+                            "trade_auth_key": "",
                             "trademark": "1",
                             "trademark_id": "",
                             "travel_acceptance": "1",
@@ -4591,6 +4623,7 @@
                     "auth_code": "",
                     "bank_acceptance": "",
                     "company_registration_number": "XX123456789X01",
+                    "consent_for_publishing": "",
                     "coop_acceptance": "1",
                     "customer_uin": "374892173498127349",
                     "customer_uin_doc_type": {
@@ -4610,6 +4643,7 @@
                     "id_number": "123456789X",
                     "id_type": "",
                     "idn_script": "SPA",
+                    "iisse_acceptance": "",
                     "insurance_acceptance": "",
                     "intended_use": "generic",
                     "law_acceptance": "",
@@ -4622,6 +4656,7 @@
                     "passport_number": "X123456",
                     "rurf_blocked_domains": "",
                     "self_service": "1",
+                    "trade_auth_key": "",
                     "trademark": "1",
                     "trademark_id": "",
                     "travel_acceptance": "1",
@@ -4716,12 +4751,12 @@
                     "title": "Domain creation date"
                 },
                 "expiration_date": {
-                    "type": "string",
-                    "title": "Domain expiration date"
+                    "description": "This value might align with the registry_expiration_date. It is not the primary reference for domain expiration in Openprovider.",
+                    "type": "string"
                 },
                 "renewal_date": {
-                    "type": "string",
-                    "title": "Date on which domain will be renewed"
+                    "description": "The date and time by which a domain must be renewed to avoid expiration, please always refer to the renewal_date to process domain renewals.",
+                    "type": "string"
                 },
                 "status": {
                     "type": "string",
@@ -4750,6 +4785,10 @@
                 "company_registration_number": {
                     "type": "string",
                     "title": "For companies located in Singapore, the corresponding company registration number has to be given. For Singapore citizens and permanent residents, please provide NRIC or Passport No. For Singapore companies, please provide RCBID as it appears in RCB Certificate. For Singapore societies, please provide RCBID as it appears in ROS Certificate.\nApplicable to: .com.sg, .no, .ro, .sg"
+                },
+                "consent_for_publishing": {
+                    "type": "string",
+                    "title": "Consent for publishing private domain contacts data to registrar Whois/RDAP\nApplicable to: GTLD domains"
                 },
                 "customer_uin": {
                     "type": "string",
@@ -4827,6 +4866,7 @@
                 "admin_sing_pass_id": "",
                 "auth_code": "",
                 "company_registration_number": "XX123456789X03",
+                "consent_for_publishing": "",
                 "customer_uin": "374892173498127349",
                 "customer_uin_doc_type": {
                     "description": "Singapore Personal Access ID",
@@ -4916,9 +4956,9 @@
                     "title": "Enables or disables DNSSEC on domain"
                 },
                 "is_hosted_accreditation": {
+                    "description": "Optional. Enables or disables hosted accreditation route. Using this field requires prior activation by the Openprovider team. Please contact sales team for more information.",
                     "type": "boolean",
                     "format": "boolean",
-                    "title": "Enables or disables hosted accreditation route",
                     "default": false
                 },
                 "is_private_whois_enabled": {
@@ -4982,6 +5022,7 @@
                     "admin_sing_pass_id": "",
                     "auth_code": "",
                     "company_registration_number": "XX123456789X03",
+                    "consent_for_publishing": "",
                     "customer_uin": "374892173498127349",
                     "customer_uin_doc_type": {
                         "description": "Singapore Personal Access ID",
@@ -5113,8 +5154,8 @@
                     "title": "The error"
                 },
                 "expiration_date": {
-                    "type": "string",
-                    "title": "Domain expiration date"
+                    "description": "This value might align with the registry_expiration_date. It is not the primary reference for domain expiration in Openprovider.",
+                    "type": "string"
                 },
                 "id": {
                     "type": "integer",
@@ -5126,8 +5167,8 @@
                     "title": "Parameter name"
                 },
                 "renewal_date": {
-                    "type": "string",
-                    "title": "Date on which domain will be renewed"
+                    "description": "DThe date and time by which a domain must be renewed to avoid expiration, please always refer to the renewal_date to process domain renewals.",
+                    "type": "string"
                 },
                 "required": {
                     "type": "boolean",
@@ -5221,6 +5262,10 @@
                     "type": "string",
                     "title": "For companies located in Singapore, the corresponding company registration number has to be given. For Singapore citizens and permanent residents, please provide NRIC or Passport No. For Singapore companies, please provide RCBID as it appears in RCB Certificate. For Singapore societies, please provide RCBID as it appears in ROS Certificate.\nApplicable to: .com.sg, .no, .ro, .sg"
                 },
+                "consent_for_publishing": {
+                    "type": "string",
+                    "title": "Consent for publishing private domain contacts data to registrar Whois/RDAP\nApplicable to: GTLD domains"
+                },
                 "customer_uin": {
                     "type": "string",
                     "title": "Identification number of domain owner document that proves his identity (e.g. passport number, number of driving license or else in case if domain owner is a private person; chamber of commerce registration number, taxpayer number or else in case of legal entity)\nApplicable for all TLDs which require documents to complete operation with domain (e.g. .bg, .cn etc.)"
@@ -5286,6 +5331,7 @@
                 "admin_sing_pass_id": "",
                 "auth_code": "",
                 "company_registration_number": "XX123456789X02",
+                "consent_for_publishing": "",
                 "customer_uin": "374892173498127349",
                 "customer_uin_doc_type": {
                     "description": "Singapore Personal Access ID",
@@ -5445,6 +5491,7 @@
                     "admin_sing_pass_id": "",
                     "auth_code": "",
                     "company_registration_number": "XX123456789X02",
+                    "consent_for_publishing": "",
                     "customer_uin": "374892173498127349",
                     "customer_uin_doc_type": {
                         "description": "Singapore Personal Access ID",
@@ -7253,9 +7300,5 @@
         {
             "Bearer": []
         }
-    ],
-    "externalDocs": {
-        "description": "More about REST API v1",
-        "url": "https://docs.openprovider.com"
-    }
+    ]
 }
