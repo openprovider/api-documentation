@@ -11,6 +11,10 @@
     "swagger": "2.0",
     "info": {
         "title": "Billing",
+        "contact": {
+            "name": "Billing contracts project",
+            "url": "https://github.com/openprovider/billing-contracts/issues"
+        },
         "version": "1.0.0-beta"
     },
     "paths": {
@@ -141,6 +145,29 @@
                         "description": "A successful response.",
                         "schema": {
                             "$ref": "#/definitions/paymentListPaymentsResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1beta/payments/suggested-top-up-amount": {
+            "get": {
+                "tags": [
+                    "Payment"
+                ],
+                "summary": "Get suggested top up amount",
+                "operationId": "GetSuggestedTopUpAmount",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/paymentGetSuggestedTopUpAmountResponse"
                         }
                     },
                     "default": {
@@ -457,6 +484,58 @@
                     "currency": "EUR",
                     "price": 0
                 }
+            }
+        },
+        "paymentGetSuggestedTopUpAmountResponse": {
+            "type": "object",
+            "title": "GetSuggestedTopUpAmountResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "Response data",
+                    "$ref": "#/definitions/paymentGetSuggestedTopUpAmountResponseData"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response example"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "Array of warning messages",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "suggested_top_up_amount": 500
+                },
+                "desc": ""
+            }
+        },
+        "paymentGetSuggestedTopUpAmountResponseData": {
+            "type": "object",
+            "title": "GetSuggestedTopUpAmountResponseData",
+            "properties": {
+                "suggested_top_up_amount": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "The suggested top up amount"
+                }
+            },
+            "example": {
+                "suggested_top_up_amount": 500
             }
         },
         "paymentListPaymentsResponse": {
@@ -976,5 +1055,9 @@
         {
             "Bearer": []
         }
-    ]
+    ],
+    "externalDocs": {
+        "description": "More about REST API v1",
+        "url": "https://docs.openprovider.com"
+    }
 }
