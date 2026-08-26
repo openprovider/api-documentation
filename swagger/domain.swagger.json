@@ -11,6 +11,10 @@
     "swagger": "2.0",
     "info": {
         "title": "Domain",
+        "contact": {
+            "name": "Domain contracts project",
+            "url": "https://github.com/openprovider/domain-contracts/issues"
+        },
         "version": "1.0.0-beta"
     },
     "paths": {
@@ -219,6 +223,30 @@
                         "format": "boolean",
                         "description": "Indicates whether object is deleted.",
                         "name": "is_deleted",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Returns domain abuse details.",
+                        "name": "with_abuse_details",
+                        "in": "query"
+                    },
+                    {
+                        "type": "boolean",
+                        "format": "boolean",
+                        "description": "Returns only abusive domains.",
+                        "name": "is_abusive",
+                        "in": "query"
+                    },
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi",
+                        "description": "Array of full domain names. Maximum of 100 names is used per request.",
+                        "name": "domain_names",
                         "in": "query"
                     }
                 ],
@@ -1685,10 +1713,26 @@
             "type": "object",
             "title": "AbuseDetails",
             "properties": {
+                "abuse_action": {
+                    "type": "string",
+                    "title": "Abuse action information"
+                },
                 "abuse_id": {
                     "type": "integer",
                     "format": "int32",
                     "title": "The abuse id"
+                },
+                "abuse_status": {
+                    "type": "string",
+                    "title": "Abuse status information. Possible values: 'Pending', 'Deleted', 'Notified', 'Suspended', 'Answered'"
+                },
+                "created_at": {
+                    "description": "The date and time by which a domain is marked as abusive (abuse case reported date and time).",
+                    "type": "string"
+                },
+                "expired_at": {
+                    "description": "The date and time by which expired given abusive action. A temporary hold domain may suspended after exipired_at if action not take.",
+                    "type": "string"
                 },
                 "is_domain_held": {
                     "type": "boolean",
@@ -1698,12 +1742,21 @@
                 "message": {
                     "type": "string",
                     "title": "Message information"
+                },
+                "suspended_at": {
+                    "description": "The date and time by which is given suspended status for abusive domain.",
+                    "type": "string"
                 }
             },
             "example": {
+                "abuse_action": "",
                 "abuse_id": 0,
+                "abuse_status": "",
+                "created_at": "2022-01-01 00:00:00",
+                "expired_at": "2022-01-01 00:00:00",
                 "is_domain_held": false,
-                "message": ""
+                "message": "",
+                "suspended_at": "2022-01-01 00:00:00"
             }
         },
         "domainAdditionalData": {
@@ -1813,6 +1866,16 @@
                     "type": "string",
                     "title": "The intended use value should contain information on how the domain name will be used\nApplicable to: .barcelona, .cat, .madrid, .radio, .sport, .swiss"
                 },
+                "it_nexus_declaration": {
+                    "description": "Declaration for .IT domains and SLDs\nPossible values: 'YES' or 'NO'.",
+                    "type": "string",
+                    "default": "NO"
+                },
+                "it_reseller_declaration": {
+                    "description": "Declaration of Resellers for .IT domains and SLDs\nPossible values: 'YES' or 'NO'.",
+                    "type": "string",
+                    "default": "NO"
+                },
                 "law_acceptance": {
                     "type": "string",
                     "title": "The law acceptance value should be set to 1\nApplicable to: .law"
@@ -1841,6 +1904,11 @@
                     "type": "string",
                     "title": "The ngo, ong policy acceptance value should be set to 1\nApplicable to: .ngo, .ong"
                 },
+                "nz_privacy_option": {
+                    "type": "string",
+                    "title": "Enables or disables the .NZ registry's privacy option (IRPO - Individual Registrant Privacy Option). Possible values: 'private' to enable or 'public' to disable.\nApplicable to: .nz, .ac.nz, .co.nz, .geek.nz, .gen.nz, .kiwi.nz, .maori.nz, .net.nz, .org.nz, .school.nz",
+                    "default": "public"
+                },
                 "passport_number": {
                     "type": "string",
                     "title": "The passport number. Required in case if domain requester is a private individual\nApplicable to: .co.hu, .hu"
@@ -1868,6 +1936,10 @@
                 "travel_acceptance": {
                     "type": "string",
                     "title": "The .travel registration requires acknowledgement of the registrant that he is part of the travel industry\nApplicable to: .travel"
+                },
+                "ua_license": {
+                    "type": "string",
+                    "title": "UA trademark/license number registered in Ukraine. It is required for registration.\nString max 50 characters length. Only numbers and Latin letters can be used.\nApplicable to: .ua"
                 },
                 "vat": {
                     "type": "string",
@@ -1917,6 +1989,8 @@
                 "iisse_acceptance": "",
                 "insurance_acceptance": "",
                 "intended_use": "generic",
+                "it_nexus_declaration": "NO",
+                "it_reseller_declaration": "NO",
                 "law_acceptance": "",
                 "legal_type": "Individual",
                 "maintainer": "",
@@ -1924,6 +1998,7 @@
                 "mobile_phone_number_verification": "",
                 "ngo_ong_eligibility_acceptance": "",
                 "ngo_ong_policy_acceptance": "",
+                "nz_privacy_option": "public",
                 "passport_number": "X123456",
                 "rurf_blocked_domains": "",
                 "self_service": "1",
@@ -1931,6 +2006,7 @@
                 "trademark": "1",
                 "trademark_id": "",
                 "travel_acceptance": "1",
+                "ua_license": "",
                 "vat": "11843009X",
                 "verification_code": "",
                 "vote_acceptance": "",
@@ -2415,6 +2491,8 @@
                     "iisse_acceptance": "",
                     "insurance_acceptance": "",
                     "intended_use": "generic",
+                    "it_nexus_declaration": "NO",
+                    "it_reseller_declaration": "NO",
                     "law_acceptance": "",
                     "legal_type": "Individual",
                     "maintainer": "",
@@ -2422,6 +2500,7 @@
                     "mobile_phone_number_verification": "",
                     "ngo_ong_eligibility_acceptance": "",
                     "ngo_ong_policy_acceptance": "",
+                    "nz_privacy_option": "public",
                     "passport_number": "X123456",
                     "rurf_blocked_domains": "",
                     "self_service": "1",
@@ -2429,6 +2508,7 @@
                     "trademark": "1",
                     "trademark_id": "",
                     "travel_acceptance": "1",
+                    "ua_license": "",
                     "vat": "11843009X",
                     "verification_code": "",
                     "vote_acceptance": "",
@@ -2547,6 +2627,8 @@
                         "iisse_acceptance": "",
                         "insurance_acceptance": "",
                         "intended_use": "generic",
+                        "it_nexus_declaration": "NO",
+                        "it_reseller_declaration": "NO",
                         "law_acceptance": "",
                         "legal_type": "Individual",
                         "maintainer": "",
@@ -2554,6 +2636,7 @@
                         "mobile_phone_number_verification": "",
                         "ngo_ong_eligibility_acceptance": "",
                         "ngo_ong_policy_acceptance": "",
+                        "nz_privacy_option": "public",
                         "passport_number": "X123456",
                         "rurf_blocked_domains": "",
                         "self_service": "1",
@@ -2561,6 +2644,7 @@
                         "trademark": "1",
                         "trademark_id": "",
                         "travel_acceptance": "1",
+                        "ua_license": "",
                         "vat": "11843009X",
                         "verification_code": "",
                         "vote_acceptance": "",
@@ -2642,6 +2726,8 @@
                     "iisse_acceptance": "",
                     "insurance_acceptance": "",
                     "intended_use": "generic",
+                    "it_nexus_declaration": "NO",
+                    "it_reseller_declaration": "NO",
                     "law_acceptance": "",
                     "legal_type": "Individual",
                     "maintainer": "",
@@ -2649,6 +2735,7 @@
                     "mobile_phone_number_verification": "",
                     "ngo_ong_eligibility_acceptance": "",
                     "ngo_ong_policy_acceptance": "",
+                    "nz_privacy_option": "public",
                     "passport_number": "X123456",
                     "rurf_blocked_domains": "",
                     "self_service": "1",
@@ -2656,6 +2743,7 @@
                     "trademark": "1",
                     "trademark_id": "",
                     "travel_acceptance": "1",
+                    "ua_license": "",
                     "vat": "11843009X",
                     "verification_code": "",
                     "vote_acceptance": "",
@@ -2808,9 +2896,14 @@
                 "code": 0,
                 "data": {
                     "abuse_details": {
+                        "abuse_action": "",
                         "abuse_id": 0,
+                        "abuse_status": "",
+                        "created_at": "2022-01-01 00:00:00",
+                        "expired_at": "2022-01-01 00:00:00",
                         "is_domain_held": false,
-                        "message": ""
+                        "message": "",
+                        "suspended_at": "2022-01-01 00:00:00"
                     },
                     "active_date": "2019-01-27 0:55:17",
                     "additional_data": {
@@ -2844,6 +2937,8 @@
                         "iisse_acceptance": "",
                         "insurance_acceptance": "",
                         "intended_use": "generic",
+                        "it_nexus_declaration": "NO",
+                        "it_reseller_declaration": "NO",
                         "law_acceptance": "",
                         "legal_type": "Individual",
                         "maintainer": "",
@@ -2851,6 +2946,7 @@
                         "mobile_phone_number_verification": "",
                         "ngo_ong_eligibility_acceptance": "",
                         "ngo_ong_policy_acceptance": "",
+                        "nz_privacy_option": "public",
                         "passport_number": "X123456",
                         "rurf_blocked_domains": "",
                         "self_service": "1",
@@ -2858,6 +2954,7 @@
                         "trademark": "1",
                         "trademark_id": "",
                         "travel_acceptance": "1",
+                        "ua_license": "",
                         "vat": "11843009X",
                         "verification_code": "",
                         "vote_acceptance": "",
@@ -2953,7 +3050,7 @@
                     "owner_company_name": "Company Name",
                     "owner_handle": "XX123456-XX",
                     "quarantine_expiration_date": "",
-                    "registry_expiration_date": "2020-01-29 0:00:00",
+                    "registry_expiration_date": "2020-01-29 00:00:00",
                     "registry_statuses": {
                         "client_hold": {
                             "is_changeable": false,
@@ -2965,7 +3062,7 @@
                         }
                     },
                     "renew": 2,
-                    "renewal_date": "2022-01-01 0:00:00",
+                    "renewal_date": "2022-01-01 00:00:00",
                     "reseller_handle": "XX123456-XX",
                     "reseller_id": 12345,
                     "restorable_until": "",
@@ -3351,9 +3448,14 @@
             },
             "example": {
                 "abuse_details": {
+                    "abuse_action": "",
                     "abuse_id": 0,
+                    "abuse_status": "",
+                    "created_at": "2022-01-01 00:00:00",
+                    "expired_at": "2022-01-01 00:00:00",
                     "is_domain_held": false,
-                    "message": ""
+                    "message": "",
+                    "suspended_at": "2022-01-01 00:00:00"
                 },
                 "active_date": "2019-01-27 0:55:17",
                 "additional_data": {
@@ -3387,6 +3489,8 @@
                     "iisse_acceptance": "",
                     "insurance_acceptance": "",
                     "intended_use": "generic",
+                    "it_nexus_declaration": "NO",
+                    "it_reseller_declaration": "NO",
                     "law_acceptance": "",
                     "legal_type": "Individual",
                     "maintainer": "",
@@ -3394,6 +3498,7 @@
                     "mobile_phone_number_verification": "",
                     "ngo_ong_eligibility_acceptance": "",
                     "ngo_ong_policy_acceptance": "",
+                    "nz_privacy_option": "public",
                     "passport_number": "X123456",
                     "rurf_blocked_domains": "",
                     "self_service": "1",
@@ -3401,6 +3506,7 @@
                     "trademark": "1",
                     "trademark_id": "",
                     "travel_acceptance": "1",
+                    "ua_license": "",
                     "vat": "11843009X",
                     "verification_code": "",
                     "vote_acceptance": "",
@@ -3496,7 +3602,7 @@
                 "owner_company_name": "Company Name",
                 "owner_handle": "XX123456-XX",
                 "quarantine_expiration_date": "",
-                "registry_expiration_date": "2020-01-29 0:00:00",
+                "registry_expiration_date": "2020-01-29 00:00:00",
                 "registry_statuses": {
                     "client_hold": {
                         "is_changeable": false,
@@ -3508,7 +3614,7 @@
                     }
                 },
                 "renew": 2,
-                "renewal_date": "2022-01-01 0:00:00",
+                "renewal_date": "2022-01-01 00:00:00",
                 "reseller_handle": "XX123456-XX",
                 "reseller_id": 12345,
                 "restorable_until": "",
@@ -3663,9 +3769,14 @@
                     "results": [
                         {
                             "abuse_details": {
+                                "abuse_action": "",
                                 "abuse_id": 0,
+                                "abuse_status": "",
+                                "created_at": "2022-01-01 00:00:00",
+                                "expired_at": "2022-01-01 00:00:00",
                                 "is_domain_held": false,
-                                "message": ""
+                                "message": "",
+                                "suspended_at": "2022-01-01 00:00:00"
                             },
                             "active_date": "2019-01-27 0:55:17",
                             "additional_data": {
@@ -3699,6 +3810,8 @@
                                 "iisse_acceptance": "",
                                 "insurance_acceptance": "",
                                 "intended_use": "generic",
+                                "it_nexus_declaration": "NO",
+                                "it_reseller_declaration": "NO",
                                 "law_acceptance": "",
                                 "legal_type": "Individual",
                                 "maintainer": "",
@@ -3706,6 +3819,7 @@
                                 "mobile_phone_number_verification": "",
                                 "ngo_ong_eligibility_acceptance": "",
                                 "ngo_ong_policy_acceptance": "",
+                                "nz_privacy_option": "public",
                                 "passport_number": "X123456",
                                 "rurf_blocked_domains": "",
                                 "self_service": "1",
@@ -3713,6 +3827,7 @@
                                 "trademark": "1",
                                 "trademark_id": "",
                                 "travel_acceptance": "1",
+                                "ua_license": "",
                                 "vat": "11843009X",
                                 "verification_code": "",
                                 "vote_acceptance": "",
@@ -3808,7 +3923,7 @@
                             "owner_company_name": "Company Name",
                             "owner_handle": "XX123456-XX",
                             "quarantine_expiration_date": "",
-                            "registry_expiration_date": "2020-01-29 0:00:00",
+                            "registry_expiration_date": "2020-01-29 00:00:00",
                             "registry_statuses": {
                                 "client_hold": {
                                     "is_changeable": false,
@@ -3820,7 +3935,7 @@
                                 }
                             },
                             "renew": 2,
-                            "renewal_date": "2022-01-01 0:00:00",
+                            "renewal_date": "2022-01-01 00:00:00",
                             "reseller_handle": "XX123456-XX",
                             "reseller_id": 12345,
                             "restorable_until": "",
@@ -3871,9 +3986,14 @@
                 "results": [
                     {
                         "abuse_details": {
+                            "abuse_action": "",
                             "abuse_id": 0,
+                            "abuse_status": "",
+                            "created_at": "2022-01-01 00:00:00",
+                            "expired_at": "2022-01-01 00:00:00",
                             "is_domain_held": false,
-                            "message": ""
+                            "message": "",
+                            "suspended_at": "2022-01-01 00:00:00"
                         },
                         "active_date": "2019-01-27 0:55:17",
                         "additional_data": {
@@ -3907,6 +4027,8 @@
                             "iisse_acceptance": "",
                             "insurance_acceptance": "",
                             "intended_use": "generic",
+                            "it_nexus_declaration": "NO",
+                            "it_reseller_declaration": "NO",
                             "law_acceptance": "",
                             "legal_type": "Individual",
                             "maintainer": "",
@@ -3914,6 +4036,7 @@
                             "mobile_phone_number_verification": "",
                             "ngo_ong_eligibility_acceptance": "",
                             "ngo_ong_policy_acceptance": "",
+                            "nz_privacy_option": "public",
                             "passport_number": "X123456",
                             "rurf_blocked_domains": "",
                             "self_service": "1",
@@ -3921,6 +4044,7 @@
                             "trademark": "1",
                             "trademark_id": "",
                             "travel_acceptance": "1",
+                            "ua_license": "",
                             "vat": "11843009X",
                             "verification_code": "",
                             "vote_acceptance": "",
@@ -4016,7 +4140,7 @@
                         "owner_company_name": "Company Name",
                         "owner_handle": "XX123456-XX",
                         "quarantine_expiration_date": "",
-                        "registry_expiration_date": "2020-01-29 0:00:00",
+                        "registry_expiration_date": "2020-01-29 00:00:00",
                         "registry_statuses": {
                             "client_hold": {
                                 "is_changeable": false,
@@ -4028,7 +4152,7 @@
                             }
                         },
                         "renew": 2,
-                        "renewal_date": "2022-01-01 0:00:00",
+                        "renewal_date": "2022-01-01 00:00:00",
                         "reseller_handle": "XX123456-XX",
                         "reseller_id": 12345,
                         "restorable_until": "",
@@ -4403,8 +4527,8 @@
             "title": "SuggestNameDomainRequest",
             "properties": {
                 "language": {
-                    "type": "string",
-                    "title": "The three letter country code for the language in which responses should be generated (ISO-3166 ALPHA-3 code format)"
+                    "description": "The three-letter country code for the language in which responses should be generated (ISO 639-2/B format). Allowed languages: English (eng), Dutch (dut), French (fre), German (ger), Hindi (hin), Indonesian (ind), Italian (ita), Japanese (jpn), Korean (kor), Chinese (Mandarin) (chi), Portuguese (por), Spanish (spa), Turkish (tur), Vietnamese (vie).",
+                    "type": "string"
                 },
                 "limit": {
                     "type": "integer",
@@ -4646,6 +4770,8 @@
                     "iisse_acceptance": "",
                     "insurance_acceptance": "",
                     "intended_use": "generic",
+                    "it_nexus_declaration": "NO",
+                    "it_reseller_declaration": "NO",
                     "law_acceptance": "",
                     "legal_type": "Individual",
                     "maintainer": "",
@@ -4653,6 +4779,7 @@
                     "mobile_phone_number_verification": "",
                     "ngo_ong_eligibility_acceptance": "",
                     "ngo_ong_policy_acceptance": "",
+                    "nz_privacy_option": "public",
                     "passport_number": "X123456",
                     "rurf_blocked_domains": "",
                     "self_service": "1",
@@ -4660,6 +4787,7 @@
                     "trademark": "1",
                     "trademark_id": "",
                     "travel_acceptance": "1",
+                    "ua_license": "",
                     "vat": "11843009X",
                     "verification_code": "",
                     "vote_acceptance": "",
@@ -4825,6 +4953,16 @@
                     "type": "string",
                     "title": "The intended use value must contain information on how the domain name will be used\nApplicable to:  .cat, .scot, .gal, .eus, .swiss, .radio, .barcelona, .sport, .pl, .aid.pl, .agro.pl, .atm.pl, .auto.pl, .biz.pl, .com.pl, .edu.pl, .gmina.pl, .gsm.pl, .info.pl, .mail.pl, .miasta.pl, .media.pl, .mil.pl, .net.pl, .nieruchomosci.pl, .nom.pl, .org.pl, .pc.pl, .powiat.pl, .priv.pl, .realestate.pl, .rel.pl, .sex.pl, .shop.pl, .sklep.pl, .sos.pl, .szkola.pl, .targi.pl, .tm.pl, .tourism.pl, .travel.pl, .turystyka.pl, .augustow.pl, .babia-gora.pl, .bedzin.pl, .beskidy.pl, .bialowieza.pl, .bialystok.pl, .bielawa.pl, .bieszczady.pl, .boleslawiec.pl, .bydgoszcz.pl, .bytom.pl, .cieszyn.pl, .czeladz.pl, .czest.pl, .dlugoleka.pl, .elblag.pl, .elk.pl, .glogow.pl, .gniezno.pl, .gorlice.pl, .grajewo.pl, .ilawa.pl, .jaworzno.pl, .jelenia-gora.pl, .jgora.pl, .kalisz.pl, .kazimierz-dolny.pl, .karpacz.pl, .kartuzy.pl, .kaszuby.pl, .katowice.pl, .kepno.pl, .ketrzyn.pl, .klodzko.pl, .kobierzyce.pl, .kolobrzeg.pl, .konin.pl, .konskowola.pl, .kutno.pl, .lapy.pl, .lebork.pl, .legnica.pl, .lezajsk.pl, .limanowa.pl, .lomza.pl, .lowicz.pl, .lubin.pl, .lukow.pl, .malbork.pl, .malopolska.pl, .mazowsze.pl, .mazury.pl, .mielec.pl, .mielno.pl, .mragowo.pl, .naklo.pl, .nowaruda.pl, .nysa.pl, .olawa.pl, .olecko.pl, .olkusz.pl, .olsztyn.pl, .opoczno.pl, .opole.pl, .ostroda.pl, .ostroleka.pl, .ostrowiec.pl, .ostrowwlkp.pl, .pila.pl, .pisz.pl, .podhale.pl, .podlasie.pl, .polkowice.pl, .pomorze.pl, .pomorskie.pl, .prochowice.pl, .pruszkow.pl, .przeworsk.pl, .pulawy.pl, .radom.pl, .rawa-maz.pl, .rybnik.pl, .rzeszow.pl, .sanok.pl, .sejny.pl, .slask.pl, .slupsk.pl, .sosnowiec.pl, .stalowa-wola.pl, .skoczow.pl, .starachowice.pl, .stargard.pl, .suwalki.pl, .swidnica.pl, .swiebodzin.pl, .swinoujscie.pl, .szczecin.pl, .szczytno.pl, .tarnobrzeg.pl, .tgory.pl, .turek.pl, .tychy.pl, .ustka.pl, .walbrzych.pl, .warmia.pl, .warszawa.pl, .waw.pl, .wegrow.pl, .wielun.pl, .wlocl.pl, .wloclawek.pl, .wodzislaw.pl, .wolomin.pl, .wroclaw.pl, .zachpomor.pl, .zagan.pl, .zarow.pl, .zgora.pl, .zgorzelec.pl"
                 },
+                "it_nexus_declaration": {
+                    "description": "Declaration for .IT domains and SLDs\nPossible values: 'YES' or 'NO'.",
+                    "type": "string",
+                    "default": "NO"
+                },
+                "it_reseller_declaration": {
+                    "description": "Declaration of Resellers for .IT domains and SLDs\nPossible values: 'YES' or 'NO'.",
+                    "type": "string",
+                    "default": "NO"
+                },
                 "legal_type": {
                     "type": "string",
                     "title": "The legal type\nApplicable to: .ca"
@@ -4840,6 +4978,11 @@
                 "mobile_phone_number_verification": {
                     "type": "string",
                     "title": "The mobile phone's verification via sms\nApplicable to: .ru, .su, .xn--p1ai"
+                },
+                "nz_privacy_option": {
+                    "type": "string",
+                    "title": "Enables or disables the .NZ registry's privacy option (IRPO - Individual Registrant Privacy Option). Possible values: 'private' to enable or 'public' to disable.\nApplicable to: .nz, .ac.nz, .co.nz, .geek.nz, .gen.nz, .kiwi.nz, .maori.nz, .net.nz, .org.nz, .school.nz",
+                    "default": "public"
                 },
                 "passport_number": {
                     "type": "string",
@@ -4880,10 +5023,13 @@
                 "gay_rights_protection_acceptance": "1",
                 "idn_script": "SPA",
                 "intended_use": "generic",
+                "it_nexus_declaration": "NO",
+                "it_reseller_declaration": "NO",
                 "legal_type": "Individual",
                 "maintainer": "",
                 "membership_id": "A",
                 "mobile_phone_number_verification": "",
+                "nz_privacy_option": "public",
                 "passport_number": "X123458",
                 "self_service": "1",
                 "trademark": "1",
@@ -4899,6 +5045,12 @@
                     "type": "number",
                     "format": "double",
                     "title": "Required in case when domain is premium, value is the price returned in the response for TransferDomainRequest without acceptPremiumFee"
+                },
+                "accept_quarantine_fee": {
+                    "description": "Required in case when domain is in quarantine status under another registrar. Using this field to consent to process only quarantine domain with special prices.",
+                    "type": "boolean",
+                    "format": "boolean",
+                    "default": false
                 },
                 "additional_data": {
                     "title": "Additional domain data",
@@ -5018,6 +5170,7 @@
             },
             "example": {
                 "accept_premium_fee": 17,
+                "accept_quarantine_fee": false,
                 "additional_data": {
                     "admin_sing_pass_id": "",
                     "auth_code": "",
@@ -5036,10 +5189,13 @@
                     "gay_rights_protection_acceptance": "1",
                     "idn_script": "SPA",
                     "intended_use": "generic",
+                    "it_nexus_declaration": "NO",
+                    "it_reseller_declaration": "NO",
                     "legal_type": "Individual",
                     "maintainer": "",
                     "membership_id": "A",
                     "mobile_phone_number_verification": "",
+                    "nz_privacy_option": "public",
                     "passport_number": "X123458",
                     "self_service": "1",
                     "trademark": "1",
@@ -5285,6 +5441,16 @@
                     "type": "string",
                     "title": "The intended use value should contain information on how the domain name will be used\nApplicable to: .cat"
                 },
+                "it_nexus_declaration": {
+                    "description": "Declaration for .IT domains and SLDs\nPossible values: 'YES' or 'NO'.",
+                    "type": "string",
+                    "default": "NO"
+                },
+                "it_reseller_declaration": {
+                    "description": "Declaration of Resellers for .IT domains and SLDs\nPossible values: 'YES' or 'NO'.",
+                    "type": "string",
+                    "default": "NO"
+                },
                 "law_acceptance": {
                     "type": "string",
                     "title": "The law acceptance value should be set to 1\nApplicable to: .law"
@@ -5312,6 +5478,11 @@
                 "ngo_ong_policy_acceptance": {
                     "type": "string",
                     "title": "The ngo, ong policy acceptance value should be set to 1\nApplicable to: .ngo, .ong"
+                },
+                "nz_privacy_option": {
+                    "type": "string",
+                    "title": "Enables or disables the .NZ registry's privacy option (IRPO - Individual Registrant Privacy Option). Possible values: 'private' to enable or 'public' to disable.\nApplicable to: .nz, .ac.nz, .co.nz, .geek.nz, .gen.nz, .kiwi.nz, .maori.nz, .net.nz, .org.nz, .school.nz",
+                    "default": "public"
                 },
                 "passport_number": {
                     "type": "string",
@@ -5341,6 +5512,8 @@
                     "xn--домен.cat"
                 ],
                 "intended_use": "generic",
+                "it_nexus_declaration": "NO",
+                "it_reseller_declaration": "NO",
                 "law_acceptance": "",
                 "legal_type": "Individual",
                 "maintainer": "",
@@ -5348,6 +5521,7 @@
                 "mobile_phone_number_verification": "",
                 "ngo_ong_eligibility_acceptance": "",
                 "ngo_ong_policy_acceptance": "",
+                "nz_privacy_option": "public",
                 "passport_number": "X123457",
                 "vat": "11843009X",
                 "verification_code": ""
@@ -5501,6 +5675,8 @@
                         "xn--домен.cat"
                     ],
                     "intended_use": "generic",
+                    "it_nexus_declaration": "NO",
+                    "it_reseller_declaration": "NO",
                     "law_acceptance": "",
                     "legal_type": "Individual",
                     "maintainer": "",
@@ -5508,6 +5684,7 @@
                     "mobile_phone_number_verification": "",
                     "ngo_ong_eligibility_acceptance": "",
                     "ngo_ong_policy_acceptance": "",
+                    "nz_privacy_option": "public",
                     "passport_number": "X123457",
                     "vat": "11843009X",
                     "verification_code": ""
@@ -7300,5 +7477,9 @@
         {
             "Bearer": []
         }
-    ]
+    ],
+    "externalDocs": {
+        "description": "More about REST API v1",
+        "url": "https://docs.openprovider.com"
+    }
 }

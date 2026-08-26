@@ -11,6 +11,10 @@
     "swagger": "2.0",
     "info": {
         "title": "Auth",
+        "contact": {
+            "name": "Auth contracts project",
+            "url": "https://github.com/openprovider/auth-contracts/issues"
+        },
         "version": "1.0.0-beta"
     },
     "paths": {
@@ -293,5 +297,9 @@
         {
             "Bearer": []
         }
-    ]
+    ],
+    "externalDocs": {
+        "description": "More about REST API v1",
+        "url": "https://docs.openprovider.com"
+    }
 }

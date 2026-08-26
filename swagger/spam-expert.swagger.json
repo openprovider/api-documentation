@@ -11,6 +11,10 @@
     "swagger": "2.0",
     "info": {
         "title": "Spam Experts",
+        "contact": {
+            "name": "Spam expert contracts project",
+            "url": "https://github.com/openprovider/spam-expert-contracts/issues"
+        },
         "version": "1.0.0-beta"
     },
     "paths": {
@@ -664,5 +668,9 @@
         {
             "Bearer": []
         }
-    ]
+    ],
+    "externalDocs": {
+        "description": "More about REST API v1",
+        "url": "https://docs.openprovider.com"
+    }
 }

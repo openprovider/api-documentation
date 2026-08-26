@@ -11,9 +11,67 @@
     "swagger": "2.0",
     "info": {
         "title": "Reseller/Customer",
+        "contact": {
+            "name": "Person contracts project",
+            "url": "https://github.com/openprovider/person-contracts/issues"
+        },
         "version": "1.0.0-beta"
     },
     "paths": {
+        "/v1beta/contact/notification-setting": {
+            "get": {
+                "tags": [
+                    "ContactService"
+                ],
+                "summary": "Get contact notification setting",
+                "operationId": "GetContactNotificationSetting",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/contactGetContactNotificationSettingResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "ContactService"
+                ],
+                "summary": "Update contact notification setting",
+                "operationId": "UpdateContactNotificationSetting",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/contactUpdateContactNotificationSettingRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "schema": {
+                            "$ref": "#/definitions/contactUpdateContactNotificationSettingResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "(empty)",
+                        "schema": {
+                            "$ref": "#/definitions/errorError"
+                        }
+                    }
+                }
+            }
+        },
         "/v1beta/contacts": {
             "get": {
                 "tags": [
@@ -1321,6 +1379,93 @@
                 "success": false
             }
         },
+        "contactGetContactNotificationSettingResponse": {
+            "type": "object",
+            "title": "GetContactNotificationSettingResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "Response data",
+                    "$ref": "#/definitions/contactGetContactNotificationSettingResponseData"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "Array of warning messages",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "educational_content": true,
+                    "id": 0,
+                    "marketing_promotion": true,
+                    "operational_notification": true,
+                    "platform_update_news": true,
+                    "reseller_contact_id": 2292
+                },
+                "desc": ""
+            }
+        },
+        "contactGetContactNotificationSettingResponseData": {
+            "type": "object",
+            "title": "GetContactNotificationSettingResponseData",
+            "properties": {
+                "educational_content": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Educational content enabled (true) or disabled (false)"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Notification setting ID (null if no configuration exists)"
+                },
+                "marketing_promotion": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Marketing promotions enabled (true) or disabled (false)"
+                },
+                "operational_notification": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Operational notifications enabled (true) or disabled (false)"
+                },
+                "platform_update_news": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Platform updates & news enabled (true) or disabled (false)"
+                },
+                "reseller_contact_id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Reseller contact ID"
+                }
+            },
+            "example": {
+                "educational_content": true,
+                "id": 0,
+                "marketing_promotion": true,
+                "operational_notification": true,
+                "platform_update_news": true,
+                "reseller_contact_id": 2292
+            }
+        },
         "contactGetContactResponse": {
             "type": "object",
             "title": "GetContactResponse",
@@ -1661,6 +1806,90 @@
                 "subscriber_number": "123456"
             }
         },
+        "contactUpdateContactNotificationSettingRequest": {
+            "type": "object",
+            "title": "UpdateContactNotificationSettingRequest",
+            "properties": {
+                "educational_content": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Enable or disable educational content"
+                },
+                "marketing_promotion": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Enable or disable marketing promotions"
+                },
+                "operational_notification": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Enable or disable operational notifications"
+                },
+                "platform_update_news": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Enable or disable platform updates & news"
+                }
+            },
+            "example": {
+                "educational_content": false,
+                "marketing_promotion": false,
+                "operational_notification": false,
+                "platform_update_news": false
+            }
+        },
+        "contactUpdateContactNotificationSettingResponse": {
+            "type": "object",
+            "title": "UpdateContactNotificationSettingResponse",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Response code"
+                },
+                "data": {
+                    "title": "Response data",
+                    "$ref": "#/definitions/contactUpdateContactNotificationSettingResponseData"
+                },
+                "desc": {
+                    "type": "string",
+                    "title": "Response description"
+                },
+                "maintenance": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if Openprovider API is on maintenance"
+                },
+                "warnings": {
+                    "type": "array",
+                    "title": "Array of warning messages",
+                    "items": {
+                        "$ref": "#/definitions/errorWarning"
+                    }
+                }
+            },
+            "example": {
+                "code": 0,
+                "data": {
+                    "success": false
+                },
+                "desc": ""
+            }
+        },
+        "contactUpdateContactNotificationSettingResponseData": {
+            "type": "object",
+            "title": "UpdateContactNotificationSettingResponseData",
+            "properties": {
+                "success": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Indicates if operation was successful"
+                }
+            },
+            "example": {
+                "success": false
+            }
+        },
         "contactUpdateContactRequest": {
             "type": "object",
             "title": "UpdateContactRequest",
@@ -1976,25 +2205,45 @@
                             "first_name_cyrillic": "Test",
                             "first_name_latin": "Test",
                             "hr_member": "",
+                            "in_nexus_connection_to_india": "ENTITY",
+                            "in_nexus_declaration_attestation": "YES",
                             "industry_class": "19",
                             "is_private_enterpreneur": "",
                             "last_name_cyrillic": "Person",
                             "last_name_latin": "Person",
+                            "legal_address_area": "Moscow Time Zone",
+                            "legal_address_building": "Bldg. 1",
+                            "legal_address_city": "Moscow",
+                            "legal_address_country_code": "RU",
                             "legal_address_cyrillic": "13245 Country, City, street, 2",
+                            "legal_address_house": "AA1111",
+                            "legal_address_postal_code": "AB1111",
+                            "legal_address_region": "Moscow Region",
+                            "legal_address_street": "Korolyova",
                             "legal_type": "FCORP",
                             "middle_name_cyrillic": "Nikolaevich",
                             "middle_name_latin": "Nikolaevich",
                             "mobile_phone_number": "+7 (123) 456-78-90",
+                            "mobile_phone_number_country_code": "+7",
                             "music_nexus_connection_to_music": "MSCN",
                             "music_nexus_registry_policies_attestation": "YES",
                             "nexus_category": "C31",
                             "org_type": "1",
+                            "passport_expiry_date": "2025-01-01",
                             "passport_issue_date": "2009-01-11",
+                            "passport_issue_id": "345-876",
                             "passport_issuer": "Issuer name",
                             "passport_number": "12345678",
                             "passport_series": "1234",
+                            "postal_address_area": "Moscow Time Zone",
+                            "postal_address_building": "Bldg. 1",
+                            "postal_address_city": "Moscow",
                             "postal_address_cyrillic": "12345 Country, City, street, 1",
+                            "postal_address_house": "AA11",
+                            "postal_address_region": "Moscow Region",
+                            "postal_address_street": "Korolyova",
                             "social_security_number": "X123455123X",
+                            "sole_proprietorship": "true",
                             "tax_payer_number": "1345678",
                             "uin": "12345-6",
                             "user_type": "Individual",
@@ -2276,25 +2525,45 @@
                     "first_name_cyrillic": "Test",
                     "first_name_latin": "Test",
                     "hr_member": "",
+                    "in_nexus_connection_to_india": "ENTITY",
+                    "in_nexus_declaration_attestation": "YES",
                     "industry_class": "19",
                     "is_private_enterpreneur": "",
                     "last_name_cyrillic": "Person",
                     "last_name_latin": "Person",
+                    "legal_address_area": "Moscow Time Zone",
+                    "legal_address_building": "Bldg. 1",
+                    "legal_address_city": "Moscow",
+                    "legal_address_country_code": "RU",
                     "legal_address_cyrillic": "13245 Country, City, street, 2",
+                    "legal_address_house": "AA1111",
+                    "legal_address_postal_code": "AB1111",
+                    "legal_address_region": "Moscow Region",
+                    "legal_address_street": "Korolyova",
                     "legal_type": "FCORP",
                     "middle_name_cyrillic": "Nikolaevich",
                     "middle_name_latin": "Nikolaevich",
                     "mobile_phone_number": "+7 (123) 456-78-90",
+                    "mobile_phone_number_country_code": "+7",
                     "music_nexus_connection_to_music": "MSCN",
                     "music_nexus_registry_policies_attestation": "YES",
                     "nexus_category": "C31",
                     "org_type": "1",
+                    "passport_expiry_date": "2025-01-01",
                     "passport_issue_date": "2009-01-11",
+                    "passport_issue_id": "345-876",
                     "passport_issuer": "Issuer name",
                     "passport_number": "12345678",
                     "passport_series": "1234",
+                    "postal_address_area": "Moscow Time Zone",
+                    "postal_address_building": "Bldg. 1",
+                    "postal_address_city": "Moscow",
                     "postal_address_cyrillic": "12345 Country, City, street, 1",
+                    "postal_address_house": "AA11",
+                    "postal_address_region": "Moscow Region",
+                    "postal_address_street": "Korolyova",
                     "social_security_number": "X123455123X",
+                    "sole_proprietorship": "true",
                     "tax_payer_number": "1345678",
                     "uin": "12345-6",
                     "user_type": "Individual",
@@ -2365,6 +2634,14 @@
                     "type": "string",
                     "title": "The hrMember: choose whether the contact is a member of the „Human Resource Organization“.\nApplicable to: .jobs"
                 },
+                "in_nexus_connection_to_india": {
+                    "type": "string",
+                    "title": "The nexus connection to India\nApplicable to: .in and its Second Level Domains (SLDs)"
+                },
+                "in_nexus_declaration_attestation": {
+                    "type": "string",
+                    "title": "The nexus declaration attestation\nApplicable to: .in and its Second Level Domains (SLDs)"
+                },
                 "industry_class": {
                     "type": "string",
                     "title": "The industry class\nApplicable to: .jobs"
@@ -2381,9 +2658,41 @@
                     "type": "string",
                     "title": "The last name in Latin\nApplicable to: .ru, .su, .xn--p1ai"
                 },
+                "legal_address_area": {
+                    "type": "string",
+                    "title": "The legal address area in in Latin.If domain owner is based on Russia can be supplied in Cyrillic\nApplicable to: .ru, .xn--p1ai"
+                },
+                "legal_address_building": {
+                    "type": "string",
+                    "title": "The legal address building\nApplicable to: .ru, .xn--p1ai"
+                },
+                "legal_address_city": {
+                    "type": "string",
+                    "title": "The legal address city in Latin.If domain owner is based on Russia can be supplied in Cyrillic\nApplicable to: .ru, .xn--p1ai"
+                },
+                "legal_address_country_code": {
+                    "type": "string",
+                    "title": "The legal address country code. ISO 3166-1 alpha-2\nApplicable to: .ru, .xn--p1ai"
+                },
                 "legal_address_cyrillic": {
                     "type": "string",
                     "title": "The legal address in cyrillic.If domain owner is based outside of Russia can be supplied in Latin\nApplicable to: .ru, .su, .xn--p1ai"
+                },
+                "legal_address_house": {
+                    "type": "string",
+                    "title": "The legal address house\nApplicable to: .ru, .xn--p1ai"
+                },
+                "legal_address_postal_code": {
+                    "type": "string",
+                    "title": "The legal address postal code\nApplicable to: .ru, .xn--p1ai"
+                },
+                "legal_address_region": {
+                    "type": "string",
+                    "title": "The legal address region in in Latin.If domain owner is based on Russia can be supplied in Cyrillic\nApplicable to: .ru, .xn--p1ai"
+                },
+                "legal_address_street": {
+                    "type": "string",
+                    "title": "The legal address street in in Latin.If domain owner is based on Russia can be supplied in Cyrillic\nApplicable to: .ru, .xn--p1ai"
                 },
                 "legal_type": {
                     "type": "string",
@@ -2401,6 +2710,10 @@
                     "type": "string",
                     "title": "The mobile phone number with SMS function\nApplicable to: .ru, .su, .xn--p1ai"
                 },
+                "mobile_phone_number_country_code": {
+                    "type": "string",
+                    "title": "The mobile phone number country code with (+) sign\nApplicable to: .ru, .xn--p1ai"
+                },
                 "music_nexus_connection_to_music": {
                     "type": "string",
                     "title": "The nexus connection to music\nApplicable to: .music"
@@ -2417,9 +2730,17 @@
                     "type": "string",
                     "title": "The type of Organization\nApplicable to: .fi"
                 },
+                "passport_expiry_date": {
+                    "type": "string",
+                    "title": "The passport expiry date\nApplicable to: .ru, .xn--p1ai"
+                },
                 "passport_issue_date": {
                     "type": "string",
                     "title": "The passport issue date\nApplicable to: .ru, .su, .xn--p1ai"
+                },
+                "passport_issue_id": {
+                    "type": "string",
+                    "title": "The passport issue id\nApplicable to: .ru, .xn--p1ai"
                 },
                 "passport_issuer": {
                     "type": "string",
@@ -2433,13 +2754,41 @@
                     "type": "string",
                     "title": "The passport series\nApplicable to: .ru, .su, .xn--p1ai"
                 },
+                "postal_address_area": {
+                    "type": "string",
+                    "title": "The postal address area in Latin. If domain owner is based on Russia can be supplied in Cyrillic\nApplicable to: .ru, .xn--p1ai"
+                },
+                "postal_address_building": {
+                    "type": "string",
+                    "title": "The postal address building\nApplicable to: .ru, .xn--p1ai"
+                },
+                "postal_address_city": {
+                    "type": "string",
+                    "title": "The postal address city in Latin. If domain owner is based on Russia can be supplied in Cyrillic\nApplicable to: .ru, .xn--p1ai"
+                },
                 "postal_address_cyrillic": {
                     "type": "string",
                     "title": "The postal address in cyrillic. If domain owner is based outside of Russia can be supplied in Latin\nApplicable to: .ru, .su, .xn--p1ai"
                 },
+                "postal_address_house": {
+                    "type": "string",
+                    "title": "The postal address house\nApplicable to: .ru, .xn--p1ai"
+                },
+                "postal_address_region": {
+                    "type": "string",
+                    "title": "The postal address region in Latin. If domain owner is based on Russia can be supplied in Cyrillic\nApplicable to: .ru, .xn--p1ai"
+                },
+                "postal_address_street": {
+                    "type": "string",
+                    "title": "The postal address street in Latin. If domain owner is based on Russia can be supplied in Cyrillic\nApplicable to: .ru, .xn--p1ai"
+                },
                 "social_security_number": {
                     "type": "string",
                     "title": "The social security number. Required in case if domain requester is a private individual and passport number is empty\nApplicable to: .es, .se"
+                },
+                "sole_proprietorship": {
+                    "type": "string",
+                    "title": "Indicates whether a foreign company contact is a sole proprietorship. Required for NIS2 compliance.\nOnly applicable to foreign company contacts (country code must not be DK).\nApplicable to: .dk"
                 },
                 "tax_payer_number": {
                     "type": "string",
@@ -2481,25 +2830,45 @@
                 "first_name_cyrillic": "Test",
                 "first_name_latin": "Test",
                 "hr_member": "",
+                "in_nexus_connection_to_india": "ENTITY",
+                "in_nexus_declaration_attestation": "YES",
                 "industry_class": "19",
                 "is_private_enterpreneur": "",
                 "last_name_cyrillic": "Person",
                 "last_name_latin": "Person",
+                "legal_address_area": "Moscow Time Zone",
+                "legal_address_building": "Bldg. 1",
+                "legal_address_city": "Moscow",
+                "legal_address_country_code": "RU",
                 "legal_address_cyrillic": "13245 Country, City, street, 2",
+                "legal_address_house": "AA1111",
+                "legal_address_postal_code": "AB1111",
+                "legal_address_region": "Moscow Region",
+                "legal_address_street": "Korolyova",
                 "legal_type": "FCORP",
                 "middle_name_cyrillic": "Nikolaevich",
                 "middle_name_latin": "Nikolaevich",
                 "mobile_phone_number": "+7 (123) 456-78-90",
+                "mobile_phone_number_country_code": "+7",
                 "music_nexus_connection_to_music": "MSCN",
                 "music_nexus_registry_policies_attestation": "YES",
                 "nexus_category": "C31",
                 "org_type": "1",
+                "passport_expiry_date": "2025-01-01",
                 "passport_issue_date": "2009-01-11",
+                "passport_issue_id": "345-876",
                 "passport_issuer": "Issuer name",
                 "passport_number": "12345678",
                 "passport_series": "1234",
+                "postal_address_area": "Moscow Time Zone",
+                "postal_address_building": "Bldg. 1",
+                "postal_address_city": "Moscow",
                 "postal_address_cyrillic": "12345 Country, City, street, 1",
+                "postal_address_house": "AA11",
+                "postal_address_region": "Moscow Region",
+                "postal_address_street": "Korolyova",
                 "social_security_number": "X123455123X",
+                "sole_proprietorship": "true",
                 "tax_payer_number": "1345678",
                 "uin": "12345-6",
                 "user_type": "Individual",
@@ -2646,25 +3015,45 @@
                                 "first_name_cyrillic": "Test",
                                 "first_name_latin": "Test",
                                 "hr_member": "",
+                                "in_nexus_connection_to_india": "ENTITY",
+                                "in_nexus_declaration_attestation": "YES",
                                 "industry_class": "19",
                                 "is_private_enterpreneur": "",
                                 "last_name_cyrillic": "Person",
                                 "last_name_latin": "Person",
+                                "legal_address_area": "Moscow Time Zone",
+                                "legal_address_building": "Bldg. 1",
+                                "legal_address_city": "Moscow",
+                                "legal_address_country_code": "RU",
                                 "legal_address_cyrillic": "13245 Country, City, street, 2",
+                                "legal_address_house": "AA1111",
+                                "legal_address_postal_code": "AB1111",
+                                "legal_address_region": "Moscow Region",
+                                "legal_address_street": "Korolyova",
                                 "legal_type": "FCORP",
                                 "middle_name_cyrillic": "Nikolaevich",
                                 "middle_name_latin": "Nikolaevich",
                                 "mobile_phone_number": "+7 (123) 456-78-90",
+                                "mobile_phone_number_country_code": "+7",
                                 "music_nexus_connection_to_music": "MSCN",
                                 "music_nexus_registry_policies_attestation": "YES",
                                 "nexus_category": "C31",
                                 "org_type": "1",
+                                "passport_expiry_date": "2025-01-01",
                                 "passport_issue_date": "2009-01-11",
+                                "passport_issue_id": "345-876",
                                 "passport_issuer": "Issuer name",
                                 "passport_number": "12345678",
                                 "passport_series": "1234",
+                                "postal_address_area": "Moscow Time Zone",
+                                "postal_address_building": "Bldg. 1",
+                                "postal_address_city": "Moscow",
                                 "postal_address_cyrillic": "12345 Country, City, street, 1",
+                                "postal_address_house": "AA11",
+                                "postal_address_region": "Moscow Region",
+                                "postal_address_street": "Korolyova",
                                 "social_security_number": "X123455123X",
+                                "sole_proprietorship": "true",
                                 "tax_payer_number": "1345678",
                                 "uin": "12345-6",
                                 "user_type": "Individual",
@@ -2863,25 +3252,45 @@
                             "first_name_cyrillic": "Test",
                             "first_name_latin": "Test",
                             "hr_member": "",
+                            "in_nexus_connection_to_india": "ENTITY",
+                            "in_nexus_declaration_attestation": "YES",
                             "industry_class": "19",
                             "is_private_enterpreneur": "",
                             "last_name_cyrillic": "Person",
                             "last_name_latin": "Person",
+                            "legal_address_area": "Moscow Time Zone",
+                            "legal_address_building": "Bldg. 1",
+                            "legal_address_city": "Moscow",
+                            "legal_address_country_code": "RU",
                             "legal_address_cyrillic": "13245 Country, City, street, 2",
+                            "legal_address_house": "AA1111",
+                            "legal_address_postal_code": "AB1111",
+                            "legal_address_region": "Moscow Region",
+                            "legal_address_street": "Korolyova",
                             "legal_type": "FCORP",
                             "middle_name_cyrillic": "Nikolaevich",
                             "middle_name_latin": "Nikolaevich",
                             "mobile_phone_number": "+7 (123) 456-78-90",
+                            "mobile_phone_number_country_code": "+7",
                             "music_nexus_connection_to_music": "MSCN",
                             "music_nexus_registry_policies_attestation": "YES",
                             "nexus_category": "C31",
                             "org_type": "1",
+                            "passport_expiry_date": "2025-01-01",
                             "passport_issue_date": "2009-01-11",
+                            "passport_issue_id": "345-876",
                             "passport_issuer": "Issuer name",
                             "passport_number": "12345678",
                             "passport_series": "1234",
+                            "postal_address_area": "Moscow Time Zone",
+                            "postal_address_building": "Bldg. 1",
+                            "postal_address_city": "Moscow",
                             "postal_address_cyrillic": "12345 Country, City, street, 1",
+                            "postal_address_house": "AA11",
+                            "postal_address_region": "Moscow Region",
+                            "postal_address_street": "Korolyova",
                             "social_security_number": "X123455123X",
+                            "sole_proprietorship": "true",
                             "tax_payer_number": "1345678",
                             "uin": "12345-6",
                             "user_type": "Individual",
@@ -3018,25 +3427,45 @@
                                         "first_name_cyrillic": "Test",
                                         "first_name_latin": "Test",
                                         "hr_member": "",
+                                        "in_nexus_connection_to_india": "ENTITY",
+                                        "in_nexus_declaration_attestation": "YES",
                                         "industry_class": "19",
                                         "is_private_enterpreneur": "",
                                         "last_name_cyrillic": "Person",
                                         "last_name_latin": "Person",
+                                        "legal_address_area": "Moscow Time Zone",
+                                        "legal_address_building": "Bldg. 1",
+                                        "legal_address_city": "Moscow",
+                                        "legal_address_country_code": "RU",
                                         "legal_address_cyrillic": "13245 Country, City, street, 2",
+                                        "legal_address_house": "AA1111",
+                                        "legal_address_postal_code": "AB1111",
+                                        "legal_address_region": "Moscow Region",
+                                        "legal_address_street": "Korolyova",
                                         "legal_type": "FCORP",
                                         "middle_name_cyrillic": "Nikolaevich",
                                         "middle_name_latin": "Nikolaevich",
                                         "mobile_phone_number": "+7 (123) 456-78-90",
+                                        "mobile_phone_number_country_code": "+7",
                                         "music_nexus_connection_to_music": "MSCN",
                                         "music_nexus_registry_policies_attestation": "YES",
                                         "nexus_category": "C31",
                                         "org_type": "1",
+                                        "passport_expiry_date": "2025-01-01",
                                         "passport_issue_date": "2009-01-11",
+                                        "passport_issue_id": "345-876",
                                         "passport_issuer": "Issuer name",
                                         "passport_number": "12345678",
                                         "passport_series": "1234",
+                                        "postal_address_area": "Moscow Time Zone",
+                                        "postal_address_building": "Bldg. 1",
+                                        "postal_address_city": "Moscow",
                                         "postal_address_cyrillic": "12345 Country, City, street, 1",
+                                        "postal_address_house": "AA11",
+                                        "postal_address_region": "Moscow Region",
+                                        "postal_address_street": "Korolyova",
                                         "social_security_number": "X123455123X",
+                                        "sole_proprietorship": "true",
                                         "tax_payer_number": "1345678",
                                         "uin": "12345-6",
                                         "user_type": "Individual",
@@ -3069,7 +3498,8 @@
                                     "key": "customer",
                                     "value": "VIP"
                                 }
-                            ]
+                            ],
+                            "vat": "XX123456789X11"
                         }
                     ],
                     "total": 999
@@ -3156,25 +3586,45 @@
                                     "first_name_cyrillic": "Test",
                                     "first_name_latin": "Test",
                                     "hr_member": "",
+                                    "in_nexus_connection_to_india": "ENTITY",
+                                    "in_nexus_declaration_attestation": "YES",
                                     "industry_class": "19",
                                     "is_private_enterpreneur": "",
                                     "last_name_cyrillic": "Person",
                                     "last_name_latin": "Person",
+                                    "legal_address_area": "Moscow Time Zone",
+                                    "legal_address_building": "Bldg. 1",
+                                    "legal_address_city": "Moscow",
+                                    "legal_address_country_code": "RU",
                                     "legal_address_cyrillic": "13245 Country, City, street, 2",
+                                    "legal_address_house": "AA1111",
+                                    "legal_address_postal_code": "AB1111",
+                                    "legal_address_region": "Moscow Region",
+                                    "legal_address_street": "Korolyova",
                                     "legal_type": "FCORP",
                                     "middle_name_cyrillic": "Nikolaevich",
                                     "middle_name_latin": "Nikolaevich",
                                     "mobile_phone_number": "+7 (123) 456-78-90",
+                                    "mobile_phone_number_country_code": "+7",
                                     "music_nexus_connection_to_music": "MSCN",
                                     "music_nexus_registry_policies_attestation": "YES",
                                     "nexus_category": "C31",
                                     "org_type": "1",
+                                    "passport_expiry_date": "2025-01-01",
                                     "passport_issue_date": "2009-01-11",
+                                    "passport_issue_id": "345-876",
                                     "passport_issuer": "Issuer name",
                                     "passport_number": "12345678",
                                     "passport_series": "1234",
+                                    "postal_address_area": "Moscow Time Zone",
+                                    "postal_address_building": "Bldg. 1",
+                                    "postal_address_city": "Moscow",
                                     "postal_address_cyrillic": "12345 Country, City, street, 1",
+                                    "postal_address_house": "AA11",
+                                    "postal_address_region": "Moscow Region",
+                                    "postal_address_street": "Korolyova",
                                     "social_security_number": "X123455123X",
+                                    "sole_proprietorship": "true",
                                     "tax_payer_number": "1345678",
                                     "uin": "12345-6",
                                     "user_type": "Individual",
@@ -3207,7 +3657,8 @@
                                 "key": "customer",
                                 "value": "VIP"
                             }
-                        ]
+                        ],
+                        "vat": "XX123456789X11"
                     }
                 ],
                 "total": 999
@@ -3293,6 +3744,10 @@
                     "items": {
                         "$ref": "#/definitions/customerTags"
                     }
+                },
+                "vat": {
+                    "type": "string",
+                    "title": "VAT (value-added tax) number of the customer"
                 }
             },
             "example": {
@@ -3355,25 +3810,45 @@
                             "first_name_cyrillic": "Test",
                             "first_name_latin": "Test",
                             "hr_member": "",
+                            "in_nexus_connection_to_india": "ENTITY",
+                            "in_nexus_declaration_attestation": "YES",
                             "industry_class": "19",
                             "is_private_enterpreneur": "",
                             "last_name_cyrillic": "Person",
                             "last_name_latin": "Person",
+                            "legal_address_area": "Moscow Time Zone",
+                            "legal_address_building": "Bldg. 1",
+                            "legal_address_city": "Moscow",
+                            "legal_address_country_code": "RU",
                             "legal_address_cyrillic": "13245 Country, City, street, 2",
+                            "legal_address_house": "AA1111",
+                            "legal_address_postal_code": "AB1111",
+                            "legal_address_region": "Moscow Region",
+                            "legal_address_street": "Korolyova",
                             "legal_type": "FCORP",
                             "middle_name_cyrillic": "Nikolaevich",
                             "middle_name_latin": "Nikolaevich",
                             "mobile_phone_number": "+7 (123) 456-78-90",
+                            "mobile_phone_number_country_code": "+7",
                             "music_nexus_connection_to_music": "MSCN",
                             "music_nexus_registry_policies_attestation": "YES",
                             "nexus_category": "C31",
                             "org_type": "1",
+                            "passport_expiry_date": "2025-01-01",
                             "passport_issue_date": "2009-01-11",
+                            "passport_issue_id": "345-876",
                             "passport_issuer": "Issuer name",
                             "passport_number": "12345678",
                             "passport_series": "1234",
+                            "postal_address_area": "Moscow Time Zone",
+                            "postal_address_building": "Bldg. 1",
+                            "postal_address_city": "Moscow",
                             "postal_address_cyrillic": "12345 Country, City, street, 1",
+                            "postal_address_house": "AA11",
+                            "postal_address_region": "Moscow Region",
+                            "postal_address_street": "Korolyova",
                             "social_security_number": "X123455123X",
+                            "sole_proprietorship": "true",
                             "tax_payer_number": "1345678",
                             "uin": "12345-6",
                             "user_type": "Individual",
@@ -3406,7 +3881,8 @@
                         "key": "customer",
                         "value": "VIP"
                     }
-                ]
+                ],
+                "vat": "XX123456789X11"
             }
         },
         "customerTags": {
@@ -3538,25 +4014,45 @@
                             "first_name_cyrillic": "Test",
                             "first_name_latin": "Test",
                             "hr_member": "",
+                            "in_nexus_connection_to_india": "ENTITY",
+                            "in_nexus_declaration_attestation": "YES",
                             "industry_class": "19",
                             "is_private_enterpreneur": "",
                             "last_name_cyrillic": "Person",
                             "last_name_latin": "Person",
+                            "legal_address_area": "Moscow Time Zone",
+                            "legal_address_building": "Bldg. 1",
+                            "legal_address_city": "Moscow",
+                            "legal_address_country_code": "RU",
                             "legal_address_cyrillic": "13245 Country, City, street, 2",
+                            "legal_address_house": "AA1111",
+                            "legal_address_postal_code": "AB1111",
+                            "legal_address_region": "Moscow Region",
+                            "legal_address_street": "Korolyova",
                             "legal_type": "FCORP",
                             "middle_name_cyrillic": "Nikolaevich",
                             "middle_name_latin": "Nikolaevich",
                             "mobile_phone_number": "+7 (123) 456-78-90",
+                            "mobile_phone_number_country_code": "+7",
                             "music_nexus_connection_to_music": "MSCN",
                             "music_nexus_registry_policies_attestation": "YES",
                             "nexus_category": "C31",
                             "org_type": "1",
+                            "passport_expiry_date": "2025-01-01",
                             "passport_issue_date": "2009-01-11",
+                            "passport_issue_id": "345-876",
                             "passport_issuer": "Issuer name",
                             "passport_number": "12345678",
                             "passport_series": "1234",
+                            "postal_address_area": "Moscow Time Zone",
+                            "postal_address_building": "Bldg. 1",
+                            "postal_address_city": "Moscow",
                             "postal_address_cyrillic": "12345 Country, City, street, 1",
+                            "postal_address_house": "AA11",
+                            "postal_address_region": "Moscow Region",
+                            "postal_address_street": "Korolyova",
                             "social_security_number": "X123455123X",
+                            "sole_proprietorship": "true",
                             "tax_payer_number": "1345678",
                             "uin": "12345-6",
                             "user_type": "Individual",
@@ -4339,6 +4835,14 @@
                         "maximum_western_union_payment": 1000,
                         "minimum_payment": 20,
                         "minimum_western_union_payment": 500,
+                        "notifications_settings": {
+                            "is_webhook_enabled": false,
+                            "webhook_settings": {
+                                "api_key": "",
+                                "host": "",
+                                "signature_secret": ""
+                            }
+                        },
                         "pay_methods": [
                             "ideal"
                         ],
@@ -4566,6 +5070,9 @@
                             },
                             "total": 999
                         },
+                        "email_service": {
+                            "total_count": 100
+                        },
                         "level": 3,
                         "license": {
                             "total": 999
@@ -4580,6 +5087,7 @@
                             "outgoing_count": 0,
                             "outgoing_limit": 1,
                             "status": "deleted",
+                            "total_count": 30,
                             "with_outgoing_filter": false
                         },
                         "ssl": {
@@ -4600,6 +5108,30 @@
                     "vatperc": 21
                 },
                 "desc": ""
+            }
+        },
+        "resellerNotificationsSettings": {
+            "type": "object",
+            "title": "NotificationsSettings",
+            "properties": {
+                "is_webhook_enabled": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Webhook notifications about domains mutations",
+                    "default": false
+                },
+                "webhook_settings": {
+                    "title": "Configuration of webhooks",
+                    "$ref": "#/definitions/resellerWebhookSettings"
+                }
+            },
+            "example": {
+                "is_webhook_enabled": false,
+                "webhook_settings": {
+                    "api_key": "",
+                    "host": "",
+                    "signature_secret": ""
+                }
             }
         },
         "resellerReseller": {
@@ -4830,6 +5362,14 @@
                     "maximum_western_union_payment": 1000,
                     "minimum_payment": 20,
                     "minimum_western_union_payment": 500,
+                    "notifications_settings": {
+                        "is_webhook_enabled": false,
+                        "webhook_settings": {
+                            "api_key": "",
+                            "host": "",
+                            "signature_secret": ""
+                        }
+                    },
                     "pay_methods": [
                         "ideal"
                     ],
@@ -5057,6 +5597,9 @@
                         },
                         "total": 999
                     },
+                    "email_service": {
+                        "total_count": 100
+                    },
                     "level": 3,
                     "license": {
                         "total": 999
@@ -5071,6 +5614,7 @@
                         "outgoing_count": 0,
                         "outgoing_limit": 1,
                         "status": "deleted",
+                        "total_count": 30,
                         "with_outgoing_filter": false
                     },
                     "ssl": {
@@ -5246,6 +5790,10 @@
                     "format": "double",
                     "title": "Minimal amount allowed to be paid using specified payment method"
                 },
+                "notifications_settings": {
+                    "title": "Settings of notifying about domains mutations",
+                    "$ref": "#/definitions/resellerNotificationsSettings"
+                },
                 "pay_methods": {
                     "type": "array",
                     "title": "Payment methods",
@@ -5335,6 +5883,14 @@
                 "maximum_western_union_payment": 1000,
                 "minimum_payment": 20,
                 "minimum_western_union_payment": 500,
+                "notifications_settings": {
+                    "is_webhook_enabled": false,
+                    "webhook_settings": {
+                        "api_key": "",
+                        "host": "",
+                        "signature_secret": ""
+                    }
+                },
                 "pay_methods": [
                     "ideal"
                 ],
@@ -5561,6 +6117,10 @@
                     "title": "Statistics for domains",
                     "$ref": "#/definitions/statisticsDomainStatistics"
                 },
+                "email_service": {
+                    "title": "Statistics for email service (MailCow) mailbox units",
+                    "$ref": "#/definitions/statisticsEmailServiceStatistics"
+                },
                 "level": {
                     "type": "integer",
                     "format": "int32",
@@ -5601,6 +6161,9 @@
                     },
                     "total": 999
                 },
+                "email_service": {
+                    "total_count": 100
+                },
                 "level": 3,
                 "license": {
                     "total": 999
@@ -5615,6 +6178,7 @@
                     "outgoing_count": 0,
                     "outgoing_limit": 1,
                     "status": "deleted",
+                    "total_count": 30,
                     "with_outgoing_filter": false
                 },
                 "ssl": {
@@ -5687,6 +6251,10 @@
                     "title": "The name",
                     "$ref": "#/definitions/contactName"
                 },
+                "notifications_settings": {
+                    "title": "Settings of notifying about domains mutations",
+                    "$ref": "#/definitions/resellerNotificationsSettings"
+                },
                 "phone": {
                     "title": "Phone number",
                     "$ref": "#/definitions/contactPhone"
@@ -5702,6 +6270,11 @@
                 "website_url": {
                     "type": "string",
                     "title": "Website URL"
+                },
+                "whatsapp_consent": {
+                    "type": "boolean",
+                    "format": "boolean",
+                    "title": "Reseller's consent to be contacted via WhatsApp on their phone number"
                 }
             },
             "example": {
@@ -5740,6 +6313,14 @@
                     "last_name": "Person",
                     "prefix": "Mr"
                 },
+                "notifications_settings": {
+                    "is_webhook_enabled": false,
+                    "webhook_settings": {
+                        "api_key": "",
+                        "host": "",
+                        "signature_secret": ""
+                    }
+                },
                 "phone": {
                     "area_code": "111",
                     "country_code": "+03",
@@ -5747,7 +6328,8 @@
                 },
                 "referral_source": "UNKNOWN_REFERRAL_SOURCE",
                 "vat": "XX123456789X13",
-                "website_url": "https://abcd.com"
+                "website_url": "https://abcd.com",
+                "whatsapp_consent": false
             }
         },
         "resellerUpdateResellerResponse": {
@@ -5800,6 +6382,29 @@
             },
             "example": {
                 "success": false
+            }
+        },
+        "resellerWebhookSettings": {
+            "type": "object",
+            "title": "WebhookSettings",
+            "properties": {
+                "api_key": {
+                    "type": "string",
+                    "title": "Webhook API key (Bearer token)"
+                },
+                "host": {
+                    "type": "string",
+                    "title": "Webhook host"
+                },
+                "signature_secret": {
+                    "type": "string",
+                    "title": "Webhook signature secret (optional)"
+                }
+            },
+            "example": {
+                "api_key": "",
+                "host": "",
+                "signature_secret": ""
             }
         },
         "settingsGetSettingsResponse": {
@@ -7300,6 +7905,20 @@
                 "req": 15
             }
         },
+        "statisticsEmailServiceStatistics": {
+            "type": "object",
+            "title": "EmailServiceStatistics",
+            "properties": {
+                "total_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Total number of email service units (all statuses)"
+                }
+            },
+            "example": {
+                "total_count": 100
+            }
+        },
         "statisticsGetStatisticsResponse": {
             "type": "object",
             "title": "GetStatisticsResponse",
@@ -7354,6 +7973,9 @@
                         },
                         "total": 999
                     },
+                    "email_service": {
+                        "total_count": 100
+                    },
                     "license": {
                         "total": 999
                     },
@@ -7367,6 +7989,7 @@
                         "outgoing_count": 0,
                         "outgoing_limit": 1,
                         "status": "deleted",
+                        "total_count": 30,
                         "with_outgoing_filter": false
                     },
                     "ssl": {
@@ -7404,6 +8027,10 @@
                     "title": "Total count of domains",
                     "$ref": "#/definitions/statisticsDomainStatistics"
                 },
+                "email_service": {
+                    "title": "Statistics for email service (MailCow) mailbox units",
+                    "$ref": "#/definitions/statisticsEmailServiceStatistics"
+                },
                 "license": {
                     "title": "Statistics for Plesk / Virtuozzo licenses",
                     "$ref": "#/definitions/statisticsLicenseStatistics"
@@ -7439,6 +8066,9 @@
                     },
                     "total": 999
                 },
+                "email_service": {
+                    "total_count": 100
+                },
                 "license": {
                     "total": 999
                 },
@@ -7452,6 +8082,7 @@
                     "outgoing_count": 0,
                     "outgoing_limit": 1,
                     "status": "deleted",
+                    "total_count": 30,
                     "with_outgoing_filter": false
                 },
                 "ssl": {
@@ -7526,6 +8157,11 @@
                     "type": "string",
                     "title": "The status"
                 },
+                "total_count": {
+                    "type": "integer",
+                    "format": "int32",
+                    "title": "Total spam protection units (incoming_count + outgoing_count)"
+                },
                 "with_outgoing_filter": {
                     "type": "boolean",
                     "format": "boolean",
@@ -7542,6 +8178,7 @@
                 "outgoing_count": 0,
                 "outgoing_limit": 1,
                 "status": "deleted",
+                "total_count": 30,
                 "with_outgoing_filter": false
             }
         },
@@ -7802,5 +8439,9 @@
         {
             "Bearer": []
         }
-    ]
+    ],
+    "externalDocs": {
+        "description": "More about REST API v1",
+        "url": "https://docs.openprovider.com"
+    }
 }
