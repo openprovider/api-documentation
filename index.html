@@ -1,1 +1,65 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="/icon.png" sizes="32x32"><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#ffffff"/><title>Openprovider documentation</title><link href="/static/css/main.5ecd60fb.chunk.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><script>!function(l){function e(e){for(var r,t,n=e[0],o=e[1],u=e[2],f=0,i=[];f<n.length;f++)t=n[f],p[t]&&i.push(p[t][0]),p[t]=0;for(r in o)Object.prototype.hasOwnProperty.call(o,r)&&(l[r]=o[r]);for(s&&s(e);i.length;)i.shift()();return c.push.apply(c,u||[]),a()}function a(){for(var e,r=0;r<c.length;r++){for(var t=c[r],n=!0,o=1;o<t.length;o++){var u=t[o];0!==p[u]&&(n=!1)}n&&(c.splice(r--,1),e=f(f.s=t[0]))}return e}var t={},p={1:0},c=[];function f(e){if(t[e])return t[e].exports;var r=t[e]={i:e,l:!1,exports:{}};return l[e].call(r.exports,r,r.exports,f),r.l=!0,r.exports}f.m=l,f.c=t,f.d=function(e,r,t){f.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:t})},f.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},f.t=function(r,e){if(1&e&&(r=f(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var t=Object.create(null);if(f.r(t),Object.defineProperty(t,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var n in r)f.d(t,n,function(e){return r[e]}.bind(null,n));return t},f.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return f.d(r,"a",r),r},f.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},f.p="/";var r=window.webpackJsonp=window.webpackJsonp||[],n=r.push.bind(r);r.push=e,r=r.slice();for(var o=0;o<r.length;o++)e(r[o]);var s=n;a()}([])</script><script src="/static/js/2.849335d4.chunk.js"></script><script src="/static/js/main.ffea48a5.chunk.js"></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="/icon.png" sizes="32x32"><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#ffffff"/><title>Openprovider documentation</title><link href="/static/css/main.5ecd60fb.chunk.css" rel="stylesheet"><style id="op-banner-style">
+/* ===== Dual-running notice banner =====================================
+   Spec taken from Figma "Banner / Dual-running" (Content.svg, 1280x68
+   inner frame inside a 1920x100 outer frame => 16px vertical padding).
+   ==================================================================== */
+:root{--op-banner-h:100px}
+#op-banner{position:fixed;top:0;left:0;right:0;z-index:1300;box-sizing:border-box;
+  background:#101828;padding:16px 24px;
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+#op-banner *,#op-banner *::before,#op-banner *::after{box-sizing:border-box}
+#op-banner__inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;
+  justify-content:space-between;gap:24px}
+#op-banner__msg{display:flex;align-items:flex-start;gap:14px;min-width:0}
+#op-banner__icon{flex:0 0 32px;width:32px;height:32px;display:block}
+#op-banner__text{min-width:0;max-width:680px}
+#op-banner__title{margin:0;font-size:16px;line-height:24px;font-weight:600;color:#fff}
+#op-banner__body{margin:4px 0 0;font-size:14px;line-height:20px;font-weight:400;color:#D0D5DD}
+#op-banner__cta{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;
+  height:40px;padding:0 20px;border-radius:8px;background:#D90D32;color:#fff;
+  font-size:14px;line-height:20px;font-weight:600;text-decoration:none;white-space:nowrap;
+  transition:background-color .15s ease}
+#op-banner__cta:hover{background:#B80A2A}
+#op-banner__cta:focus-visible{outline:2px solid #fff;outline-offset:2px}
+#op-banner__cta svg{flex:0 0 20px;width:20px;height:20px;display:block}
+
+/* --- push the existing chrome down by the banner height --- */
+.MuiAppBar-root{top:var(--op-banner-h)!important}
+#root>div:has(.redoc-wrap){padding-top:calc(64px + var(--op-banner-h))!important}
+.redoc-wrap>.menu-content{top:calc(64px + var(--op-banner-h))!important;
+  height:calc(100vh - 64px - var(--op-banner-h))!important}
+
+@media (max-width:900px){
+  #op-banner{padding:12px 16px}
+  #op-banner__inner{flex-direction:column;align-items:stretch;gap:12px}
+  #op-banner__cta{align-self:flex-start}
+}
+</style></head><body><noscript>You need to enable JavaScript to run this app.</noscript><!-- ===== Dual-running notice banner =================================
+     TODO before merge:
+       1. Confirm the CTA label wording (it was obscured in the Figma export;
+          width analysis suggests ~31 characters).
+       2. Confirm background #101828 (not present in Content.svg).
+     ================================================================= -->
+<div id="op-banner" role="region" aria-label="Documentation migration notice">
+<div id="op-banner__inner">
+<div id="op-banner__msg">
+<svg id="op-banner__icon" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false"><circle cx="16" cy="16" r="16" fill="#D90D32"/><path d="M16 17.25V14.125M17.1258 9.14219L23.9586 21.007C24.4375 21.843 23.8187 22.875 22.8328 22.875H9.16717C8.18124 22.875 7.56249 21.843 8.04139 21.007L14.8742 9.14219C15.3664 8.28594 16.6336 8.28594 17.1258 9.14219Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 21C16.5178 21 16.9375 20.5803 16.9375 20.0625C16.9375 19.5447 16.5178 19.125 16 19.125C15.4822 19.125 15.0625 19.5447 15.0625 20.0625C15.0625 20.5803 15.4822 21 16 21Z" fill="#fff"/></svg>
+<div id="op-banner__text">
+<p id="op-banner__title">Please use the new documentation</p>
+<p id="op-banner__body">This page is still here for now, but it will no longer be available from 31-Dec-2026. All content has moved to the new API documentation, which covers current features and new updates.</p>
+</div>
+</div>
+<a id="op-banner__cta" href="https://developer.openprovider.com/">Go to the new documentation<svg viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path d="M12.78 9.3333L9.21 5.7573L10.15 4.8147L15.33 10L10.15 15.1853L9.21 14.2427L12.78 10.6667H4.67V9.3333H12.78Z" fill="currentColor"/></svg></a>
+</div>
+</div><div id="root"></div><script>!function(l){function e(e){for(var r,t,n=e[0],o=e[1],u=e[2],f=0,i=[];f<n.length;f++)t=n[f],p[t]&&i.push(p[t][0]),p[t]=0;for(r in o)Object.prototype.hasOwnProperty.call(o,r)&&(l[r]=o[r]);for(s&&s(e);i.length;)i.shift()();return c.push.apply(c,u||[]),a()}function a(){for(var e,r=0;r<c.length;r++){for(var t=c[r],n=!0,o=1;o<t.length;o++){var u=t[o];0!==p[u]&&(n=!1)}n&&(c.splice(r--,1),e=f(f.s=t[0]))}return e}var t={},p={1:0},c=[];function f(e){if(t[e])return t[e].exports;var r=t[e]={i:e,l:!1,exports:{}};return l[e].call(r.exports,r,r.exports,f),r.l=!0,r.exports}f.m=l,f.c=t,f.d=function(e,r,t){f.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:t})},f.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},f.t=function(r,e){if(1&e&&(r=f(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var t=Object.create(null);if(f.r(t),Object.defineProperty(t,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var n in r)f.d(t,n,function(e){return r[e]}.bind(null,n));return t},f.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return f.d(r,"a",r),r},f.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},f.p="/";var r=window.webpackJsonp=window.webpackJsonp||[],n=r.push.bind(r);r.push=e,r=r.slice();for(var o=0;o<r.length;o++)e(r[o]);var s=n;a()}([])</script><script src="/static/js/2.849335d4.chunk.js"></script><script src="/static/js/main.ffea48a5.chunk.js"></script><script id="op-banner-script">
+/* Keep --op-banner-h in sync with the real rendered banner height so the
+   MUI AppBar, the ReDoc sidebar and the content column stay aligned when
+   the copy wraps to more lines on narrow viewports. */
+!function(){var b=document.getElementById("op-banner");if(!b)return;
+var r=document.documentElement,last=-1;
+function sync(){var h=b.offsetHeight;if(h!==last){last=h;r.style.setProperty("--op-banner-h",h+"px")}}
+sync();
+if(window.ResizeObserver)new ResizeObserver(sync).observe(b);else addEventListener("resize",sync);
+addEventListener("load",sync)}();
+</script></body></html>
